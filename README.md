@@ -1,1 +1,1 @@
-# CPSC455-WhatShouldIWatchApp
+# CPSC455-StreamBuddy
