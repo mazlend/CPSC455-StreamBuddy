@@ -61,10 +61,10 @@ Task 4: Develop the UI.
 ## Prototypes
 
 ### Browser View
-![](/browser-desktop.jpg)
+![](/images/browser-desktop.jpg)
 
 ### Mobile View
-![](/mobile.jpg)
+![](/images/mobile.jpg)
 
 ### Tablet View
-![](/tablet.jpg)
+![](/images/tablet.jpg)
