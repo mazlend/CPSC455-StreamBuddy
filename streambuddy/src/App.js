@@ -1,12 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Popup from './Popup';
+import DummyCard from './components/DummyCard';
 
 function App() {
-
-  const playMovie=() => {
-    console.log("playing movie");
-  }
 
   return (
     <div className="App">
@@ -25,7 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Popup name={"Zootopia"} url={"https://upload.wikimedia.org/wikipedia/en/9/96/Zootopia_%28movie_poster%29.jpg"} handlePlay={playMovie} />
+      <DummyCard title={"Zootopia"} url={"https://upload.wikimedia.org/wikipedia/en/9/96/Zootopia_%28movie_poster%29.jpg"} genre={'Animation'} year={'2019'}/>
     </div>
   );
 }
