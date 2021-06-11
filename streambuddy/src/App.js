@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import OLDMoviecard from "./components/OLD-moviecard";
 import Moviecard from "./components/moviecard";
+import MoviecardList from "./components/MoviecardList";
 
 function App() {
   return (
@@ -11,8 +13,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
           STREAMBUDDY
         </p>
-        <Moviecard />
-
+        <MoviecardList />
       </header>
     </div>
   );

@@ -1,18 +1,52 @@
 import React from 'react';
-import '../App.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-class Moviecard extends React.Component {
+const useStyles = makeStyles({
+    root: {
+        maxWidth: 345,
+    },
+    media: {
+        height: 345,
+    },
+});
 
-    render() {
-        return <div id="moviecard">
-            <div id="movie-name"><h4>The Matrix</h4></div>
-            <div id="movie-image"><img alt="" src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg"/></div>
-            <button type="button" onClick={this.props.onClick}>
-                Watch on Netflix
-            </button>
+export default function Moviecard(props) {
+    const classes = useStyles();
 
-        </div>;
-    }
+    return (
+        <Card className={classes.root}>
+            <CardActionArea>
+                <CardMedia
+                    className={classes.media}
+                    image={props.item.movieimage}
+                    title={props.item.moviename}
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {props.item.moviename}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Release Year: {props.item.moviereleaseyear}<br />
+                        IMDB Rating: {props.item.movierating} <br/>
+                        Genre: {props.item.moviegenre}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+            <CardActions>
+                <Button size="small" color="primary">
+                    Watch on Netflix
+                </Button>
+                <Button size="small" color="primary">
+                    Full Description
+                </Button>
+            </CardActions>
+        </Card>
+    );
 }
-
-export default Moviecard;
