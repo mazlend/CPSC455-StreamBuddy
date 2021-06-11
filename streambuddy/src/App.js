@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Popup from './Popup';
 
 function App() {
+
+  const playMovie=() => {
+    console.log("playing movie");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +25,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Popup name={"Zootopia"} url={"https://upload.wikimedia.org/wikipedia/en/9/96/Zootopia_%28movie_poster%29.jpg"} handlePlay={playMovie} />
     </div>
   );
 }
