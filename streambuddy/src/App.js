@@ -1,35 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
 
 import MoviecardList from "./components/MoviecardList";
 import SearchBar from "./components/SearchBar";
-import { BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Navbar} from "./components/Navbar";
 
+import theme from "./components/Theme";
+import {ThemeProvider} from "@material-ui/styles";
 
+import AdvanceButton from "./components/AdvanceButton";
 
 
 function App() {
-  return (
-      <div className="App">
-          <BrowserRouter>
-              <Navbar />
-              <Switch>
-                  <Route exact path="/" component={() => <div>Home</div>} />
-                  <Route path="/Login" component={() => <div>Login</div>} />
-                  <Route path="/Signup" component={() => <div>Sign up</div>} />
-              </Switch>
-          </BrowserRouter>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+    return (
+          <div className="app">
+            <div className="navbar">
+                <ThemeProvider theme={theme}>
+                <BrowserRouter>
+                               <Navbar />
+                                <Switch>
+                                     <Route exact path="/" />
+                                  <Route path="/Login" />
+                                   <Route path="/Signup" />
+                                </Switch>
+                            </BrowserRouter>
+                </ThemeProvider>
+            </div>
+            <div className="content">
 
-          <p>
-            <SearchBar />
-          </p>
-          <MoviecardList />
-       </header>
-      </div>
-  );
+
+                <div className="search-bar">
+                   <SearchBar />
+                    <div className="advance-button">
+                        <AdvanceButton />
+                    </div>
+
+                </div>
+                <div className="movie-cards">
+                    <MoviecardList />
+                </div>
+            </div>
+        </div>
+
+        );
 }
 
 export default App;

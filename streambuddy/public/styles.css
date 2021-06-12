@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+
+}
+.app{
+    background: transparent;
+}
+
+.sidebar {
+    display: flex;
+    z-index: 0;
+    position: relative;
+    bottom:50px;
+    background: red;
+}
+
+
+
+.movie-cards {
+    max-width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding-top: 100px;
+    margin: auto;
+}
+
+.search-bar {
+    max-width: 300px;
+    position: relative;
+    background: transparent;
+    top:30px;
+
+    left: auto;
+    background: #fff;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+}
+.advance-button{
+    position: relative;
+    max-width: 100%;
+    top:30px;
+    left:61px;
+    background: transparent;
+}

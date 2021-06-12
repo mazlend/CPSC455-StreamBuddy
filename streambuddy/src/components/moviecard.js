@@ -10,10 +10,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        maxWidth: 300,
     },
     media: {
-        height: 345,
+        height: 300,
     },
 });
 
@@ -29,7 +29,7 @@ export default function Moviecard(props) {
                     title={props.item.moviename}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h6" component="h2">
                         {props.item.moviename}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
