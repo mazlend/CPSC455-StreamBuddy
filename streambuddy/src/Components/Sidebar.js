@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerContainer: {
         overflow: 'auto',
+        padding: '3px'
     },
 }));
 
