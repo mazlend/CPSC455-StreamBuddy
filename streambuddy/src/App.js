@@ -9,10 +9,13 @@ import {ThemeProvider} from "@material-ui/styles";
 
 import AdvanceButton from "./components/AdvanceButton";
 
+import RangeSlider from "./components/RangeSlider";
+
 
 function App() {
     return (
           <div className="app">
+            
             <div className="navbar">
                 <ThemeProvider theme={theme}>
                 <BrowserRouter>
@@ -38,6 +41,7 @@ function App() {
                 <div className="movie-cards">
                     <MoviecardList />
                 </div>
+                <RangeSlider> TEST </RangeSlider>
             </div>
         </div>
 
