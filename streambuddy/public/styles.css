@@ -21,8 +21,6 @@ html {
     background: red;
 }
 
-
-
 .movie-cards {
     max-width: 100%;
     display: grid;
@@ -46,10 +44,15 @@ html {
     align-content: center;
     margin: auto;
 }
-.advance-button{
+
+.advance-button {
     position: relative;
     max-width: 100%;
     top:30px;
     left:61px;
     background: transparent;
+}
+.advanced-options-container {
+    max-width: 300px;
+    padding-left: 50px;
 }

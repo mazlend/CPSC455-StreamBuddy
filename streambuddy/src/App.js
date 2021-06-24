@@ -1,4 +1,4 @@
-
+import React from 'react';
 import MoviecardList from "./components/MoviecardList";
 import SearchBar from "./components/SearchBar";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
@@ -6,10 +6,22 @@ import {Navbar} from "./components/Navbar";
 
 import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
-
 import AdvanceButton from "./components/AdvanceButton";
-
 import RangeSlider from "./components/RangeSlider";
+
+// min and max years available from the API - we use it to init the range slider
+let yearRangeAvailable = [1950, 2022];
+// the years selected by the user
+let selectedYears = [1950, 2022];
+
+// sets the user selected year
+function setSelectedYears(years) {
+    selectedYears[0] = years[0];
+    selectedYears[1] = years[1];
+    // TODO: delete logging statement for production
+    console.log("selected range = " + selectedYears[0] + " - " + selectedYears[1]);
+}
+
 
 
 function App() {
@@ -29,8 +41,6 @@ function App() {
                 </ThemeProvider>
             </div>
             <div className="content">
-
-
                 <div className="search-bar">
                    <SearchBar />
                     <div className="advance-button">
@@ -41,7 +51,9 @@ function App() {
                 <div className="movie-cards">
                     <MoviecardList />
                 </div>
-                <RangeSlider> TEST </RangeSlider>
+            </div>
+            <div className="advanced-options-container">
+                <RangeSlider minYear={yearRangeAvailable[0]} maxYear={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
             </div>
         </div>
 
