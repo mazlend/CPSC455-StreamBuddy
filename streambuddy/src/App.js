@@ -9,7 +9,6 @@ import {ThemeProvider} from "@material-ui/styles";
 
 import AdvanceButton from "./components/AdvanceButton";
 
-import RangeSlider from "./components/RangeSlider";
 
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
                 <div className="movie-cards">
                     <MoviecardList />
                 </div>
-                <RangeSlider> TEST </RangeSlider>
             </div>
         </div>
 
