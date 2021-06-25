@@ -44,7 +44,9 @@ export default function Moviecard(props) {
     // For the Popover we used parts of the demo code of the material-ui documentation: https://codesandbox.io/s/f9n6j?file=/demo.js:922-1436
     return (
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea
+                onMouseEnter={handlePopoverOpen}
+                onMouseLeave={handlePopoverClose}>
                 <CardMedia
                     className={classes.media}
                     image={props.item.movieimage}
