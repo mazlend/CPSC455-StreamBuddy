@@ -8,8 +8,31 @@ import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
 
 import AdvanceButton from "./components/AdvanceButton";
-import Checkboxes from "./components/Checkboxes";
+import AutocompletePlusCheckbox from "./components/AutocompletePlusCheckbox";
 
+let allCountries = [
+    { item: 'Austria'},
+    { item: 'Brazil'},
+    { item: 'Canada'},
+    { item: 'China'},
+    { item: 'Cuba'},
+    { item: 'Denmark'},
+    { item: 'France'},
+    { item: 'Finland'},
+    { item: 'Germany'},
+    { item: 'Italy'},
+    { item: 'Japan'},
+    { item: 'Mexico'},
+    { item: 'Russia'},
+    { item: 'Spain'},
+    { item: 'United Kingdom'},
+    { item: 'United States of America'}
+];
+
+let allLanguages = [
+    { item: 'German'},
+    { item: 'English'},
+];
 
 function App() {
     return (
@@ -36,10 +59,13 @@ function App() {
                     </div>
                     <br/>
                     <br/>
-
                     <div>
-                        <Checkboxes />
+                        <AutocompletePlusCheckbox name="countries" label="Country" items={allCountries}/>
+                        <br/>
+                        <br/>
+                        <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
                     </div>
+
 
                 </div>
                 <div className="movie-cards">

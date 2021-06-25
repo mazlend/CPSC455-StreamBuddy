@@ -8,23 +8,15 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-export default function Checkboxes(props) {
-
-    // const [data, setData] = useState([]);
-
-    // const getData = () => {
-    //     axios.get('/').then((res => {
-    //         setData(res.data);
-    //     }))
-    // }
+export default function AutocompletePlusCheckbox(props) {
 
     return (
         <Autocomplete
             multiple
             id="checkboxes"
-            options={data}
+            options={props.items}
             disableCloseOnSelect
-            getOptionLabel={(option) => option.country}
+            getOptionLabel={(option) => option.item}
             renderOption={(option, { selected }) => (
                 <React.Fragment>
                     <Checkbox
@@ -33,33 +25,15 @@ export default function Checkboxes(props) {
                         style={{ marginRight: 8 }}
                         checked={selected}
                     />
-                    {option.country}
+                    {option.item}
                 </React.Fragment>
             )}
             style={{ width: 200 }}
             renderInput={(params) => (
-                <TextField {...params} variant="outlined" label="Country" placeholder="Country" />
+                <TextField {...params} variant="outlined" label={props.label} placeholder={props.label} />
             )}
         />
     );
 }
 
-const data = [
-    { country: 'Austria'},
-    { country: 'Brazil'},
-    { country: 'Canada'},
-    { country: 'China'},
-    { country: 'Cuba'},
-    { country: 'Denmark'},
-    { country: 'France'},
-    { country: 'Finland'},
-    { country: 'Germany'},
-    { country: 'Italy'},
-    { country: 'Japan'},
-    { country: 'Mexico'},
-    { country: 'Russia'},
-    { country: 'Spain'},
-    { country: 'United Kingdom'},
-    { country: 'United States of America'},
-];
 
