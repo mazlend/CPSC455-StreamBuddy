@@ -8,8 +8,35 @@ import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
 
 import AdvanceButton from "./components/AdvanceButton";
-import Checkboxes from "./components/Checkboxes";
+import AutocompletePlusCheckbox from "./components/AutocompletePlusCheckbox";
 
+
+// all countries that we fetch from the imdb database -- in the next iteration that will probably be stored
+// in the database and we hook up our database here
+let allCountries = [
+    { item: 'Austria'},
+    { item: 'Brazil'},
+    { item: 'Canada'},
+    { item: 'China'},
+    { item: 'Cuba'},
+    { item: 'Denmark'},
+    { item: 'France'},
+    { item: 'Finland'},
+    { item: 'Germany'},
+    { item: 'Italy'},
+    { item: 'Japan'},
+    { item: 'Mexico'},
+    { item: 'Russia'},
+    { item: 'Spain'},
+    { item: 'United Kingdom'},
+    { item: 'United States of America'},
+];
+
+// all countries that we fetch from the imdb database
+let allLanguages = [
+    { item: 'German'},
+    { item: 'English'},
+];
 
 function App() {
     return (
@@ -38,7 +65,8 @@ function App() {
                     <br/>
 
                     <div>
-                        <Checkboxes />
+                        <AutocompletePlusCheckbox name="countries" label="Country" items={allCountries}/>
+                        <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
                     </div>
 
                 </div>
