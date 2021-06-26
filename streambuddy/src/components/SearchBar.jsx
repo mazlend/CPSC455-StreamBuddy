@@ -18,6 +18,7 @@ function SearchBar () {
     return(
         <div className={classes.searchbar}>
     <Autocomplete
+        background="transparent"
         id="search-box-title"
         options={initialmoviesdata}
         getOptionLabel={(option) => option.moviename}
