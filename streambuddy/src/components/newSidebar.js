@@ -20,8 +20,9 @@ import MailIcon from '@material-ui/icons/Mail';
 import AutocompletePlusCheckbox from "./AutocompletePlusCheckbox";
 import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
-import AdvanceButton from "./AdvanceButton";
+import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
+
 
 // min and max years available from the API - we use it to init the range slider
 let yearRangeAvailable = [1950, 2022];
@@ -195,7 +196,6 @@ export default function PersistentDrawerLeft() {
                     <ListItem>
                         <RangeSlider minYear={yearRangeAvailable[0]} maxYear={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
                     </ListItem>
-                    <Divider />
                 </List>
 
                 <Divider />
@@ -211,7 +211,7 @@ export default function PersistentDrawerLeft() {
                     <div className="search-bar">
                         <SearchBar />
                         <div className="advance-button">
-                            <AdvanceButton />
+                            <SearchButton />
                         </div>
 
                     </div>

@@ -16,6 +16,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import SBlogo from '../SBlogo.png';
+import SBSVGLogo from '../SBSVGLogo.png';
 
 
 function ElevationScroll(props) {
@@ -49,12 +50,12 @@ const useStyles = makeStyles(theme => ({
     },
     logo: {
         height: "8em",
-        [theme.breakpoints.down("md")]: {
-            height: "7em"
-        },
-        [theme.breakpoints.down("xs")]: {
-            height: "5.5em"
-        }
+        // [theme.breakpoints.down("md")]: {
+        //     height: "7em"
+        // },
+        // [theme.breakpoints.down("xs")]: {
+        //     height: "5.5em"
+        // }
     },
     logoContainer: {
         padding: 0,
@@ -81,7 +82,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     drawer: {
-        backgroundColor: theme.palette.common.purple,
+        backgroundColor: theme.palette.common.pink,
         marginLeft: "auto"
     },
     drawerItem: {
@@ -180,7 +181,7 @@ export function Navbar(props) {
                         <Button component={ Link } to="/" onClick= {() => setValue(0)}
                                 className={classes.logoContainer} disableRipple >
                             <img
-                                src={SBlogo}
+                                src={SBSVGLogo}
                                 alt="logo"
                                 className={classes.logo}
                             />

@@ -6,7 +6,7 @@ const cwhite = "#fff";
 export default createMuiTheme({
     palette: {
         common: {
-            purple: cpink,
+            pink: cpink,
             white: cwhite
         },
         primary: {
@@ -22,5 +22,6 @@ export default createMuiTheme({
 
             fontSize: "1rem",
         }
-    }
+    },
+
 });
