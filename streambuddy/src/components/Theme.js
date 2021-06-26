@@ -24,4 +24,26 @@ export default createMuiTheme({
         }
     },
 
+    searchbar: {
+        maxWidth: "300px",
+        position: "relative",
+        background: "transparent",
+        top:"30px",
+        left: "auto",
+        alignItems: "center",
+        justifyContent: "center",
+        alignContent: "center",
+        margin: "auto",
+    },
+
+    button: {
+        position: "relative",
+        top: "30px",
+        left: "35px",
+        background: cpink,
+        color: cwhite
+    }
+
+
+
 });

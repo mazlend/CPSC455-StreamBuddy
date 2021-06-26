@@ -7,8 +7,10 @@ const useStyles = makeStyles((theme) => ({
         '& > *': {
             margin: theme.spacing(1),
         },
-
     },
+    button: {
+        ...theme.button
+    }
 }));
 
 export default function SearchButton() {
@@ -16,8 +18,7 @@ export default function SearchButton() {
 
     return (
         <div className={classes.root}>
-
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="primary" className={classes.button}>
                 Search
             </Button>
         </div>

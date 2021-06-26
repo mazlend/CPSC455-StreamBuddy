@@ -2,15 +2,21 @@ import React from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {initialmoviesdata} from "../initialmovies";
+import {makeStyles} from "@material-ui/core/styles";
 
-
+const useStyles = makeStyles((theme) => ({
+    searchbar: {
+        ...theme.searchbar
+    }
+}));
 
 
 
 function SearchBar () {
+    const classes = useStyles();
 
     return(
-        <div className="search-bar">
+        <div className={classes.searchbar}>
     <Autocomplete
         id="search-box-title"
         options={initialmoviesdata}
