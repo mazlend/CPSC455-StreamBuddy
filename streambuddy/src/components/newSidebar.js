@@ -13,12 +13,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import AutocompletePlusCheckbox from "./AutocompletePlusCheckbox";
 import RangeSlider from "./RangeSlider";
+import SearchBar from "./SearchBar";
+import SearchButton from "./SearchButton";
+import MoviecardList from "./MoviecardList";
+
 
 // min and max years available from the API - we use it to init the range slider
 let yearRangeAvailable = [1950, 2022];
@@ -181,14 +181,13 @@ export default function PersistentDrawerLeft() {
                 <List>
                     <ListItem>
                         <AutocompletePlusCheckbox name="countries" label="Country" items={allCountries}/>
-                        <br/>
-                        <br/>
                     </ListItem>
                     <Divider />
 
                     <ListItem>
                         <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
                     </ListItem>
+                    <Divider />
 
                     <ListItem>
                         <RangeSlider minYear={yearRangeAvailable[0]} maxYear={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
@@ -196,14 +195,6 @@ export default function PersistentDrawerLeft() {
                 </List>
 
                 <Divider />
-                <List>
-                    {['Test5', 'Test6', 'Test7'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
             </Drawer>
             <main
                 className={clsx(classes.content, {
@@ -211,6 +202,19 @@ export default function PersistentDrawerLeft() {
                 })}
             >
                 <div className={classes.drawerHeader} />
+                <div className="content">
+
+                    <div className="search-bar">
+                        <SearchBar />
+                        <div className="advance-button">
+                            <SearchButton />
+                        </div>
+
+                    </div>
+                    <div className="movie-cards">
+                        <MoviecardList />
+                    </div>
+                </div>
             </main>
         </div>
     );

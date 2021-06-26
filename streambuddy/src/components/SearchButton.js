@@ -8,16 +8,18 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
+    button: {
+        ...theme.button
+    }
 }));
 
-export default function AdvanceButton() {
+export default function SearchButton() {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-
-            <Button variant="contained" color="secondary">
-                Advance Search
+            <Button variant="contained" color="primary" className={classes.button}>
+                Search
             </Button>
         </div>
     );
