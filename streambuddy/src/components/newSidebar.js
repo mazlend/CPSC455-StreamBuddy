@@ -19,6 +19,9 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import AutocompletePlusCheckbox from "./AutocompletePlusCheckbox";
 import RangeSlider from "./RangeSlider";
+import SearchBar from "./SearchBar";
+import AdvanceButton from "./AdvanceButton";
+import MoviecardList from "./MoviecardList";
 
 // min and max years available from the API - we use it to init the range slider
 let yearRangeAvailable = [1950, 2022];
@@ -181,29 +184,21 @@ export default function PersistentDrawerLeft() {
                 <List>
                     <ListItem>
                         <AutocompletePlusCheckbox name="countries" label="Country" items={allCountries}/>
-                        <br/>
-                        <br/>
                     </ListItem>
                     <Divider />
 
                     <ListItem>
                         <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
                     </ListItem>
+                    <Divider />
 
                     <ListItem>
                         <RangeSlider minYear={yearRangeAvailable[0]} maxYear={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
                     </ListItem>
+                    <Divider />
                 </List>
 
                 <Divider />
-                <List>
-                    {['Test5', 'Test6', 'Test7'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
             </Drawer>
             <main
                 className={clsx(classes.content, {
@@ -211,6 +206,19 @@ export default function PersistentDrawerLeft() {
                 })}
             >
                 <div className={classes.drawerHeader} />
+                <div className="content">
+
+                    <div className="search-bar">
+                        <SearchBar />
+                        <div className="advance-button">
+                            <AdvanceButton />
+                        </div>
+
+                    </div>
+                    <div className="movie-cards">
+                        <MoviecardList />
+                    </div>
+                </div>
             </main>
         </div>
     );

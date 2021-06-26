@@ -31,29 +31,11 @@ function App() {
                 </ThemeProvider>
             </div>
 
-              <div>
-                  <PersistentDrawerLeft />
-              </div>
+              <PersistentDrawerLeft />
 
+          </div>
 
-
-            <div className="content">
-
-                <div className="search-bar">
-                   <SearchBar />
-                    <div className="advance-button">
-                        <AdvanceButton />
-                    </div>
-
-                </div>
-                <div className="movie-cards">
-                    <MoviecardList />
-                </div>
-            </div>
-
-        </div>
-
-        );
+    );
 }
 
 export default App;

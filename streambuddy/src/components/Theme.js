@@ -1,16 +1,16 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const cpurple = "#c41955";
+const cpink = "#c41955";
 const cwhite = "#fff";
 
 export default createMuiTheme({
     palette: {
         common: {
-            purple: cpurple,
+            purple: cpink,
             white: cwhite
         },
         primary: {
-            main: cpurple
+            main: cpink
         },
         secondary: {
             main: cwhite
