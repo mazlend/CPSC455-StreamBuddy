@@ -18,12 +18,20 @@ import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
+import {initialmoviesdata} from "../initialmovies";
+import {initialActorsData} from "../initialActors";
 
 
 // min and max years available from the API - we use it to init the range slider
-let yearRangeAvailable = [1950, 2022];
+let yearRangeAvailable = [1930, 2022];
 // the years selected by the user
-let selectedYears = [1950, 2022];
+let selectedYears = [1930, 2022];
+//Min and max IMDB rating
+let imdbScoreAvailable = [0, 10];
+// the scores selected by the user
+let selectedImdbScores = [0,10];
+
+
 
 // sets the user selected year
 function setSelectedYears(years) {
@@ -31,6 +39,13 @@ function setSelectedYears(years) {
     selectedYears[1] = years[1];
     // TODO: delete logging statement for production
     console.log("selected range = " + selectedYears[0] + " - " + selectedYears[1]);
+}
+
+function setSelectedimdbScore(score) {
+    selectedImdbScores[0] = score[0];
+    selectedImdbScores[1] = score[1];
+    // TODO: delete logging statement for production
+    console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
 }
 
 
@@ -56,6 +71,15 @@ let allCountries = [
 let allLanguages = [
     { item: 'German'},
     { item: 'English'},
+];
+
+let allGenre = [
+    {item:'Drama'},
+    {item:'Thriller'},
+    {item:'Romance'},
+    {item: 'Horror'},
+    {item: 'Action'},
+    {item: 'Fantasy'},
 ];
 
 const drawerWidth = 240;
@@ -180,7 +204,7 @@ export default function PersistentDrawerLeft() {
                 {/*</List>*/}
                 <List>
                     <ListItem>
-                        <AutocompletePlusCheckbox name="countries" label="Country" items={allCountries}/>
+                        <AutocompletePlusCheckbox name="countries" label="Country of Origin" items={allCountries}/>
                     </ListItem>
                     <Divider />
 
@@ -188,13 +212,38 @@ export default function PersistentDrawerLeft() {
                         <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
                     </ListItem>
                     <Divider />
+                    <ListItem>
+                        <AutocompletePlusCheckbox name="genere" label="Select Genere" items={allGenre}/>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <SearchBar 
+                        title={"Search for Actors"}
+                        autoCompleteData = {initialActorsData}
+                        style={{width:200}}
+                       
+                        />
+                    </ListItem>
+                    
+                    <Divider />
 
                     <ListItem>
-                        <RangeSlider minYear={yearRangeAvailable[0]} maxYear={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
+                        <RangeSlider textLabel = {"Year of Release"} minVal={yearRangeAvailable[0]} maxVal={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
                     </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <RangeSlider textLabel = {"IMDB Rating"} minVal={imdbScoreAvailable[0]} maxVal={imdbScoreAvailable[1]} getSelectedYears={setSelectedimdbScore} increments={0.1}/>
+                    </ListItem>
+                  
+                    
+                    <Divider />
+                    <ListItem>
+                        <SearchButton  />
+                    </ListItem>
+                    
                 </List>
 
-                <Divider />
+               
             </Drawer>
             <main
                 className={clsx(classes.content, {
@@ -205,9 +254,14 @@ export default function PersistentDrawerLeft() {
                 <div className="content">
 
                     <div className="search-bar">
-                        <SearchBar />
+                        <SearchBar
+                         title={"Search for Movies"}
+                         autoCompleteData = {initialmoviesdata} 
+                         style={{width:300}} />
                         <div className="advance-button">
-                            <SearchButton />
+                            <SearchButton 
+                            btnClass={classes.button1}
+                            />
                         </div>
 
                     </div>

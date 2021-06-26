@@ -5,12 +5,12 @@ import Typography from '@material-ui/core/Typography';
 function setMarks(props) {
     return [
         {
-            value: props.minYear,
-            label: `${props.minYear}`
+            value: props.minVal,
+            label: `${props.minVal}`
         },
         {
-            value: props.maxYear,
-            label: `${props.maxYear}`
+            value: props.maxVal,
+            label: `${props.maxVal}`
         }
     ]
 }
@@ -22,7 +22,7 @@ function valuetext(value) {
 
 
 function RangeSlider(props){
-    const [value, setValue] = React.useState([props.minYear, props.maxYear]);
+    const [value, setValue] = React.useState([props.minVal, props.maxVal]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -33,7 +33,7 @@ function RangeSlider(props){
     return(
         <div className="RangeSlider">
             <Typography id="range-slider" gutterBottom>
-                Years
+                {props.textLabel}
             </Typography>
             <Slider
                 value={value}
@@ -41,8 +41,9 @@ function RangeSlider(props){
                 valueLabelDisplay="auto"
                 aria-labelledby="year-slider"
                 getAriaValueText={valuetext}
-                max={props.maxYear}
-                min={props.minYear}
+                max={props.maxVal}
+                min={props.minVal}
+                step={props.increments}
                 marks={setMarks(props)}
             />
         </div>

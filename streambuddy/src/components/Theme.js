@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const cpink = "#c41955";
-const cwhite = "#fff";
+const cwhite = "#ffff";
 
 export default createMuiTheme({
     palette: {
@@ -38,8 +38,9 @@ export default createMuiTheme({
 
     button: {
         position: "relative",
+        alignItems: "center",
         top: "30px",
-        left: "35px",
+        left: "25%",
         background: cpink,
         color: cwhite
     }
