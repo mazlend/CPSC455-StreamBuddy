@@ -213,7 +213,7 @@ export default function PersistentDrawerLeft() {
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <AutocompletePlusCheckbox name="genere" label="Select Genere" items={allGenre}/>
+                        <AutocompletePlusCheckbox name="genere" label="Select Genre" items={allGenre}/>
                     </ListItem>
                     <Divider />
                     <ListItem>
