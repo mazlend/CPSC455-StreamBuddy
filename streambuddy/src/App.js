@@ -10,6 +10,9 @@ import {ThemeProvider} from "@material-ui/styles";
 import AdvanceButton from "./components/AdvanceButton";
 
 
+import PersistentDrawerLeft from "./components/newSidebar";
+
+
 
 function App() {
     return (
@@ -17,18 +20,24 @@ function App() {
             
             <div className="navbar">
                 <ThemeProvider theme={theme}>
-                <BrowserRouter>
-                               <Navbar />
-                                <Switch>
-                                     <Route exact path="/" />
-                                  <Route path="/Login" />
-                                   <Route path="/Signup" />
-                                </Switch>
-                            </BrowserRouter>
+                    <BrowserRouter>
+                        <Navbar />
+                        <Switch>
+                            <Route exact path="/" />
+                            <Route path="/Login" />
+                            <Route path="/Signup" />
+                        </Switch>
+                    </BrowserRouter>
                 </ThemeProvider>
             </div>
-            <div className="content">
 
+              <div>
+                  <PersistentDrawerLeft />
+              </div>
+
+
+
+            <div className="content">
 
                 <div className="search-bar">
                    <SearchBar />
@@ -41,6 +50,7 @@ function App() {
                     <MoviecardList />
                 </div>
             </div>
+
         </div>
 
         );

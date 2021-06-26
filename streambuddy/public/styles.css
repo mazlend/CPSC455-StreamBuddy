@@ -21,7 +21,25 @@ html {
     background: red;
 }
 
+.MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaper-21.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.MuiPaper-elevation0 {
+    top: 100px;
+    left: auto;
+    position: fixed;
+}
 
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-16.mui-fixed.MuiPaper-elevation4 {
+    top: 110px;
+    position: fixed;
+}
+
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-16.makeStyles-appBarShift-17.mui-fixed.MuiPaper-elevation4 {
+    top: 110px;
+    position: fixed;
+}
+
+.RangeSlider {
+    width: inherit;
+}
 
 .movie-cards {
     max-width: 100%;

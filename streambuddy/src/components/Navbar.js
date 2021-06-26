@@ -139,6 +139,7 @@ export function Navbar(props) {
     const drawer = (
         <React.Fragment>
             <SwipeableDrawer
+                anchor='right'
                 disableBackdropTransition={!iOS}
                 disableDiscovery={iOS}
                 open={openDrawer}

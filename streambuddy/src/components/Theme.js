@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const cpurple = "#c41955";
-const cwhite = "#abdc";
+const cwhite = "#fff";
 
 export default createMuiTheme({
     palette: {
