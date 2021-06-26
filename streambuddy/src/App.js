@@ -8,31 +8,11 @@ import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
 
 import AdvanceButton from "./components/AdvanceButton";
-import AutocompletePlusCheckbox from "./components/AutocompletePlusCheckbox";
 
-let allCountries = [
-    { item: 'Austria'},
-    { item: 'Brazil'},
-    { item: 'Canada'},
-    { item: 'China'},
-    { item: 'Cuba'},
-    { item: 'Denmark'},
-    { item: 'France'},
-    { item: 'Finland'},
-    { item: 'Germany'},
-    { item: 'Italy'},
-    { item: 'Japan'},
-    { item: 'Mexico'},
-    { item: 'Russia'},
-    { item: 'Spain'},
-    { item: 'United Kingdom'},
-    { item: 'United States of America'}
-];
 
-let allLanguages = [
-    { item: 'German'},
-    { item: 'English'},
-];
+import PersistentDrawerLeft from "./components/newSidebar";
+
+
 
 function App() {
     return (
@@ -50,6 +30,13 @@ function App() {
                     </BrowserRouter>
                 </ThemeProvider>
             </div>
+
+              <div>
+                  <PersistentDrawerLeft />
+              </div>
+
+
+
             <div className="content">
 
                 <div className="search-bar">
@@ -57,15 +44,6 @@ function App() {
                     <div className="advance-button">
                         <AdvanceButton />
                     </div>
-                    <br/>
-                    <br/>
-                    <div>
-                        <AutocompletePlusCheckbox name="countries" label="Country" items={allCountries}/>
-                        <br/>
-                        <br/>
-                        <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
-                    </div>
-
 
                 </div>
                 <div className="movie-cards">
