@@ -18,6 +18,7 @@ import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
+import MultipleCheckbox from "./MultipleCheckbox";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -191,6 +192,10 @@ export default function PersistentDrawerLeft() {
 
                     <ListItem>
                         <RangeSlider minYear={yearRangeAvailable[0]} maxYear={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
+                    </ListItem>
+
+                    <ListItem>
+                        <MultipleCheckbox></MultipleCheckbox>
                     </ListItem>
                 </List>
 
