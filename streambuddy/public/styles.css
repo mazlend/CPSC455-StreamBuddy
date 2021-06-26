@@ -10,7 +10,7 @@ html {
 
 }
 .app{
-    background: transparent;
+    background: white;
 }
 
 .sidebar {
@@ -64,9 +64,11 @@ html {
     align-content: center;
     margin: auto;
 }
-.advance-button{
+
+
+.advance-search-button{
     position: relative;
-    max-width: 100%;
+    max-width: 140px;
     top:30px;
     left:61px;
     background: transparent;

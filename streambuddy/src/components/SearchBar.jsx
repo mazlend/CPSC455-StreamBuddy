@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}  from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {initialmoviesdata} from "../initialmovies";
@@ -12,19 +12,37 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function SearchBar () {
+
+
+function SearchBar (props) {
     const classes = useStyles();
 
+   
+    const [inputValue, setInputValue] = React.useState({name:''});
+
+    function recorder(event, value) {
+        const {name} = event.target;
+
+        setInputValue(existingVal => {
+            return {
+                [name]:value
+            };
+        });
+       // console.log(value);
+    }
+    
+
     return(
-        <div className={classes.searchbar}>
+        
     <Autocomplete
         id="search-box-title"
-        options={initialmoviesdata}
-        getOptionLabel={(option) => option.moviename}
-        style={{width: 300}}
-        renderInput={(params) => <TextField {...params} label="Search for Title" variant="outlined"/>}
+        options={props.autoCompleteData}
+        getOptionLabel={(option) => option.name}
+        style={props.style}
+        onChange={recorder}
+        renderInput={(params) => <TextField {...params} label={props.title} variant="outlined"/>}
     />
-        </div>
+        
     );
 }
 

@@ -13,14 +13,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function SearchButton() {
+export default function SearchButton(props) {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+      
             <Button variant="contained" color="primary" className={classes.button}>
                 Search
             </Button>
-        </div>
+       
     );
 }
