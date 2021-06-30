@@ -1,16 +1,9 @@
-
-import MoviecardList from "./components/MoviecardList";
-import SearchBar from "./components/SearchBar";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Navbar} from "./components/Navbar";
-
 import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
-
-import SearchButton from "./components/SearchButton";
-
-
 import PersistentDrawerLeft from "./components/newSidebar";
+import Home from './components/Pages/Home';
 
 
 
@@ -22,11 +15,10 @@ function App() {
                 <ThemeProvider theme={theme}>
                     <BrowserRouter>
                         <Navbar />
-                        <PersistentDrawerLeft />
                         <Switch>
-                            <Route exact path="/" />
-                            <Route path="/Login" />
-                            <Route path="/Signup" />
+                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/about" component={() => <div>About</div>}/>
+                            <Route exact path="/login" component={() => <div>Login | Register</div>}/>
                         </Switch>
                     </BrowserRouter>
                 </ThemeProvider>

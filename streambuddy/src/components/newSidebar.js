@@ -93,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        zIndex: 1300
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -140,6 +141,7 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginLeft: 0,
     },
+
 }));
 
 export default function PersistentDrawerLeft() {
