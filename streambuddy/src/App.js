@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+
+import MoviecardList from "./components/MoviecardList";
+import SearchBar from "./components/SearchBar";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Navbar} from "./components/Navbar";
+
+import theme from "./components/Theme";
+import {ThemeProvider} from "@material-ui/styles";
+
+import SearchButton from "./components/SearchButton";
+
+
+import PersistentDrawerLeft from "./components/newSidebar";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+          <div className="app">
+            
+            <div className="navbar">
+                <ThemeProvider theme={theme}>
+                    <BrowserRouter>
+                        <Navbar />
+                        <PersistentDrawerLeft />
+                        <Switch>
+                            <Route exact path="/" />
+                            <Route path="/Login" />
+                            <Route path="/Signup" />
+                        </Switch>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </div>
+
+          </div>
+
+    );
 }
 
 export default App;
