@@ -1,11 +1,13 @@
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import Profile from "./components/Profile";
+import Profile from "./components/Pages/Profile";
 import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
 import SearchButton from "./components/SearchButton";
 import PersistentDrawerLeft from "./components/newSidebar";
 import Home from './components/Pages/Home';
 import {Navbar} from "./components/Navbar";
+import About from "./components/Pages/About";
+import Login from "./components/Pages/Login";
 
 function App() {
     return (
@@ -16,10 +18,9 @@ function App() {
                         <Navbar />
                         <Switch>
                             <Route exact path="/" component={Home}/>
-                            <Route exact path="/about" component={() => <div>About</div>}/>
-                            <Route exact path="/login" component={() => <div>Login | Register</div>}/>
-                            <Route exact path="/profile" component={() => <div>Profile</div>}/>
-                            <Profile />
+                            <Route exact path="/about" component={About}/>
+                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/profile" component={Profile}/>
                         </Switch>
                     </BrowserRouter>
                 </ThemeProvider>

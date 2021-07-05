@@ -54,7 +54,7 @@ html {
     display: grid;
     justify-content: center;
     align-content: center;
-    padding-top: 100px;
+    padding-top: 50px;
     margin: auto;
 }
 
@@ -73,6 +73,10 @@ html {
     margin: auto;
 }
 
+#welcome {
+    text-align: center;
+    justify-content: center;
+}
 
 .advance-search-button{
     position: relative;

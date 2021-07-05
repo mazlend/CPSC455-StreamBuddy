@@ -254,7 +254,10 @@ export default function PersistentDrawerLeft() {
             >
                 <div className={classes.drawerHeader} />
                 <div className="content">
-
+                    <div id="welcome">
+                        <h1>Welcome to StreamBuddy</h1>
+                        <h2>Search for a movie or use the advanced filters</h2>
+                    </div>
                     <div className="search-bar">
                         <SearchBar
                          title={"Search for Movies"}
