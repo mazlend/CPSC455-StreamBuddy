@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
-import netflixMovieList from '../../netflixMovieList.json';
-import AdvancedSearchQuery from "../AdvancedSearchQuery";
+import netflixMovieList from '../netflixMovieList.json';
+import AdvancedSearchQuery from "../components/AdvancedSearchQuery";
 
 
 function About() {

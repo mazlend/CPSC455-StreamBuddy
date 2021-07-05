@@ -1,11 +1,11 @@
 import React from 'react';
-import '../Theme';
-import PersistentDrawerLeft from '../newSidebar';
+import '../components/Theme';
+import Sidebar from '../components/Sidebar';
 
 function Home() {
     return (
         <div>
-            <PersistentDrawerLeft />
+            <Sidebar />
         </div>
     )
 }

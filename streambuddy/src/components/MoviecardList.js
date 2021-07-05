@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Moviecard from "./moviecard";
+import Moviecard from "./Moviecard";
 import {initialmoviesdata} from "../initialmovies";
 
 // const useStyles = makeStyles((theme) => ({

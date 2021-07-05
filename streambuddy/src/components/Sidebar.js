@@ -144,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function PersistentDrawerLeft() {
+export default function Sidebar() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
@@ -223,7 +223,6 @@ export default function PersistentDrawerLeft() {
                         title={"Search for Actors"}
                         autoCompleteData = {initialActorsData}
                         style={{width:200}}
-                       
                         />
                     </ListItem>
                     

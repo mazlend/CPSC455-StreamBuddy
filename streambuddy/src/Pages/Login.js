@@ -1,5 +1,5 @@
 import React from 'react';
-import Authentication from "../Authentications";
+import Authentication from "../components/Authentications";
 import {Container} from "@material-ui/core";
 
 

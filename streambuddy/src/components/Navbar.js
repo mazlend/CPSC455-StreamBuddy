@@ -119,8 +119,10 @@ export function Navbar(props) {
             setValue(0)
         } else if (window.location.pathname === "/about" && value !== 1) {
             setValue(1)
-        } else if (window.location.pathname === "/login" && value !== 2) {
-            setValue(2)
+        } else if (window.location.pathname === "/profile" && value !== 2) {
+                setValue(2)
+        } else if (window.location.pathname === "/login" && value !== 3) {
+            setValue(3)
         }
         //this value tells the useEffect hook that if the value hasn't changed, don't run
         // use effect hook code again
@@ -135,13 +137,14 @@ export function Navbar(props) {
 
                 <Tab className={classes.tab} component={Link} to="/"  label="Home" />
                 <Tab className={classes.tab} component={Link} to="/about" label="About" />
+                <Tab className={classes.tab} component={Link} to="/profile" label="Profile" />
             </Tabs>
             <Button
                 component={Link} to="/login"
                 variant="contained"
                 color="secondary"
                 className={classes.button}
-                onClick={() => setValue(2)}>
+                onClick={() => setValue(3)}>
                 Login | Register
             </Button>
         </React.Fragment>
@@ -171,10 +174,13 @@ export function Navbar(props) {
                     <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/about">
                         <ListItemText className={classes.drawerItem}>About</ListItemText>
                     </ListItem>
+                    <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/profile">
+                        <ListItemText className={classes.drawerItem}>Profile</ListItemText>
+                    </ListItem>
                     <ListItem
                         onClick={() => {
                             setOpenDrawer(false);
-                            setValue(2);
+                            setValue(3);
                         }}
                         divider button
                         component={Link} to="/login">
