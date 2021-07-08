@@ -47,22 +47,27 @@ export default function Moviecard(props) {
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image={props.item.movieimage}
-                    title={props.item.moviename}
+                    image={props.item.Poster}
+                    title={props.item.Title}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.item.moviename}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Release Year: {props.item.moviereleaseyear}<br />
-                        IMDB Rating: {props.item.movierating} <br/>
-                        Genre: {props.item.moviegenre}
+                        Release Year: {props.item.Year}<br />
+                        IMDB Rating: {props.item.imdbRating} <br/>
+                        Genre: {props.item.Genre}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary"
+                type={"button"}
+                onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = 'https://www.google.com/search?q=netflix+'+ props.item.Title;
+                }}>
                     Watch on Netflix
                 </Button>
                 <Typography
@@ -92,10 +97,18 @@ export default function Moviecard(props) {
                     disableRestoreFocus
                 >
                     <Typography>
-                        <p> {props.item.moviename}</p>
-                        <p> Description of the movie: Some description of the movie, maybe a trailer </p>
-                        <p> Some additional info </p>
-                        <p> {props.item.moviereleaseyear}</p>
+                        <p> {props.item.Title}</p>
+                        <p> Rated: {props.item.Rated} </p>
+                        <p> Runtime: {props.item.Runtime} </p>
+                        <p> Language(s): {props.item.Language} </p>
+                        <p> Country Filmed In: {props.item.Country} </p>
+                        <p> Director: {props.item.Director} </p>
+                        <p> Actors: {props.item.Actors} </p>
+                        <p> Ratings: <br />
+                            {props.item.Ratings[0].Source} {props.item.Ratings[0].Value} <br />
+                            {props.item.Ratings[1].Source} {props.item.Ratings[1].Value} <br />
+                            {props.item.Ratings[2].Source} {props.item.Ratings[2].Value}</p>
+                        <p> Plot Summary: {props.item.Plot} </p>
                     </Typography>
                 </Popover>
             </CardActions>

@@ -20,6 +20,7 @@ import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
 import {initialmoviesdata} from "../initialmovies";
 import {initialActorsData} from "../initialActors";
+import {netflixMovieList} from "../netflixMovieList";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -222,6 +223,7 @@ export default function Sidebar() {
                         <SearchBar 
                         title={"Search for Actors"}
                         autoCompleteData = {initialActorsData}
+                        getOptionLabel={(option) => option.name}
                         style={{width:200}}
                         />
                     </ListItem>
@@ -260,7 +262,8 @@ export default function Sidebar() {
                     <div className="search-bar">
                         <SearchBar
                          title={"Search for Movies"}
-                         autoCompleteData = {initialmoviesdata} 
+                         autoCompleteData = {netflixMovieList}
+                         getOptionLabel={(option) => option.Title}
                          style={{width:300}} />
                         <div className="advance-button">
                             <SearchButton 
