@@ -1,42 +1,44 @@
-import GoogleLogin from "react-google-login";
+import GoogleLogin, {GoogleLogout} from "react-google-login";
 import React, {useState, Component} from "react";
 
 export default function Authentication() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [url, setUrl] = useState("");
+    const [user, setUser] = useState(null);
 
-    // const responseGoogle = (response) => {
-    //     setName(response.profileObj.name);
-    //     setEmail(response.profileObj.email);
-    //     setUrl(response.profileObj.imageUrl);
-    //     console.log(response)
-    // }
-    // console.log(responseGoogle)
+    const onSuccess = (res) => {
+        console.log(res.profileObj)
+        setUser(res.profileObj);
+    }
 
-    const handleLogin = async googleData => {
-        const res = await fetch("/api/v1/auth/google", {
-            method: "POST",
-            body: JSON.stringify({
-                token: googleData.tokenId
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        const data = await res.json()
-        console.log(data + "test");
-        // store returned user somehow
+    const onLogoutSuccess= () => {
+        console.log("logout success")
+        setUser(null);
+        console.log(user)
+    }
+
+    const onFailure = () => {
+        console.log("Login Failed")
     }
 
     return (
-        <div id="loginbutton" style={{marginLeft: 400}}>
+        <div>
+            <h3>Login to StreamBuddy with Google</h3>
+            {user ? <div>
+                    <div className="name">Welcome {user.name}!</div>
+                    <div className="email">Your email is: {user.email}</div>
+                    <div className="img"><img src={user.imageUrl} alt={""}/></div>
+                    <GoogleLogout clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
+                                  buttonText="Logout"
+                                  onLogoutSuccess={onLogoutSuccess}/>
+                    <pre>{JSON.stringify(user, null, 2)}</pre>
+                </div> :
             <GoogleLogin clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
                          buttonText="Login"
-                         onSuccess={handleLogin}
-                         onFailure={handleLogin}
-                         cookiePolicy={'single_host_origin'}
-            />
+                         onSuccess={onSuccess}
+                         onFailure={onFailure}
+                         cookiePolicy={'none'}
+                         isSignedIn={true}
+            />}
+
         </div>
-    )
+    );
 }
