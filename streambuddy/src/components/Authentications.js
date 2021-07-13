@@ -1,5 +1,6 @@
 import GoogleLogin, {GoogleLogout} from "react-google-login";
 import React, {useState, Component} from "react";
+const axios = require('axios');
 
 export default function Authentication() {
     const [user, setUser] = useState(null);
