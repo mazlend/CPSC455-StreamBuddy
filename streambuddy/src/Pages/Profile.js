@@ -16,7 +16,6 @@ function Profile() {
     return(
         <Container maxWidth="lg">
             <div>
-                <h1> User profile </h1>
                 <User/>
                 <CommentInput/>
             </div>

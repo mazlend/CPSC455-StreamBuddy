@@ -96,10 +96,11 @@ html {
 
 /*gap determines the gap between the items in the div (the userImg and the text)*/
 .userDiv {
+    margin-top: 80px;
+    margin-bottom: 50px;;
     display: flex;
     align-items: center;
     gap: 1%;
-    font-size: 30px;
 }
 
 .smallIcon {
