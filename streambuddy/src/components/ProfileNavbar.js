@@ -1,16 +1,17 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
 
+// TODO: make each item a clickable button or similar to jump to section of profile
 
 function ProfileNavbar() {
     return(
         <Container maxWidth="lg">
-            <span>
-                <h1>Watchlist</h1>
-                <h1>Liked Movies</h1>
-                <h1>Reviewed Movies</h1>
-                <h1>Friends</h1>
-            </span>
+            <div class="profileNavbarDiv">
+                <p> Watchlist </p>
+                <p> Liked Movies </p>
+                <p> Reviewed Movies </p>
+                <p> Friends </p>
+            </div>
         </Container>
     );
 }
