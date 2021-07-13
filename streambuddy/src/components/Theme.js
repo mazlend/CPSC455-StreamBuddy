@@ -1,7 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const cpink = "#c41955";
-const cwhite = "#ffff";
+ const cpink = "#c41955";
+ const cwhite = "#fff";
+// const cwhite = "#3c4b50";
+// const cpink = "#d0e4dd";
 
 export default createMuiTheme({
     palette: {
@@ -44,7 +46,6 @@ export default createMuiTheme({
         background: cpink,
         color: cwhite
     }
-
 
 
 });

@@ -20,6 +20,7 @@ import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
 import {initialmoviesdata} from "../initialmovies";
 import {initialActorsData} from "../initialActors";
+import {netflixMovieList} from "../netflixMovieList";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -93,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        zIndex: 1300
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -140,9 +142,10 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginLeft: 0,
     },
+
 }));
 
-export default function PersistentDrawerLeft() {
+export default function Sidebar() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
@@ -220,8 +223,8 @@ export default function PersistentDrawerLeft() {
                         <SearchBar 
                         title={"Search for Actors"}
                         autoCompleteData = {initialActorsData}
+                        getOptionLabel={(option) => option.name}
                         style={{width:200}}
-                       
                         />
                     </ListItem>
                     
@@ -252,11 +255,15 @@ export default function PersistentDrawerLeft() {
             >
                 <div className={classes.drawerHeader} />
                 <div className="content">
-
+                    <div id="welcome">
+                        <h1>Welcome to StreamBuddy</h1>
+                        <h2>Search for a movie or use the advanced filters</h2>
+                    </div>
                     <div className="search-bar">
                         <SearchBar
                          title={"Search for Movies"}
-                         autoCompleteData = {initialmoviesdata} 
+                         autoCompleteData = {netflixMovieList}
+                         getOptionLabel={(option) => option.Title}
                          style={{width:300}} />
                         <div className="advance-button">
                             <SearchButton 

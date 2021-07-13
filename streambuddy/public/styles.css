@@ -21,20 +21,28 @@ html {
     background: red;
 }
 
-.MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaper-21.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.MuiPaper-elevation0 {
+.MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaper-22.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.MuiPaper-elevation0 {
     top: 100px;
-    left: auto;
-    position: fixed;
 }
 
-.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-16.mui-fixed.MuiPaper-elevation4 {
-    top: 110px;
-    position: fixed;
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-17.makeStyles-appBarShift-18.mui-fixed.MuiPaper-elevation4 {
+    top: 98px;
 }
 
-.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-16.makeStyles-appBarShift-17.mui-fixed.MuiPaper-elevation4 {
-    top: 110px;
-    position: fixed;
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-17.mui-fixed.MuiPaper-elevation4 {
+    top: 98px;
+}
+
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appbar-10.mui-fixed.MuiPaper-elevation0 {
+    min-height: 98px;
+    transition: none;
+    box-shadow: none;
+}
+
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appbar-10.mui-fixed.MuiPaper-elevation4 {
+    min-height: 98px;
+    transition: none;
+    box-shadow: none;
 }
 
 .RangeSlider {
@@ -46,7 +54,7 @@ html {
     display: grid;
     justify-content: center;
     align-content: center;
-    padding-top: 100px;
+    padding-top: 50px;
     margin: auto;
 }
 
@@ -65,6 +73,10 @@ html {
     margin: auto;
 }
 
+#welcome {
+    text-align: center;
+    justify-content: center;
+}
 
 .advance-search-button{
     position: relative;
