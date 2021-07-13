@@ -13,6 +13,8 @@ app.use('/api/films', filmsRoutes);
 app.use('/api/users', usersRoutes);
 
 
+
+
 mongoose.connect('mongodb+srv://streambuddy:streambuddy@cluster0.fjc4h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
