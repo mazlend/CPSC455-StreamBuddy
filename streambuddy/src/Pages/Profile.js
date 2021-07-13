@@ -1,5 +1,10 @@
 import React from 'react';
 import CommentInput from '../components/CommentInput';
+import ProfileNavbar from '../components/ProfileNavbar';
+import Watchlist from '../components/Watchlist';
+import LikedMovies from '../components/LikedMovies';
+import ReviewedMovies from '../components/ReviewedMovies';
+import Friends from '../components/Friends';
 import User from '../components/User';
 import {Container} from "@material-ui/core";
 import Authentication from "../components/Authentications";
@@ -17,7 +22,11 @@ function Profile() {
         <Container maxWidth="lg">
             <div>
                 <User/>
-                <CommentInput/>
+                <ProfileNavbar />
+                <Watchlist />
+                <LikedMovies />
+                <ReviewedMovies />
+                <Friends />
             </div>
         </Container>
     );
