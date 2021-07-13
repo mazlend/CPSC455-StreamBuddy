@@ -94,7 +94,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export function Navbar(props) {
+export default function Navbar(props) {
     const classes = useStyles();
     const theme = useTheme();
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);

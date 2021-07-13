@@ -3,6 +3,7 @@ import SearchBar from "./components/SearchBar";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import Profile from "./components/Profile";
+import Home from "./components/Home";
 import theme from "./components/Theme";
 import { ThemeProvider } from "@material-ui/styles";
 import SearchButton from "./components/SearchButton";
@@ -26,9 +27,10 @@ function App() {
             <Link to="/profile">ThisLinkNeedsToBeInLogin</Link>
           </li>
           <Switch>
-            <Route exact path="/" />
-            <Route path="/Login" />
+            <Route exact path="/" component={Home} />
+            <Route path="/Login" component={Profile} />
             <Route path="/Signup" />
+              <Profile />
             <Route path="/profile">
               <Profile />
             </Route>

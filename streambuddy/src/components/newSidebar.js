@@ -22,6 +22,9 @@ import {initialmoviesdata} from "../initialmovies";
 import {initialActorsData} from "../initialActors";
 
 
+// separate pages folder within components
+
+
 // min and max years available from the API - we use it to init the range slider
 let yearRangeAvailable = [1930, 2022];
 // the years selected by the user

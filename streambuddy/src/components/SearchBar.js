@@ -11,10 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
-
-function SearchBar (props) {
+function SearchBar(props) {
     const classes = useStyles();
 
    
