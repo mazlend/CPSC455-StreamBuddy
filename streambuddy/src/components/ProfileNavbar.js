@@ -10,6 +10,7 @@ function ProfileNavbar() {
                 <p> Watchlist </p>
                 <p> Liked Movies </p>
                 <p> Reviewed Movies </p>
+                <p> Watched Movies </p>
                 <p> Friends </p>
             </div>
         </Container>

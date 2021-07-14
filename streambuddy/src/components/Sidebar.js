@@ -18,9 +18,9 @@ import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
-import {initialmoviesdata} from "../initialmovies";
 import {initialActorsData} from "../initialActors";
 import {netflixMovieList} from "../netflixMovieList";
+import {featuredMovieList} from "../featuredMovieList";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -273,7 +273,7 @@ export default function Sidebar() {
 
                     </div>
                     <div className="movie-cards">
-                        <MoviecardList />
+                        <MoviecardList movieList={featuredMovieList}/>
                     </div>
                 </div>
             </main>

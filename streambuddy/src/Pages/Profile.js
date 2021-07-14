@@ -1,7 +1,7 @@
 import React from 'react';
 import CommentInput from '../components/CommentInput';
 import ProfileNavbar from '../components/ProfileNavbar';
-import Watchlist from '../components/Watchlist';
+import MoviecardList from '../components/MoviecardList';
 import LikedMovies from '../components/LikedMovies';
 import ReviewedMovies from '../components/ReviewedMovies';
 import Friends from '../components/Friends';
@@ -11,11 +11,13 @@ import Authentication from "../components/Authentications";
 import profilePicture from "../assets/profilePic.png"
 import editButton from "../assets/editButton.png"
 import { maxWidth } from '@material-ui/system';
+import { watchlist } from "../watchlist"
+import { likedMovies } from "../likedMovies"
 
 
 function Profile() {
 
-    // dummy data for a user, we will later pass those through props and/or retrieve from database
+    // TODO: retrieve data through axios instead of hardcode it
     let profileName = "popcornFan";
 
     return(
@@ -23,8 +25,8 @@ function Profile() {
             <div>
                 <User/>
                 <ProfileNavbar />
-                <Watchlist />
-                <LikedMovies />
+                <MoviecardList name="Watchlist" movieList={watchlist} />
+                <MoviecardList name="Liked Movies" movieList={likedMovies} />
                 <ReviewedMovies />
                 <Friends />
             </div>
