@@ -7,14 +7,6 @@ export default function MoviecardList(props) {
 
     return (
         <div className="movie-cards">
-        {props.name &&
-        <div>
-        <h1>
-            {props.name}
-        </h1>
-        <div class="horizontal-line" />
-        </div>
-        }
         <Grid container>
             <Grid item xs={12}>
                 <Grid container justify="center" spacing={5}>
