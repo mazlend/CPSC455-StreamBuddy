@@ -1,26 +1,27 @@
-import React from 'react';
+import React from "react";
 import MoviecardList from "./MoviecardList";
 import MoviecardListDense from "./MoviecardListDense";
 
 export default function MoviecardListWrapper(props) {
-    const [denseView, setDenseView] = React.useState(props.denseView);
+  const [denseView, setDenseView] = React.useState(props.denseView);
 
-    return (
-        <div className="movie-cards-wrapper">
-        {props.name &&
+  return (
+    <section id={props.id}>
+      <div className="movie-cards-wrapper">
+        {props.name && (
+          <div>
+            <h1>{props.name}</h1>
+            <div class="horizontal-line" />
+          </div>
+        )}
         <div>
-        <h1>
-            {props.name}
-        </h1>
-        <div class="horizontal-line" />
+          {denseView ? (
+            <MoviecardListDense name={props.name} movieList={props.movieList} />
+          ) : (
+            <MoviecardList name={props.name} movieList={props.movieList} />
+          )}
         </div>
-        }
-        <div>
-            {denseView
-            ?  <MoviecardListDense name={props.name} movieList={props.movieList} />
-            : <MoviecardList name={props.name} movieList={props.movieList} />}
-        </div>
-       
-        </div>
-    );
+      </div>
+    </section>
+  );
 }

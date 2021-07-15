@@ -7,11 +7,11 @@ function ProfileNavbar() {
     return(
         <Container maxWidth="lg">
             <div class="profileNavbarDiv">
-                <p> Watchlist </p>
-                <p> Liked Movies </p>
-                <p> Reviewed Movies </p>
-                <p> Watched Movies </p>
-                <p> Friends </p>
+                <a href="#watchlist"> Watchlist </a>
+                <a href="#likedMovies"> Liked Movies </a>
+                <a href="#watchedMovies"> Watched Movies </a>
+                <a href="#reviewedMovies"> Reviewed Movies </a>
+                <a href="#friends"> Friends </a>
             </div>
         </Container>
     );
