@@ -12,6 +12,7 @@ const userSchema = new Schema({
     watched: [{type: Schema.Types.ObjectId, ref: 'Film'}],
     watchlist: [{type: Schema.Types.ObjectId, ref: 'Film'}],
     followers: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    following: [{type: Schema.Types.ObjectId, ref: 'User'}]
 
 });
 
