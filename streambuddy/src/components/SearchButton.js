@@ -17,10 +17,9 @@ export default function SearchButton(props) {
     const classes = useStyles();
 
     return (
-      
-            <Button variant="contained" color="primary" className={classes.button}>
-                Search
-            </Button>
-       
+        <Button variant="contained" color="primary" className={classes.button}>
+            Search
+        </Button>
+
     );
 }
