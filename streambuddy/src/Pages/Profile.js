@@ -1,7 +1,6 @@
 import React from 'react';
 import CommentInput from '../components/CommentInput';
 import {Container} from "@material-ui/core";
-import Authentication from "../components/Authentications";
 
 
 function Profile() {
