@@ -16,13 +16,14 @@ connectDB();
 
 
 //let movieList = [movies.movieListForDB[15],movies.movieListForDB[16], movies.movieListForDB[17], movies.movieListForDB[18]];
- function moveieDetailWriter (movieList) {
+
+function movieDetailWriter (movieList) {
     try {
         movieList.forEach( async (movie,i) => {
             setTimeout(()=> {
             let movieName = Object.values(movie)[0].replace(/#/g, "%23");
             const apiResp = callAPI(movieName);
-            }, 1500*i);
+            }, 500*i);
         }); 
          
     } catch (e) {
@@ -43,5 +44,4 @@ connectDB();
      
 }   
 
-moveieDetailWriter(movies.movieListForDB);
-   
+movieDetailWriter(movies.movieListForDB);
