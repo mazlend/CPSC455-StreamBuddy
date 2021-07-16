@@ -45,6 +45,22 @@ const createUser = async (req, res) => {
     }
 }
 
+const updateUser = async (req, res) => {
+    try {
+        let user = await User.findByIdAndUpdate(req.params.id, req.body,
+            { runValidators: true });
+        res.status(200).json({
+            data : {user: user}
+        })
+    } catch (err) {
+        res.status(404).json({
+            message: err
+        })
+    }
+}
+
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.createUser = createUser;
+exports.updateUser = updateUser;
+

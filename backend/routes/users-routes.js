@@ -10,7 +10,6 @@ router
 router
     .route('/:googleId')
     .get(userController.getUser)
-
-
+    .patch(userController.updateUser)
 
 module.exports = router;
