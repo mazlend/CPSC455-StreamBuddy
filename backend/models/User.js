@@ -12,7 +12,12 @@ const userSchema = new Schema({
     watched: [{type: Schema.Types.ObjectId, ref: 'Film'}],
     watchlist: [{type: Schema.Types.ObjectId, ref: 'Film'}],
     followers: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    following: [{type: Schema.Types.ObjectId, ref: 'User'}]
+    following: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    reviews: [ {movie: {type: Schema.Types.ObjectId, ref: 'Film'},
+                comment: {type: String},
+                rating: {type: Number},
+                note: {type: String},
+                recommendingToFriends: [{name: {type: String}, shortComment: {type: String}}] }]
 
 });
 

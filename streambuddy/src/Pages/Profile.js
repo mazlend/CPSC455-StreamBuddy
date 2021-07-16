@@ -1,35 +1,76 @@
 import React from 'react';
-import CommentInput from '../components/CommentInput';
 import ProfileNavbar from '../components/ProfileNavbar';
-import MoviecardList from '../components/MoviecardList';
 import MoviecardListWrapper from '../components/MoviecardListWrapper';
-import ReviewedMovies from '../components/ReviewedMovies';
+import Reviews from '../components/Reviews';
 import Friends from '../components/Friends';
 import User from '../components/User';
 import {Container} from "@material-ui/core";
+import axios from "axios";
+import { watchlist } from '../watchlist';
+import { watchedMovies } from '../watchedMovies';
 
 
 function Profile() {
 
-    // TODO: retrieve data through axios instead of hardcode it
-    let profileName = "popcornFan";
 
     // we use denseView to determine whether render the expanded version with the movie posters or a dense list-like version
     // we want to have the option for a dense view as users may not want to see every category with posters
-    // TODO: put all variables in one state
-    const [denseViewForWatchlist, setDenseViewForWatchlist] = React.useState(false);
-    const [denseViewForLikedMovies, setDenseViewLikedForMovies] = React.useState(false);
-    const [denseViewForWatchedMovies, setDenseViewForWatchedMovies] = React.useState(true);
+    const [views, setViews] = React.useState(
+        {
+            denseViewWatchList: false,
+            denseViewWatchedMovies: false
+        }
+    )
+    const [movieDetails, setMovieDetails] = React.useState(
+        {
+            watchlist: null,
+            watchedMovies: null
+        }
+    )
+    const [userDetails, setUserDetails] = React.useState(
+        {
+            name: null,
+        }
+    )
+
+    const getUser = (user) => {
+        axios.get(`http://localhost:5000/api/users/${user.googleId}`)
+            .then((res) => {
+                if (res.data) {
+                    //setUser(res.data)
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    const setProfileDetails = () => {
+        console.log("setting profile details")
+        // here should be an axios call to retrieve the movies -- currently they are just dummy values
+        setMovieDetails({
+            watchlist: watchlist,
+            watchedMovies: watchedMovies,
+        })
+
+        // TODO: figure out how to pass a user to profile (either through props from authetication or through url?)
+        setUserDetails({
+            name: 'PopcornNerd' 
+        })
+    }
+
+    React.useEffect(()=>{
+        setProfileDetails();
+    }, []);
 
     return(
         <Container maxWidth="lg">
             <div>
-                <User/>
+                <User name={userDetails.name}/>
                 <ProfileNavbar />
-                <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={watchlist} denseView={denseViewForWatchlist}/>
-                <MoviecardListWrapper id="likedMovies" name="Liked Movies" movieList={likedMovies} denseView={denseViewForLikedMovies} />
-                <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={likedMovies} denseView={denseViewForWatchedMovies} />
-                <ReviewedMovies id="reviewedMovies" />
+                {movieDetails.watchlist && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={movieDetails.watchlist} denseView={views.denseViewWatchList}/> }
+                {movieDetails.watchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={movieDetails.watchedMovies} denseView={views.denseViewWatchedMovies} /> }
+                <Reviews id="reviews" />
                 <Friends id="friends" />
             </div>
         </Container>

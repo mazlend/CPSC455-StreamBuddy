@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
 
-function ReviewedMovies() {
+function Reviews() {
 
     return(
         <Container maxWidth="lg">
@@ -20,4 +20,4 @@ function ReviewedMovies() {
     );
 }
 
-export default ReviewedMovies;
+export default Reviews;

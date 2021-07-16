@@ -8,9 +8,8 @@ function ProfileNavbar() {
         <Container maxWidth="lg">
             <div class="profileNavbarDiv">
                 <a href="#watchlist"> Watchlist </a>
-                <a href="#likedMovies"> Liked Movies </a>
                 <a href="#watchedMovies"> Watched Movies </a>
-                <a href="#reviewedMovies"> Reviewed Movies </a>
+                <a href="#reviews"> Reviews </a>
                 <a href="#friends"> Friends </a>
             </div>
         </Container>
