@@ -12,7 +12,6 @@ import { watchedMovies } from '../watchedMovies';
 
 function Profile() {
 
-
     // we use denseView to determine whether render the expanded version with the movie posters or a dense list-like version
     // we want to have the option for a dense view as users may not want to see every category with posters
     const [views, setViews] = React.useState(
@@ -66,7 +65,7 @@ function Profile() {
     return(
         <Container maxWidth="lg">
             <div>
-                <User name={userDetails.name}/>
+                {userDetails.name && <User name={userDetails.name}/>}
                 <ProfileNavbar />
                 {movieDetails.watchlist && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={movieDetails.watchlist} denseView={views.denseViewWatchList}/> }
                 {movieDetails.watchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={movieDetails.watchedMovies} denseView={views.denseViewWatchedMovies} /> }
