@@ -42,8 +42,6 @@ function Profile() {
         getUser();
     }, []);
     
-
-
     return(
         <Container maxWidth="lg">
             <div>
