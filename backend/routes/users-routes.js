@@ -8,8 +8,8 @@ router
     .post(userController.createUser);
 
 router
-    .route('/:googleId')
+    .route('/:id')
     .get(userController.getUser)
-    .patch(userController.updateUser)
+    .patch(userController.updateUser);
 
 module.exports = router;
