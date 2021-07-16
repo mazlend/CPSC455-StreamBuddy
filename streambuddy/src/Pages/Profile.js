@@ -24,7 +24,7 @@ function Profile() {
     // we want to have the option for a dense view as users may not want to see every category with posters
     // TODO: put all variables in one state
     const [denseViewForWatchlist, setDenseViewForWatchlist] = React.useState(false);
-    const [denseViewForLikedMovies, setDenseViewLikedForMovies] = React.useState(true);
+    const [denseViewForLikedMovies, setDenseViewLikedForMovies] = React.useState(false);
     const [denseViewForWatchedMovies, setDenseViewForWatchedMovies] = React.useState(true);
 
     return(

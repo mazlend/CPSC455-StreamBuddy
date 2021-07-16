@@ -9,6 +9,7 @@ export default function MoviecardListDense(props) {
         <div className="movie-cards-dense">
             <p>
                 Here will be a condensed view of the movies like in spotify
+                Use table from MAterial ui!
             </p>
             {list.map((item) => (
                 <Grid item>
