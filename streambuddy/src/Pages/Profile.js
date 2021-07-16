@@ -6,8 +6,7 @@ import Friends from '../components/Friends';
 import User from '../components/User';
 import {Container} from "@material-ui/core";
 import axios from "axios";
-import { watchlist } from '../watchlist';
-import { watchedMovies } from '../watchedMovies';
+
 
 
 function Profile() {
@@ -20,55 +19,38 @@ function Profile() {
             denseViewWatchedMovies: false
         }
     )
-    const [movieDetails, setMovieDetails] = React.useState(
-        {
-            watchlist: null,
-            watchedMovies: null
-        }
-    )
-    const [userDetails, setUserDetails] = React.useState(
-        {
-            name: null,
-        }
-    )
 
-    const getUser = (user) => {
-        axios.get(`http://localhost:5000/api/users/${user.googleId}`)
+    const [user, setUser] = React.useState(null);
+
+    // TODO: use a working google id, as a next step we need to somehow pass the google id from authetication to here
+    const googleId = "968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
+
+    const getUser = () => {
+        axios.get(`http://localhost:5000/api/users/${googleId}`)
             .then((res) => {
                 if (res.data) {
-                    //setUser(res.data)
+                    setUser(res.data)
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
+        
     }
 
-    const setProfileDetails = () => {
-        console.log("setting profile details")
-        // here should be an axios call to retrieve the movies -- currently they are just dummy values
-        setMovieDetails({
-            watchlist: watchlist,
-            watchedMovies: watchedMovies,
-        })
-
-        // TODO: figure out how to pass a user to profile (either through props from authetication or through url?)
-        setUserDetails({
-            name: 'PopcornNerd' 
-        })
-    }
-
-    React.useEffect(()=>{
-        setProfileDetails();
+    React.useEffect(() => {
+        getUser();
     }, []);
+    
+
 
     return(
         <Container maxWidth="lg">
             <div>
-                {userDetails.name && <User name={userDetails.name}/>}
+                {user && <User name={user.name}/>}
                 <ProfileNavbar />
-                {movieDetails.watchlist && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={movieDetails.watchlist} denseView={views.denseViewWatchList}/> }
-                {movieDetails.watchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={movieDetails.watchedMovies} denseView={views.denseViewWatchedMovies} /> }
+                {user && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={user.watchlist} denseView={views.denseViewWatchList}/> }
+                {user && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={user.watched} denseView={views.denseViewWatchedMovies} /> }
                 <Reviews id="reviews" />
                 <Friends id="friends" />
             </div>
