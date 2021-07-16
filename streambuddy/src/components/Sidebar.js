@@ -18,9 +18,9 @@ import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
-import { initialmoviesdata } from "../initialmovies";
 import { initialActorsData } from "../initialActors";
 import { netflixMovieList } from "../netflixMovieList";
+import { featuredMovieList } from "../featuredMovieList";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -31,7 +31,6 @@ let selectedYears = [1930, 2022];
 let imdbScoreAvailable = [0, 10];
 // the scores selected by the user
 let selectedImdbScores = [0, 10];
-
 
 
 // sets the user selected year
@@ -48,7 +47,6 @@ function setSelectedimdbScore(score) {
     // TODO: delete logging statement for production
     console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
 }
-
 
 let allCountries = [
     { item: 'Austria' },
@@ -150,6 +148,11 @@ export default function Sidebar() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
 
+    const [filmName, setFilmName] = React.useState("");
+
+    const initialList = featuredMovieList;
+    const [list, setList] = React.useState(initialList);
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -157,6 +160,10 @@ export default function Sidebar() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    function handleCallback(filmName) {
+        setFilmName(filmName);
+    }
 
     return (
         <div className={classes.root}>
@@ -261,6 +268,7 @@ export default function Sidebar() {
                     </div>
                     <div className="search-bar">
                         <SearchBar
+                            parentCallBack={handleCallback}
                             title={"Search for Movies"}
                             autoCompleteData={netflixMovieList}
                             getOptionLabel={(option) => option.Title}
@@ -268,12 +276,15 @@ export default function Sidebar() {
                         <div className="advance-button">
                             <SearchButton
                                 btnClass={classes.button1}
+                                filmName={filmName}
                             />
                         </div>
 
                     </div>
                     <div className="movie-cards">
-                        <MoviecardList />
+                        <MoviecardList
+                            list={list}
+                        />
                     </div>
                 </div>
             </main>

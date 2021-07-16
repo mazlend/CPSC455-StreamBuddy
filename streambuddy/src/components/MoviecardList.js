@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Moviecard from "./Moviecard";
-import {initialmoviesdata} from "../initialmovies";
 import {featuredMovieList} from "../featuredMovieList";
 
 // const useStyles = makeStyles((theme) => ({
@@ -18,10 +17,9 @@ import {featuredMovieList} from "../featuredMovieList";
 //     },
 // }));
 
-export default function MoviecardList() {
+export default function MoviecardList(props) {
    // const classes = useStyles();
-    const initialList = featuredMovieList;
-    const [list, setList] = React.useState(initialList);
+    const [list, setList] = React.useState(props.list);
 
     return (
         <div className="movie-cards">
