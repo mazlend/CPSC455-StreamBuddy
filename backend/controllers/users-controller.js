@@ -16,7 +16,7 @@ const getUsers = async (req, res) => {
 const getUser = async (req, res) => {
     console.log(req.body)
     try {
-        let user = await User.findOne({googleId: req.body.googleId});
+        let user = await User.findById(req.params.id);
         res.status(200).send(user);
     } catch (err) {
         res.status(404).json({
@@ -30,9 +30,8 @@ const createUser = async (req, res) => {
     try {
         let existingUser = await User.findOne({ googleId: req.body.googleId }).exec();
         if (existingUser) {
-            res.status(200).json({
-                data: { user: existingUser }
-            })} else {
+            res.status(200).send(existingUser)
+            } else {
             let newUser = await User.create(req.body);
             res.status(201).json({
                 data: { user: newUser }

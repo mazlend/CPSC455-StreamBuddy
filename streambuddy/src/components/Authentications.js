@@ -5,21 +5,22 @@ import axios from "axios";
 export default function Authentication() {
     const [user, setUser] = useState(null);
 
-    const onSuccess = (res) => {
+    const onSuccess = async (res) => {
         axios.post('http://localhost:5000/api/users/', res.profileObj)
-            .then((res) => {
-            console.log(res);
+            .then((response) => {
+            console.log(response);
+            getUser(response.data)
         }).catch((err) => {
             console.log(err);
         });
-        getUser(res.profileObj);
     }
 
     const getUser = (user) => {
-        axios.get(`http://localhost:5000/api/users/${user.googleId}`)
+        axios.get(`http://localhost:5000/api/users/${user._id}`)
             .then((res) => {
                 if (res.data) {
                     setUser(res.data)
+                    console.log(res.data)
                 }
             })
             .catch((err) => {
