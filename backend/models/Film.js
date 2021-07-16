@@ -35,6 +35,7 @@ const filmSchema = new Schema({
     BoxOffice: { type: Number },
     Production: { type: String },
 
+
 });
 
 module.exports = mongoose.model('Film', filmSchema);

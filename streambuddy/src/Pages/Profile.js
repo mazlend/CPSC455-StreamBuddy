@@ -7,12 +7,6 @@ import ReviewedMovies from '../components/ReviewedMovies';
 import Friends from '../components/Friends';
 import User from '../components/User';
 import {Container} from "@material-ui/core";
-import Authentication from "../components/Authentications";
-import profilePicture from "../assets/profilePic.png"
-import editButton from "../assets/editButton.png"
-import { maxWidth } from '@material-ui/system';
-import { watchlist } from "../watchlist"
-import { likedMovies } from "../likedMovies"
 
 
 function Profile() {
