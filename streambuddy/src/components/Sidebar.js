@@ -165,6 +165,11 @@ export default function Sidebar() {
         setFilmName(filmName);
     }
 
+    function handleListCallback(filmList) {
+        setList(filmList);
+        console.log(filmList)
+    }
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -277,6 +282,7 @@ export default function Sidebar() {
                             <SearchButton
                                 btnClass={classes.button1}
                                 filmName={filmName}
+                                listCallback={handleListCallback}
                             />
                         </div>
 
