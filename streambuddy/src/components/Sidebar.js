@@ -150,7 +150,7 @@ export default function Sidebar() {
 
     const [filmName, setFilmName] = React.useState("");
 
-    const initialList = featuredMovieList;
+    let initialList = featuredMovieList;
     const [list, setList] = React.useState(initialList);
 
     const handleDrawerOpen = () => {
@@ -167,7 +167,9 @@ export default function Sidebar() {
 
     function handleListCallback(filmList) {
         setList(filmList);
-        console.log(filmList)
+        initialList = filmList;
+        // console.log(list);
+        // console.log(initialList)
     }
 
     return (
@@ -289,7 +291,7 @@ export default function Sidebar() {
                     </div>
                     <div className="movie-cards">
                         <MoviecardList
-                            list={list}
+                            list={initialList}
                         />
                     </div>
                 </div>
