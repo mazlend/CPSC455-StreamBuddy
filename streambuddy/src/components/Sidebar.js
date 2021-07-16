@@ -166,10 +166,10 @@ export default function Sidebar() {
     }
 
     function handleListCallback(filmList) {
-        setList(filmList);
+        // setList(filmList);
         initialList = filmList;
         // console.log(list);
-        // console.log(initialList)
+        console.log(initialList)
     }
 
     return (
