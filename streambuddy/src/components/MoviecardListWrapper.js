@@ -18,7 +18,8 @@ export default function MoviecardListWrapper(props) {
           {denseView ? (
             <MoviecardListDense name={props.name} movieList={props.movieList} />
           ) : (
-            <MoviecardList name={props.name} movieList={props.movieList} />
+              <p>test</p>
+            // <MoviecardList name={props.name} movieList={props.movieList} />
           )}
         </div>
       </div>

@@ -20,13 +20,14 @@ import { featuredMovieList } from "../featuredMovieList";
 export default function MoviecardList(props) {
     // const classes = useStyles();
     // const [list, setList] = React.useState(props.list);
+    const initialList = props.list;
 
     return (
         <div className="movie-cards">
             <Grid container>
                 <Grid item xs={12}>
                     <Grid container justify="center" spacing={5}>
-                        {props.list.map((item) => (
+                        {initialList.map((item) => (
                             <Grid item>
                                 <Moviecard item={item} />
                             </Grid>

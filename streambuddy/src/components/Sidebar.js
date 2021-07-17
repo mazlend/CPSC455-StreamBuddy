@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -21,6 +21,7 @@ import MoviecardList from "./MoviecardList";
 import { initialActorsData } from "../initialActors";
 import { netflixMovieList } from "../netflixMovieList";
 import { featuredMovieList } from "../featuredMovieList";
+import {initialmoviesdata} from "../initialmovies";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -147,11 +148,9 @@ export default function Sidebar() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
+    const [list, setList] = useState(featuredMovieList);
 
     const [filmName, setFilmName] = React.useState("");
-
-    let initialList = featuredMovieList;
-    const [list, setList] = React.useState(initialList);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -166,10 +165,7 @@ export default function Sidebar() {
     }
 
     function handleListCallback(filmList) {
-        // setList(filmList);
-        initialList = filmList;
-        // console.log(list);
-        console.log(initialList)
+        setList(filmList);
     }
 
     return (
@@ -290,9 +286,7 @@ export default function Sidebar() {
 
                     </div>
                     <div className="movie-cards">
-                        <MoviecardList
-                            list={initialList}
-                        />
+                        <MoviecardList list={list} />
                     </div>
                 </div>
             </main>
