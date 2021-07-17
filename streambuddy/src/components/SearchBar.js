@@ -29,7 +29,7 @@ function SearchBar(props) {
     function handleChange(event, newInputValue) {
         if (newInputValue !== null) {
             setFilmName(newInputValue.Title);
-            props.parentCallBack(newInputValue.Title);
+            props.parentCallBack(filmName);
         }
     }
 

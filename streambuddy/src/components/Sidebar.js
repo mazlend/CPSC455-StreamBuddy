@@ -81,6 +81,8 @@ let allGenre = [
     { item: 'Fantasy' },
 ];
 
+let initialList = featuredMovieList;
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -150,7 +152,6 @@ export default function Sidebar() {
 
     const [filmName, setFilmName] = React.useState("");
 
-    let initialList = featuredMovieList;
     const [list, setList] = React.useState(initialList);
 
     const handleDrawerOpen = () => {
@@ -166,8 +167,8 @@ export default function Sidebar() {
     }
 
     function handleListCallback(filmList) {
-        // setList(filmList);
         initialList = filmList;
+        // setList(initialList);
         // console.log(list);
         console.log(initialList)
     }
