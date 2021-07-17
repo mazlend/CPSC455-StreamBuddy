@@ -18,9 +18,9 @@ import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
 import MoviecardList from "./MoviecardList";
-import {initialActorsData} from "../initialActors";
-import {netflixMovieList} from "../netflixMovieList";
-import {featuredMovieList} from "../featuredMovieList";
+import { initialActorsData } from "../initialActors";
+import { netflixMovieList } from "../netflixMovieList";
+import { featuredMovieList } from "../featuredMovieList";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -30,8 +30,7 @@ let selectedYears = [1930, 2022];
 //Min and max IMDB rating
 let imdbScoreAvailable = [0, 10];
 // the scores selected by the user
-let selectedImdbScores = [0,10];
-
+let selectedImdbScores = [0, 10];
 
 
 // sets the user selected year
@@ -49,38 +48,37 @@ function setSelectedimdbScore(score) {
     console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
 }
 
-
 let allCountries = [
-    { item: 'Austria'},
-    { item: 'Brazil'},
-    { item: 'Canada'},
-    { item: 'China'},
-    { item: 'Cuba'},
-    { item: 'Denmark'},
-    { item: 'France'},
-    { item: 'Finland'},
-    { item: 'Germany'},
-    { item: 'Italy'},
-    { item: 'Japan'},
-    { item: 'Mexico'},
-    { item: 'Russia'},
-    { item: 'Spain'},
-    { item: 'United Kingdom'},
-    { item: 'United States of America'}
+    { item: 'Austria' },
+    { item: 'Brazil' },
+    { item: 'Canada' },
+    { item: 'China' },
+    { item: 'Cuba' },
+    { item: 'Denmark' },
+    { item: 'France' },
+    { item: 'Finland' },
+    { item: 'Germany' },
+    { item: 'Italy' },
+    { item: 'Japan' },
+    { item: 'Mexico' },
+    { item: 'Russia' },
+    { item: 'Spain' },
+    { item: 'United Kingdom' },
+    { item: 'United States of America' }
 ];
 
 let allLanguages = [
-    { item: 'German'},
-    { item: 'English'},
+    { item: 'German' },
+    { item: 'English' },
 ];
 
 let allGenre = [
-    {item:'Drama'},
-    {item:'Thriller'},
-    {item:'Romance'},
-    {item: 'Horror'},
-    {item: 'Action'},
-    {item: 'Fantasy'},
+    { item: 'Drama' },
+    { item: 'Thriller' },
+    { item: 'Romance' },
+    { item: 'Horror' },
+    { item: 'Action' },
+    { item: 'Fantasy' },
 ];
 
 const drawerWidth = 240;
@@ -150,6 +148,11 @@ export default function Sidebar() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
 
+    const [filmName, setFilmName] = React.useState("");
+
+    let initialList = featuredMovieList;
+    const [list, setList] = React.useState(initialList);
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -157,6 +160,17 @@ export default function Sidebar() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    function handleCallback(filmName) {
+        setFilmName(filmName);
+    }
+
+    function handleListCallback(filmList) {
+        // setList(filmList);
+        initialList = filmList;
+        // console.log(list);
+        console.log(initialList)
+    }
 
     return (
         <div className={classes.root}>
@@ -207,46 +221,46 @@ export default function Sidebar() {
                 {/*</List>*/}
                 <List>
                     <ListItem>
-                        <AutocompletePlusCheckbox name="countries" label="Country of Origin" items={allCountries}/>
+                        <AutocompletePlusCheckbox name="countries" label="Country of Origin" items={allCountries} />
                     </ListItem>
                     <Divider />
 
                     <ListItem>
-                        <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages}/>
+                        <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages} />
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <AutocompletePlusCheckbox name="genere" label="Select Genre" items={allGenre}/>
+                        <AutocompletePlusCheckbox name="genere" label="Select Genre" items={allGenre} />
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <SearchBar 
-                        title={"Search for Actors"}
-                        autoCompleteData = {initialActorsData}
-                        getOptionLabel={(option) => option.name}
-                        style={{width:200}}
+                        <SearchBar
+                            title={"Search for Actors"}
+                            autoCompleteData={initialActorsData}
+                            getOptionLabel={(option) => option.name}
+                            style={{ width: 200 }}
                         />
                     </ListItem>
-                    
+
                     <Divider />
 
                     <ListItem>
-                        <RangeSlider textLabel = {"Year of Release"} minVal={yearRangeAvailable[0]} maxVal={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
+                        <RangeSlider textLabel={"Year of Release"} minVal={yearRangeAvailable[0]} maxVal={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <RangeSlider textLabel = {"IMDB Rating"} minVal={imdbScoreAvailable[0]} maxVal={imdbScoreAvailable[1]} getSelectedYears={setSelectedimdbScore} increments={0.1}/>
+                        <RangeSlider textLabel={"IMDB Rating"} minVal={imdbScoreAvailable[0]} maxVal={imdbScoreAvailable[1]} getSelectedYears={setSelectedimdbScore} increments={0.1} />
                     </ListItem>
-                  
-                    
+
+
                     <Divider />
                     <ListItem>
-                        <SearchButton  />
+                        <SearchButton />
                     </ListItem>
-                    
+
                 </List>
 
-               
+
             </Drawer>
             <main
                 className={clsx(classes.content, {
@@ -261,19 +275,24 @@ export default function Sidebar() {
                     </div>
                     <div className="search-bar">
                         <SearchBar
-                         title={"Search for Movies"}
-                         autoCompleteData = {netflixMovieList}
-                         getOptionLabel={(option) => option.Title}
-                         style={{width:300}} />
+                            parentCallBack={handleCallback}
+                            title={"Search for Movies"}
+                            autoCompleteData={netflixMovieList}
+                            getOptionLabel={(option) => option.Title}
+                            style={{ width: 300 }} />
                         <div className="advance-button">
-                            <SearchButton 
-                            btnClass={classes.button1}
+                            <SearchButton
+                                btnClass={classes.button1}
+                                filmName={filmName}
+                                listCallback={handleListCallback}
                             />
                         </div>
 
                     </div>
                     <div className="movie-cards">
-                        <MoviecardList movieList={featuredMovieList}/>
+                        <MoviecardList
+                            list={initialList}
+                        />
                     </div>
                 </div>
             </main>
