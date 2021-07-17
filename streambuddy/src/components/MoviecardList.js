@@ -18,10 +18,10 @@ import {featuredMovieList} from "../featuredMovieList";
 //     },
 // }));
 
-export default function MoviecardList() {
+export default function MoviecardList(props) {
    // const classes = useStyles();
-    const initialList = featuredMovieList;
-    const [list, setList] = React.useState(initialList);
+    //const initialList = featuredMovieList;
+    const [list, setList] = React.useState(props.list);
 
     return (
         <div className="movie-cards">

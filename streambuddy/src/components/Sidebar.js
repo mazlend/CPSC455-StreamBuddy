@@ -21,6 +21,8 @@ import MoviecardList from "./MoviecardList";
 import {initialmoviesdata} from "../initialmovies";
 import {initialActorsData} from "../initialActors";
 import {movieListForAutoComplete} from "../movieListForAutoComplete";
+import {featuredMovieList} from "../featuredMovieList";
+import {SearchContext} from '../Contexts/SearchContext'
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -48,6 +50,7 @@ function setSelectedimdbScore(score) {
     // TODO: delete logging statement for production
     console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
 }
+
 
 
 let allCountries = [
@@ -82,6 +85,10 @@ let allGenre = [
     {item: 'Action'},
     {item: 'Fantasy'},
 ];
+
+let movieDisplayList = featuredMovieList;
+
+
 
 const drawerWidth = 240;
 
@@ -146,6 +153,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Sidebar() {
+    const [filmName, setFilmName] = React.useState("");
+function handleCallback(filmName) {
+    setFilmName(filmName);
+}
+
+function handleListCallback(filmList) {
+    // setList(filmList);
+    movieDisplayList = filmList;
+    // console.log(list);
+    console.log(movieDisplayList);
+}
+
+
+
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
@@ -259,22 +280,29 @@ export default function Sidebar() {
                         <h1>Welcome to StreamBuddy</h1>
                         <h2>Search for a movie or use the advanced filters</h2>
                     </div>
-                    <div className="search-bar">
+                  
+                       <div className="search-bar">
                         <SearchBar
+                         parentCallBack={handleCallback}
                          title={"Search for Movies"}
                          autoCompleteData = {movieListForAutoComplete}
                          getOptionLabel={(option) => option.Title}
+                         
                          style={{width:300}} />
                         <div className="advance-button">
                             <SearchButton 
+                             filmName={filmName}
+                             listCallback={handleListCallback}
                             btnClass={classes.button1}
                             />
                         </div>
 
                     </div>
                     <div className="movie-cards">
-                        <MoviecardList />
+                        <MoviecardList
+                        list = {movieDisplayList} />
                     </div>
+                   
                 </div>
             </main>
         </div>
