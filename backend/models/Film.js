@@ -36,7 +36,7 @@ const filmSchema = new Schema({
     imdbVotes: { type: String },
     imdbId: { type: String },
     Type: {type:String},
-    BoxOffice: {  },
+    BoxOffice: {type: String},
     Production: { type: String },
 
 });
