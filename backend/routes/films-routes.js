@@ -5,7 +5,6 @@ const filmSchema = require("../models/Film")
 const Film = mongoose.model('Film', filmSchema)
 
 router.get('/:id', async function (req, res, next) {
-    // res.status(200).json({ message: 'GET Films is working'});
     let filmName = req.params.id.replace("_", " ");
     try {
         let filmData = await Film.find({Title: filmName});

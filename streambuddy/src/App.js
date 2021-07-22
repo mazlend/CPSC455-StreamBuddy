@@ -6,8 +6,17 @@ import Home from './Pages/Home';
 import {Navbar} from "./components/Navbar";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import {useState} from "react";
+
+
 
 function App() {
+
+    const [user, setUser] = useState(null);
+    const login = <Login user={user} setUser={setUser}/>
+    console.log("this is app user: " + user);
+
+
     return (
           <div className="app">
             <div className="navbar">
@@ -17,8 +26,8 @@ function App() {
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/about" component={About}/>
+                            <Route exact path="/login" component={login}/>
                             <Route exact path="/profile" component={Profile}/>
-                            <Route exact path="/login" component={Login}/>
                         </Switch>
                     </BrowserRouter>
                 </ThemeProvider>

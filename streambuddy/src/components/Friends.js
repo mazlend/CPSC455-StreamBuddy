@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Container} from "@material-ui/core";
 
 function Friends() {
+
 
     return(
         <Container maxWidth="lg">
