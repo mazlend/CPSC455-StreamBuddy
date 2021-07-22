@@ -78,10 +78,44 @@ html {
     justify-content: center;
 }
 
-.advance-search-button{
+.advance-search-button {
     position: relative;
     max-width: 140px;
     top:30px;
     left:61px;
     background: transparent;
+}
+
+.userImg {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/*gap determines the gap between the items in the div (the userImg and the text)*/
+.userDiv {
+    margin-top: 80px;
+    margin-bottom: 50px;;
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+.smallIcon {
+    max-width: 20px;
+}
+
+.profileNavbarDiv {
+    background-color: lightgrey;
+    display: flex;
+    width: 100%;
+}
+
+.horizontal-line {
+    background-color: black;
+    width: 100%;
+    height: 3px;
+    margin: 8px;
 }

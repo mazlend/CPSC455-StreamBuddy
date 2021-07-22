@@ -1,13 +1,31 @@
 import GoogleLogin, {GoogleLogout} from "react-google-login";
-import React, {useState, Component} from "react";
-const axios = require('axios');
+import React, { useState } from "react";
+import axios from "axios";
 
 export default function Authentication() {
     const [user, setUser] = useState(null);
 
-    const onSuccess = (res) => {
-        console.log(res.profileObj)
-        setUser(res.profileObj);
+    const onSuccess = async (res) => {
+        axios.post('http://localhost:5000/api/users/', res.profileObj)
+            .then((response) => {
+            console.log(response);
+            getUser(response.data)
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
+    const getUser = (user) => {
+        axios.get(`http://localhost:5000/api/users/${user._id}`)
+            .then((res) => {
+                if (res.data) {
+                    setUser(res.data)
+                    console.log(res.data)
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     const onLogoutSuccess= () => {
