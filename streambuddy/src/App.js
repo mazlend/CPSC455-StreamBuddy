@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Profile from "./Pages/Profile";
 import theme from "./components/Theme";
 import {ThemeProvider} from "@material-ui/styles";
@@ -13,8 +13,8 @@ import {useState} from "react";
 function App() {
 
     const [user, setUser] = useState(null);
-    const login = <Login user={user} setUser={setUser}/>
-    console.log("this is app user: " + user);
+    // const login = <Login user={user} setUser={setUser}/>
+    // console.log("this is app user: " + user);
 
 
     return (
@@ -26,7 +26,7 @@ function App() {
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/about" component={About}/>
-                            <Route exact path="/login" component={login}/>
+                            <Route exact path="/login" component= {() => <Login user={user} setUser={setUser}/>}/>
                             <Route exact path="/profile" component={Profile}/>
                         </Switch>
                     </BrowserRouter>

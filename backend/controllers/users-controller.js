@@ -46,10 +46,11 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        let user = await User.findByIdAndUpdate(req.params.id, req.body,
-            { runValidators: true });
+        let user = await User.findByIdAndUpdate(req.params.id, req.body);
+        console.log(user);
         res.status(200).json({
             data : {user: user}
+
         })
     } catch (err) {
         res.status(404).json({
