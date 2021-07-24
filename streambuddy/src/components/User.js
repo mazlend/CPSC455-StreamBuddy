@@ -1,14 +1,8 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
-import profilePicture from "../assets/profilePic.png"
 
 
 function User(props) {
-
-    // dummy data for a user, we will later pass those through props and/or retrieve from database
-    let numWatchedMovies = 20;
-    let numFollowers = 5;
-    let numFollowing = 7;
 
     const editButtonClick = () => {
         alert("Implement form to edit user profile!")
@@ -17,10 +11,10 @@ function User(props) {
     return(
         <Container maxWidth="lg">
             <div className="userDiv">  
-                <img className="userImg" src={profilePicture} onClick={() => editButtonClick()}/>
+                <img className="userImg" src={props.user.imageUrl} onClick={() => editButtonClick()}/>
                 <div className ="userDetailsDiv">
-                    <h1 onClick={() => editButtonClick()}> {props.name} </h1>
-                    <span>{numWatchedMovies} watched movies ~ {numFollowers} followers ~ {numFollowing} following</span>
+                    <h1 onClick={() => editButtonClick()}> {props.user.name} </h1>
+                    <span>{props.user.numWatchedMovies.size()} watched movies ~ {props.user.reviews.size()} reviews </span>
                 </div>
                 
             </div>
