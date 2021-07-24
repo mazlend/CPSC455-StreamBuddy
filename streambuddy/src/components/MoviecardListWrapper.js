@@ -15,12 +15,10 @@ export default function MoviecardListWrapper(props) {
           </div>
         )}
         <div>
-          {denseView ? (
-            <MoviecardListDense name={props.name} movieList={props.movieList} />
-          ) : (
-              <p>This is where movies in user's watchlist will appear!</p>
-            // <MoviecardList name={props.name} movieList={props.movieList} />
-          )}
+          {denseView 
+          ? <MoviecardListDense list={props.list} />
+          : <MoviecardList list={props.list} />
+          }
         </div>
       </div>
     </section>

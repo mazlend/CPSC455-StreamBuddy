@@ -20,14 +20,23 @@ function Profile(props) {
     
     return(
         <Container maxWidth="lg">
-            <div>
-                {user && <User name={props.user.name}/>}
-                <ProfileNavbar />
-                {user && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={props.user.watchlist} denseView={views.denseViewWatchList}/> }
-                {user && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={props.user.watched} denseView={views.denseViewWatchedMovies} /> }
-                <Reviews id="reviews" />
-                <Friends id="friends" />
-            </div>
+                {props.user ?
+                <div>
+                    <User name={props.user.name}/>
+                    <ProfileNavbar />
+                    <MoviecardListWrapper id="watchlist" name="Watchlist" list={props.user.watchlist} denseView={views.denseViewWatchList}/>
+                    <MoviecardListWrapper id="watchedMovies" name="Watched Movies" list={props.user.watched} denseView={views.denseViewWatchedMovies} />
+                    <Reviews id="reviews" />
+                    <Friends id="friends" />
+                </div>
+                : <div>
+                    <h1>
+                        Welcome to the profile page!
+                    </h1>
+                    <p>
+                        Please register or login to see a profile!
+                    </p>
+                </div>}
         </Container>
     );
 }
