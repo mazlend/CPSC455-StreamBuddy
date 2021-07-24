@@ -6,8 +6,11 @@ import Home from './Pages/Home';
 import {Navbar} from "./components/Navbar";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import React, { useState } from 'react';
 
 function App() {
+    const [user, setUser] = useState(null);
+
     return (
           <div className="app">
             <div className="navbar">
@@ -15,10 +18,10 @@ function App() {
                     <BrowserRouter>
                         <Navbar />
                         <Switch>
-                            <Route exact path="/" component={Home}/>
-                            <Route exact path="/about" component={About}/>
-                            <Route exact path="/profile" component={Profile}/>
-                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/" render={() => <Home user={user} updateUser={setUser(user)} />}/>
+                            <Route path="/about" render={() => <About user={user} updateUser={setUser(user)} />}/>
+                            <Route path="/profile" render={() => <Profile user={user} updateUser={setUser(user)} />}/>
+                            <Route path="/login" render={() => <Login user={user} updateUser={setUser(user)} />} />
                         </Switch>
                     </BrowserRouter>
                 </ThemeProvider>
