@@ -14,9 +14,8 @@ function User(props) {
                 <img className="userImg" src={props.user.imageUrl} onClick={() => editButtonClick()}/>
                 <div className ="userDetailsDiv">
                     <h1 onClick={() => editButtonClick()}> {props.user.name} </h1>
-                    <span>{props.user.numWatchedMovies.size()} watched movies ~ {props.user.reviews.size()} reviews </span>
+                    <span>{props.user.numWatchedMovies.length} watched movies ~ {props.user.reviews.length} reviews </span>
                 </div>
-                
             </div>
         </Container>
     );

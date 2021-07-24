@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
 
-// TODO: make each item a clickable button or similar to jump to section of profile
+// TODO: make each item a clickable button or similar to jump to section of profile?
 
 function ProfileNavbar() {
     return(
