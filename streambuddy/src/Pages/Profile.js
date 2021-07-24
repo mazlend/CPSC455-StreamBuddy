@@ -26,12 +26,12 @@ function Profile(props) {
                     <ProfileNavbar />
                     <MoviecardListWrapper id="watchlist" name="Watchlist" list={props.user.watchlist} denseView={views.denseViewWatchList}/>
                     <MoviecardListWrapper id="watchedMovies" name="Watched Movies" list={props.user.watched} denseView={views.denseViewWatchedMovies} />
-                    <Reviews id="reviews" />
-                    <Friends id="friends" />
+                    <Reviews id="reviews" name="Reviews" reviews={props.user.reviews} />
+                    <Friends id="friends" name="Friends" followers={props.user.followers} following={props.user.following} />
                 </div>
                 : <div>
                     <h1>
-                        Welcome to the profile page!
+                        Welcome to the profile page
                     </h1>
                     <p>
                         Please register or login to see a profile!

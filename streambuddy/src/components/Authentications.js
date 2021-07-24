@@ -10,6 +10,8 @@ export default function Authentication(props) {
     }
 
     const onSuccess = async (res) => {
+        console.log(res);
+        console.log(res.profileObj);
         console.log("in onSuccess");
         // TODO: why post?
         axios.post('http://localhost:5000/api/users/', res.profileObj)
@@ -43,9 +45,9 @@ export default function Authentication(props) {
         console.log(props.user);
     }
 
-    const onFailure = () => {
+    const onFailure = (err) => {
         console.log("Login Failed");
-        alert("Oops, something went wrong!");
+        console.error(err);
     }
 
     return (

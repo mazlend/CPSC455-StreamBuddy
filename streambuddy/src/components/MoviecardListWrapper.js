@@ -8,12 +8,10 @@ export default function MoviecardListWrapper(props) {
   return (
     <section id={props.id}>
       <div className="movie-cards-wrapper">
-        {props.name && (
-          <div>
-            <h1>{props.name}</h1>
-            <div class="horizontal-line" />
-          </div>
-        )}
+        <div>
+          <h1>{props.name}</h1>
+          <div class="horizontal-line" />
+        </div>
         <div>
           {denseView 
           ? <MoviecardListDense list={props.list} />
