@@ -7,7 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {Backdrop, Fade, Modal} from "@material-ui/core";
+import {Backdrop, ButtonGroup, Fade, Modal} from "@material-ui/core";
+import MovieCardActions from "./MovieCardActions";
 
 const useStyles = makeStyles({
     root: {
@@ -25,6 +26,10 @@ const useStyles = makeStyles({
         alignItems: 'center',
         justifyContent: 'center',
         overflow:'scroll'
+    },
+    buttons: {
+        fontSize: 10,
+        backgroundColor: "white"
     }
 });
 
@@ -62,9 +67,7 @@ export default function Moviecard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    Add to Watchlist | Mark As Seen | Review
-                </Typography>
+            <MovieCardActions />
             </CardActions>
             <CardActions>
                 <Button size="small" color="primary"
