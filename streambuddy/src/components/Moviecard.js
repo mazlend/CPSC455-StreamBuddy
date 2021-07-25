@@ -62,6 +62,11 @@ export default function Moviecard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    Add to Watchlist | Mark As Seen | Review
+                </Typography>
+            </CardActions>
+            <CardActions>
                 <Button size="small" color="primary"
                 type={"button"}
                 onClick={(e) => {

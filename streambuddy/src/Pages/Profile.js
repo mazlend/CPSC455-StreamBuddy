@@ -52,10 +52,10 @@ function Profile() {
             <div>
                 {user || tempUserName && <User name={tempUserName}/>}
                 <ProfileNavbar />
-                {user || tempWatchList && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/> }
-                {user || tempWatchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} /> }
-                <Reviews id="reviews" />
-                <Friends id="friends" />
+                {/*{user || tempWatchList && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/> }*/}
+                {/*{user || tempWatchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} /> }*/}
+                {/*<Reviews id="reviews" />*/}
+                {/*<Friends id="friends" />*/}
             </div>
         </Container>
     );
