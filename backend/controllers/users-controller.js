@@ -45,6 +45,8 @@ const createUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
+    console.log(req.body);
+    console.log(req.params.id);
     try {
         let user = await User.findByIdAndUpdate(req.params.id, req.body,
             { runValidators: true });

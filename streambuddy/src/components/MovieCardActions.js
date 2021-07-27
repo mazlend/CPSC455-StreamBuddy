@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import {Alert} from "@material-ui/lab";
 import {UserContext} from "./UserContext";
+import axios from "axios";
 
 const options = ['Mark As Seen', 'Add to Watchlist', 'Rate / Review'];
 
@@ -20,13 +21,36 @@ export default function MovieCardActions(props) {
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const auth = useContext(UserContext);
 
+    const updateUser = (user, item) => {
+        console.log(user, item);
+        axios.patch(`http://localhost:5000/api/users/${user._id}`, {
+            googleId: user.googleId,
+            imageUrl: user.imageUrl,
+            email: user.email,
+            name: user.name,
+            givenName: user.givenName,
+            familyName: user.familyName,
+            watched: user.watched.push(item),
+            watchlist: user.watchlist,
+            followers: user.followers,
+            following: user.following,
+            reviews: user.reviews
+
+        }).then((res) => {
+            console.log(res.data);
+            auth.login(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     const handleClick = () => {
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
-            auth.user.watched = Object.assign([], auth.user.watched);
-            auth.user.watched.push(props.item);
+            updateUser(auth.user, props.item);
+            // auth.user.watched = Object.assign([], auth.user.watched);
+            // auth.user.watched.push(props.item);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
             auth.user.watchlist = Object.assign([], auth.user.watchlist);
