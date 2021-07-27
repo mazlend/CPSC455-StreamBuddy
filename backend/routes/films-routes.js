@@ -34,19 +34,22 @@ router.get('/advanced/foo', async function (req, res, next) {
     } else {
         regexGenre = new RegExp('.*');
     }
-    // let regexGenre = new RegExp(queryGenre);
-    // let regexGenre = queryGenre.map((val) => {
-    //     new RegExp(val);
-    // });
-    console.log(regexGenre);
-    let results = new Set();
+    // console.log(regexGenre);
+    let queryLanguage = req.body.language;
+    let regexLanguage;
+    if (queryLanguage) {
+        regexLanguage = new RegExp(queryLanguage.join('|'));
+    } else {
+        regexLanguage = new RegExp('.*');
+    }
     try {
         // let filmDataCountry = await Film.find({Country: queryCountry});
         // console.log(filmDataCountry.length);
         let filmDataGenre = await Film.find()
             .and([
                 { Genre: regexGenre },
-                { Country: regexCountry }
+                { Country: regexCountry },
+                { Language: regexLanguage}
             ]);
         console.log(filmDataGenre.length);
         res.send(filmDataGenre);
