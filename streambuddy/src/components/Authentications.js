@@ -4,7 +4,7 @@ import axios from "axios";
 import {UserContext} from "./UserContext";
 
 export default function Authentication() {
-    const auth = useContext(UserContext);
+    let auth = useContext(UserContext);
 
     const onSuccess = async (res) => {
         axios.post('http://localhost:5000/api/users/', res.profileObj)

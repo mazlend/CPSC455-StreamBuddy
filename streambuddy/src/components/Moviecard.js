@@ -67,7 +67,7 @@ export default function Moviecard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-            <MovieCardActions />
+            <MovieCardActions item={props.item}/>
             </CardActions>
             <CardActions>
                 <Button size="small" color="primary"

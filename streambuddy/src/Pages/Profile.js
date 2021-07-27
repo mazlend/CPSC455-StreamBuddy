@@ -8,6 +8,7 @@ import {Container} from "@material-ui/core";
 import axios from "axios";
 import {watchlist} from "../watchlist";
 import {watchedMovies} from "../watchedMovies";
+import {UserContext} from "../components/UserContext";
 
 
 
@@ -38,9 +39,9 @@ function Profile() {
     // TODO: use a working google id, as a next step we need to somehow pass the google id from authetication to here
     const googleId = "968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
 
-    const tempUserName = "popcornFan"
-    const tempWatchList = watchlist;
-    const tempWatchedMovies = watchedMovies;
+    // const tempUserName = "popcornFan"
+    // const tempWatchList = watchlist;
+    // const tempWatchedMovies = watchedMovies;
 
     // const getUser = (user) => {
     //     axios.get(`http://localhost:5000/api/users/${user._id}`)
@@ -57,12 +58,12 @@ function Profile() {
     return(
         <Container maxWidth="lg">
             <div>
-                {user || tempUserName && <User name={tempUserName}/>}
+                {tempUserName && <User name={tempUserName}/>}
                 <ProfileNavbar />
-                {user || tempWatchList && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/> }
-                {user || tempWatchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} /> }
-                <Reviews id="reviews" />
-                <Friends id="friends" />
+                {/*{tempWatchList && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/> }*/}
+                {/*{tempWatchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} /> }*/}
+                {/*<Reviews id="reviews" />*/}
+                {/*<Friends id="friends" />*/}
             </div>
         </Container>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,11 +9,11 @@ import Box from '@material-ui/core/Box';
 import MoviecardListWrapper from "./MoviecardListWrapper";
 import Reviews from "./Reviews";
 import Friends from "./Friends";
-import {watchlist} from "../watchlist";
 import {watchedMovies} from "../watchedMovies";
+import {UserContext} from "./UserContext";
 
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    let { children, value, index, ...other } = props;
 
     return (
         <div
@@ -52,11 +52,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ProfileNavbar() {
+function ProfileNavbar(props) {
+    const auth = useContext(UserContext);
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-    const tempWatchList = watchlist;
-    const tempWatchedMovies = watchedMovies;
+    let [value, setValue] = React.useState(0);
+    let tempWatchList = auth.user.watchlist;
+    let tempWatchedMovies = auth.user.watched;
 
     const [views, setViews] = React.useState(
         {
