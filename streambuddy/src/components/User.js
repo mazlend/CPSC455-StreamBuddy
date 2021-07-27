@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container} from "@material-ui/core";
-import Authentication from "../components/Authentications";
 import profilePicture from "../assets/profilePic.png"
 import editButton from "../assets/editButton.png"
 import { maxWidth } from '@material-ui/system';
