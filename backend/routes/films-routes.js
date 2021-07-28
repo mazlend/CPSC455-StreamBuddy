@@ -16,7 +16,7 @@ router.get('/:id', async function (req, res, next) {
     }
 });
 
-router.get('/advanced/foo', async function (req, res, next) {
+router.get('/advanced/search', async function (req, res, next) {
     console.log(req.body);
     let queryCountry = req.body.country;
     // console.log(queryCountry);
@@ -42,6 +42,14 @@ router.get('/advanced/foo', async function (req, res, next) {
     } else {
         regexLanguage = new RegExp('.*');
     }
+    let queryActors = req.body.actors;
+    let regexActors;
+    if (queryActors) {
+        regexActors = new RegExp(queryActors.join('|'));
+    } else {
+        regexActors = new RegExp('.*');
+    }
+
     try {
         // let filmDataCountry = await Film.find({Country: queryCountry});
         // console.log(filmDataCountry.length);
@@ -49,7 +57,8 @@ router.get('/advanced/foo', async function (req, res, next) {
             .and([
                 { Genre: regexGenre },
                 { Country: regexCountry },
-                { Language: regexLanguage}
+                { Language: regexLanguage },
+                { Actors: regexActors }
             ]);
         console.log(filmDataGenre.length);
         res.send(filmDataGenre);
