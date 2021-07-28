@@ -55,17 +55,15 @@ export default function MovieCardActions(props) {
     const classes = useStyles();
 
     const updateUserWatched = (user, item) => {
-        // let itemId = item._id.toString();
-        // let item1 = item.toString();
-        console.log(user._id);
-        // console.log("film id is " + itemId);
-        console.log("this is the item" + item)
+        // console.log(user._id);
+        // console.log("this is the item" + item)
         axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
             item
         }).then((res) => {
-            console.log("this is the response" + res.data)
-            auth.login(res.data);
-            console.log(res.data);
+            console.log("this is the response2" + JSON.stringify(res.data))
+            console.log("this is the response3" + auth.user)
+            auth.user = res.data;
+            console.log("this is the response4" + JSON.stringify(auth.user))
         }).catch((err) => {
             console.log(err);
         })

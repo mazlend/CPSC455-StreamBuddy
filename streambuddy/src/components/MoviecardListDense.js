@@ -1,33 +1,11 @@
-// import React from 'react';
-// import Moviecard from "./Moviecard";
-// import { Grid } from '@material-ui/core';
-//
-// export default function MoviecardListDense(props) {
-//     const [list, setList] = React.useState(props.movieList);
-//
-//     return (
-//         <div className="movie-cards-dense">
-//             <p>
-//                 Here will be a condensed view of the movies like in spotify
-//                 Use table from MAterial ui!
-//             </p>
-//             {list.map((item) => (
-//                 <Grid item>
-//                     <Moviecard item={item} />
-//                  </Grid>
-//                 ))}
-//         </div>
-//     );
-// }
-
-
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Moviecard from "./Moviecard";
+import Grid from "@material-ui/core/Grid";
 
 
 const columns = [
-    { field: 'Title', headerName: 'Title', width: 120 },
+    { field: 'Title', headerName: 'Title', width: 200 },
     {
         field: 'Year',
         headerName: 'Year',
@@ -90,16 +68,29 @@ const columns = [
 
 export default function MoviecardListDense(props) {
     const rows = props.movieList;
+    if((rows === undefined || null) || rows.length < 1 ){
+        return(
+            <div className="movie-cards">
+                <Grid container>
+                    <Grid item xs={12}>
+                        <Grid container justify="center" spacing={5}>
+                            <p style={{marginBottom: 40}}>Your list is empty :( <br /> Add some Movies!!! </p>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </div>
+        )
+    } else
     return (
         <div style={{ height: 400, width: '100%' }}>
-            {/*<DataGrid*/}
-            {/*    rows={rows}*/}
-            {/*    getRowId={(row) => row._id}*/}
-            {/*    columns={columns}*/}
-            {/*    pageSize={5}*/}
-            {/*    checkboxSelection*/}
-            {/*    disableSelectionOnClick*/}
-            {/*/>*/}
+            <DataGrid
+                rows={rows}
+                getRowId={(row) => row._id}
+                columns={columns}
+                pageSize={5}
+                checkboxSelection
+                disableSelectionOnClick
+            />
         </div>
     );
 }

@@ -53,11 +53,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ProfileNavbar(props) {
-    const auth = useContext(UserContext);
+    // let auth = useContext(UserContext);
     const classes = useStyles();
     let [value, setValue] = React.useState(0);
-    let tempWatchList = auth.user.watchlist;
-    let tempWatchedMovies = auth.user.watched;
+    let tempWatchList = props.watchList;
+    let tempWatchedMovies = props.watchedMovies;
+    console.log("frontendcheck" + tempWatchList + tempWatchedMovies)
 
     const [views, setViews] = React.useState(
         {
@@ -83,10 +84,14 @@ function ProfileNavbar(props) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                {user || tempWatchList && <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/> }
+                {/*{user || tempWatchList &&*/}
+                <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/>
+                {/*}*/}
             </TabPanel>
             <TabPanel value={value} index={1}>
-                {user || tempWatchedMovies && <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} /> }
+                {/*{user || tempWatchedMovies && */}
+                <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} />
+                {/*}*/}
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <Reviews id="reviews" />

@@ -76,7 +76,7 @@ export default function MoviecardListWrapper(props) {
             </Accordion>
             <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography>TABLE VIEW</Typography>
+                    <Typography>LIST VIEW</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <MoviecardListDense name={props.name} movieList={props.movieList} />
