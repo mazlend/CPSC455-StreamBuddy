@@ -22,6 +22,8 @@ import { initialActorsData } from "../initialActors";
 import { netflixMovieList } from "../netflixMovieList";
 import { featuredMovieList } from "../featuredMovieList";
 import {initialmoviesdata} from "../initialmovies";
+import {Button} from "@material-ui/core";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -165,8 +167,14 @@ export default function Sidebar() {
     }
 
     function handleListCallback(filmList) {
+        console.log(filmList)
         setList(filmList);
     }
+
+    function resetList() {
+        setList(featuredMovieList);
+    }
+
 
     return (
         <div className={classes.root}>
@@ -281,6 +289,7 @@ export default function Sidebar() {
                                 btnClass={classes.button1}
                                 filmName={filmName}
                                 listCallback={handleListCallback}
+                                resetList={resetList}
                             />
                         </div>
 

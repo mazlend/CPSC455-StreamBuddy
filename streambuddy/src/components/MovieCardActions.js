@@ -9,19 +9,49 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import {Alert} from "@material-ui/lab";
+// import {Alert} from "@material-ui/lab";
 import {UserContext} from "./UserContext";
 import axios from "axios";
+import {makeStyles} from "@material-ui/core/styles";
+import CustomizedAlerts from "./Alerts";
+import {Backdrop, Divider, Fade, Modal, Snackbar} from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+import RatingsAndReviewInput from "./RatingsAndReviewInput";
 
 const options = ['Mark As Seen', 'Add to Watchlist', 'Rate / Review'];
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+    paper: {
+        padding: 3,
+        marginTop: "15%"
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow:'scroll'
+    },
+}));
 
 export default function MovieCardActions(props) {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const auth = useContext(UserContext);
-
-    console.log(auth.user);
+    const [loginReminderAlert, setLoginReminderAlert] = React.useState(false);
+    const [successAlert, setSuccessAlert] = React.useState(false);
+    const [ratingPopover, setRatingPopover] = React.useState(false);
+    const classes = useStyles();
 
     const updateUser = (user, item) => {
         let itemId = item.toString();
@@ -36,39 +66,59 @@ export default function MovieCardActions(props) {
         })
     }
 
-    const handleClick = (event) => {
-        event.preventDefault();
+    const handlePopoverOpen = (event) => {
+        setRatingPopover(true);
+    };
+
+    const handlePopoverClose = () => {
+        setRatingPopover(false);
+
+    };
+
+    const handleClose1 = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setLoginReminderAlert(false);
+        setSuccessAlert(false);
+    };
+
+    const handleClick = () => {
+        if (auth.user === null) {
+            setLoginReminderAlert(true);
+            return;
+        }
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
-            console.log(auth.user);
-            updateUser(auth.user, props.item);
+
             // auth.user.watched = Object.assign([], auth.user.watched);
             // auth.user.watched.push(props.item);
+            setSuccessAlert(true);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
             auth.user.watchlist = Object.assign([], auth.user.watchlist);
             auth.user.watchlist.push(props.item);
+            console.log(props.item)
+            console.log(auth.user.watchlist)
+            setSuccessAlert(true)
         } else if (options[selectedIndex] === 'Rate / Review') {
+            handlePopoverOpen()
             console.log("Rate / Review from button!!!")
         }
     };
 
     const handleMenuItemClick = (event, index) => {
+        if (auth.user === null) {
+            setLoginReminderAlert(true);
+            return;
+        }
         setSelectedIndex(index);
         setOpen(false);
         console.info(`You clicked ${options[index]}`, index);
         if (index === 0) {
-            console.log("Mark as seen!!!")
-            auth.user.watched = Object.assign([], auth.user.watched);
-            auth.user.watched.push(props.item);
         } else if (index === 1) {
-            console.log("Add to Watchlist!!!")
-            auth.user.watchlist = Object.assign([], auth.user.watchlist);
-            auth.user.watchlist.push(props.item);
-            console.log(auth.user.watchlist)
         } else if (index === 2) {
-            console.log("Rate / Review!!!")
         }
     };
 
@@ -85,7 +135,39 @@ export default function MovieCardActions(props) {
     };
 
     return (
+
         <Grid container direction="column" alignItems="center">
+            <div className={classes.root}><Snackbar open={loginReminderAlert} autoHideDuration={3000} onClose={handleClose1}>
+                <Alert onClose={handleClose1} severity="info">
+                    Please Login/Register first!
+                </Alert>
+            </Snackbar>
+                <Snackbar open={successAlert} autoHideDuration={3000} onClose={handleClose1}>
+                    <Alert onClose={handleClose1} severity="success">
+                        Success!
+                    </Alert>
+                </Snackbar></div>
+            <Modal open={ratingPopover}
+                   className={classes.modal}
+                   onClose={handlePopoverClose}
+                   closeAfterTransition
+                   disableScrollLock
+                   BackdropComponent={Backdrop}
+                   BackdropProps={{
+                       timeout:500}}
+                   disableRestoreFocus>
+                <Fade in={ratingPopover}>
+                    <div className={classes.paper}>
+                        <div id="popovertext" style={{maxWidth: 900, width: 500, padding: 40, backgroundColor: "white", position: "flex", zIndex:10}}>
+                            <h1>Rate And Review</h1>
+                            <Divider />
+                        <h2 style={{marginTop: 20, marginBottom: 20}}> {props.item.Title}</h2>
+                            <img src={props.item.Poster}/>
+                            <RatingsAndReviewInput />
+                        </div>
+                    </div>
+                </Fade>
+            </Modal>
             <Grid item xs={12}>
                 <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
                     <Button onClick={handleClick}>{options[selectedIndex]}</Button>
