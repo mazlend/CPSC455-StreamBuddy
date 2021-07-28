@@ -92,14 +92,14 @@ export default function MoviecardListDense(props) {
     const rows = props.movieList;
     return (
         <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-                rows={rows}
-                getRowId={(row) => row._id}
-                columns={columns}
-                pageSize={5}
-                checkboxSelection
-                disableSelectionOnClick
-            />
+            {/*<DataGrid*/}
+            {/*    rows={rows}*/}
+            {/*    getRowId={(row) => row._id}*/}
+            {/*    columns={columns}*/}
+            {/*    pageSize={5}*/}
+            {/*    checkboxSelection*/}
+            {/*    disableSelectionOnClick*/}
+            {/*/>*/}
         </div>
     );
 }

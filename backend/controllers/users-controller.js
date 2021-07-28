@@ -48,9 +48,11 @@ const createUser = async (req, res) => {
 
 const updateUserWatched = async (req, res) => {
     let user;
+    let newItemToAddToList = req.body.item;
+
     try {
         user = await User.findById(req.params.id);
-        user.watched.push(req.body);
+        user.watched.push(newItemToAddToList);
         await user.save();
         res.status(200).json({user: user})
     } catch (e) {
@@ -59,10 +61,11 @@ const updateUserWatched = async (req, res) => {
 }
 
 const getUserWatched = async (req, res) => {
-    let userWatched;
     try {
-        userWatched = await User.findById(req.params.id).populate('watched');
-        res.json({ watched: userWatched.watched.map(film => film.toObject({ getters: true })) });
+        console.log("what is this:" + req.params.id)
+        let userWatched = await User.findById(req.params.id);
+        console.log("what is this12:" + userWatched.watched)
+        res.status(200).send(userWatched.watched);
     } catch (err) {
         console.log(err);
     }

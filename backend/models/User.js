@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
+const Mongoose = require("mongoose");
 
 const userSchema = new Schema({
     googleId: {type: String, required: true, unique: true },
@@ -9,7 +10,7 @@ const userSchema = new Schema({
     name: { type: String, required: true },
     givenName: { type: String },
     familyName: { type: String },
-    watched: [{type: Schema.Types.ObjectId, ref: 'Film'}],
+    watched: [{}],
     watchlist: [{type: Schema.Types.ObjectId, ref: 'Film'}],
     followers: [{type: Schema.Types.ObjectId, ref: 'User'}],
     following: [{type: Schema.Types.ObjectId,  ref: 'User'}],

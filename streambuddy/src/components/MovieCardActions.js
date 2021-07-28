@@ -55,12 +55,15 @@ export default function MovieCardActions(props) {
     const classes = useStyles();
 
     const updateUserWatched = (user, item) => {
-        let itemId = item._id.toString();
+        // let itemId = item._id.toString();
+        // let item1 = item.toString();
         console.log(user._id);
-        console.log("film id is " + itemId);
-        axios.patch(`http://localhost:5000/api/users/watched/${user._id}`, {
-            _id: itemId
+        // console.log("film id is " + itemId);
+        console.log("this is the item" + item)
+        axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
+            item
         }).then((res) => {
+            console.log("this is the response" + res.data)
             auth.login(res.data);
             console.log(res.data);
         }).catch((err) => {
@@ -68,20 +71,19 @@ export default function MovieCardActions(props) {
         })
     }
 
-    const getUserWatched = (user) => {
-        axios.get(`http://localhost:5000/api/users/watched/${user._id}`)
-            .then((res) => {
-                console.log(res.data);
-            }).catch((err) => {
-                console.log(err);
-        })
-    }
+    // const getUserWatched = (user) => {
+    //     axios.get(`http://localhost:5000/api/users/watched/${user._id}`)
+    //         .then((res) => {
+    //             console.log(res.data);
+    //         }).catch((err) => {
+    //             console.log(err);
+    //     })
+    // }
 
     const handlePopoverOpen = (event) => {
         setRatingPopover(true);
     };
 
-<<<<<<<<< Temporary merge branch 1
     const handlePopoverClose = () => {
         setRatingPopover(false);
 
@@ -108,7 +110,7 @@ export default function MovieCardActions(props) {
             // auth.user.watched.push(props.item);
             setSuccessAlert(true);
             console.log("user watched updated successfully");
-            getUserWatched(auth.user);
+            // getUserWatched(auth.user);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
             auth.user.watchlist = Object.assign([], auth.user.watchlist);
