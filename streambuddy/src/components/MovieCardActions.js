@@ -62,7 +62,8 @@ export default function MovieCardActions(props) {
         }).then((res) => {
             console.log("this is the response2" + JSON.stringify(res.data))
             console.log("this is the response3" + auth.user)
-            auth.user = res.data;
+            auth.login(res.data);
+            // auth.user = res.data;
             console.log("this is the response4" + JSON.stringify(auth.user))
         }).catch((err) => {
             console.log(err);
