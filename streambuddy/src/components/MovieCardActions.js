@@ -53,16 +53,26 @@ export default function MovieCardActions(props) {
     const [ratingPopover, setRatingPopover] = React.useState(false);
     const classes = useStyles();
 
-    const updateUser = (user, item) => {
+    const updateUserWatched = (user, item) => {
         let itemId = item._id.toString();
         console.log(user._id);
         console.log("film id is " + itemId);
-        axios.patch(`http://localhost:5000/api/users/${user._id}`, {
+        axios.patch(`http://localhost:5000/api/users/watched/${user._id}`, {
             _id: itemId
         }).then((res) => {
+            auth.login(res.data);
             console.log(res.data);
         }).catch((err) => {
             console.log(err);
+        })
+    }
+
+    const getUserWatched = (user) => {
+        axios.get(`http://localhost:5000/api/users/watched/${user._id}`)
+            .then((res) => {
+                console.log(res.data);
+            }).catch((err) => {
+                console.log(err);
         })
     }
 
@@ -91,11 +101,12 @@ export default function MovieCardActions(props) {
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
-            updateUser(auth.user, props.item);
-
+            updateUserWatched(auth.user, props.item);
             // auth.user.watched = Object.assign([], auth.user.watched);
             // auth.user.watched.push(props.item);
             setSuccessAlert(true);
+            console.log("user watched updated successfully");
+            getUserWatched(auth.user);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
             auth.user.watchlist = Object.assign([], auth.user.watchlist);
