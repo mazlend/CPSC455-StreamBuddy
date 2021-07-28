@@ -49,7 +49,27 @@ router.get('/advanced/search', async function (req, res, next) {
     } else {
         regexActors = new RegExp('.*');
     }
-
+    let queryYears = req.body.years;
+    let regexYears = new Array(2);
+    // console.log(queryYears);
+    if (queryYears) {
+        regexYears[0] = queryYears[0].toString();
+        regexYears[1] = queryYears[1].toString();
+    } else {
+        regexYears[0] = "1990";
+        regexYears[1] = "2022";
+    }
+    // console.log(regexYears);
+    // let queryRating = req.body.rating;
+    // let regexRating = new Array(2);
+    // console.log(queryRating);
+    // if (queryRating) {
+    //     regexRating[0] = queryRating[0].toString();
+    //     regexRating[1] = queryRating[1].toString();
+    // } else {
+    //     regexRating[0] = "0";
+    //     regexRating[1] = "10";
+    // }
     try {
         // let filmDataCountry = await Film.find({Country: queryCountry});
         // console.log(filmDataCountry.length);
@@ -58,7 +78,9 @@ router.get('/advanced/search', async function (req, res, next) {
                 { Genre: regexGenre },
                 { Country: regexCountry },
                 { Language: regexLanguage },
-                { Actors: regexActors }
+                { Actors: regexActors },
+                { Year: {$gte: regexYears[0], $lte: regexYears[1]}}
+                // { imdbRating: {$gte: regexRating[0], $lte: regexRating[1]}}
             ]);
         console.log(filmDataGenre.length);
         res.send(filmDataGenre);
