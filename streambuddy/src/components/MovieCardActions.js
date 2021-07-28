@@ -54,11 +54,34 @@ export default function MovieCardActions(props) {
     const [ratingPopover, setRatingPopover] = React.useState(false);
     const classes = useStyles();
 
+    const updateUserWatched = (user, item) => {
+        let itemId = item._id.toString();
+        console.log(user._id);
+        console.log("film id is " + itemId);
+        axios.patch(`http://localhost:5000/api/users/watched/${user._id}`, {
+            _id: itemId
+        }).then((res) => {
+            auth.login(res.data);
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const getUserWatched = (user) => {
+        axios.get(`http://localhost:5000/api/users/watched/${user._id}`)
+            .then((res) => {
+                console.log(res.data);
+            }).catch((err) => {
+                console.log(err);
+        })
+    }
 
     const handlePopoverOpen = (event) => {
         setRatingPopover(true);
     };
 
+<<<<<<<<< Temporary merge branch 1
     const handlePopoverClose = () => {
         setRatingPopover(false);
 
@@ -71,38 +94,21 @@ export default function MovieCardActions(props) {
         setLoginReminderAlert(false);
         setSuccessAlert(false);
     };
-    console.log(auth.user);
 
     const handleClick = () => {
         if (auth.user === null) {
             setLoginReminderAlert(true);
             return;
         }
-    const updateUser = (user, item) => {
-        let itemId = item.toString();
-        console.log(user._id);
-        console.log("film id is " + itemId);
-        axios.patch(`http://localhost:5000/api/users/${user._id}`, {
-            _id: itemId
-        }).then((res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
-
-    const handleClick = (event) => {
-        event.preventDefault();
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
-            auth.user.watched = Object.assign([], auth.user.watched);
-            auth.user.watched.push(props.item);
-            setSuccessAlert(true)
-            console.log(auth.user);
-            updateUser(auth.user, props.item);
+            updateUserWatched(auth.user, props.item);
             // auth.user.watched = Object.assign([], auth.user.watched);
             // auth.user.watched.push(props.item);
+            setSuccessAlert(true);
+            console.log("user watched updated successfully");
+            getUserWatched(auth.user);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
             auth.user.watchlist = Object.assign([], auth.user.watchlist);
