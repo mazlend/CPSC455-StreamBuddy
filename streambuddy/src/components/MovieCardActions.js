@@ -21,33 +21,27 @@ export default function MovieCardActions(props) {
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const auth = useContext(UserContext);
 
-    const updateUser = (user, item) => {
-        console.log(user, item);
-        axios.patch(`http://localhost:5000/api/users/${user._id}`, {
-            googleId: user.googleId,
-            imageUrl: user.imageUrl,
-            email: user.email,
-            name: user.name,
-            givenName: user.givenName,
-            familyName: user.familyName,
-            watched: user.watched.push(item),
-            watchlist: user.watchlist,
-            followers: user.followers,
-            following: user.following,
-            reviews: user.reviews
+    console.log(auth.user);
 
+    const updateUser = (user, item) => {
+        let itemId = item.toString();
+        console.log(user._id);
+        console.log("film id is " + itemId);
+        axios.patch(`http://localhost:5000/api/users/${user._id}`, {
+            _id: itemId
         }).then((res) => {
             console.log(res.data);
-            auth.login(res.data);
         }).catch((err) => {
             console.log(err);
         })
     }
 
-    const handleClick = () => {
+    const handleClick = (event) => {
+        event.preventDefault();
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
+            console.log(auth.user);
             updateUser(auth.user, props.item);
             // auth.user.watched = Object.assign([], auth.user.watched);
             // auth.user.watched.push(props.item);
