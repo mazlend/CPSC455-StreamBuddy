@@ -54,7 +54,7 @@ export default function MovieCardActions(props) {
     const classes = useStyles();
 
     const updateUser = (user, item) => {
-        let itemId = item.toString();
+        let itemId = item._id.toString();
         console.log(user._id);
         console.log("film id is " + itemId);
         axios.patch(`http://localhost:5000/api/users/${user._id}`, {
@@ -91,6 +91,7 @@ export default function MovieCardActions(props) {
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
+            updateUser(auth.user, props.item);
 
             // auth.user.watched = Object.assign([], auth.user.watched);
             // auth.user.watched.push(props.item);
