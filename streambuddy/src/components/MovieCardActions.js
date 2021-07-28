@@ -17,6 +17,7 @@ import {Backdrop, Divider, Fade, Modal, Snackbar} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import RatingsAndReviewInput from "./RatingsAndReviewInput";
 import Box from "@material-ui/core/Box";
+import axios from "axios";
 
 const options = ['Mark As Seen', 'Add to Watchlist', 'Rate / Review'];
 
@@ -70,18 +71,38 @@ export default function MovieCardActions(props) {
         setLoginReminderAlert(false);
         setSuccessAlert(false);
     };
+    console.log(auth.user);
 
     const handleClick = () => {
         if (auth.user === null) {
             setLoginReminderAlert(true);
             return;
         }
+    const updateUser = (user, item) => {
+        let itemId = item.toString();
+        console.log(user._id);
+        console.log("film id is " + itemId);
+        axios.patch(`http://localhost:5000/api/users/${user._id}`, {
+            _id: itemId
+        }).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const handleClick = (event) => {
+        event.preventDefault();
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
             auth.user.watched = Object.assign([], auth.user.watched);
             auth.user.watched.push(props.item);
             setSuccessAlert(true)
+            console.log(auth.user);
+            updateUser(auth.user, props.item);
+            // auth.user.watched = Object.assign([], auth.user.watched);
+            // auth.user.watched.push(props.item);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
             auth.user.watchlist = Object.assign([], auth.user.watchlist);
