@@ -19,7 +19,9 @@ export default function SearchButton(props) {
     const classes = useStyles();
 
     function simpleSearch() {
-        // console.log(props.filmName);
+        if (props.filmName.length < 1) {
+            return
+        }
         axios.get("http://localhost:5000/api/films/" + props.filmName)
             .then((response) => {
                 props.listCallback(response.data)
@@ -30,10 +32,19 @@ export default function SearchButton(props) {
         <div>
             <Button
                 onClick={simpleSearch}
+                style={{marginLeft: -20}}
                 variant="contained"
                 color="primary"
                 className={classes.button}>
                 Search
+            </Button>
+            <Button
+                onClick={props.resetList}
+                style={{marginLeft: 10}}
+                variant="contained"
+                color="primary"
+                className={classes.button}>
+                Reset
             </Button>
         </div>
     );

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Moviecard from "./Moviecard";
 import { featuredMovieList } from "../featuredMovieList";
+import CustomizedAlerts from "./Alerts";
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
