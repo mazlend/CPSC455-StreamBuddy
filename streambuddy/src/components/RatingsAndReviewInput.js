@@ -31,13 +31,19 @@ export default function RatingsAndReviewInput() {
         setValue1(event.target.value);
     };
 
+    // TODO: we are missing information about the film being review. Need to pass film props.
+    //  Update ProfileNavbar too if needed.
+    //  Axios and backend functions are done
+
     const postReview = () => {
         console.log('You clicked post review' + value1);
-        // review object includes both rating and review
-        // let review = {
-        //     rating: value,
-        //     review: value1
-        // }
+        let review = {
+         // film information
+            rating: value,
+            review: value1
+        }
+        console.log(review);
+
         // updateUserReviews(user, review);
     };
 
