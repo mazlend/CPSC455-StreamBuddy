@@ -69,10 +69,12 @@ let allCountries = [
     { item: 'Italy' },
     { item: 'Japan' },
     { item: 'Mexico' },
+    { item: 'Pakistan'},
     { item: 'Russia' },
     { item: 'Spain' },
     { item: 'United Kingdom' },
     { item: 'United States of America' }
+    
 ];
 
 let allLanguages = [
@@ -90,7 +92,8 @@ let allGenre = [
 ];
 
 let allActors = [
-    {item: "Leonardo DiCaprio"}, 
+    {item: "Leonardo DiCaprio"},
+    {item: "Keanu Reeves"},
     {item:"Dwayne Johnson"},
     {item: "Scarlett Johansson"},
     {item: "Natalie Portman"}, 

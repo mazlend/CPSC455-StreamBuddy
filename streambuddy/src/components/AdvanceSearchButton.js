@@ -33,22 +33,22 @@ export default function AdvanceSearchButton(props) {
        
         if (props.country) {
             let countries = queryWriter(props.country);
-            query.push({Country: countries});
+            query.push({country: countries});
         } else {
             
         }
 
         if (props.language) {
             let languages = queryWriter(props.language);
-            query.push({Language: languages});
+            query.push({language: languages});
         }
         if (props.genre) {
             let genres = queryWriter(props.genre);
-            query.push({Genre: genres});
+            query.push({genre: genres});
         }
         if (props.actors) {
-            let actors = queryWriter(props.actors);
-            query.push({Actor: actors});
+            let allActors = queryWriter(props.actors);
+            query.push({actors: allActors});
         }
 
 
@@ -63,14 +63,25 @@ export default function AdvanceSearchButton(props) {
        //console.log(query);
        let queryObject = Object.assign({}, ...query);
 
-        console.log(queryObject);
+        console.log(JSON.stringify(queryObject));
 
 
 
-        // axios.get("http://localhost:5000/api/films/" + props.filmName)
-        //     .then((response) => {
-        //         props.listCallback(response.data)
-        //     })
+
+        axios.post("http://localhost:5000/api/films/search", queryObject)
+            .then((response) => {
+                props.listCallback(response.data)
+            })
+
+            // axios({
+            //     method: 'post',
+            //     url: 'http://localhost:5000/api/films/search',
+            //     data: {
+            //       queryObject
+            //     }
+            //   }).then((response) => {
+            //     props.listCallback(response.data)
+            // });
     }
 
     return (

@@ -22,6 +22,7 @@ export default function SearchButton(props) {
         if (props.filmName.length < 1) {
             return
         }
+        console.log(props.filmName);
         axios.get("http://localhost:5000/api/films/" + props.filmName)
             .then((response) => {
                 props.listCallback(response.data)
