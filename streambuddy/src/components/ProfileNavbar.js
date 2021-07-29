@@ -98,7 +98,7 @@ function ProfileNavbar(props) {
                 {/*}*/}
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Reviews id="reviews" />
+                <Reviews id="reviews" reviews={user.reviews} />
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Friends id="friends" />

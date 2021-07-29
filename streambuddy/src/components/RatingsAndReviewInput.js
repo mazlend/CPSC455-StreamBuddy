@@ -4,11 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {Button, TextField} from "@material-ui/core";
 import {UserContext} from "./UserContext";
+import axios from "axios";
 
 
-export default function RatingsAndReviewInput() {
+export default function RatingsAndReviewInput(props) {
     const [value, setValue] = React.useState(0);
     const [value1, setValue1] = React.useState('Write your review here...');
+    const {user, setUser} = useContext(UserContext);
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -19,8 +21,16 @@ export default function RatingsAndReviewInput() {
     };
 
     const postReview = () => {
-        console.log('You clicked post review' + value1);
-        // user.reviews.push();
+        console.log('You clicked post review ' + value1);
+        console.log("user._id is ", user._id);
+        axios.put(`http://localhost:5000/api/users/${user._id}/reviews/`, {
+            value1
+        }).then((res) => {
+            // setUser(res.data);
+            console.log("res.data = " + JSON.stringify(res.data))
+        }).catch((err) => {
+            console.log(err);
+        })
     };
 
     return (
