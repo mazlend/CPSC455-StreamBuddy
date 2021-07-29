@@ -90,7 +90,7 @@ function ProfileNavbar(props) {
                 <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={user.watched} denseView={views.denseViewWatchedMovies} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Reviews id="reviews" />
+                <Reviews id="reviews" reviews={user.reviews} />
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Friends id="friends" />
