@@ -2,6 +2,9 @@ import GoogleLogin, {GoogleLogout} from "react-google-login";
 import React, {useContext} from "react";
 import axios from "axios";
 import {UserContext} from "./UserContext";
+const dotenv = require('dotenv');
+
+dotenv.config({ path: './.env'});
 
 export default function Authentication() {
     const {user, setUser} = useContext(UserContext);
@@ -31,12 +34,12 @@ export default function Authentication() {
                     <div className="name">Welcome {user.name}!</div>
                     <div className="email">Your email is: {user.email}</div>
                     <div className="img"><img src={user.imageUrl} alt={""}/></div>
-                    <GoogleLogout clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
+                    <GoogleLogout clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                   buttonText="Logout"
                                   onLogoutSuccess={onLogoutSuccess}/>
                     {/*<pre>{JSON.stringify(user, null, 2)}</pre>*/}
                 </div> :
-            <GoogleLogin clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
+            <GoogleLogin clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                          buttonText="Login"
                          onSuccess={onSuccess}
                          onFailure={onFailure}

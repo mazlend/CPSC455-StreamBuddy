@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-dotenv.config({ path: './config/.env'});
+dotenv.config({ path: './.env'});
 
 const filmsRoutes = require('./routes/films-routes');
 const usersRoutes = require('./routes/users-routes');
