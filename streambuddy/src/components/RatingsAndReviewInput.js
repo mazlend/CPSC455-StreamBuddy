@@ -14,10 +14,13 @@ export default function RatingsAndReviewInput(props) {
 
 
     const updateUserReviews = (user, review) => {
+        console.log("in updateUserReviews");
         axios.put(`http://localhost:5000/api/users/reviews/${user._id}/`, {
             review
         }).then((res) => {
+            console.log("we put the review, now we update the user!")
             setUser(res.data);
+            console.log("after setUser, user is now ", user);
         }).catch((err) => {
             console.log(err);
         })
@@ -46,6 +49,7 @@ export default function RatingsAndReviewInput(props) {
             review: value1
         }
         console.log("Review being sent is ", review);
+        console.log("User now is ", user);
         updateUserReviews(user, review);
     };
 

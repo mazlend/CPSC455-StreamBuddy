@@ -13,8 +13,7 @@ const userSchema = new Schema({
     watchlist: [{}],
     followers: [{}],
     following: [{}],
-    reviews: [{}]
-
+    reviews: [{}],
 });
 
 userSchema.plugin(uniqueValidator)

@@ -138,9 +138,11 @@ export default function MovieCardActions(props) {
 
     // checks whether the user has already reviewed this movie
     const alreadyReviewed = () => {
+        console.log("checking if alreadyReviewed")
         if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {
             console.log("user: ", user)
             console.log("user.reviews: ", user.reviews)
+            console.log("return false")
             return false;
           }
         const movieAlreadyReviewed = user.reviews.filter(review => review.movieTitle === props.item.Title)
@@ -185,10 +187,7 @@ export default function MovieCardActions(props) {
                             <Divider />
                             <h2 style={{marginTop: 20, marginBottom: 20}}> {props.item.Title}</h2>
                             <img src={props.item.Poster}/>
-                            {alreadyReviewed
-                            ? <p> You have already reviewed this movie, please go to profile to edit it </p>
-                            : <RatingsAndReviewInput moviePoster={props.item.Poster} movieTitle={props.item.Title} onPostClick={handlePopoverClose} />
-                           }
+                            <RatingsAndReviewInput moviePoster={props.item.Poster} movieTitle={props.item.Title} onPostClick={handlePopoverClose} />
                         </div>
                     </div>
                 </Fade>
