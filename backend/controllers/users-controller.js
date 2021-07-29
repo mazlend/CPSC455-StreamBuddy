@@ -14,9 +14,9 @@ const getUsers = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-    console.log(req.body)
+    let userId = req.params.id;
     try {
-        let user = await User.findById(req.params.id);
+        let user = await User.findById(userId);
         res.status(200).send(user);
     } catch (err) {
         res.status(404).json({
@@ -26,17 +26,14 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    console.log(req.body);
     try {
         let existingUser = await User.findOne({ googleId: req.body.googleId }).exec();
         if (existingUser) {
             res.status(200).send(existingUser)
             } else {
             let newUser = await User.create(req.body);
-            res.status(201).json({
-                data: { user: newUser }
-            })
-        }
+            res.status(201).send(newUser)
+            }
     } catch (err) {
         res.status(400).json({
             message: err
@@ -44,22 +41,68 @@ const createUser = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
+const updateUserWatched = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let newItemToAddToList = req.body.item;
+
     try {
-        let user = await User.findByIdAndUpdate(req.params.id, req.body,
-            { runValidators: true });
-        res.status(200).json({
-            data : {user: user}
-        })
-    } catch (err) {
-        res.status(404).json({
-            message: err
+        user = await User.findById(userId);
+        user.watched.push(newItemToAddToList);
+        await user.save();
+        res.status(200).send(user)
+
+    } catch (e) {
+        res.status(400).json({
+            message: e
         })
     }
 }
 
+const updateUserWatchlist = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let newItemToAddToList = req.body.item;
+
+    try {
+        user = await User.findById(userId);
+        user.watchlist.push(newItemToAddToList);
+        await user.save();
+        res.status(200).send(user);
+        console.log(user);
+
+    } catch (e) {
+        res.status(400).json({
+            message: e
+        })
+    }
+}
+
+const updateUserReviews = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let newReview = req.body.item;
+
+    try {
+        user = await User.findById(userId);
+        user.reviews.push(newReview);
+        await user.save();
+        res.status(200).send(user);
+        console.log(user);
+
+    } catch (e) {
+        res.status(400).json({
+            message: e
+        })
+    }
+}
+
+
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.createUser = createUser;
-exports.updateUser = updateUser;
+exports.updateUserWatched = updateUserWatched;
+exports.updateUserWatchlist = updateUserWatchlist;
+exports.updateUserReviews = updateUserReviews;
+
 

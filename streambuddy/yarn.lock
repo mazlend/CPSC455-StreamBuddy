@@ -1438,10 +1438,14 @@
     "chalk" "^4.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@material-ui/core@^4.0.0", "@material-ui/core@^4.11.4", "@material-ui/core@^4.9.10", "@material-ui/core@^4.9.12 || ^5.0.0-alpha.34":
 =======
 "@material-ui/core@^4.11.4":
 >>>>>>> 6e5aec60365849f5e497740a2f0f5a2f85e9257f
+=======
+"@material-ui/core@^4.0.0", "@material-ui/core@^4.11.4", "@material-ui/core@^4.9.10", "@material-ui/core@^4.9.12 || ^5.0.0-alpha.34":
+>>>>>>> 8315949bd382f89b150687d281c32fc7a6a2fc71
   "integrity" "sha512-oqb+lJ2Dl9HXI9orc6/aN8ZIAMkeThufA5iZELf2LQeBn2NtjVilF5D2w7e9RpntAzDb4jK5DsVhkfOvFY/8fg=="
   "resolved" "https://registry.npmjs.org/@material-ui/core/-/core-4.11.4.tgz"
   "version" "4.11.4"
@@ -9662,10 +9666,14 @@
     "prop-types" "^15.6.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16 || ^17", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=15", "react@>=16.6.0", "react@17.0.2":
 =======
 "react@^17.0.2":
 >>>>>>> 6e5aec60365849f5e497740a2f0f5a2f85e9257f
+=======
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16 || ^17", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=15", "react@>=16.6.0", "react@17.0.2":
+>>>>>>> 8315949bd382f89b150687d281c32fc7a6a2fc71
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

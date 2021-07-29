@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Container} from "@material-ui/core";
 import profilePicture from "../assets/profilePic.png"
-import editButton from "../assets/editButton.png"
-import { maxWidth } from '@material-ui/system';
+import {UserContext} from "./UserContext";
+
 
 
 function User(props) {
+    const {user, setUser} = useContext(UserContext);
 
-    // dummy data for a user, we will later pass those through props and/or retrieve from database
-    let numWatchedMovies = 20;
+    let numWatchedMovies = user.watched.length;
+    let numWatchlistMovies = user.watchlist.length;
+    // dummy data for follower and following below
     let numFollowers = 5;
     let numFollowing = 7;
 
@@ -22,7 +24,7 @@ function User(props) {
                 <img className="userImg" src={profilePicture} onClick={() => editButtonClick()}/>
                 <div className ="userDetailsDiv">
                     <h1 onClick={() => editButtonClick()}> {props.name} </h1>
-                    <span>{numWatchedMovies} watched movies ~ {numFollowers} followers ~ {numFollowing} following</span>
+                    <span>{numWatchedMovies} watched movies ~ {numWatchlistMovies} watchlist movies ~ {numFollowers} followers ~ {numFollowing} following</span>
                 </div>
                 
             </div>

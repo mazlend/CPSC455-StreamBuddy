@@ -8,7 +8,7 @@ function Reviews(props) {
                 <div className="movie-cards-wrapper">
                         <div>
                             <h1>My Reviews</h1>
-                            <div class="horizontal-line" />
+                            <div className="horizontal-line" />
                         </div>
                 </div>
             <div>

@@ -9,14 +9,12 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-// import {Alert} from "@material-ui/lab";
 import {UserContext} from "./UserContext";
 import {makeStyles} from "@material-ui/core/styles";
-import CustomizedAlerts from "./Alerts";
 import {Backdrop, Divider, Fade, Modal, Snackbar} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import RatingsAndReviewInput from "./RatingsAndReviewInput";
-import Box from "@material-ui/core/Box";
+import axios from "axios";
 
 const options = ['Mark As Seen', 'Add to Watchlist', 'Rate / Review'];
 
@@ -47,12 +45,32 @@ export default function MovieCardActions(props) {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
-    const auth = useContext(UserContext);
     const [loginReminderAlert, setLoginReminderAlert] = React.useState(false);
     const [successAlert, setSuccessAlert] = React.useState(false);
     const [ratingPopover, setRatingPopover] = React.useState(false);
     const classes = useStyles();
+    const {user, setUser} = useContext(UserContext);
 
+
+    const updateUserWatched = (user, item) => {
+        axios.put(`http://localhost:5000/api/users/watched/${user._id}/`, {
+            item
+        }).then((res) => {
+            setUser(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const updateUserWatchlist = (user, item) => {
+        axios.put(`http://localhost:5000/api/users/watchlist/${user._id}/`, {
+            item
+        }).then((res) => {
+            setUser(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     const handlePopoverOpen = (event) => {
         setRatingPopover(true);
@@ -72,22 +90,19 @@ export default function MovieCardActions(props) {
     };
 
     const handleClick = () => {
-        if (auth.user === null) {
+        if (user === null) {
             setLoginReminderAlert(true);
             return;
         }
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
-            auth.user.watched = Object.assign([], auth.user.watched);
-            auth.user.watched.push(props.item);
-            setSuccessAlert(true)
+            updateUserWatched(user, props.item);
+            setSuccessAlert(true);
+            console.log("user watched updated successfully");
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
-            auth.user.watchlist = Object.assign([], auth.user.watchlist);
-            auth.user.watchlist.push(props.item);
-            console.log(props.item)
-            console.log(auth.user.watchlist)
+            updateUserWatchlist(user, props.item);
             setSuccessAlert(true)
         } else if (options[selectedIndex] === 'Rate / Review') {
             handlePopoverOpen()
@@ -96,7 +111,7 @@ export default function MovieCardActions(props) {
     };
 
     const handleMenuItemClick = (event, index) => {
-        if (auth.user === null) {
+        if (user === null) {
             setLoginReminderAlert(true);
             return;
         }
