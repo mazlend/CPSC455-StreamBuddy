@@ -1,10 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from "./UserContext";
+import axios from "axios";
 
 function Reviews(props) {
+    const {user, setUser} = useContext(UserContext);
+
+    let userReviews = user.reviews;
+
+    // added here just in case if we need it
+    // const getUser = (user) => {
+    //     axios.get(`http://localhost:5000/api/users/${user._id}`)
+    //         .then((res) => {
+    //             setUser(res.data);
+    //             console.log(res.data);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }
 
     // TODO: Reviews should render properly under Reviews on profile page
-
-
 
     return(
             <section id={props.id}>
