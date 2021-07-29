@@ -9,8 +9,19 @@ import axios from "axios";
 
 export default function RatingsAndReviewInput(props) {
     const [value, setValue] = React.useState(0);
-    const [value1, setValue1] = React.useState('Write your review here...');
+    const [value1, setValue1] = React.useState(null);
     const {user, setUser} = useContext(UserContext);
+
+
+    const updateUserReviews = (user, review) => {
+        axios.put(`http://localhost:5000/api/users/reviews/${user._id}/`, {
+            review
+        }).then((res) => {
+            setUser(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -20,18 +31,22 @@ export default function RatingsAndReviewInput(props) {
         setValue1(event.target.value);
     };
 
+
     const postReview = () => {
-        console.log('You clicked post review ' + value1);
-        console.log("user._id is ", user._id);
-        axios.put(`http://localhost:5000/api/users/${user._id}/reviews/`, {
-            value1
-        }).then((res) => {
-            // setUser(res.data);
-            console.log("res.data = " + JSON.stringify(res.data))
-        }).catch((err) => {
-            console.log(err);
-        })
+        let review = {
+            // TODO: uncomment once we use real data
+            // movieId: props._id,
+            movieTitle: props.movieTitle,
+            moviePoster: props.moviePoster,
+            rating: value,
+            review: value1
+        }
+        updateUserReviews(user, review);
     };
+
+    const closePopover = () => {
+        props.onPostClick();
+    }
 
     return (
         <div>
@@ -49,10 +64,9 @@ export default function RatingsAndReviewInput(props) {
                 <Typography component="legend" style={{marginBottom: 10}}>Write a Review!</Typography>
                 <TextField
                     id="outlined-multiline-static"
-                    label="Review"
+                    label="Your review of this movie"
                     multiline
                     rows={8}
-                    defaultValue="Write your review here..."
                     variant="outlined"
                     value={value1}
                     onChange={handleChangeReview}
@@ -60,7 +74,10 @@ export default function RatingsAndReviewInput(props) {
                 />
             </Box>
                 <box><Button variant="contained"
-                        color="primary" onClick={postReview}>Post Review </Button>
+                        color="primary" onClick={(event) => {
+                        postReview();
+                        closePopover(event);
+                        }}>Post Review </Button>
                 </box>
         </div>
     );
