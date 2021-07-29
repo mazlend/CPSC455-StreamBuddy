@@ -35,10 +35,11 @@ const createUser = async (req, res) => {
             res.status(200).send(existingUser)
             } else {
             let newUser = await User.create(req.body);
-            res.status(201).json({
-                data: { user: newUser }
-            })
-        }
+            // res.status(201).json({
+            //     data: { user: newUser }
+            // })
+            res.status(201).send(newUser)
+            }
     } catch (err) {
         res.status(400).json({
             message: err
@@ -54,7 +55,8 @@ const updateUserWatched = async (req, res) => {
         user = await User.findById(req.params.id);
         user.watched.push(newItemToAddToList);
         await user.save();
-        res.status(200).json({user: user})
+        res.status(200).send(user)
+
     } catch (e) {
         console.log(e);
     }

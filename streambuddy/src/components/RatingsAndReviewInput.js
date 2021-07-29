@@ -20,7 +20,7 @@ export default function RatingsAndReviewInput() {
 
     const postReview = () => {
         console.log('You clicked post review' + value1);
-        // auth.user.reviews.push();
+        // user.reviews.push();
     };
 
     return (

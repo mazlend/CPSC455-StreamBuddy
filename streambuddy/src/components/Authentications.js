@@ -3,14 +3,16 @@ import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {UserContext} from "./UserContext";
 
-export default function Authentication() {
-    let auth = useContext(UserContext);
+export default function Authentication(props) {
+    const {user, setUser} = useContext(UserContext);
 
     const onSuccess = async (res) => {
         axios.post('http://localhost:5000/api/users/', res.profileObj)
             .then((response) => {
-                auth.login(response.data);
-                console.log(response.data);
+                setUser(response.data);
+                // isLoggedIn = true;
+                // props.setUser1(response.data);
+                console.log("this should be identical to the later one" + response.data);
         }).catch((err) => {
             console.log(err);
         });
@@ -20,7 +22,7 @@ export default function Authentication() {
     //     axios.get(`http://localhost:5000/api/users/${user._id}`)
     //         .then((res) => {
     //             if (res.data) {
-    //                 auth.user = res.data;
+    //                 user = res.data;
     //             }
     //         })
     //         .catch((err) => {
@@ -29,7 +31,7 @@ export default function Authentication() {
     // }
 
     const onLogoutSuccess= () => {
-        auth.logout();
+        // logout();
         console.log("logout success");
     }
 
@@ -40,14 +42,14 @@ export default function Authentication() {
     return (
         <div>
             <h3>Login to StreamBuddy with Google</h3>
-            {auth.user ? <div>
-                    <div className="name">Welcome {auth.user.name}!</div>
-                    <div className="email">Your email is: {auth.user.email}</div>
-                    <div className="img"><img src={auth.user.imageUrl} alt={""}/></div>
+            {user ? <div>
+                    <div className="name">Welcome {user.name}!</div>
+                    <div className="email">Your email is: {user.email}</div>
+                    <div className="img"><img src={user.imageUrl} alt={""}/></div>
                     <GoogleLogout clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
                                   buttonText="Logout"
                                   onLogoutSuccess={onLogoutSuccess}/>
-                    <pre>{JSON.stringify(auth.user, null, 2)}</pre>
+                    <pre>{JSON.stringify(user, null, 2)}</pre>
                 </div> :
             <GoogleLogin clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
                          buttonText="Login"

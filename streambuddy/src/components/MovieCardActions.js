@@ -53,6 +53,7 @@ export default function MovieCardActions(props) {
     const [successAlert, setSuccessAlert] = React.useState(false);
     const [ratingPopover, setRatingPopover] = React.useState(false);
     const classes = useStyles();
+    const {user, setUser} = useContext(UserContext);
 
     const updateUserWatched = (user, item) => {
         // console.log(user._id);
@@ -60,11 +61,14 @@ export default function MovieCardActions(props) {
         axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
             item
         }).then((res) => {
-            console.log("this is the response2" + JSON.stringify(res.data))
-            console.log("this is the response3" + auth.user)
-            auth.login(res.data);
-            // auth.user = res.data;
-            console.log("this is the response4" + JSON.stringify(auth.user))
+            // console.log("this is the response2" + JSON.stringify(res.data))
+            // console.log("this is the response3" + user)
+            // login(res.data);
+            setUser(res.data);
+            console.log("this is res.data" + JSON.stringify(res.data))
+            // UserContext.user = res.data;
+            // user = res.data;
+            // console.log("this should match the auth object" + JSON.stringify(user))
         }).catch((err) => {
             console.log(err);
         })
@@ -97,25 +101,25 @@ export default function MovieCardActions(props) {
     };
 
     const handleClick = () => {
-        if (auth.user === null) {
+        if (user === null) {
             setLoginReminderAlert(true);
             return;
         }
         console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
-            updateUserWatched(auth.user, props.item);
-            // auth.user.watched = Object.assign([], auth.user.watched);
-            // auth.user.watched.push(props.item);
+            updateUserWatched(user, props.item);
+            // user.watched = Object.assign([], user.watched);
+            // user.watched.push(props.item);
             setSuccessAlert(true);
             console.log("user watched updated successfully");
-            // getUserWatched(auth.user);
+            // getUserWatched(user);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
-            auth.user.watchlist = Object.assign([], auth.user.watchlist);
-            auth.user.watchlist.push(props.item);
+            user.watchlist = Object.assign([], user.watchlist);
+            user.watchlist.push(props.item);
             console.log(props.item)
-            console.log(auth.user.watchlist)
+            console.log(user.watchlist)
             setSuccessAlert(true)
         } else if (options[selectedIndex] === 'Rate / Review') {
             handlePopoverOpen()
@@ -124,7 +128,7 @@ export default function MovieCardActions(props) {
     };
 
     const handleMenuItemClick = (event, index) => {
-        if (auth.user === null) {
+        if (user === null) {
             setLoginReminderAlert(true);
             return;
         }

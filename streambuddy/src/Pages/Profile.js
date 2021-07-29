@@ -13,15 +13,22 @@ import {UserContext} from "../components/UserContext";
 
 function Profile() {
 
-    let auth = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
-    let tempUserName = auth.user.name;
-    let tempWatchList = auth.user.watchlist;
-    let tempWatchedMovies = auth.user.watched;
+    let tempUserName = user.name;
+    let tempWatchList = user.watchlist;
+    let tempWatchedMovies = user.watched;
+
+    console.log("user" + JSON.stringify(user));
+    console.log("user123" + JSON.stringify(user.name));
+    console.log("user124556" + JSON.stringify(tempUserName));
 
     console.log(tempUserName);
     console.log(tempWatchList);
     console.log(tempWatchedMovies);
+    // console.log(user.name);
+    // console.log(user.watchlist);
+    // console.log(user.watched);
 
     // TODO: use a working google id, as a next step we need to somehow pass the google id from authetication to here
     const googleId = "968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
@@ -29,8 +36,8 @@ function Profile() {
     return(
         <Container maxWidth="lg">
             <div>
-                {tempUserName && <User name={tempUserName}/>}
-                <ProfileNavbar watchedMovies={tempWatchedMovies} watchList={tempWatchList}/>
+                {user.name && <User name={user.name}/>}
+                <ProfileNavbar watchedMovies={user.watched} watchList={user.watchlist}/>
             </div>
         </Container>
     );

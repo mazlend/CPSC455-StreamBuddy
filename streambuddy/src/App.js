@@ -8,60 +8,77 @@ import About from "./Pages/About";
 import Login from "./Pages/Login";
 import {useCallback, useState} from "react";
 import {UserContext} from "./components/UserContext";
+import {featuredMovieList} from "./featuredMovieList";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
+    const value = {user, setUser};
 
-    const login = useCallback((user) => {
-        setIsLoggedIn(true);
-        setUser(user);
-        console.log(user);
-    }, []);
+    // const login = useCallback((user) => {
+    //     setIsLoggedIn(true);
+    //     setUser(user);
+    //     console.log(user);
+    // }, []);
+    //
+    // const logout = useCallback(() => {
+    //     setIsLoggedIn(false);
+    //     setUser(null);
+    // }, []);
 
-    const logout = useCallback(() => {
-        setIsLoggedIn(false);
-        setUser(null);
-    }, []);
+    // let routes;
 
-    let routes;
+    // function setUser(user) {
+    //     setUser(user);
+    // }
+    //
+    // function loginPage() {
+    //     return <Login user={user} setUser1={setUser} />
+    // }
 
-    if (isLoggedIn) {
-        routes = (
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/about" component={About}/>
-                <Route exact path="/profile" component={Profile}/>
-                <Route exact path="/login" component={Login}/>
-            </Switch>
-        );
-
-
-    } else {
-        routes = (
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/about" component={About}/>
-                <Route exact path="/login" component={Login}/>
-                <Redirect to="/login" />
-            </Switch>
-        );
-    }
+    // if (true) {
+    //     routes = (
+    //         <Switch>
+    //             <Route exact path="/" component={Home}/>
+    //             <Route exact path="/about" component={About}/>
+    //             <Route exact path="/profile" component={Profile}/>
+    //             <Route exact path="/login" component={Login}/>
+    //         </Switch>
+    //     );
+    //
+    //
+    // } else {
+    //     routes = (
+    //         <Switch>
+    //             <Route exact path="/" component={Home}/>
+    //             <Route exact path="/about" component={About}/>
+    //             <Route exact path="/login" component={Login}/>
+    //             <Redirect to="/login" />
+    //         </Switch>
+    //     );
+    // }
 
     return (
         <div className="app">
             <div className="navbar">
                 <ThemeProvider theme={theme}>
-                    <UserContext.Provider value={{
-                        isLoggedIn: isLoggedIn,
-                        user: user,
-                        login: login,
-                        logout: logout
-                }}
+                    <UserContext.Provider value={
+                        value
+                        // isLoggedIn: true,
+                        // user: null,
+                        // login: login,
+                        // logout: logout
+                }
                 >
                         <BrowserRouter>
                             <Navbar />
-                            <main>{routes}</main>
+                            <Switch>
+                                <Route exact path="/" component={Home}/>
+                                <Route exact path="/about" component={About}/>
+                                <Route exact path="/profile" component={Profile}/>
+                                <Route exact path="/login" component={Login}/>
+                            </Switch>
+                            {/*<main>{routes}</main>*/}
                         </BrowserRouter>
                     </UserContext.Provider>
                 </ThemeProvider>

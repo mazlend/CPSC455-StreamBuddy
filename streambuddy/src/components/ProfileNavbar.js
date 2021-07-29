@@ -54,12 +54,16 @@ const useStyles = makeStyles((theme) => ({
 
 function ProfileNavbar(props) {
     // let auth = useContext(UserContext);
+
     const classes = useStyles();
     let [value, setValue] = React.useState(0);
     let tempWatchList = props.watchList;
     let tempWatchedMovies = props.watchedMovies;
     console.log("frontendcheck" + tempWatchList + tempWatchedMovies)
+    const {user, setUser} = useContext(UserContext);
 
+    console.log("this is from profile navbar" + JSON.stringify(user))
+    console.log(user)
     const [views, setViews] = React.useState(
         {
             denseViewWatchList: false,
@@ -67,7 +71,7 @@ function ProfileNavbar(props) {
         }
     )
 
-    const [user, setUser] = React.useState(null);
+    // const [user, setUser] = React.useState(null);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -85,12 +89,12 @@ function ProfileNavbar(props) {
             </AppBar>
             <TabPanel value={value} index={0}>
                 {/*{user || tempWatchList &&*/}
-                <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={tempWatchList} denseView={views.denseViewWatchList}/>
+                <MoviecardListWrapper id="watchlist" name="Watchlist" movieList={user.watchlist} denseView={views.denseViewWatchList}/>
                 {/*}*/}
             </TabPanel>
             <TabPanel value={value} index={1}>
                 {/*{user || tempWatchedMovies && */}
-                <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={tempWatchedMovies} denseView={views.denseViewWatchedMovies} />
+                <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={user.watched} denseView={views.denseViewWatchedMovies} />
                 {/*}*/}
             </TabPanel>
             <TabPanel value={value} index={2}>
