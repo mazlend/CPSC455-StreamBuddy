@@ -7,7 +7,7 @@ import {UserContext} from "./UserContext";
 import axios from "axios";
 
 
-export default function RatingsAndReviewInput() {
+export default function RatingsAndReviewInput(props) {
     const [value, setValue] = React.useState(0);
     const [value1, setValue1] = React.useState('Write your review here...');
     const {user, setUser} = useContext(UserContext);
@@ -36,16 +36,23 @@ export default function RatingsAndReviewInput() {
     //  Axios and backend functions are done
 
     const postReview = () => {
-        console.log('You clicked post review' + value1);
+        console.log('You clicked post review: ' + value1);
         let review = {
-            // film: (maybe we can add a film id and poster or MovieCard ?!?)
+            // TODO: uncomment once we use real data
+            // movieId: props._id,
+            movieTitle: props.movieTitle,
+            moviePoster: props.moviePoster,
             rating: value,
             review: value1
         }
-        console.log(review);
-
-        // updateUserReviews(user, review);
+        console.log("Review being sent is ", review);
+        updateUserReviews(user, review);
     };
+
+    const closePopover = () => {
+        console.log("In closePopover");
+        props.onPostClick();
+    }
 
     return (
         <div>
@@ -74,7 +81,10 @@ export default function RatingsAndReviewInput() {
                 />
             </Box>
                 <box><Button variant="contained"
-                        color="primary" onClick={postReview}>Post Review </Button>
+                        color="primary" onClick={(event) => {
+                        postReview();
+                        closePopover(event);
+                        }}>Post Review </Button>
                 </box>
         </div>
     );

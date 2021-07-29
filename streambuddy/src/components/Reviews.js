@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 import {UserContext} from "./UserContext";
 import axios from "axios";
 
-function Reviews(props) {
+function Reviews() {
     const {user, setUser} = useContext(UserContext);
 
     let userReviews = user.reviews;
 
-    // added here in case we need it
+    // added here in case we need it (if UserContext doesn't work)
     // const getUser = (user) => {
     //     axios.get(`http://localhost:5000/api/users/${user._id}`)
     //         .then((res) => {
@@ -22,7 +22,7 @@ function Reviews(props) {
     // TODO: Reviews should render properly under Reviews on profile page
 
     return(
-            <section id={props.id}>
+            <section id="Reviews">
                 <div className="movie-cards-wrapper">
                         <div>
                             <h1>My Reviews</h1>
@@ -31,11 +31,8 @@ function Reviews(props) {
                 </div>
             <div>
                <p>
-                Reviewed Movies contains all movies the user reviewed in some form. They could have hit a 'recommend to friends' button and added some tags/hashtags/comments to it;
-                they could have added a formal review, some private notes, or given a rating for it. <br/>
-                The user can sort by year, alphabet, user rating. They can filter by liked and recommended by friends. <br />
-                If a movie is in ReviewedMovies it assumes the user has watched it (as you cannot review a movie you haven't seen). We thus don't need a "Already watched" tab.
-               </p>
+                   Render the reviews here!
+                </p>
             </div>
             </section>
 

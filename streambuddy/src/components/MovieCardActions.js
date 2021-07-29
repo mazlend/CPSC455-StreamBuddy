@@ -78,7 +78,6 @@ export default function MovieCardActions(props) {
 
     const handlePopoverClose = () => {
         setRatingPopover(false);
-
     };
 
     const handleClose1 = (event, reason) => {
@@ -129,12 +128,33 @@ export default function MovieCardActions(props) {
     };
 
     const handleClose = (event) => {
+        console.log("In handleClose")
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
 
         setOpen(false);
     };
+
+    // checks whether the user has already reviewed this movie
+    const alreadyReviewed = () => {
+        if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {
+            console.log("user: ", user)
+            console.log("user.reviews: ", user.reviews)
+            return false;
+          }
+        const movieAlreadyReviewed = user.reviews.filter(review => review.movieTitle === props.item.Title)
+        console.log("movieAlreadyReviewed is ", movieAlreadyReviewed);
+        if (movieAlreadyReviewed === 1) {
+            console.log("this movie has already been reviewed")
+            return true;
+        } else {
+            console.log("this movie has not yet been removed")
+            return false;
+        }
+    }
+
+    // TOODO: add movieId={props.item._id} to Reviews once we use real data (so we can reuse the reviews for more purposes)
 
     return (
 
@@ -163,9 +183,12 @@ export default function MovieCardActions(props) {
                         <div id="popovertext" style={{maxWidth: 900, width: 500, padding: 40, backgroundColor: "white", position: "flex", zIndex:10}}>
                             <h1>Rate And Review</h1>
                             <Divider />
-                        <h2 style={{marginTop: 20, marginBottom: 20}}> {props.item.Title}</h2>
+                            <h2 style={{marginTop: 20, marginBottom: 20}}> {props.item.Title}</h2>
                             <img src={props.item.Poster}/>
-                            <RatingsAndReviewInput />
+                            {alreadyReviewed
+                            ? <p> You have already reviewed this movie, please go to profile to edit it </p>
+                            : <RatingsAndReviewInput moviePoster={props.item.Poster} movieTitle={props.item.Title} onPostClick={handlePopoverClose} />
+                           }
                         </div>
                     </div>
                 </Fade>
