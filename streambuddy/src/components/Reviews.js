@@ -1,7 +1,10 @@
 import React from 'react';
-import {Container} from "@material-ui/core";
 
 function Reviews(props) {
+
+    // TODO: Reviews should render properly under Reviews on profile page
+
+
 
     return(
             <section id={props.id}>
