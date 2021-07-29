@@ -33,10 +33,6 @@ export default function AdvanceSearchButton(props) {
        
         if (props.country) {
             let countries = queryWriter(props.country);
-           
-            console.log(JSON.stringify(countries));
-            //let result = countries.map(({ item }) => item)
-           // console.log(result);
             query.push({Country: countries});
         } else {
             
@@ -65,7 +61,9 @@ export default function AdvanceSearchButton(props) {
             return result;
         }
        //console.log(query);
-        console.log(JSON.stringify(query));
+       let queryObject = Object.assign({}, ...query);
+
+        console.log(queryObject);
 
 
 
