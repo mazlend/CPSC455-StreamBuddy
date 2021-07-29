@@ -31,9 +31,13 @@ export default function RatingsAndReviewInput() {
         setValue1(event.target.value);
     };
 
-    const postReview = (review) => {
+    const postReview = () => {
         console.log('You clicked post review' + value1);
         // review object includes both rating and review
+        let review = {
+            rating: value,
+            review: value1
+        }
         updateUserReviews(user, review);
     };
 
