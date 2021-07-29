@@ -57,11 +57,11 @@ function ProfileNavbar(props) {
     let [value, setValue] = React.useState(0);
     let tempWatchList = props.watchList;
     let tempWatchedMovies = props.watchedMovies;
-    console.log("frontendcheck" + tempWatchList + tempWatchedMovies)
+    // console.log("frontendcheck" + tempWatchList + tempWatchedMovies)
     const {user, setUser} = useContext(UserContext);
 
-    console.log("this is from profile navbar" + JSON.stringify(user))
-    console.log(user)
+    // console.log("this is from profile navbar" + JSON.stringify(user))
+    // console.log(user)
     const [views, setViews] = React.useState(
         {
             denseViewWatchList: false,

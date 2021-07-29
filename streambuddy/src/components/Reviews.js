@@ -1,26 +1,23 @@
 import React, {useContext} from 'react';
 import {UserContext} from "./UserContext";
-import axios from "axios";
+import SingleReview from './SingleReview';
 
 function Reviews() {
     const {user, setUser} = useContext(UserContext);
 
     let userReviews = user.reviews;
+    console.log("userReviews are ", user.reviews);
 
-    // added here in case we need it (if UserContext doesn't work)
-    // const getUser = (user) => {
-    //     axios.get(`http://localhost:5000/api/users/${user._id}`)
-    //         .then((res) => {
-    //             setUser(res.data);
-    //             console.log(res.data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
-
-    // TODO: Reviews should render properly under Reviews on profile page
-
+    // we have quite a few null review objects, need to delete them in the backend.
+    // for now I just skip them
+    var nonNullReviews = userReviews.reduce(function(result, review) {
+        if (review) {
+          result.push(review);
+        }
+        return result;
+      }, []);
+    
+    console.log("usable reviews are ", nonNullReviews)
 
     return(
             <section id="Reviews">
@@ -31,11 +28,11 @@ function Reviews() {
                         </div>
                 </div>
             <div>
-                {userReviews.map((review, i) => {
-                    // <SingleReview review={review} key={i} />) 
-                    <p> Review number: {i} </p>
-                 }
-                )}
+                {nonNullReviews.map((review, i) => (
+                    <div>
+                        <SingleReview review={review} key={i}/>
+                    </div>
+                ))}
             </div>
             </section>
 
