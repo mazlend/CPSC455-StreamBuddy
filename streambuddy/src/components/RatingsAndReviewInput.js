@@ -38,7 +38,7 @@ export default function RatingsAndReviewInput() {
     const postReview = () => {
         console.log('You clicked post review' + value1);
         let review = {
-            // film: (maybe we can add a film title and film poster?!)
+            // film: (maybe we can add a film id and poster or MovieCard ?!?)
             rating: value,
             review: value1
         }

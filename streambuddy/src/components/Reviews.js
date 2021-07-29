@@ -7,7 +7,7 @@ function Reviews(props) {
 
     let userReviews = user.reviews;
 
-    // added here just in case if we need it
+    // added here in case we need it
     // const getUser = (user) => {
     //     axios.get(`http://localhost:5000/api/users/${user._id}`)
     //         .then((res) => {
