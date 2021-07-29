@@ -8,9 +8,9 @@ import {UserContext} from "./UserContext";
 function User(props) {
     const {user, setUser} = useContext(UserContext);
 
-    // dummy data for a user, we will later pass those through props and/or retrieve from database
     let numWatchedMovies = user.watched.length;
     let numWatchlistMovies = user.watchlist.length;
+    // dummy data for follower and following below
     let numFollowers = 5;
     let numFollowing = 7;
 
