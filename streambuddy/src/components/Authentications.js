@@ -1,37 +1,22 @@
 import GoogleLogin, {GoogleLogout} from "react-google-login";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import axios from "axios";
 import {UserContext} from "./UserContext";
 
-export default function Authentication(props) {
+export default function Authentication() {
     const {user, setUser} = useContext(UserContext);
 
     const onSuccess = async (res) => {
         axios.post('http://localhost:5000/api/users/', res.profileObj)
             .then((response) => {
                 setUser(response.data);
-                // isLoggedIn = true;
-                // props.setUser1(response.data);
-                console.log("this should be identical to the later one" + response.data);
         }).catch((err) => {
             console.log(err);
         });
     }
 
-    // const getUser = (user) => {
-    //     axios.get(`http://localhost:5000/api/users/${user._id}`)
-    //         .then((res) => {
-    //             if (res.data) {
-    //                 user = res.data;
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
-
     const onLogoutSuccess= () => {
-        // logout();
+        setUser(null);
         console.log("logout success");
     }
 
@@ -49,7 +34,7 @@ export default function Authentication(props) {
                     <GoogleLogout clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
                                   buttonText="Logout"
                                   onLogoutSuccess={onLogoutSuccess}/>
-                    <pre>{JSON.stringify(user, null, 2)}</pre>
+                    {/*<pre>{JSON.stringify(user, null, 2)}</pre>*/}
                 </div> :
             <GoogleLogin clientId="968372237624-r36vh877rae0tkteofmqtap4mtbm9sgh.apps.googleusercontent.com"
                          buttonText="Login"

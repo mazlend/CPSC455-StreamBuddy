@@ -8,9 +8,7 @@ router
     .post(userController.createUser);
 
 router.route('/:id').get(userController.getUser);
-// router.route('/watched/:id').patch(userController.updateUserWatched);
-router.route('/:id/:watched/').get(userController.getUserWatched);
-// router.route('/watched/:id').get(userController.getUserWatched);
-router.route('/:id/:watched/').put(userController.updateUserWatched);
+router.route('/watched/:id').put(userController.updateUserWatched);
+router.route('/watchlist/:id').put(userController.updateUserWatchlist);
 
 module.exports = router;

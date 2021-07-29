@@ -48,7 +48,6 @@ export default function MovieCardActions(props) {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
-    const auth = useContext(UserContext);
     const [loginReminderAlert, setLoginReminderAlert] = React.useState(false);
     const [successAlert, setSuccessAlert] = React.useState(false);
     const [ratingPopover, setRatingPopover] = React.useState(false);
@@ -58,7 +57,7 @@ export default function MovieCardActions(props) {
     const updateUserWatched = (user, item) => {
         // console.log(user._id);
         // console.log("this is the item" + item)
-        axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
+        axios.put(`http://localhost:5000/api/users/watched/${user._id}/`, {
             item
         }).then((res) => {
             // console.log("this is the response2" + JSON.stringify(res.data))
@@ -66,6 +65,25 @@ export default function MovieCardActions(props) {
             // login(res.data);
             setUser(res.data);
             console.log("this is res.data" + JSON.stringify(res.data))
+            // UserContext.user = res.data;
+            // user = res.data;
+            // console.log("this should match the auth object" + JSON.stringify(user))
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const updateUserWatchlist = (user, item) => {
+        // console.log(user._id);
+        // console.log("this is the item" + item)
+        axios.put(`http://localhost:5000/api/users/watchlist/${user._id}/`, {
+            item
+        }).then((res) => {
+            // console.log("this is the response2" + JSON.stringify(res.data))
+            // console.log("this is the response3" + user)
+            // login(res.data);
+            setUser(res.data);
+            console.log("this is userwatchlist: " + JSON.stringify(res.data));
             // UserContext.user = res.data;
             // user = res.data;
             // console.log("this should match the auth object" + JSON.stringify(user))
@@ -116,8 +134,9 @@ export default function MovieCardActions(props) {
             // getUserWatched(user);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
-            user.watchlist = Object.assign([], user.watchlist);
-            user.watchlist.push(props.item);
+            // user.watchlist = Object.assign([], user.watchlist);
+            // user.watchlist.push(props.item);
+            updateUserWatchlist(user, props.item);
             console.log(props.item)
             console.log(user.watchlist)
             setSuccessAlert(true)

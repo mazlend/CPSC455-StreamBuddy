@@ -1,6 +1,4 @@
 const User = require('../models/User');
-const mongoose = require("mongoose");
-const Film = require('../models/Film');
 
 const getUsers = async (req, res) => {
     let users;
@@ -62,21 +60,26 @@ const updateUserWatched = async (req, res) => {
     }
 }
 
-const getUserWatched = async (req, res) => {
-    try {
-        console.log("what is this:" + req.params.id)
-        let userWatched = await User.findById(req.params.id);
-        console.log("what is this12:" + userWatched.watched)
-        res.status(200).send(userWatched.watched);
-    } catch (err) {
-        console.log(err);
-    }
-};
+const updateUserWatchlist = async (req, res) => {
+    let user;
+    let newItemToAddToList = req.body.item;
 
+    try {
+        user = await User.findById(req.params.id);
+        user.watchlist.push(newItemToAddToList);
+        await user.save();
+        res.status(200).send(user);
+        console.log(user);
+
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.createUser = createUser;
 exports.updateUserWatched = updateUserWatched;
-exports.getUserWatched = getUserWatched;
+exports.updateUserWatchlist = updateUserWatchlist;
+
 
