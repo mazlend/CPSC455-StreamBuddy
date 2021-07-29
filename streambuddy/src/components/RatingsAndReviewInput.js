@@ -31,14 +31,14 @@ export default function RatingsAndReviewInput() {
         setValue1(event.target.value);
     };
 
-    // TODO: we are missing information about the film being review. Need to pass film props.
-    //  Update ProfileNavbar too if needed.
+    // TODO: we are missing information about the film being reviewed. Need to pass film props.
+    //  Update ProfileNavbar, Reviews, and Profile if needed. Reviews should render properly under Reviews on Profile page
     //  Axios and backend functions are done
 
     const postReview = () => {
         console.log('You clicked post review' + value1);
         let review = {
-         // film information
+            // film: (maybe we can add a film title and film poster?!)
             rating: value,
             review: value1
         }
