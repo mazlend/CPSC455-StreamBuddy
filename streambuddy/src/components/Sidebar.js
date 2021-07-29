@@ -14,9 +14,13 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import AutocompletePlusCheckbox from "./AutocompletePlusCheckbox";
+import LanguageSelector from './LanguageSelector';
+import GenreSelector from './GenreSelector';
+import ActorSelector from './ActorSelector';
 import RangeSlider from "./RangeSlider";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
+import AdvanceSearchButton from "./AdvanceSearchButton";
 import MoviecardList from "./MoviecardList";
 import { initialActorsData } from "../initialActors";
 import { netflixMovieList } from "../netflixMovieList";
@@ -24,6 +28,7 @@ import { featuredMovieList } from "../featuredMovieList";
 import {initialmoviesdata} from "../initialmovies";
 import {Button} from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+
 
 
 // min and max years available from the API - we use it to init the range slider
@@ -84,6 +89,15 @@ let allGenre = [
     { item: 'Fantasy' },
 ];
 
+let allActors = [
+    {item: "Leonardo DiCaprio"}, 
+    {item:"Dwayne Johnson"},
+    {item: "Scarlett Johansson"},
+    {item: "Natalie Portman"}, 
+    {item: "Marlon Brando"},
+    {item: "Audrey Hepburn"},
+    {item: "James Dean"},
+]
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -146,13 +160,23 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+
+
 export default function Sidebar() {
+    var searchOptions = [];
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [list, setList] = useState(featuredMovieList);
 
+    
+
     const [filmName, setFilmName] = React.useState("");
+
+    const [countryName, setCountryName] = React.useState("");
+    const [language, setLanguage] = React.useState("");
+    const [genre, setGenre] = React.useState("");
+    const [actorName, setActorName] = React.useState("");
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -171,9 +195,35 @@ export default function Sidebar() {
         setList(filmList);
     }
 
+    function handleCountryCallback(countryName) {      
+        setCountryName(countryName);
+        searchOptions.push({Country:countryName});
+        console.log(searchOptions);
+    }
+
+    
+    function handleLanguageCallback(language) {      
+        setLanguage(language);
+        searchOptions.push({Language:language});
+        console.log(searchOptions);
+    }
+
+    function handleGenreCallback(genre) {      
+        setGenre(genre);
+        searchOptions.push({Genre:genre});
+        console.log(searchOptions);
+    }
+
+    function handleActorCallback(actorName) {      
+        setActorName(actorName);
+        searchOptions.push({Actor:actorName});
+        console.log(searchOptions);
+    }
+
     function resetList() {
         setList(featuredMovieList);
     }
+
 
 
     return (
@@ -225,24 +275,39 @@ export default function Sidebar() {
                 {/*</List>*/}
                 <List>
                     <ListItem>
-                        <AutocompletePlusCheckbox name="countries" label="Country of Origin" items={allCountries} />
+                        <AutocompletePlusCheckbox
+                         name="countries"
+                         label="Country of Origin" 
+                         items={allCountries}
+                         countryCallBack = {handleCountryCallback}
+                          />
                     </ListItem>
                     <Divider />
 
                     <ListItem>
-                        <AutocompletePlusCheckbox name="languages" label="Language" items={allLanguages} />
+                        <LanguageSelector
+                         name="languages"
+                         label="Language" 
+                         items={allLanguages}
+                         languageCallBack = {handleLanguageCallback} 
+                         />
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <AutocompletePlusCheckbox name="genere" label="Select Genre" items={allGenre} />
+                        <GenreSelector
+                         name="genere"
+                         label="Select Genre" 
+                         items={allGenre}
+                         genreCallBack = {handleGenreCallback}
+                          />
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <SearchBar
-                            title={"Search for Actors"}
-                            autoCompleteData={initialActorsData}
-                            getOptionLabel={(option) => option.name}
-                            style={{ width: 200 }}
+                        <ActorSelector
+                            name="actors"
+                            label="Select Actors" 
+                            items={allActors}
+                            actorCallBack = {handleActorCallback} 
                         />
                     </ListItem>
 
@@ -259,7 +324,17 @@ export default function Sidebar() {
 
                     <Divider />
                     <ListItem>
-                        <SearchButton />
+                        <AdvanceSearchButton
+                        btnClass={classes.button1}
+                        country={countryName}
+                        language = {language}
+                        genre = {genre}
+                        actors = {actorName}
+                        // yearOfRelease = {yearOfRelease}
+                        // imdbRating = {imdbRating}
+                        //query={getSearch}
+                        listCallback={handleListCallback}
+                        resetList={resetList} />
                     </ListItem>
 
                 </List>

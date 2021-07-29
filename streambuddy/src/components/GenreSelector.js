@@ -11,14 +11,14 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 
-export default function AutocompletePlusCheckbox(props) {
-    const [countryName, setCountryName] = useState("");
+export default function GenreSelector(props) {
+    const [genre, setGenre] = useState("");
 
     
     function handleChange(event, newInputValue) {
         if (newInputValue !== null) {
-            setCountryName(newInputValue);
-            props.countryCallBack(newInputValue);
+            setGenre(newInputValue);
+            props.genreCallBack(newInputValue);
           
         }
     }
