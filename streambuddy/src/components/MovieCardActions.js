@@ -53,7 +53,7 @@ export default function MovieCardActions(props) {
 
 
     const updateUserWatched = (user, item) => {
-        axios.put(`http://localhost:5000/api/users/watched/${user._id}/`, {
+        axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
             item
         }).then((res) => {
             setUser(res.data);
@@ -63,7 +63,7 @@ export default function MovieCardActions(props) {
     }
 
     const updateUserWatchlist = (user, item) => {
-        axios.put(`http://localhost:5000/api/users/watchlist/${user._id}/`, {
+        axios.put(`http://localhost:5000/api/users/${user._id}/watchlist/`, {
             item
         }).then((res) => {
             setUser(res.data);
