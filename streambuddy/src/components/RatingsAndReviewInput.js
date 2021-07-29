@@ -9,18 +9,15 @@ import axios from "axios";
 
 export default function RatingsAndReviewInput(props) {
     const [value, setValue] = React.useState(0);
-    const [value1, setValue1] = React.useState('Write your review here...');
+    const [value1, setValue1] = React.useState(null);
     const {user, setUser} = useContext(UserContext);
 
 
     const updateUserReviews = (user, review) => {
-        console.log("in updateUserReviews");
         axios.put(`http://localhost:5000/api/users/reviews/${user._id}/`, {
             review
         }).then((res) => {
-            console.log("we put the review, now we update the user!")
             setUser(res.data);
-            console.log("after setUser, user is now ", user);
         }).catch((err) => {
             console.log(err);
         })
@@ -39,7 +36,6 @@ export default function RatingsAndReviewInput(props) {
     //  Axios and backend functions are done
 
     const postReview = () => {
-        console.log('You clicked post review: ' + value1);
         let review = {
             // TODO: uncomment once we use real data
             // movieId: props._id,
@@ -48,13 +44,10 @@ export default function RatingsAndReviewInput(props) {
             rating: value,
             review: value1
         }
-        console.log("Review being sent is ", review);
-        console.log("User now is ", user);
         updateUserReviews(user, review);
     };
 
     const closePopover = () => {
-        console.log("In closePopover");
         props.onPostClick();
     }
 
@@ -74,10 +67,9 @@ export default function RatingsAndReviewInput(props) {
                 <Typography component="legend" style={{marginBottom: 10}}>Write a Review!</Typography>
                 <TextField
                     id="outlined-multiline-static"
-                    label="Review"
+                    label="Your review of this movie"
                     multiline
                     rows={8}
-                    defaultValue="Write your review here..."
                     variant="outlined"
                     value={value1}
                     onChange={handleChangeReview}

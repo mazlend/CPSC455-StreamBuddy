@@ -128,7 +128,6 @@ export default function MovieCardActions(props) {
     };
 
     const handleClose = (event) => {
-        console.log("In handleClose")
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
@@ -137,6 +136,7 @@ export default function MovieCardActions(props) {
     };
 
     // checks whether the user has already reviewed this movie
+    // TODO: not yet used because it returned true for all movies -- need to fix
     const alreadyReviewed = () => {
         console.log("checking if alreadyReviewed")
         if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {

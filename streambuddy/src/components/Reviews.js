@@ -6,8 +6,6 @@ function Reviews() {
     const {user, setUser} = useContext(UserContext);
 
     let userReviews = user.reviews;
-    console.log("userReviews = ", userReviews);
-    console.log("user in Reviews = ", user);
 
     // added here in case we need it (if UserContext doesn't work)
     // const getUser = (user) => {
