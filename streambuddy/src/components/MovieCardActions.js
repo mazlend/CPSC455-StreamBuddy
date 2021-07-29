@@ -9,14 +9,11 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-// import {Alert} from "@material-ui/lab";
 import {UserContext} from "./UserContext";
 import {makeStyles} from "@material-ui/core/styles";
-import CustomizedAlerts from "./Alerts";
 import {Backdrop, Divider, Fade, Modal, Snackbar} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import RatingsAndReviewInput from "./RatingsAndReviewInput";
-import Box from "@material-ui/core/Box";
 import axios from "axios";
 
 const options = ['Mark As Seen', 'Add to Watchlist', 'Rate / Review'];
@@ -54,52 +51,26 @@ export default function MovieCardActions(props) {
     const classes = useStyles();
     const {user, setUser} = useContext(UserContext);
 
+
     const updateUserWatched = (user, item) => {
-        // console.log(user._id);
-        // console.log("this is the item" + item)
         axios.put(`http://localhost:5000/api/users/watched/${user._id}/`, {
             item
         }).then((res) => {
-            // console.log("this is the response2" + JSON.stringify(res.data))
-            // console.log("this is the response3" + user)
-            // login(res.data);
             setUser(res.data);
-            console.log("this is res.data" + JSON.stringify(res.data))
-            // UserContext.user = res.data;
-            // user = res.data;
-            // console.log("this should match the auth object" + JSON.stringify(user))
         }).catch((err) => {
             console.log(err);
         })
     }
 
     const updateUserWatchlist = (user, item) => {
-        // console.log(user._id);
-        // console.log("this is the item" + item)
         axios.put(`http://localhost:5000/api/users/watchlist/${user._id}/`, {
             item
         }).then((res) => {
-            // console.log("this is the response2" + JSON.stringify(res.data))
-            // console.log("this is the response3" + user)
-            // login(res.data);
             setUser(res.data);
-            console.log("this is userwatchlist: " + JSON.stringify(res.data));
-            // UserContext.user = res.data;
-            // user = res.data;
-            // console.log("this should match the auth object" + JSON.stringify(user))
         }).catch((err) => {
             console.log(err);
         })
     }
-
-    // const getUserWatched = (user) => {
-    //     axios.get(`http://localhost:5000/api/users/watched/${user._id}`)
-    //         .then((res) => {
-    //             console.log(res.data);
-    //         }).catch((err) => {
-    //             console.log(err);
-    //     })
-    // }
 
     const handlePopoverOpen = (event) => {
         setRatingPopover(true);
@@ -127,18 +98,11 @@ export default function MovieCardActions(props) {
         if (options[selectedIndex] === 'Mark As Seen') {
             console.log("Mark as seen from button!!")
             updateUserWatched(user, props.item);
-            // user.watched = Object.assign([], user.watched);
-            // user.watched.push(props.item);
             setSuccessAlert(true);
             console.log("user watched updated successfully");
-            // getUserWatched(user);
         } else if (options[selectedIndex] === 'Add to Watchlist') {
             console.log("Add to Watchlist from button!!!")
-            // user.watchlist = Object.assign([], user.watchlist);
-            // user.watchlist.push(props.item);
             updateUserWatchlist(user, props.item);
-            console.log(props.item)
-            console.log(user.watchlist)
             setSuccessAlert(true)
         } else if (options[selectedIndex] === 'Rate / Review') {
             handlePopoverOpen()

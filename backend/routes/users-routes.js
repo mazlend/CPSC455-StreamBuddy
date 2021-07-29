@@ -10,5 +10,6 @@ router
 router.route('/:id').get(userController.getUser);
 router.route('/watched/:id').put(userController.updateUserWatched);
 router.route('/watchlist/:id').put(userController.updateUserWatchlist);
+router.route('/reviews/:id').put(userController.updateUserReviews);
 
 module.exports = router;
