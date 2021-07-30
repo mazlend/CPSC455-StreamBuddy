@@ -2,8 +2,7 @@
   "name": "streambuddy",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
-  "dependencies": {
+    "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@testing-library/jest-dom": "^5.11.4",
