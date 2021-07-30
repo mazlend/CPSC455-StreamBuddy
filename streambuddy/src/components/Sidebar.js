@@ -47,7 +47,7 @@ function setSelectedYears(years) {
     selectedYears[0] = years[0];
     selectedYears[1] = years[1];
     // TODO: delete logging statement for production
-    console.log("selected range = " + selectedYears[0] + " - " + selectedYears[1]);
+    //console.log("selected range = " + selectedYears[0] + " - " + selectedYears[1]);
 }
 
 function setSelectedimdbScore(score) {
@@ -228,8 +228,6 @@ export default function Sidebar() {
 
     function handleYearCallback(selectedYears) {      
         setYear(selectedYears);
-        searchOptions.push({Years:selectedYears});
-        console.log(searchOptions);
     }
 
     function resetList() {
@@ -330,7 +328,7 @@ export default function Sidebar() {
                             textLabel={"Year of Release"} 
                             minVal={yearRangeAvailable[0]} 
                             maxVal={yearRangeAvailable[1]} 
-                            getSelectedYears={setSelectedYears} />
+                            getSelectedYears={handleYearCallback} />
                     </ListItem>
                     <Divider />
                     <ListItem>

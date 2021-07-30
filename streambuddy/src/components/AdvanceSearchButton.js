@@ -26,37 +26,47 @@ export default function AdvanceSearchButton(props) {
         //     return
         // }
         let query = [];
-        console.log(props.country);
+        console.log(props.yearOfRelease);
         //    console.log(props.language);
         //    console.log(props.genre);
         //    console.log(props.actors);
        
         if (props.country) {
             let countries = queryWriter(props.country);
-            query.push({country: countries});
+            let result = countries.map(({ item }) => item);
+            query.push({countries: result});
         } else {
             
         }
 
         if (props.language) {
             let languages = queryWriter(props.language);
-            query.push({language: languages});
+            let result = languages.map(({ item }) => item);
+            query.push({language: result});
         }
         if (props.genre) {
             let genres = queryWriter(props.genre);
-            query.push({genre: genres});
+            let result = genres.map(({ item }) => item);
+            query.push({genre: result});
         }
         if (props.actors) {
             let allActors = queryWriter(props.actors);
-            query.push({actors: allActors});
+            let result = allActors.map(({ item }) => item);
+            query.push({genre: result});
+        }
+        if (props.yearOfRelease) {
+            let releaseYear = queryWriter(props.yearOfRelease);
+            query.push({years: releaseYear});
         }
 
 
         function queryWriter(property) {
+            console.log(property);
             let propArray = [];
             for (let item in property) {
                 propArray.push((property[item]));
             }
+            return (propArray);
             let result = propArray.map(({ item }) => item);
             return result;
         }
@@ -73,15 +83,6 @@ export default function AdvanceSearchButton(props) {
                 props.listCallback(response.data)
             })
 
-            // axios({
-            //     method: 'post',
-            //     url: 'http://localhost:5000/api/films/search',
-            //     data: {
-            //       queryObject
-            //     }
-            //   }).then((response) => {
-            //     props.listCallback(response.data)
-            // });
     }
 
     return (
