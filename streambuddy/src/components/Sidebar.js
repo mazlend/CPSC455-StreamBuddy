@@ -54,7 +54,7 @@ function setSelectedimdbScore(score) {
     selectedImdbScores[0] = score[0];
     selectedImdbScores[1] = score[1];
     // TODO: delete logging statement for production
-    console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
+    //console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
 }
 
 let allCountries = [
@@ -182,6 +182,7 @@ export default function Sidebar() {
     const [genre, setGenre] = React.useState("");
     const [actorName, setActorName] = React.useState("");
     const [year, setYear] = React.useState(["", ""]);
+    const [rating, setRating] = React.useState(["", ""]);
 
 
     const handleDrawerOpen = () => {
@@ -228,6 +229,10 @@ export default function Sidebar() {
 
     function handleYearCallback(selectedYears) {      
         setYear(selectedYears);
+    }
+
+    function handleRatingCallback(selectedImdbScores) {      
+        setRating(selectedImdbScores);
     }
 
     function resetList() {
@@ -332,7 +337,12 @@ export default function Sidebar() {
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <ImdbScoreSelector textLabel={"IMDB Rating"} minVal={imdbScoreAvailable[0]} maxVal={imdbScoreAvailable[1]} getSelectedYears={setSelectedimdbScore} increments={0.1} />
+                        <ImdbScoreSelector
+                            textLabel={"IMDB Rating"} 
+                            minVal={imdbScoreAvailable[0]} 
+                            maxVal={imdbScoreAvailable[1]} 
+                            getSelectedYears={handleRatingCallback} 
+                            increments={0.1} />
                     </ListItem>
 
 
@@ -345,7 +355,7 @@ export default function Sidebar() {
                         genre = {genre}
                         actors = {actorName}
                         yearOfRelease = {year}
-                        // imdbRating = {imdbRating}
+                        imdbRating = {rating}
                         //query={getSearch}
                         listCallback={handleListCallback}
                         resetList={resetList} />

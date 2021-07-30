@@ -21,24 +21,12 @@ export default function AdvanceSearchButton(props) {
     const classes = useStyles();
 
     function advanceSearch() {
-
-        // if (props.searchOptions.length < 1) {
-        //     return
-        // }
         let query = [];
-        console.log(props.yearOfRelease);
-        //    console.log(props.language);
-        //    console.log(props.genre);
-        //    console.log(props.actors);
-       
         if (props.country) {
             let countries = queryWriter(props.country);
             let result = countries.map(({ item }) => item);
             query.push({country: result});
-        } else {
-            
-        }
-
+        } 
         if (props.language) {
             let languages = queryWriter(props.language);
             let result = languages.map(({ item }) => item);
@@ -52,13 +40,16 @@ export default function AdvanceSearchButton(props) {
         if (props.actors) {
             let allActors = queryWriter(props.actors);
             let result = allActors.map(({ item }) => item);
-            query.push({genre: result});
+            query.push({actors: result});
         }
         if (props.yearOfRelease[0] > 0 && props.yearOfRelease[1] > 0 ) {
             let releaseYear = queryWriter(props.yearOfRelease);
             query.push({years: releaseYear});
         }
-
+        if (props.imdbRating[0] > 0 && props.imdbRating[1] > 0 ) {
+            let ratingsImdb = queryWriter(props.imdbRating);
+            query.push({rating: ratingsImdb});
+        }
 
         function queryWriter(property) {
             console.log(property);
@@ -67,24 +58,15 @@ export default function AdvanceSearchButton(props) {
                 propArray.push((property[item]));
             }
             return (propArray);
-            let result = propArray.map(({ item }) => item);
-            return result;
         }
-       //console.log(query);
+      
        let queryObject = Object.assign({}, ...query);
-
-        console.log(JSON.stringify(queryObject));
-
-
-
 
         axios.post("http://localhost:5000/api/films/search", queryObject)
             .then((response) => {
                 props.listCallback(response.data)
-            })
-
+            });
     }
-
     return (
         <div>
             <
