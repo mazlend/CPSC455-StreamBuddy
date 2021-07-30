@@ -1,5 +1,6 @@
 {
 "scripts": {
-    "start": "node backend/app.js"
+    "start": "node backend/app.js",
+    "heroku-postbuild": "cd streambuddy && npm install --only=dev && npm install && npm run build"
   }
 }
