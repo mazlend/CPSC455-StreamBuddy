@@ -344,7 +344,7 @@ export default function Sidebar() {
                         language = {language}
                         genre = {genre}
                         actors = {actorName}
-                        //yearOfRelease = {year}
+                        yearOfRelease = {year}
                         // imdbRating = {imdbRating}
                         //query={getSearch}
                         listCallback={handleListCallback}

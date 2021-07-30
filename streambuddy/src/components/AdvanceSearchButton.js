@@ -54,7 +54,7 @@ export default function AdvanceSearchButton(props) {
             let result = allActors.map(({ item }) => item);
             query.push({genre: result});
         }
-        if (props.yearOfRelease) {
+        if (props.yearOfRelease[0] > 0 && props.yearOfRelease[1] > 0 ) {
             let releaseYear = queryWriter(props.yearOfRelease);
             query.push({years: releaseYear});
         }

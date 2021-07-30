@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
- const cpink = "#c41955";
+ const cpink = "#098edb";
  const cwhite = "#fff";
 // const cwhite = "#3c4b50";
 // const cpink = "#d0e4dd";

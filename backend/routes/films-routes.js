@@ -86,7 +86,7 @@ router.post('/:search', async function (req, res,next) {
                 { Country: regexCountry },
                 { Language: regexLanguage },
                 { Actors: regexActors },
-                //{ Year: {$gte: regexYears[0], $lte: regexYears[1]}}
+                { Year: {$gte: regexYears[0], $lte: regexYears[1]}}
                 // { imdbRating: {$gte: regexRating[0], $lte: regexRating[1]}}
             ]);
         console.log(filmDataGenre.length);
