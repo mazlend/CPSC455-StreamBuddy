@@ -48,7 +48,7 @@ export default function AdvanceSearchButton(props) {
             let releaseYear = queryWriter(props.yearOfRelease);
             query.push({years: releaseYear});
         }
-        if (props.imdbRating[0] > 0 && props.imdbRating[1] > 0 ) {
+        if (props.imdbRating[0] >0 && props.imdbRating[1] > 0 ) {
             let ratingsImdb = queryWriter(props.imdbRating);
             query.push({rating: ratingsImdb});
         }
@@ -63,6 +63,7 @@ export default function AdvanceSearchButton(props) {
         }
       
        let queryObject = Object.assign({}, ...query);
+       console.log(JSON.stringify(queryObject));
 
         axios.post("/api/films/search", queryObject)
             .then((response) => {

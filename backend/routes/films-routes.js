@@ -96,10 +96,7 @@ router.get('/', async function (req, res, next) {
     res.status(200).json({ message: 'GET Films is working' });
 });
 
-router.use(express.static(path.join(__dirname, "streambuddy", "build")))
-router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "streambuddy", "build", "index.html"));
-});
+
 
 
 module.exports = router;
