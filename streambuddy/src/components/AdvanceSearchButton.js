@@ -26,37 +26,37 @@ export default function AdvanceSearchButton(props) {
         //     return
         // }
         let query = [];
-        console.log(props.yearOfRelease);
+        // console.log(props.yearOfRelease);
         //    console.log(props.language);
         //    console.log(props.genre);
         //    console.log(props.actors);
-       
+
         if (props.country) {
             let countries = queryWriter(props.country);
             let result = countries.map(({ item }) => item);
-            query.push({country: result});
+            query.push({ country: result });
         } else {
-            
+
         }
 
         if (props.language) {
             let languages = queryWriter(props.language);
             let result = languages.map(({ item }) => item);
-            query.push({language: result});
+            query.push({ language: result });
         }
         if (props.genre) {
             let genres = queryWriter(props.genre);
             let result = genres.map(({ item }) => item);
-            query.push({genre: result});
+            query.push({ genre: result });
         }
         if (props.actors) {
             let allActors = queryWriter(props.actors);
             let result = allActors.map(({ item }) => item);
-            query.push({genre: result});
+            query.push({ genre: result });
         }
         if (props.yearOfRelease) {
             let releaseYear = queryWriter(props.yearOfRelease);
-            query.push({years: releaseYear});
+            query.push({ years: releaseYear });
         }
 
 
@@ -70,8 +70,8 @@ export default function AdvanceSearchButton(props) {
             let result = propArray.map(({ item }) => item);
             return result;
         }
-       //console.log(query);
-       let queryObject = Object.assign({}, ...query);
+        //console.log(query);
+        let queryObject = Object.assign({}, ...query);
 
         console.log(JSON.stringify(queryObject));
 
@@ -88,17 +88,17 @@ export default function AdvanceSearchButton(props) {
     return (
         <div>
             <
-            Button
-            onClick={advanceSearch}
-                    style={{marginLeft: -20}}
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}>
-                    Search
-                </Button> 
-                <Button
+                Button
+                onClick={advanceSearch}
+                style={{ marginLeft: -20 }}
+                variant="contained"
+                color="primary"
+                className={classes.button}>
+                Search
+            </Button>
+            <Button
                 onClick={props.resetList}
-                style={{marginLeft: 10}}
+                style={{ marginLeft: 10 }}
                 variant="contained"
                 color="primary"
                 className={classes.button}>

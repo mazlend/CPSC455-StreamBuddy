@@ -197,7 +197,7 @@ export default function Sidebar() {
     }
 
     function handleListCallback(filmList) {
-        console.log(filmList)
+        // console.log(filmList)
         setList(filmList);
     }
 
