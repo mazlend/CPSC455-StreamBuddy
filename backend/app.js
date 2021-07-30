@@ -39,8 +39,8 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
         console.log(err);
     });
 
-    app.use(express.static(path.join(__dirname, "streambuddy", "build")))
+    app.use(express.static(path.join(__dirname, "../streambuddy", "build")))
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "streambuddy", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "../streambuddy", "build", "index.html"));
 });
 
