@@ -34,7 +34,7 @@ export default function AdvanceSearchButton(props) {
         if (props.country) {
             let countries = queryWriter(props.country);
             let result = countries.map(({ item }) => item);
-            query.push({countries: result});
+            query.push({country: result});
         } else {
             
         }
