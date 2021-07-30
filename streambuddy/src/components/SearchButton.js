@@ -23,7 +23,7 @@ export default function SearchButton(props) {
             return
         }
         console.log(props.filmName);
-        axios.get("http://localhost:5000/api/films/" + props.filmName)
+        axios.get("/api/films/" + props.filmName)
             .then((response) => {
                 props.listCallback(response.data)
             })

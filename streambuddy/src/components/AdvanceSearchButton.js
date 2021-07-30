@@ -5,6 +5,7 @@ import {
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
@@ -15,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         ...theme.button
     }
 }));
+
 
 
 export default function AdvanceSearchButton(props) {
@@ -62,7 +64,7 @@ export default function AdvanceSearchButton(props) {
       
        let queryObject = Object.assign({}, ...query);
 
-        axios.post("http://localhost:5000/api/films/search", queryObject)
+        axios.post("/api/films/search", queryObject)
             .then((response) => {
                 props.listCallback(response.data)
             });

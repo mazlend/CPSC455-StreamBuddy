@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
-const filmSchema = require("../models/Film")
-const Film = mongoose.model('Film', filmSchema)
+const filmSchema = require("../models/Film");
+const Film = mongoose.model('Film', filmSchema);
+const path = require('path');
 
 router.get('/:id', async function (req, res, next) {
    
@@ -94,5 +95,11 @@ router.post('/:search', async function (req, res, next) {
 router.get('/', async function (req, res, next) {
     res.status(200).json({ message: 'GET Films is working' });
 });
+
+router.use(express.static(path.join(__dirname, "streambuddy", "build")))
+router.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "streambuddy", "build", "index.html"));
+});
+
 
 module.exports = router;

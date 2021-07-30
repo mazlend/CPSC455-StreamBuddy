@@ -14,7 +14,7 @@ export default function RatingsAndReviewInput(props) {
 
 
     const updateUserReviews = (user, review) => {
-        axios.put(`http://localhost:5000/api/users/${user._id}/reviews/`, {
+        axios.put(`/api/users/${user._id}/reviews/`, {
             review
         }).then((res) => {
             setUser(res.data);
