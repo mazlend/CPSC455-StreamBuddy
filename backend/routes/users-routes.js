@@ -11,10 +11,6 @@ router.route('/:id/watched').put(userController.updateUserWatched);
 router.route('/:id/watchlist').put(userController.updateUserWatchlist);
 router.route('/:id/reviews').put(userController.updateUserReviews);
 
-router.use(express.static(path.join(__dirname, "streambuddy", "build")))
-router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "streambuddy", "build", "index.html"));
-});
 
 
 module.exports = router;
