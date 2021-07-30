@@ -13,11 +13,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import AutocompletePlusCheckbox from "./AutocompletePlusCheckbox";
 import LanguageSelector from './LanguageSelector';
 import GenreSelector from './GenreSelector';
 import ActorSelector from './ActorSelector';
-import RangeSlider from "./RangeSlider";
+import YearOfRelease from "./YearOfRelease";
 import SearchBar from "./SearchBar";
 import SearchButton from "./SearchButton";
 import AdvanceSearchButton from "./AdvanceSearchButton";
@@ -28,6 +27,8 @@ import { featuredMovieList } from "../featuredMovieList";
 import {initialmoviesdata} from "../initialmovies";
 import {Button} from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import CountrySelector from './CountrySelector';
+import ImdbScoreSelector from './ImdbScoreSelector';
 
 
 
@@ -180,6 +181,8 @@ export default function Sidebar() {
     const [language, setLanguage] = React.useState("");
     const [genre, setGenre] = React.useState("");
     const [actorName, setActorName] = React.useState("");
+    const [year, setYear] = React.useState(["", ""]);
+
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -220,6 +223,12 @@ export default function Sidebar() {
     function handleActorCallback(actorName) {      
         setActorName(actorName);
         searchOptions.push({Actor:actorName});
+        console.log(searchOptions);
+    }
+
+    function handleYearCallback(selectedYears) {      
+        setYear(selectedYears);
+        searchOptions.push({Years:selectedYears});
         console.log(searchOptions);
     }
 
@@ -278,7 +287,7 @@ export default function Sidebar() {
                 {/*</List>*/}
                 <List>
                     <ListItem>
-                        <AutocompletePlusCheckbox
+                        <CountrySelector
                          name="countries"
                          label="Country of Origin" 
                          items={allCountries}
@@ -317,11 +326,15 @@ export default function Sidebar() {
                     <Divider />
 
                     <ListItem>
-                        <RangeSlider textLabel={"Year of Release"} minVal={yearRangeAvailable[0]} maxVal={yearRangeAvailable[1]} getSelectedYears={setSelectedYears} />
+                        <YearOfRelease 
+                            textLabel={"Year of Release"} 
+                            minVal={yearRangeAvailable[0]} 
+                            maxVal={yearRangeAvailable[1]} 
+                            getSelectedYears={setSelectedYears} />
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <RangeSlider textLabel={"IMDB Rating"} minVal={imdbScoreAvailable[0]} maxVal={imdbScoreAvailable[1]} getSelectedYears={setSelectedimdbScore} increments={0.1} />
+                        <ImdbScoreSelector textLabel={"IMDB Rating"} minVal={imdbScoreAvailable[0]} maxVal={imdbScoreAvailable[1]} getSelectedYears={setSelectedimdbScore} increments={0.1} />
                     </ListItem>
 
 
@@ -333,7 +346,7 @@ export default function Sidebar() {
                         language = {language}
                         genre = {genre}
                         actors = {actorName}
-                        // yearOfRelease = {yearOfRelease}
+                        yearOfRelease = {year}
                         // imdbRating = {imdbRating}
                         //query={getSearch}
                         listCallback={handleListCallback}
