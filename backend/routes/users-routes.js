@@ -6,8 +6,8 @@ router.route('/').get(userController.getUsers);
 router.route('/').post(userController.createUser);
 
 router.route('/:id').get(userController.getUser);
-router.route('/watched/:id').put(userController.updateUserWatched);
-router.route('/watchlist/:id').put(userController.updateUserWatchlist);
-router.route('/reviews/:id').put(userController.updateUserReviews);
+router.route('/:id/watched').put(userController.updateUserWatched);
+router.route('/:id/watchlist').put(userController.updateUserWatchlist);
+router.route('/:id/reviews').put(userController.updateUserReviews);
 
 module.exports = router;

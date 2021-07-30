@@ -1,10 +1,26 @@
-import React from 'react';
-import {Container} from "@material-ui/core";
+import React, {useContext} from 'react';
+import {UserContext} from "./UserContext";
+import SingleReview from './SingleReview';
 
-function Reviews(props) {
+function Reviews() {
+    const {user, setUser} = useContext(UserContext);
+
+    let userReviews = user.reviews;
+    console.log("userReviews are ", user.reviews);
+
+    // we have quite a few null review objects, need to delete them in the backend.
+    // for now I just skip them
+    var nonNullReviews = userReviews.reduce(function(result, review) {
+        if (review) {
+          result.push(review);
+        }
+        return result;
+      }, []);
+    
+    console.log("usable reviews are ", nonNullReviews)
 
     return(
-            <section id={props.id}>
+            <section id="Reviews">
                 <div className="movie-cards-wrapper">
                         <div>
                             <h1>My Reviews</h1>
@@ -12,12 +28,11 @@ function Reviews(props) {
                         </div>
                 </div>
             <div>
-               <p>
-                Reviewed Movies contains all movies the user reviewed in some form. They could have hit a 'recommend to friends' button and added some tags/hashtags/comments to it;
-                they could have added a formal review, some private notes, or given a rating for it. <br/>
-                The user can sort by year, alphabet, user rating. They can filter by liked and recommended by friends. <br />
-                If a movie is in ReviewedMovies it assumes the user has watched it (as you cannot review a movie you haven't seen). We thus don't need a "Already watched" tab.
-               </p>
+                {nonNullReviews.map((review, i) => (
+                    <div>
+                        <SingleReview review={review} key={i}/>
+                    </div>
+                ))}
             </div>
             </section>
 

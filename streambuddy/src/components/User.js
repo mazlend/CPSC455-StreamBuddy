@@ -10,6 +10,7 @@ function User(props) {
 
     let numWatchedMovies = user.watched.length;
     let numWatchlistMovies = user.watchlist.length;
+    let numReviews = user.reviews.length;
     // dummy data for follower and following below
     let numFollowers = 5;
     let numFollowing = 7;
@@ -24,7 +25,7 @@ function User(props) {
                 <img className="userImg" src={profilePicture} onClick={() => editButtonClick()}/>
                 <div className ="userDetailsDiv">
                     <h1 onClick={() => editButtonClick()}> {props.name} </h1>
-                    <span>{numWatchedMovies} watched movies ~ {numWatchlistMovies} watchlist movies ~ {numFollowers} followers ~ {numFollowing} following</span>
+                    <span>{numWatchedMovies} watched movies ~ {numWatchlistMovies} watchlist movies ~ {numReviews} reviews ~ {numFollowers} followers ~ {numFollowing} following</span>
                 </div>
                 
             </div>

@@ -69,8 +69,6 @@ const updateUserWatchlist = async (req, res) => {
         user.watchlist.push(newItemToAddToList);
         await user.save();
         res.status(200).send(user);
-        console.log(user);
-
     } catch (e) {
         res.status(400).json({
             message: e
@@ -81,15 +79,13 @@ const updateUserWatchlist = async (req, res) => {
 const updateUserReviews = async (req, res) => {
     let user;
     let userId = req.params.id;
-    let newReview = req.body.item;
+    let newReview = req.body.review;
 
     try {
         user = await User.findById(userId);
         user.reviews.push(newReview);
         await user.save();
         res.status(200).send(user);
-        console.log(user);
-
     } catch (e) {
         res.status(400).json({
             message: e

@@ -57,11 +57,9 @@ function ProfileNavbar(props) {
     let [value, setValue] = React.useState(0);
     let tempWatchList = props.watchList;
     let tempWatchedMovies = props.watchedMovies;
-    console.log("frontendcheck" + tempWatchList + tempWatchedMovies)
+
     const {user, setUser} = useContext(UserContext);
 
-    console.log("this is from profile navbar" + JSON.stringify(user))
-    console.log(user)
     const [views, setViews] = React.useState(
         {
             denseViewWatchList: false,
@@ -90,7 +88,7 @@ function ProfileNavbar(props) {
                 <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={user.watched} denseView={views.denseViewWatchedMovies} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Reviews id="reviews" />
+                <Reviews />
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Friends id="friends" />
