@@ -1,6 +1,12 @@
 # CPSC455-StreamBuddy
 
 ## Project Desciption
+
+***Project Summary*** 
+Say goodbye to the endless scrolling of Netflix menus! With StreamBuddy, you can check if a movie that you want to watch is available on Netflix. 
+_Unsure about what movie you want to watch?_
+Use our advanced search features to see recommendations for movies (available on Netflix) that fit your criteria.
+
 ***Who is it for?***  
 Anyone who likes to watch movies / TV shows using online streaming platforms.
 
