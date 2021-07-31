@@ -90,6 +90,15 @@ let allGenre = [
     { item: 'Horror' },
     { item: 'Action' },
     { item: 'Fantasy' },
+    { item: 'Comedy' },
+    { item: 'Suspense' },
+    { item: 'Science Ficton' },
+    { item: 'Western' },
+    { item: 'Documentary' },
+    { item: 'War' },
+    { item: 'Noir' },
+    { item: 'Animation' },
+    
 ];
 
 let allActors = [
@@ -100,7 +109,23 @@ let allActors = [
     {item: "Natalie Portman"}, 
     {item: "Marlon Brando"},
     {item: "Audrey Hepburn"},
-    {item: "James Dean"},
+    {item: "Christain Bale"},
+    {item: "Tom Cruise"},
+    {item: "Emma Stone"},
+    {item: "Jennifer Aniston"},
+    {item: "Margot Robbie"},
+    {item: "Emily Blunt"},
+    {item: "Tom Hanks"},
+    {item: "Robert Downey Jr."},
+    {item: "Denzel Washington"},
+    {item: "Brad Pitt"},
+    {item: "Will Smith"},
+    {item: "Johnny Depp"},
+    {item: "Shahrukh Khan"},
+    {item: "Amitabh Bachchan"},
+    {item: "Marion Cotillard"},
+    {item: "Omar Sy"},
+    {item: "Audrey Tautou"},
 ]
 const drawerWidth = 240;
 
@@ -170,6 +195,7 @@ const useStyles = makeStyles((theme) => ({
 
 }),{index: 1});
 
+// for commit
 
 
 export default function Sidebar() {
@@ -178,11 +204,7 @@ export default function Sidebar() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [list, setList] = useState(featuredMovieList);
-
-    
-
     const [filmName, setFilmName] = React.useState("");
-
     const [countryName, setCountryName] = React.useState("");
     const [language, setLanguage] = React.useState("");
     const [genre, setGenre] = React.useState("");
