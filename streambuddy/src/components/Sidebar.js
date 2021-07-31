@@ -240,7 +240,7 @@ export default function Sidebar() {
     var searchOptions = [];
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [list, setList] = useState(featuredMovieList);
     const [filmName, setFilmName] = React.useState("");
     const [countryName, setCountryName] = React.useState("");
