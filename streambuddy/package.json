@@ -2,6 +2,7 @@
   "name": "streambuddy",
   "version": "0.1.0",
   "private": true,
+ 
     "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.58",
@@ -17,8 +18,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
-    "xlsx": "^0.17.0",
-    "proxy":"http://localhost:5000"
+    "xlsx": "^0.17.0"
+   
     
   },
   "scripts": {
