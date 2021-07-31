@@ -17,7 +17,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
-    "xlsx": "^0.17.0"
+    "xlsx": "^0.17.0",
+    "proxy":"http://localhost:5000"
     
   },
   "scripts": {
