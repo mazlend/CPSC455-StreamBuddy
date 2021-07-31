@@ -74,15 +74,47 @@ let allCountries = [
     { item: 'Russia' },
     { item: 'Spain' },
     { item: 'United Kingdom' },
-    { item: 'United States of America' }
+    { item: 'United States of America' },
+    { item: 'India' },
+    { item: 'Nigeria' },
+    { item: 'Egypt' },
+    { item: 'Spain' },
+    { item: 'Norway' },
+    { item: 'Sweden' },
+    { item: 'Netherlands' },
+    { item: 'Singapore' },
+    { item: 'Mongolia' },
+    { item: 'Iceland' },
+    { item: 'Hungary' },
+    { item: 'Italy' },
     
 ];
-
+allCountries.sort();
 let allLanguages = [
     { item: 'German' },
     { item: 'English' },
+    { item: 'French' },
+    { item: 'Spanish' },
+    { item: 'Italian' },
+    { item: 'Hindi' },
+    { item: 'Arabic' },
+    { item: 'Dutch' },
+    { item: 'Portugese' },
+    { item: 'Russian' },
+    { item: 'Ukrainian' },
+    { item: 'Polish' },
+    { item: 'Yoruba' },
+    { item: 'Japanese' },
+    { item: 'Chinese' },
+    { item: 'Korean' },
+    { item: 'Malay' },
+    { item: 'Tamil' },
+    { item: 'Farsi' },
+    { item: 'Greek' },
+    { item: 'Norwegian' },
+    { item: 'Swedish' },
 ];
-
+allLanguages.sort();
 let allGenre = [
     { item: 'Drama' },
     { item: 'Thriller' },
@@ -91,16 +123,19 @@ let allGenre = [
     { item: 'Action' },
     { item: 'Fantasy' },
     { item: 'Comedy' },
-    { item: 'Suspense' },
-    { item: 'Science Ficton' },
+    { item: 'History' },
+    { item: 'Crime' },
     { item: 'Western' },
     { item: 'Documentary' },
     { item: 'War' },
     { item: 'Noir' },
     { item: 'Animation' },
-    
+    { item: 'Music' },
+    { item: 'Musical' },
+    { item: 'Biography' },
+    { item: 'Sport' },
 ];
-
+allGenre.sort();
 let allActors = [
     {item: "Leonardo DiCaprio"},
     {item: "Keanu Reeves"},
@@ -109,12 +144,11 @@ let allActors = [
     {item: "Natalie Portman"}, 
     {item: "Marlon Brando"},
     {item: "Audrey Hepburn"},
-    {item: "Christain Bale"},
+    {item: "Christian Bale"},
     {item: "Tom Cruise"},
     {item: "Emma Stone"},
     {item: "Jennifer Aniston"},
-    {item: "Margot Robbie"},
-    {item: "Emily Blunt"},
+    {item: "Kate Winslet"},
     {item: "Tom Hanks"},
     {item: "Robert Downey Jr."},
     {item: "Denzel Washington"},
@@ -126,7 +160,11 @@ let allActors = [
     {item: "Marion Cotillard"},
     {item: "Omar Sy"},
     {item: "Audrey Tautou"},
-]
+];
+allActors.sort();
+
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
