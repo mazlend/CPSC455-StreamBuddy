@@ -88,7 +88,8 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.common.white,
     },
     appbar: {
-        zIndex: 1302
+        zIndex: 1302,
+        minHeight: 98,
     },
     button: {
         borderRadius: "50px",

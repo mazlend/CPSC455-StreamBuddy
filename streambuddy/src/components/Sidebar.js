@@ -107,16 +107,19 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        top: 98,
     },
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        zIndex: 1300
+        zIndex: 1300,
+        top:98,
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
+        top:98,
         marginLeft: drawerWidth,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.easeOut,
@@ -144,6 +147,8 @@ const useStyles = makeStyles((theme) => ({
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
+        marginTop: 98,
+        top: 98,
     },
     content: {
         flexGrow: 1,
