@@ -5,33 +5,10 @@
 
 }
 
-/*html {*/
-/*    font-family: "Montserrat", sans-serif;*/
-
-/*}*/
 .app{
     background: white;
 }
 
-/*.sidebar {*/
-/*    display: flex;*/
-/*    z-index: 0;*/
-/*    position: relative;*/
-/*    bottom:50px;*/
-/*    background: red;*/
-/*}*/
-
-/*.MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaper-22.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.MuiPaper-elevation0 {*/
-/*    top: 100px;*/
-/*}*/
-
-/*.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-17.makeStyles-appBarShift-18.mui-fixed.MuiPaper-elevation4 {*/
-/*    top: 98px;*/
-/*}*/
-
-/*.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appBar-17.mui-fixed.MuiPaper-elevation4 {*/
-/*    top: 98px;*/
-/*}*/
 
 .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appbar-10.mui-fixed.MuiPaper-elevation0 {
     min-height: 98px;
