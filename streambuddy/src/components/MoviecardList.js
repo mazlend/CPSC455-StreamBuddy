@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Moviecard from "./Moviecard";
 
+//TODO: debug error using in developer tools. "Each child in a list should have a unique "key" prop."
 
 export default function MoviecardList(props) {
     const initialList = props.list;

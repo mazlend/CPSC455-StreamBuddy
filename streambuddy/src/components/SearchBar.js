@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+//TODO: classes is defined but never used. Use classes for styling below or get rid of useStyles
 function SearchBar(props) {
     const classes = useStyles();
 
