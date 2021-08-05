@@ -33,7 +33,7 @@ function ElevationScroll(props) {
     });
 }
 
-
+//TODO: move as much of useStyles code to theme.js as possible
 const useStyles = makeStyles(theme => ({
 
     toolbarMargin: {

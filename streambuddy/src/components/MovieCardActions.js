@@ -41,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+//TODO: allow a user to delete a film from watched
+//TODO: allow a user to delete a film from watchlist
+//TODO: user can move a film from watchlist to watched
+
+
 export default function MovieCardActions(props) {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
@@ -99,10 +104,22 @@ export default function MovieCardActions(props) {
             updateUserWatched(user, props.item);
             setSuccessAlert(true);
             console.log("user watched updated successfully");
+        } else if (options[selectedIndex] === 'Mark As Seen' && user.watched.includes(props.item)) {
+            console.log("user has already added this film to watched list");
+
+            //TODO: add an alert to inform user that they have already added this film to watched list
+
+
         } else if (options[selectedIndex] === 'Add to Watchlist' && !user.watchlist.includes(props.item)) {
             console.log("Add to Watchlist from button!!!")
             updateUserWatchlist(user, props.item);
-            setSuccessAlert(true)
+            setSuccessAlert(true);
+        } else if (options[selectedIndex] === 'Add to Watchlist' && user.watchlist.includes(props.item)) {
+            console.log("user has already added this film to watchlist");
+
+            //TODO: add an alert to inform user that they have already added this film to watchlist
+
+
         } else if (options[selectedIndex] === 'Rate / Review') {
             handlePopoverOpen()
             console.log("Rate / Review from button!!!")
@@ -135,8 +152,8 @@ export default function MovieCardActions(props) {
         setOpen(false);
     };
 
-    // checks whether the user has already reviewed this movie
-    // TODO: not yet used because it returned true for all movies -- need to fix
+    // TODO: checks whether the user has already reviewed this movie. Not yet used because it returned true for all movies -- need to fix
+    //TODO: add an alert to inform user if they have already reviewed this film
     const alreadyReviewed = () => {
         console.log("checking if alreadyReviewed")
         if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {

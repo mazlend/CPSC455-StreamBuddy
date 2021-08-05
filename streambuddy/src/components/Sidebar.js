@@ -30,7 +30,8 @@ let yearRangeAvailable = [1930, 2022];
 let imdbScoreAvailable = [0, 10];
 
 
-
+//TODO: countries below are temp countries.
+// Pull all countries data from our database and allow users to search for films based on real countries data
 let allCountries = [
     { item: 'Austria' },
     { item: 'Brazil' },
@@ -64,6 +65,9 @@ let allCountries = [
 
 ];
 allCountries.sort();
+
+//TODO: languages below are temp languages.
+// Pull all languages data from our database and allow users to search for films based on real languages data
 let allLanguages = [
     { item: 'German' },
     { item: 'English' },
@@ -89,6 +93,9 @@ let allLanguages = [
     { item: 'Swedish' },
 ];
 allLanguages.sort();
+
+//TODO: genres below are temp genres.
+// Pull all genres data from our database and allow users to search for films based on real genre data
 let allGenre = [
     { item: 'Drama' },
     { item: 'Thriller' },
@@ -110,6 +117,9 @@ let allGenre = [
     { item: 'Sport' },
 ];
 allGenre.sort();
+
+//TODO: actors below are temp actors.
+// Pull all actors data from our database and allow users to search for films based on real actors data
 let allActors = [
     {item: "Leonardo DiCaprio"},
     {item: "Keanu Reeves"},
@@ -139,6 +149,7 @@ allActors.sort();
 
 const drawerWidth = 240;
 
+//TODO: move as much of useStyles code to theme.js as possible
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',

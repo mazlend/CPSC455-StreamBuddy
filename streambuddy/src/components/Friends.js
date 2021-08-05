@@ -2,6 +2,8 @@ import React from 'react';
 
 function Friends(props) {
 
+    //TODO: implement followers and following
+
     return(
         <section id={props.id}>
             <div className="movie-cards-wrapper">
