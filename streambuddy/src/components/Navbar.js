@@ -18,6 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import logo from '../logo.png';
 
 
+
 function ElevationScroll(props) {
     const { children } = props;
     // useScrollTrigger hook is an event listener for when the user is scrolling
@@ -104,7 +105,8 @@ const useStyles = makeStyles(theme => ({
 export function Navbar() {
     const classes = useStyles();
     const theme = useTheme();
-    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+    // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+    let iOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
     const matches = useMediaQuery(theme.breakpoints.down("md"));
 
     const [openDrawer, setOpenDrawer] = useState(false);

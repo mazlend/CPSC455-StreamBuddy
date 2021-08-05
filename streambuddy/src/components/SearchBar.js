@@ -26,7 +26,6 @@ function SearchBar(props) {
     return (
         <div>
             <Autocomplete
-                background="transparent"
                 id="search-box-title"
                 options={props.autoCompleteData}
                 getOptionLabel={props.getOptionLabel}

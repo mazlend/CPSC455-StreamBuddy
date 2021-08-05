@@ -21,7 +21,6 @@ export default function AutocompletePlusCheckbox(props) {
         <Autocomplete
             onChange={handleChange}
             multiple
-            id="checkboxes"
             options={props.items}
             disableCloseOnSelect
             getOptionLabel={(option) => option.item}
