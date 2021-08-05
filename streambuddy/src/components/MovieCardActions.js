@@ -94,12 +94,12 @@ export default function MovieCardActions(props) {
             return;
         }
         console.info(`You clicked ${options[selectedIndex]}`);
-        if (options[selectedIndex] === 'Mark As Seen') {
+        if (options[selectedIndex] === 'Mark As Seen' && !user.watched.includes(props.item)) {
             console.log("Mark as seen from button!!")
             updateUserWatched(user, props.item);
             setSuccessAlert(true);
             console.log("user watched updated successfully");
-        } else if (options[selectedIndex] === 'Add to Watchlist') {
+        } else if (options[selectedIndex] === 'Add to Watchlist' && !user.watchlist.includes(props.item)) {
             console.log("Add to Watchlist from button!!!")
             updateUserWatchlist(user, props.item);
             setSuccessAlert(true)
