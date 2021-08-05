@@ -1,9 +1,8 @@
-
 const axios = require('axios');
 const movies = require('./movieListForDB.js');
+const Film = require('../models/Film');
 
-const Film = mongoose.model('Film', filmSchema)
-const filmSchema = require("../models/Film")
+
 
 
 

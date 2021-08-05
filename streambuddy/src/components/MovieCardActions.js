@@ -147,7 +147,7 @@ export default function MovieCardActions(props) {
           }
         const movieAlreadyReviewed = user.reviews.filter(review => review.movieTitle === props.item.Title)
         console.log("movieAlreadyReviewed is ", movieAlreadyReviewed);
-        if (movieAlreadyReviewed === 1) {
+        if (movieAlreadyReviewed) {
             console.log("this movie has already been reviewed")
             return true;
         } else {
@@ -155,8 +155,6 @@ export default function MovieCardActions(props) {
             return false;
         }
     }
-
-    // TOODO: add movieId={props.item._id} to Reviews once we use real data (so we can reuse the reviews for more purposes)
 
     return (
 
@@ -187,7 +185,7 @@ export default function MovieCardActions(props) {
                             <Divider />
                             <h2 style={{marginTop: 20, marginBottom: 20}}> {props.item.Title}</h2>
                             <img src={props.item.Poster}/>
-                            <RatingsAndReviewInput moviePoster={props.item.Poster} movieTitle={props.item.Title} onPostClick={handlePopoverClose} />
+                            <RatingsAndReviewInput filmId={props.item._id} moviePoster={props.item.Poster} movieTitle={props.item.Title} onPostClick={handlePopoverClose} />
                         </div>
                     </div>
                 </Fade>

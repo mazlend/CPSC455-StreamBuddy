@@ -15,7 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import SBSVGLogo from '../SBSVGLogo.png';
+import logo from '../logo.png';
 
 
 function ElevationScroll(props) {
@@ -88,7 +88,8 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.common.white,
     },
     appbar: {
-        zIndex: 1302
+        zIndex: 1302,
+        minHeight: 98
     },
     button: {
         borderRadius: "50px",
@@ -205,7 +206,7 @@ export function Navbar(props) {
                         <Button component={ Link } to="/" onClick= {() => setValue(0)}
                                 className={classes.logoContainer} disableRipple >
                             <img
-                                src={SBSVGLogo}
+                                src={logo}
                                 alt="logo"
                                 className={classes.logo}
                             />

@@ -93,6 +93,25 @@ const updateUserReviews = async (req, res) => {
     }
 }
 
+const deleteReview = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let reviewToDelete = req.body.reviewIndex;
+    console.log(reviewToDelete);
+    try {
+        user = await User.findById(userId);
+        user.reviews.splice(reviewToDelete, 1);
+        await user.save();
+        console.log(user);
+        res.status(200).send(user);
+    } catch (e) {
+        res.status(404).json({
+            message: e
+        })
+    }
+
+}
+
 
 exports.getUsers = getUsers;
 exports.getUser = getUser;
@@ -100,5 +119,6 @@ exports.createUser = createUser;
 exports.updateUserWatched = updateUserWatched;
 exports.updateUserWatchlist = updateUserWatchlist;
 exports.updateUserReviews = updateUserReviews;
+exports.deleteReview = deleteReview;
 
 

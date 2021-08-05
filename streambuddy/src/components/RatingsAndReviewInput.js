@@ -8,8 +8,8 @@ import axios from "axios";
 
 
 export default function RatingsAndReviewInput(props) {
-    const [value, setValue] = React.useState(0);
-    const [value1, setValue1] = React.useState(null);
+    const [rating, setRating] = React.useState(0);
+    const [reviewText, setReviewText] = React.useState(null);
     const {user, setUser} = useContext(UserContext);
 
 
@@ -23,25 +23,25 @@ export default function RatingsAndReviewInput(props) {
         })
     }
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
+    const handleChangeRating = (event) => {
+        setRating(event.target.value);
     };
 
-    const handleChangeReview = (event) => {
-        setValue1(event.target.value);
+    const handleChangeTextReview = (event) => {
+        setReviewText(event.target.value);
     };
 
 
     const postReview = () => {
         let review = {
-            // TODO: uncomment once we use real data
-            // movieId: props._id,
+            filmId: props.filmId,
             movieTitle: props.movieTitle,
             moviePoster: props.moviePoster,
-            rating: value,
-            review: value1
+            rating: rating,
+            review: reviewText
         }
         updateUserReviews(user, review);
+        console.log(props.filmId);
     };
 
     const closePopover = () => {
@@ -54,10 +54,8 @@ export default function RatingsAndReviewInput(props) {
                 <Typography component="legend">Rate This Movie!</Typography>
                 <Rating
                     name="simple-controlled"
-                    value={value}
-                    onChange={(event, newValue) => {
-                        setValue(newValue);
-                    }}
+                    value={rating}
+                    onChange={handleChangeRating}
                 />
             </Box>
             <Box component="fieldset" mb={3} borderColor="transparent">
@@ -68,8 +66,8 @@ export default function RatingsAndReviewInput(props) {
                     multiline
                     rows={8}
                     variant="outlined"
-                    value={value1}
-                    onChange={handleChangeReview}
+                    value={reviewText}
+                    onChange={handleChangeTextReview}
                     style={{width: 400}}
                 />
             </Box>

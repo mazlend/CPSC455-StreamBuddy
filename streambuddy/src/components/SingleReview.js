@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Rating from '@material-ui/lab/Rating';
+import axios from "axios";
+import {UserContext} from "./UserContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +31,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SingleReview(props) {
   const classes = useStyles();
+  const {user, setUser} = useContext(UserContext);
+  console.log(user.reviews);
+
+  const deleteReview = (review) => {
+    let reviewIndex = user.reviews.indexOf(review);
+    console.log(user.reviews.indexOf(review));
+    axios.delete(`http://localhost:5000/api/users/${user._id}`, {data: { reviewIndex}})
+        .then((res) => {
+          console.log(res.data);
+          setUser(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+  }
 
 
   return (
@@ -51,7 +68,7 @@ export default function SingleReview(props) {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }} onClick={() => console.log("delete review")}> 
+                <Typography variant="body2" style={{ cursor: 'pointer' }} onClick={() => deleteReview(props.review)}>
                   Remove
                 </Typography>
               </Grid>

@@ -28,6 +28,7 @@ function SearchBar(props) {
 
     function handleChange(event, newInputValue) {
         if (newInputValue !== null) {
+            console.log(newInputValue);
             setFilmName(newInputValue.Title);
             props.parentCallBack(newInputValue.Title);
         }

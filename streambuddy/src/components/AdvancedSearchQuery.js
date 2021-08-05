@@ -1,6 +1,5 @@
 import React, {useState}  from "react";
 import netflixMovieList from './../netflixMovieList.json';
-import {initialmoviesdata} from "../initialmovies";
 
 
 function AdvancedSearchQuery () {

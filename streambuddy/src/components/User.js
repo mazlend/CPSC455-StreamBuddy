@@ -6,7 +6,7 @@ import {UserContext} from "./UserContext";
 
 
 function User(props) {
-    const {user, setUser} = useContext(UserContext);
+    const {user} = useContext(UserContext);
 
     let numWatchedMovies = user.watched.length;
     let numWatchlistMovies = user.watchlist.length;

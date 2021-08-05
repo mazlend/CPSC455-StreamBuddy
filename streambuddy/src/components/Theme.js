@@ -1,18 +1,18 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
- const cpink = "#c41955";
+ const cblue = "#46c7ee";
  const cwhite = "#fff";
-// const cwhite = "#3c4b50";
-// const cpink = "#d0e4dd";
+
+//const cpurple = "#4f549d";
 
 export default createMuiTheme({
     palette: {
         common: {
-            pink: cpink,
+            pink: cblue,
             white: cwhite
         },
         primary: {
-            main: cpink
+            main: cblue
         },
         secondary: {
             main: cwhite
@@ -43,7 +43,7 @@ export default createMuiTheme({
         alignItems: "center",
         top: "30px",
         left: "25%",
-        background: cpink,
+        background: cblue,
         color: cwhite
     }
 
