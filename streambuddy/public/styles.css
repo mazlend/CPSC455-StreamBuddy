@@ -5,10 +5,13 @@
 
 }
 
+html {
+    font-family: "Montserrat", sans-serif;
+
+}
 .app{
     background: white;
 }
-
 
 .MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.makeStyles-appbar-10.mui-fixed.MuiPaper-elevation0 {
     min-height: 98px;
@@ -21,6 +24,10 @@
     transition: none;
     box-shadow: none;
 }
+
+
+
+
 
 .RangeSlider {
     width: inherit;
