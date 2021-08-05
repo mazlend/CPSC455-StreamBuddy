@@ -31,7 +31,7 @@ export default function RatingsAndReviewInput(props) {
         setReviewText(event.target.value);
     };
 
-
+    //TODO: change review to reviewText
     const postReview = () => {
         let review = {
             filmId: props.filmId,

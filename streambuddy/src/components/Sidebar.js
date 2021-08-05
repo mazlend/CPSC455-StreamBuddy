@@ -26,28 +26,10 @@ import RangeSlider from "./RangeSlider";
 
 // min and max years available from the API - we use it to init the range slider
 let yearRangeAvailable = [1930, 2022];
-// the years selected by the user
-let selectedYears = [1930, 2022];
 //Min and max IMDB rating
 let imdbScoreAvailable = [0, 10];
-// the scores selected by the user
-let selectedImdbScores = [0, 10];
 
 
-// sets the user selected year
-function setSelectedYears(years) {
-    selectedYears[0] = years[0];
-    selectedYears[1] = years[1];
-    // TODO: delete logging statement for production
-    //console.log("selected range = " + selectedYears[0] + " - " + selectedYears[1]);
-}
-
-function setSelectedimdbScore(score) {
-    selectedImdbScores[0] = score[0];
-    selectedImdbScores[1] = score[1];
-    // TODO: delete logging statement for production
-    //console.log("selected range = " + selectedImdbScores[0] + " - " + selectedImdbScores[1]);
-}
 
 let allCountries = [
     { item: 'Austria' },
@@ -227,19 +209,17 @@ export default function Sidebar() {
     let searchOptions = [];
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(true);
+
+    const [open, setOpen] = useState(true);
     const [list, setList] = useState(featuredMovieList);
 
-
-
-    const [filmName, setFilmName] = React.useState("");
-
-    const [countryName, setCountryName] = React.useState("");
-    const [language, setLanguage] = React.useState("");
-    const [genre, setGenre] = React.useState("");
-    const [actorName, setActorName] = React.useState("");
-    const [year, setYear] = React.useState(["", ""]);
-    const [rating, setRating] = React.useState(["", ""]);
+    const [filmName, setFilmName] = useState("");
+    const [countryName, setCountryName] = useState("");
+    const [language, setLanguage] = useState("");
+    const [genre, setGenre] = useState("");
+    const [actorName, setActorName] = useState("");
+    const [year, setYear] = useState(["", ""]);
+    const [rating, setRating] = useState(["", ""]);
 
 
     const handleDrawerOpen = () => {
@@ -342,7 +322,7 @@ export default function Sidebar() {
                     <ListItem>
                         <AutocompletePlusCheckbox
                             name="countries"
-                            label="Country of Origin"
+                            label="Countries Filmed In"
                             items={allCountries}
                             advancedSearchCallback = {handleCountryCallback}
                         />
@@ -352,7 +332,7 @@ export default function Sidebar() {
                     <ListItem>
                         <AutocompletePlusCheckbox
                             name="languages"
-                            label="Language"
+                            label="Languages"
                             items={allLanguages}
                             advancedSearchCallback = {handleLanguageCallback}
                         />
@@ -360,8 +340,8 @@ export default function Sidebar() {
                     <Divider />
                     <ListItem>
                         <AutocompletePlusCheckbox
-                            name="genre"
-                            label="Select Genre"
+                            name="genres"
+                            label="Genres"
                             items={allGenre}
                             advancedSearchCallback = {handleGenreCallback}
                         />
@@ -369,8 +349,8 @@ export default function Sidebar() {
                     <Divider />
                     <ListItem>
                         <AutocompletePlusCheckbox
-                            name="actors"
-                            label="Select Actors"
+                            name="stars"
+                            label="Stars"
                             items={allActors}
                             advancedSearchCallback = {handleActorCallback}
                         />
@@ -388,7 +368,7 @@ export default function Sidebar() {
                     <Divider />
                     <ListItem>
                         <RangeSlider
-                            textLabel={"IMDB Rating"}
+                            textLabel={"IMDb Rating"}
                             minVal={imdbScoreAvailable[0]}
                             maxVal={imdbScoreAvailable[1]}
                             getSelected={handleRatingCallback}

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -54,13 +54,10 @@ const useStyles = makeStyles((theme) => ({
 function ProfileNavbar(props) {
 
     const classes = useStyles();
-    let [value, setValue] = React.useState(0);
-    let tempWatchList = props.watchList;
-    let tempWatchedMovies = props.watchedMovies;
+    const {user} = useContext(UserContext);
 
-    const {user, setUser} = useContext(UserContext);
-
-    const [views, setViews] = React.useState(
+    const [value, setValue] = useState(0);
+    const [views] = useState(
         {
             denseViewWatchList: false,
             denseViewWatchedMovies: false

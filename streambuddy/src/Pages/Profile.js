@@ -7,7 +7,7 @@ import {UserContext} from "../components/UserContext";
 
 function Profile() {
 
-    const {user, setUser} = useContext(UserContext);
+    const {user} = useContext(UserContext);
 
     return(
         <Container maxWidth="lg">

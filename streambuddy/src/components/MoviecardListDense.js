@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import Moviecard from "./Moviecard";
 import Grid from "@material-ui/core/Grid";
 
 

@@ -1,21 +1,9 @@
-import React, {useState}  from "react";
+import React  from "react";
 import netflixMovieList from './../netflixMovieList.json';
 
 
 function AdvancedSearchQuery () {
     const data = netflixMovieList;
-    const initialList = data;
-    const [list, setList] = React.useState(initialList);
-
-
-
-    // function filterByName(text) {
-    //     {data.filter(item => item.Title.toString().includes(text)).map(filteredMovie => (
-    //         <li>
-    //             {filteredMovie.Title}
-    //         </li>
-    //     ))}
-    // }
 
     function filterByYear() {
         {data.filter(item => item["Year of release"].toString().includes("2001")).map(filteredMovie => (

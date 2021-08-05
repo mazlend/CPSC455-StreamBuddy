@@ -184,7 +184,7 @@ export default function MovieCardActions(props) {
                             <h1>Rate And Review</h1>
                             <Divider />
                             <h2 style={{marginTop: 20, marginBottom: 20}}> {props.item.Title}</h2>
-                            <img src={props.item.Poster}/>
+                            <img src={props.item.Poster} alt='a film poster'/>
                             <RatingsAndReviewInput filmId={props.item._id} moviePoster={props.item.Poster} movieTitle={props.item.Title} onPostClick={handlePopoverClose} />
                         </div>
                     </div>

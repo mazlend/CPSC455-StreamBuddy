@@ -22,7 +22,7 @@ function User(props) {
     return(
         <Container maxWidth="lg">
             <div className="userDiv">  
-                <img className="userImg" src={profilePicture} onClick={() => editButtonClick()}/>
+                <img className="userImg" src={profilePicture} alt='a user' onClick={() => editButtonClick()}/>
                 <div className ="userDetailsDiv">
                     <h1 onClick={() => editButtonClick()}> {props.name} </h1>
                     <span>{numWatchedMovies} watched movies ~ {numWatchlistMovies} watchlist movies ~ {numReviews} reviews ~ {numFollowers} followers ~ {numFollowing} following</span>
