@@ -1,10 +1,9 @@
 import React from 'react';
-import UserCard from './UserCard';
 import UserCards from "./UserCards";
+import Divider from "@material-ui/core/Divider";
+import {makeStyles} from "@material-ui/core/styles";
 
 function Friends(props) {
-
-    // TODO: implement followers and following
 
     return(
         <section id={props.id}>
