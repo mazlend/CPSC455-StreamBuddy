@@ -26,18 +26,20 @@ export default function UserCards() {
         divider: {
             backgroundColor: '#d9e2ee',
             margin: '0 20px',
+        },
+        dots: {
+            listStyleType: 'none'
         }
     }));
 
     const styles = useStyles();
-
 
     return (
         <div className='cards__container'>
             <div className='cards__wrapper'>
                 <ul className='cards__items'>
                     {userList.map((user) => (
-                        <li className='cards-item'>
+                        <li  className='dots'>
                             <UserCard user={user}/>
                             <Divider variant={'middle'} className={styles.divider}/>
                         </li>
