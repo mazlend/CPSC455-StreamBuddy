@@ -8,7 +8,7 @@ function Friends(props) {
         <section id={props.id}>
             <div className="movie-cards-wrapper">
                 <div>
-                    <h1>My Friends</h1>
+                    <h1>Following</h1>
                     <div className="horizontal-line"/>
                 </div>
                 <p>
