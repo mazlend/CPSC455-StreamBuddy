@@ -8,7 +8,8 @@ import Avatar from "@material-ui/core/Avatar";
 import {Button} from "@material-ui/core";
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
-import {blue, green} from '@material-ui/core/colors';
+import RateReviewIcon from '@material-ui/icons/RateReview';
+import {blue, green, red} from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,16 +60,22 @@ export default function UserCard() {
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large"/>
                                 <span>{ user.watched.length}</span>
                             </div>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
                                 <span>{ user.watchlist.length}</span>
+                            </div>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                                <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
+                                <span>{ user.watched.length}</span>
                             </div>
                         </Grid>
                         <Grid item>
