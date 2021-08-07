@@ -38,9 +38,9 @@ export default function UserCards() {
         <div className='cards__container'>
             <div className='cards__wrapper'>
                 <ul className='cards__items'>
-                    {userList.map((user) => (
+                    {userList.map((cardUser) => (
                         <li  className='dots'>
-                            <UserCard user={user}/>
+                            <UserCard cardUser={cardUser}/>
                             <Divider variant={'middle'} className={styles.divider}/>
                         </li>
                     ))}

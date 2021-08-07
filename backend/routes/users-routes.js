@@ -9,6 +9,8 @@ router.route('/:id').get(userController.getUser);
 router.route('/:id/watched').put(userController.updateUserWatched);
 router.route('/:id/watchlist').put(userController.updateUserWatchlist);
 router.route('/:id/reviews').put(userController.updateUserReviews);
+router.route('/:id/followers').put(userController.updateUserFollowers);
+router.route('/:id/following').put(userController.updateUserFollowing);
 router.route('/:id').delete(userController.deleteReview);
 
 module.exports = router;

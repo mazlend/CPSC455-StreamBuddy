@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -42,13 +42,13 @@ export default function UserCard(props) {
             <Paper className={classes.paper}>
                 <Grid container spacing={2} direction="row" alignItems="center">
                     <Grid item>
-                        <Avatar className={classes.img} alt={props.user.name} src={props.user.imageUrl} />
+                        <Avatar className={classes.img} alt={props.cardUser.name} src={props.cardUser.imageUrl} />
                     </Grid>
                     <Grid item xs={12} sm container>
                         <Grid item xs container spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1">
-                                    {props.user.name}
+                                    {props.cardUser.name}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -61,13 +61,13 @@ export default function UserCard(props) {
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
-                                <span>{ props.user.watchlist.length}</span>
+                                <span>{ props.cardUser.watchlist.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
-                                <span>{ props.user.reviews.length}</span>
+                                <span>{ props.cardUser.reviews.length}</span>
                             </div>
                         </Grid>
                         <Grid item>
