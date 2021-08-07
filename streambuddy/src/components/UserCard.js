@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import {UserContext} from "./UserContext";
 import Avatar from "@material-ui/core/Avatar";
 import {Button} from "@material-ui/core";
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -34,48 +33,41 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function UserCard() {
+export default function UserCard(props) {
     const classes = useStyles();
-    const {user, setUser} = useContext(UserContext);
 
-    let numWatchedMovies = user.watched.length;
-    let numWatchlistMovies = user.watchlist.length;
-    let numReviews = user.reviews.length;
-    // dummy data for follower and following below
-    let numFollowers = 5;
-    let numFollowing = 7;
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container spacing={2} direction="row" alignItems="center">
                     <Grid item>
-                        <Avatar className={classes.img} alt={user.name} src={user.imageUrl} />
+                        <Avatar className={classes.img} alt={props.user.name} src={props.user.imageUrl} />
                     </Grid>
                     <Grid item xs={12} sm container>
                         <Grid item xs container spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1">
-                                    {user.name}
+                                    {props.user.name}
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large"/>
-                                <span>{ user.watched.length}</span>
+                                <span>{ props.user.watched.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
-                                <span>{ user.watchlist.length}</span>
+                                <span>{ props.user.watchlist.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
-                                <span>{ user.watched.length}</span>
+                                <span>{ props.user.reviews.length}</span>
                             </div>
                         </Grid>
                         <Grid item>

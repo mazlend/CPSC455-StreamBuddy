@@ -1,5 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
+import UserCards from "./UserCards";
 
 function Friends(props) {
 
@@ -12,7 +13,7 @@ function Friends(props) {
                     <h1>Following</h1>
                     <div className="horizontal-line"/>
                 </div>
-                <UserCard />
+                <UserCards />
             </div>
         </section>
     );
