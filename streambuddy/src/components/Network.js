@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-import React, {useContext} from 'react';
-import AllUserCards from "./AllUserCards";
-import Friends from "./Friends";
-import {UserContext} from "./UserContext";
-
-function Network(props) {
-    const {user} = useContext(UserContext);
-
-    return(
-        <section id={props.id}>
-            <div>
-                <div>
-                    <h1>Followers</h1>
-                    <div className="horizontal-line"/>
-                </div>
-                <Friends friends={user.followers}/>
-            </div>
-            <br />
-            <div>
-                <div>
-                    <h1>Following</h1>
-                    <div className="horizontal-line"/>
-                </div>
-                <Friends friends={user.following}/>
-            </div>
-            <br />
-            <div>
-                <div>
-                    <h1>All Users</h1>
-                    <div className="horizontal-line"/>
-                </div>
-                <AllUserCards />
-            </div>
-=======
 import React, {useContext, useEffect, useState} from 'react';
 import UserCards from "./UserCards";
 import axios from "axios";
@@ -113,14 +78,8 @@ function Network() {
                 </div>
             </div>
             <br />
->>>>>>> 9b92c142f6d039e2610f31892c33535667923e61
         </section>
     );
 }
 
-<<<<<<< HEAD
-
 export default Network;
-=======
-export default Network;
->>>>>>> 9b92c142f6d039e2610f31892c33535667923e61

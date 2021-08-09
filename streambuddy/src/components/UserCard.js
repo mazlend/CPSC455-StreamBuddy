@@ -82,39 +82,6 @@ export default function UserCard(props) {
 
     }
 
-    const updateNetwork = (carduser)  => {
-        updateFollowing(carduser);
-        updateFollowers(carduser);
-    }
-
-
-    const updateFollowing = (carduser) => {
-        console.log(user.following);
-        if (!user.following.includes(carduser)) {
-            console.log(!user.following.includes(carduser));
-            axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
-                user: carduser
-            }).then((res) => {
-                setUser(res.data);
-                console.log(res.data);
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
-    }
-
-    const updateFollowers = (carduser) => {
-        if (!carduser.followers.includes(user)) {
-            axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
-                user: user
-            }).then((res) => {
-                console.log(res.data);
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
-    }
-
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>

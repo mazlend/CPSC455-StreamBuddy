@@ -132,14 +132,9 @@ const updateUserReviews = async (req, res) => {
 const updateUserFollowers = async (req, res) => {
     let user;
     let userId = req.params.id;
-<<<<<<< HEAD
-    let newFollower = req.body.user;
-    console.log(req.body.user);
-=======
     console.log(req.body);
     let newFollower = req.body.userId;
     console.log(req.body.userId);
->>>>>>> 9b92c142f6d039e2610f31892c33535667923e61
 
     try {
         user = await User.findById(userId);
@@ -156,14 +151,9 @@ const updateUserFollowers = async (req, res) => {
 const updateUserFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-<<<<<<< HEAD
-    let newFollowing = req.body.user;
-    console.log(req.body.user);
-=======
     console.log(req.body);
     let newFollowing = req.body.carduserId;
     console.log(newFollowing)
->>>>>>> 9b92c142f6d039e2610f31892c33535667923e61
 
     try {
         user = await User.findById(userId);
