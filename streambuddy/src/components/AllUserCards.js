@@ -39,7 +39,7 @@ export default function AllUserCards() {
             <ul>
                 {users.map((user) => (
                     <li className={styles.list}>
-                        <UserCard carduser={user} following={"follow"} />
+                        <UserCard carduser={user} following={"follow"} deactivateIfAlreadyFollowing={true}/>
                         <Divider variant={'middle'} className={styles.divider}/>
                     </li>
                 ))}

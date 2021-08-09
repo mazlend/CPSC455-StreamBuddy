@@ -39,17 +39,49 @@ export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser } = useContext(UserContext);
 
+    const disableIfNecessary = () => {
+        // if we want to deactivate the button we then check if we need to actually deactivate it
+        if (props.deactivateIfAlreadyFollowing === true) {
+            console.log("we want to dactivate the user if we already follow them")
+            for (let obj of user.following) {
+                // if we can find the carduser inside user.following then return early
+                if (obj._id === props.carduser._id) {
+                    console.log("disabling the button now!")
+                    return true;
+                }
+            }
+        } else {
+            console.log("not disabling the button")
+            return false;
+        }
+    }
+
     const updateNetwork = (carduser)  => {
-        updateFollowing(carduser);
-        updateFollowers(carduser);
+        if (props.following === "unfollow") {
+            unfollow(carduser)
+        } else {
+            follow(carduser);
+        }
+        // updateFollowers(carduser);
     }
 
 
-    const updateFollowing = (carduser) => {
+    const follow = (carduser) => {
+        axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
+            user: carduser
+        }).then((res) => {
+            setUser(res.data);
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const unfollow = (carduser) => {
+        console.log("unfollow this user")
         console.log(user.following);
-        if (!user.following.includes(carduser)) {
-            console.log(!user.following.includes(carduser));
-            axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
+        if (user.following.includes(carduser)) {
+            axios.delete(`http://localhost:5000/api/users/${user._id}/following/`, {
                 user: carduser
             }).then((res) => {
                 setUser(res.data);
@@ -57,10 +89,16 @@ export default function UserCard(props) {
             }).catch((err) => {
                 console.log(err);
             })
-        }
+        } else {
+            console.log("error: should not reach this line")
+        } 
     }
 
     const updateFollowers = (carduser) => {
+        console.log("updating followers")
+        if (!carduser.followers) {
+            return;
+        }
         if (!carduser.followers.includes(user)) {
             axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
                 user: user
@@ -138,6 +176,7 @@ export default function UserCard(props) {
                         </Grid>
                         <Grid item>
                             <Button
+                                disabled={() => disableIfNecessary()}
                                 onClick={() => updateNetwork(props.carduser)}
                                 className={classes.button} variant={'outlined'}>{props.following}</Button>
                         </Grid>

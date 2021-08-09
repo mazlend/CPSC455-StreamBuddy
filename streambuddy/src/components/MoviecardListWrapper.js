@@ -1,12 +1,11 @@
 import MoviecardList from "./MoviecardList";
 import MoviecardListDense from "./MoviecardListDense";
-import React, {useContext} from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import {UserContext} from "./UserContext";
 
 const Accordion = withStyles({
     root: {
@@ -50,7 +49,6 @@ const AccordionDetails = withStyles((theme) => ({
 }))(MuiAccordionDetails);
 
 export default function MoviecardListWrapper(props) {
-    const {user} = useContext(UserContext);
     const [expanded, setExpanded] = React.useState('panel1');
 
     const handleChange = (panel) => (event, newExpanded) => {
