@@ -17,8 +17,10 @@ router.get('/:id', async function (req, res, next) {
 router.post('/:search', async function (req, res, next) {
     console.log(req.body);
     let queryCountry = req.body.country;
-
     let regexCountry;
+    if (queryCountry.includes('USA')) {
+        queryCountry.push("United States");
+    }
     if (queryCountry) {
         regexCountry = new RegExp(queryCountry.join('|'));
     } else {
@@ -57,10 +59,8 @@ router.post('/:search', async function (req, res, next) {
         regexYears[0] = "1900";
         regexYears[1] = "2022";
     }
-    console.log(regexYears);
     let queryRating = req.body.rating;
     let regexRating = new Array(2);
-    console.log(queryRating);
     if (queryRating) {
         regexRating[0] = queryRating[0].toString();
         if (queryRating[1] === 10) {
