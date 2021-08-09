@@ -96,7 +96,8 @@ const updateUserReviews = async (req, res) => {
 const updateUserFollowers = async (req, res) => {
     let user;
     let userId = req.params.id;
-    let newFollower = req.body;
+    let newFollower = req.body.user;
+    console.log(req.body.user);
 
     try {
         user = await User.findById(userId);
@@ -113,7 +114,8 @@ const updateUserFollowers = async (req, res) => {
 const updateUserFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-    let newFollowing = req.body;
+    let newFollowing = req.body.user;
+    console.log(req.body.user);
 
     try {
         user = await User.findById(userId);

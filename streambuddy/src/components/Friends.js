@@ -1,21 +1,48 @@
-import React from 'react';
-import UserCards from "./UserCards";
-import Divider from "@material-ui/core/Divider";
+import React, {useContext, useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
+import axios from "axios";
+import UserCard from "./UserCard";
+import Divider from "@material-ui/core/Divider";
+import {UserContext} from "./UserContext";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
-function Friends(props) {
+const useStyles = makeStyles(() => ({
+    divider: {
+        backgroundColor: '#d9e2ee',
+        margin: '0 20px',
+    },
+    list: {
+        listStyle: 'none'
+    }
+}));
 
-    return(
-        <section id={props.id}>
-            <div className="movie-cards-wrapper">
-                <div>
-                    <h1>Following</h1>
-                    <div className="horizontal-line"/>
-                </div>
-                <UserCards />
+export default function Friends(props) {
+    const styles = useStyles();
+
+    if (props.friends.length < 1) {
+        return(
+            <div className="movie-cards">
+                <p style={{marginBottom: 40}}>Your list is empty :( <br /> Add some users!!! </p>
             </div>
-        </section>
-    );
+
+        )
+    } else {
+        return (
+            <div>
+                <ul>
+                    {props.friends.map((friend) => (
+                        <li className={styles.list}>
+                            <UserCard carduser={friend} />
+                            <Divider variant={'middle'} className={styles.divider}/>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )
+
+    }
 }
 
-export default Friends;
+
+

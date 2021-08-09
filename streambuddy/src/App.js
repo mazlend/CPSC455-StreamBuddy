@@ -8,10 +8,12 @@ import About from "./Pages/About";
 import Login from "./Pages/Login";
 import {useState} from "react";
 import {UserContext} from "./components/UserContext";
+import User from "./components/User";
 
 function App() {
     const [user, setUser] = useState(null);
     const value = {user, setUser};
+
 
     let routes;
 
@@ -20,7 +22,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/about" component={About}/>
-                <Route exact path="/profile" component={Profile}/>
+                <Route exact path="/profile" component={Profile} />
                 <Route exact path="/login" component={Login}/>
             </Switch>
         );

@@ -1923,7 +1923,7 @@ export const netflixMovieList = [{
 }, {
     "Title": "Friend Request"
 }, {
-    "Title": "Friends with Benefits"
+    "Title": "Network with Benefits"
 }, {
     "Title": "Generation Iron 3"
 }, {
@@ -3005,7 +3005,7 @@ export const netflixMovieList = [{
 }, {
     "Title": "Kodachrome"
 }, {
-    "Title": "Koi Aap Sa: But Lovers Have to Be Friends"
+    "Title": "Koi Aap Sa: But Lovers Have to Be Network"
 }, {
     "Title": "Komola Rocket"
 }, {
@@ -5175,7 +5175,7 @@ export const netflixMovieList = [{
 }, {
     "Title": "Super Monsters Back to School"
 }, {
-    "Title": "Super Monsters Furever Friends"
+    "Title": "Super Monsters Furever Network"
 }, {
     "Title": "Super Monsters Save Christmas"
 }, {

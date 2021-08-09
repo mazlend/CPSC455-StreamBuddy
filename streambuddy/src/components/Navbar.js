@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -16,6 +16,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import logo from '../logo.png';
+
 
 
 
@@ -116,37 +117,38 @@ export function Navbar() {
         setValue(newValue);
     }
 
-    useEffect(() => {
-        if (window.location.pathname === "/" && value !== 0) {
-            setValue(0)
-        } else if (window.location.pathname === "/about" && value !== 1) {
-            setValue(1)
-        } else if (window.location.pathname === "/profile" && value !== 2) {
-                setValue(2)
-        } else if (window.location.pathname === "/login" && value !== 3) {
-            setValue(3)
-        }
-        //this value tells the useEffect hook that if the value hasn't changed, don't run
-        // use effect hook code again
-    }, [value]);
+    // useEffect(() => {
+    //     if (window.location.pathname === "/" && value !== 0) {
+    //         setValue(0)
+    //     } else if (window.location.pathname === "/about" && value !== 1) {
+    //         setValue(1)
+    //     } else if (window.location.pathname === "profile" && value !== 2) {
+    //             setValue(2)
+    //     } else if (window.location.pathname === "/login" && value !== 3) {
+    //         setValue(3)
+    //     }
+    //     //this value tells the useEffect hook that if the value hasn't changed, don't run
+    //     // use effect hook code again
+    // }, [value]);
 
     const tabs = (
         <React.Fragment>
             <Tabs className={classes.tabContainer}
                   value={value}
-                  onChange={handleChange}
+                  // onChange={handleChange}
                   indicatorColor="primary">
 
                 <Tab className={classes.tab} component={Link} to="/"  label="Home" />
                 <Tab className={classes.tab} component={Link} to="/about" label="About" />
-                <Tab className={classes.tab} component={Link} to="/profile" label="Profile" />
+                <Tab className={classes.tab} component={Link} to="/profile"  label="Profile" />
             </Tabs>
             <Button
                 component={Link} to="/login"
                 variant="contained"
                 color="secondary"
                 className={classes.button}
-                onClick={() => setValue(3)}>
+                // onClick={() => setValue(3)}
+                >
                 Login | Register
             </Button>
         </React.Fragment>
@@ -182,7 +184,7 @@ export function Navbar() {
                     <ListItem
                         onClick={() => {
                             setOpenDrawer(false);
-                            setValue(3);
+                            // setValue(3);
                         }}
                         divider button
                         component={Link} to="/login">
