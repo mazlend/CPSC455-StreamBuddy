@@ -16,7 +16,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import RatingsAndReviewInput from "./RatingsAndReviewInput";
 import axios from "axios";
 
-const options = ['Mark As Seen', 'Add to Watchlist', 'Rate / Review'];
+const options = ['Mark As Seen', 'Add to Watchlist', 'Remove from Watched Movies', 'Remove from Watchlist', 'Rate / Review'];
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -41,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-//TODO: allow a user to delete a film from watched
-//TODO: allow a user to delete a film from watchlist
 //TODO: user can move a film from watchlist to watched
 
 
@@ -52,6 +50,9 @@ export default function MovieCardActions(props) {
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const [loginReminderAlert, setLoginReminderAlert] = React.useState(false);
     const [successAlert, setSuccessAlert] = React.useState(false);
+    const [errorAlert, setErrorAlert] = React.useState(false);
+    const [errorAlert1, setErrorAlert1] = React.useState(false);
+    const [errorAlert2, setErrorAlert2] = React.useState(false);
     const [ratingPopover, setRatingPopover] = React.useState(false);
     const classes = useStyles();
     const {user, setUser} = useContext(UserContext);
@@ -60,6 +61,16 @@ export default function MovieCardActions(props) {
     const updateUserWatched = (user, item) => {
         axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
             item
+        }).then((res) => {
+            setUser(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const deleteUserWatched = (user, item) => {
+        axios.delete(`http://localhost:5000/api/users/${user._id}/watched/`, {
+            data: item
         }).then((res) => {
             setUser(res.data);
         }).catch((err) => {
@@ -77,12 +88,23 @@ export default function MovieCardActions(props) {
         })
     }
 
+    const deleteUserWatchlist = (user, item) => {
+        axios.delete(`http://localhost:5000/api/users/${user._id}/watchlist/`, {
+            data: item
+        }).then((res) => {
+            setUser(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     const handlePopoverOpen = (event) => {
         setRatingPopover(true);
     };
 
     const handlePopoverClose = () => {
         setRatingPopover(false);
+        setSuccessAlert(true)
     };
 
     const handleClose1 = (event, reason) => {
@@ -91,6 +113,9 @@ export default function MovieCardActions(props) {
         }
         setLoginReminderAlert(false);
         setSuccessAlert(false);
+        setErrorAlert(false);
+        setErrorAlert1(false);
+        setErrorAlert2(false);
     };
 
     const handleClick = () => {
@@ -99,30 +124,45 @@ export default function MovieCardActions(props) {
             return;
         }
         console.info(`You clicked ${options[selectedIndex]}`);
-        if (options[selectedIndex] === 'Mark As Seen' && !user.watched.includes(props.item)) {
-            console.log("Mark as seen from button!!")
-            updateUserWatched(user, props.item);
-            setSuccessAlert(true);
-            console.log("user watched updated successfully");
-        } else if (options[selectedIndex] === 'Mark As Seen' && user.watched.includes(props.item)) {
-            console.log("user has already added this film to watched list");
-
-            //TODO: add an alert to inform user that they have already added this film to watched list
-
-
-        } else if (options[selectedIndex] === 'Add to Watchlist' && !user.watchlist.includes(props.item)) {
-            console.log("Add to Watchlist from button!!!")
-            updateUserWatchlist(user, props.item);
-            setSuccessAlert(true);
-        } else if (options[selectedIndex] === 'Add to Watchlist' && user.watchlist.includes(props.item)) {
-            console.log("user has already added this film to watchlist");
-
-            //TODO: add an alert to inform user that they have already added this film to watchlist
-
-
+        if (options[selectedIndex] === 'Mark As Seen') {
+            if (!user.watched.some(e => e._id === props.item._id)) {
+                updateUserWatched(user, props.item);
+                setSuccessAlert(true);
+            }
+            if (user.watched.some(e => e._id === props.item._id)) {
+                setErrorAlert(true);
+            }
+        } else if (options[selectedIndex] === 'Add to Watchlist') {
+            if (!user.watchlist.some(e => e._id === props.item._id)) {
+                updateUserWatchlist(user, props.item);
+                setSuccessAlert(true);
+            }
+            if (user.watchlist.some(e => e._id === props.item._id)) {
+                setErrorAlert(true);
+            }
+        } else if (options[selectedIndex] === 'Remove from Watchlist') {
+            if (!user.watchlist.some(e => e._id === props.item._id)) {
+                setErrorAlert1(true);
+            }
+            if (user.watchlist.some(e => e._id === props.item._id)) {
+                deleteUserWatchlist(user, props.item);
+                setSuccessAlert(true);
+            }
+        } else if (options[selectedIndex] === 'Remove from Watched Movies') {
+            if (!user.watchlist.some(e => e._id === props.item._id)) {
+                setErrorAlert1(true);
+            }
+            if (user.watchlist.some(e => e._id === props.item._id)) {
+                deleteUserWatched(user, props.item);
+                setSuccessAlert(true);
+            }
         } else if (options[selectedIndex] === 'Rate / Review') {
-            handlePopoverOpen()
-            console.log("Rate / Review from button!!!")
+            if (!user.reviews.some(e => e.movieTitle === props.item.Title)) {
+                handlePopoverOpen();
+            }
+            if (user.reviews.some(e => e.movieTitle === props.item.Title)) {
+                setErrorAlert2(true);
+            }
         }
     };
 
@@ -137,6 +177,8 @@ export default function MovieCardActions(props) {
         if (index === 0) {
         } else if (index === 1) {
         } else if (index === 2) {
+        } else if (index === 3) {
+        } else if (index === 4) {
         }
     };
 
@@ -148,30 +190,29 @@ export default function MovieCardActions(props) {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-
         setOpen(false);
     };
 
-    // TODO: checks whether the user has already reviewed this movie. Not yet used because it returned true for all movies -- need to fix
-    //TODO: add an alert to inform user if they have already reviewed this film
-    const alreadyReviewed = () => {
-        console.log("checking if alreadyReviewed")
-        if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {
-            console.log("user: ", user)
-            console.log("user.reviews: ", user.reviews)
-            console.log("return false")
-            return false;
-          }
-        const movieAlreadyReviewed = user.reviews.filter(review => review.movieTitle === props.item.Title)
-        console.log("movieAlreadyReviewed is ", movieAlreadyReviewed);
-        if (movieAlreadyReviewed) {
-            console.log("this movie has already been reviewed")
-            return true;
-        } else {
-            console.log("this movie has not yet been removed")
-            return false;
-        }
-    }
+    // // TODO: checks whether the user has already reviewed this movie. Not yet used because it returned true for all movies -- need to fix
+    // //TODO: add an alert to inform user if they have already reviewed this film
+    // const alreadyReviewed = () => {
+    //     console.log("checking if alreadyReviewed")
+    //     if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {
+    //         console.log("user: ", user)
+    //         console.log("user.reviews: ", user.reviews)
+    //         console.log("return false")
+    //         return false;
+    //       }
+    //     const movieAlreadyReviewed = user.reviews.filter(review => review.movieTitle === props.item.Title)
+    //     console.log("movieAlreadyReviewed is ", movieAlreadyReviewed);
+    //     if (movieAlreadyReviewed) {
+    //         console.log("this movie has already been reviewed")
+    //         return true;
+    //     } else {
+    //         console.log("this movie has not yet been removed")
+    //         return false;
+    //     }
+    // }
 
     return (
 
@@ -184,6 +225,21 @@ export default function MovieCardActions(props) {
                 <Snackbar open={successAlert} autoHideDuration={3000} onClose={handleClose1}>
                     <Alert onClose={handleClose1} severity="success">
                         Success!
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={errorAlert} autoHideDuration={3000} onClose={handleClose1}>
+                    <Alert onClose={handleClose1} severity="error">
+                        Error: This Movie is already in your list!
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={errorAlert1} autoHideDuration={3000} onClose={handleClose1}>
+                    <Alert onClose={handleClose1} severity="error">
+                        Error: This Movie is not in your list!
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={errorAlert2} autoHideDuration={3000} onClose={handleClose1}>
+                    <Alert onClose={handleClose1} severity="error">
+                        Error: You've already reviewed this movie!
                     </Alert>
                 </Snackbar></div>
             <Modal open={ratingPopover}
