@@ -8,8 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MoviecardListWrapper from "./MoviecardListWrapper";
 import Reviews from "./Reviews";
+<<<<<<< HEAD
 import Network from "./Network";
+=======
+>>>>>>> 9b92c142f6d039e2610f31892c33535667923e61
 import {UserContext} from "./UserContext";
+import Network from "./Network";
 
 function TabPanel(props) {
     let { children, value, index, ...other } = props;
@@ -51,7 +55,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+<<<<<<< HEAD
 function ProfileNavbar(props) {
+=======
+function ProfileNavbar() {
+
+>>>>>>> 9b92c142f6d039e2610f31892c33535667923e61
     const classes = useStyles();
     const {user} = useContext(UserContext);
 
@@ -87,7 +96,11 @@ function ProfileNavbar(props) {
                 <Reviews />
             </TabPanel>
             <TabPanel value={value} index={3}>
+<<<<<<< HEAD
                 <Network />
+=======
+                <Network/>
+>>>>>>> 9b92c142f6d039e2610f31892c33535667923e61
             </TabPanel>
         </div>
     );
