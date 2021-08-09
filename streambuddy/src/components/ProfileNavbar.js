@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MoviecardListWrapper from "./MoviecardListWrapper";
 import Reviews from "./Reviews";
-import Friends from "./Friends";
 import {UserContext} from "./UserContext";
+import Network from "./Network";
 
 function TabPanel(props) {
     let { children, value, index, ...other } = props;
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ProfileNavbar(props) {
+function ProfileNavbar() {
 
     const classes = useStyles();
     const {user} = useContext(UserContext);
@@ -75,7 +75,7 @@ function ProfileNavbar(props) {
                     <Tab label="Watchlist" {...a11yProps(0)} />
                     <Tab label="Movies I've Seen" {...a11yProps(1)} />
                     <Tab label="My Reviews" {...a11yProps(2)} />
-                    <Tab label="My Friends" {...a11yProps(3)} />
+                    <Tab label="My Network" {...a11yProps(3)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -88,7 +88,7 @@ function ProfileNavbar(props) {
                 <Reviews />
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <Friends id="friends" />
+                <Network/>
             </TabPanel>
         </div>
     );
