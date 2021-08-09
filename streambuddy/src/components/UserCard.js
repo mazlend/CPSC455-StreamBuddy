@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Avatar from "@material-ui/core/Avatar";
-import { Button } from "@material-ui/core";
+import {Button, Link} from "@material-ui/core";
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import RateReviewIcon from '@material-ui/icons/RateReview';
@@ -39,15 +39,37 @@ export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser } = useContext(UserContext);
 
-    const followUser = (user, userToFollow) => {
-        axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
-            userToFollow
-        }).then((res) => {
-            setUser(res.data);
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
+    const updateNetwork = (carduser)  => {
+        updateFollowing(carduser);
+        updateFollowers(carduser);
+    }
+
+
+    const updateFollowing = (carduser) => {
+        console.log(user.following);
+        if (!user.following.includes(carduser)) {
+            console.log(!user.following.includes(carduser));
+            axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
+                user: carduser
+            }).then((res) => {
+                setUser(res.data);
+                console.log(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }
+
+    const updateFollowers = (carduser) => {
+        if (!carduser.followers.includes(user)) {
+            axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
+                user: user
+            }).then((res) => {
+                console.log(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
     }
 
     return (
@@ -55,13 +77,17 @@ export default function UserCard(props) {
             <Paper className={classes.paper}>
                 <Grid container spacing={2} direction="row" alignItems="center">
                     <Grid item>
-                        <Avatar className={classes.img} alt={props.cardUser.name} src={props.cardUser.imageUrl} />
+                        <Avatar className={classes.img} alt={props.carduser.name} src={props.carduser.imageUrl} />
                     </Grid>
                     <Grid item xs={12} sm container>
                         <Grid item xs container spacing={2}>
                             <Grid item xs>
-                                <Typography gutterBottom variant="subtitle1">
-                                    {props.cardUser.name}
+                                <Typography gutterBottom variant="subtitle1"
+                                >
+                                    <Link onClick={() => console.log("link to user profile)")}>
+                                        {props.carduser.name}
+                                    </Link>
+
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -72,20 +98,20 @@ export default function UserCard(props) {
                             </div>
                         </Grid>
                         <Grid item xs={3}>
-                            <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
-                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
-                                <span>{ props.cardUser.watchlist.length}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large" />
+                                <span>{props.carduser.watchlist.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
-                            <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
-                                <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
-                                <span>{ props.cardUser.reviews.length}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                                <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large" />
+                                <span>{props.carduser.reviews.length}</span>
                             </div>
                         </Grid>
                         <Grid item>
                             <Button
-                                onClick={followUser(user, props.carduser._id)}
+                                onClick={() => updateNetwork(props.carduser)}
                                 className={classes.button} variant={'outlined'}>Follow</Button>
                         </Grid>
                     </Grid>

@@ -11,8 +11,8 @@ router.route('/:id/watched').delete(userController.deleteUserWatched);
 router.route('/:id/watchlist').put(userController.updateUserWatchlist);
 router.route('/:id/watchlist').delete(userController.deleteUserWatchlist);
 router.route('/:id/reviews').put(userController.updateUserReviews);
+router.route('/:id').delete(userController.deleteReview);
 router.route('/:id/followers').put(userController.updateUserFollowers);
 router.route('/:id/following').put(userController.updateUserFollowing);
-router.route('/:id').delete(userController.deleteReview);
 
 module.exports = router;
