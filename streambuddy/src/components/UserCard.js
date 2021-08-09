@@ -139,7 +139,7 @@ export default function UserCard(props) {
                         <Grid item>
                             <Button
                                 onClick={() => updateNetwork(props.carduser)}
-                                className={classes.button} variant={'outlined'}>Follow</Button>
+                                className={classes.button} variant={'outlined'}>{props.following}</Button>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -13,7 +13,7 @@ function Network(props) {
                     <h1>Followers</h1>
                     <div className="horizontal-line"/>
                 </div>
-                <Friends friends={user.followers}/>
+                <Friends friends={user.followers} following={"follow"}/>
             </div>
             <br />
             <div>
@@ -21,7 +21,7 @@ function Network(props) {
                     <h1>Following</h1>
                     <div className="horizontal-line"/>
                 </div>
-                <Friends friends={user.following}/>
+                <Friends friends={user.following} following={"unfollow"}/>
             </div>
             <br />
             <div>

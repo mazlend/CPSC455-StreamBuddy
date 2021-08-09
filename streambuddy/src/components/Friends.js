@@ -23,7 +23,7 @@ export default function Friends(props) {
     if (props.friends.length < 1) {
         return(
             <div className="movie-cards">
-                <p style={{marginBottom: 40}}>Your list is empty :( <br /> Add some users!!! </p>
+                <p style={{marginBottom: 40}}>Your list is empty :( <br /> Add some friends by following them!!! </p>
             </div>
 
         )
@@ -33,7 +33,7 @@ export default function Friends(props) {
                 <ul>
                     {props.friends.map((friend) => (
                         <li className={styles.list}>
-                            <UserCard carduser={friend} />
+                            <UserCard carduser={friend} following={props.following} />
                             <Divider variant={'middle'} className={styles.divider}/>
                         </li>
                     ))}
