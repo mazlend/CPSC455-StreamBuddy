@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
 
 
 const columns = [
@@ -79,7 +80,8 @@ export default function MoviecardListDense(props) {
                 </Grid>
             </div>
         )
-    } else
+    }
+    else {
     return (
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid
@@ -92,6 +94,6 @@ export default function MoviecardListDense(props) {
             />
         </div>
     );
-}
+}}
 
 

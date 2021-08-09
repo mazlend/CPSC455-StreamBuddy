@@ -59,6 +59,24 @@ const updateUserWatched = async (req, res) => {
     }
 }
 
+const deleteUserWatched = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let itemToDeleteFromList = req.body._id;
+    try {
+        user = await User.findById(userId);
+        console.log(itemToDeleteFromList)
+        const movieToDeleteIndex = (element) => element._id === itemToDeleteFromList;
+        user.watched.splice(user.watched.findIndex(movieToDeleteIndex), 1);
+        await user.save();
+        res.status(200).send(user);
+    } catch (e) {
+        res.status(400).json({
+            message: e
+        })
+    }
+}
+
 const updateUserWatchlist = async (req, res) => {
     let user;
     let userId = req.params.id;
@@ -67,6 +85,24 @@ const updateUserWatchlist = async (req, res) => {
     try {
         user = await User.findById(userId);
         user.watchlist.push(newItemToAddToList);
+        await user.save();
+        res.status(200).send(user);
+    } catch (e) {
+        res.status(400).json({
+            message: e
+        })
+    }
+}
+
+const deleteUserWatchlist = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let itemToDeleteFromList = req.body._id;
+    try {
+        user = await User.findById(userId);
+        console.log(itemToDeleteFromList)
+        const movieToDeleteIndex = (element) => element._id === itemToDeleteFromList;
+        user.watchlist.splice(user.watchlist.findIndex(movieToDeleteIndex), 1);
         await user.save();
         res.status(200).send(user);
     } catch (e) {
@@ -155,5 +191,6 @@ exports.updateUserReviews = updateUserReviews;
 exports.updateUserFollowers = updateUserFollowers;
 exports.updateUserFollowing = updateUserFollowing;
 exports.deleteReview = deleteReview;
-
+exports.deleteUserWatched = deleteUserWatched;
+exports.deleteUserWatchlist = deleteUserWatchlist;
 
