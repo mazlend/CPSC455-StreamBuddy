@@ -46,6 +46,10 @@ export default function Moviecard(props) {
 
     };
 
+    if(props.item === null){
+        return ( <Card />);
+    }
+
     return (
         <Card className={classes.root}>
             <CardActionArea>

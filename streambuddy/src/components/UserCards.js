@@ -26,11 +26,13 @@ export default function UserCards() {
         divider: {
             backgroundColor: '#d9e2ee',
             margin: '0 20px',
+        },
+        dots: {
+            listStyleType: 'none'
         }
     }));
 
     const styles = useStyles();
-
 
     return (
         <div className='cards__container'>
