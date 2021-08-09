@@ -72,6 +72,33 @@ export default function UserCard(props) {
         }
     }
 
+    let numMoviesWatched = () => {
+        if (props.carduser.watched !== null) {
+            return props.carduser.watched;
+        } else {
+            console.log("carduser.watched is null")
+            return 0;
+        }
+    }
+
+    let numWatchlist = () => {
+        if (props.carduser.watchlist.length !== null) {
+            return props.carduser.watchlist.length;
+        } else {
+            console.log("props.carduser.watchlist.length is null")
+            return 0;
+        }
+    }
+
+    let reviewsLength = () => {
+        if (props.carduser.reviews.length !== null) {
+            return props.carduser.reviews.length;
+        } else {
+            console.log("props.carduser.reviews.length is null")
+            return 0;
+        }
+    }
+
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -94,19 +121,19 @@ export default function UserCard(props) {
                         <Grid item xs={3}>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                 <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large" />
-                                <span>{props.carduser.watched.length}</span>
+                                <span>{numMoviesWatched}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large" />
-                                <span>{props.carduser.watchlist.length}</span>
+                                <span>{numWatchlist}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                 <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large" />
-                                <span>{props.carduser.reviews.length}</span>
+                                <span>{reviewsLength}</span>
                             </div>
                         </Grid>
                         <Grid item>
