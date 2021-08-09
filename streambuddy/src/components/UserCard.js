@@ -38,6 +38,16 @@ const useStyles = makeStyles((theme) => ({
 export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser} = useContext(UserContext);
+    console.log(props.carduser);
+
+    let numMoviesWatched = () => {
+        if (props.carduser.watched !== null) {
+            return props.carduser.watched;
+        } else {
+            console.log("carduser.watched is null")
+            return 0;
+        }
+    }
 
 
     const updateNetwork = (user, carduser)  => {
@@ -46,10 +56,11 @@ export default function UserCard(props) {
     }
 
     const updateFollowing = (user, carduser) => {
-        if (!user.following.includes(carduser)) {
+        if (user._id !== carduser._id && !user.following.includes(carduser._id)) {
             axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
-                 carduser
+                 carduserId: carduser._id
             }).then((res) => {
+                console.log(res.data);
                 setUser(res.data)
             }).catch((err) => {
                 console.log(err);
@@ -58,9 +69,9 @@ export default function UserCard(props) {
     }
 
     const updateFollowers = (user, carduser) => {
-        if (!carduser.followers.includes(user)) {
+        if (user._id !== carduser._id && !carduser.followers.includes(user._id)) {
             axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
-                user
+                userId: user._id
             }).then((res) => {
                 console.log(res.data);
                 carduser.followers = res.data.followers;
@@ -90,19 +101,19 @@ export default function UserCard(props) {
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large"/>
-                                <span>{ props.carduser.watched.length}</span>
+                                <span>{ numMoviesWatched }</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
-                                <span>{ props.carduser.watchlist.length}</span>
+                                <span>{ numMoviesWatched}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
-                                <span>{ props.carduser.reviews.length}</span>
+                                <span>{ numMoviesWatched}</span>
                             </div>
                         </Grid>
                         <Grid item>

@@ -6,9 +6,14 @@ import {UserContext} from "./UserContext";
 function Network() {
     const {user} = useContext(UserContext);
     const [userList, setUserList] = useState([]);
+    const [followers, setFollowers] = useState([]);
+    const [followings, setFollowing] = useState([]);
+
+    console.log(followers);
+    console.log(followings);
 
     const getUsers = () => {
-        axios.get(('http://localhost:5000/api/users/'))
+        axios.get('http://localhost:5000/api/users/')
             .then((res) =>{
                 setUserList(res.data);
                 console.log(res.data);
@@ -19,6 +24,32 @@ function Network() {
 
     useEffect(() => {
         getUsers();
+    }, []);
+
+    const getFollowers = (user) => {
+        axios.get(`http://localhost:5000/api/users/${user._id}`)
+            .then((res) => {
+                console.log(res.data);
+                setFollowers(res.data);
+            }).catch((err) => {
+                console.log(err);
+        })
+    }
+    useEffect(() => {
+        getFollowers(user);
+    }, []);
+
+    const getFollowing = (user) => {
+        axios.get(`http://localhost:5000/api/users/${user._id}`)
+            .then((res) => {
+                console.log(res.data.following);
+                setFollowing(res.data.following);
+            }).catch((err) => {
+            console.log(err);
+        })
+    }
+    useEffect(() => {
+        getFollowing(user);
     }, []);
 
 
@@ -35,7 +66,7 @@ function Network() {
                 <div>
                     <h1>Followers</h1>
                     <div className="horizontal-line"/>
-                    <UserCards users={user.followers}/>
+                    <UserCards users={followers}/>
                 </div>
             </div>
             <br />
@@ -43,7 +74,7 @@ function Network() {
                 <div>
                     <h1>Following</h1>
                     <div className="horizontal-line"/>
-                    <UserCards users={user.following}/>
+                    <UserCards users={followings}/>
                 </div>
             </div>
             <br />

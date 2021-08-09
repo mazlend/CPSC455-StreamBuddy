@@ -16,11 +16,10 @@ const useStyles = makeStyles(() => ({
 
 export default function UserCards(props) {
     const styles = useStyles();
-    let users = props.users;
 
     return (
         <ul>
-            {users.map((carduser) => (
+            {props.users.map((carduser) => (
                 <li className={styles.list}>
                     <UserCard
                         carduser={carduser}
