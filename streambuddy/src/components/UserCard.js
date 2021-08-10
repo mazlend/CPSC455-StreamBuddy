@@ -42,8 +42,9 @@ const useStyles = makeStyles((theme) => ({
     button: {
         borderRadius: 20,
         padding: '0.125rem 0.75rem',
-        borderColor: '#becddc',
-        fontSize: '0.75rem',
+        fontSize: '0.85rem',
+        backgroundColor: theme.palette.common.blue,
+        color: theme.palette.common.white,
     },
     linkText: {
         fontWeight: 'bold'
@@ -181,7 +182,7 @@ export default function UserCard(props) {
                         <Grid item>
                             <Button
                                 onClick={() => updateNetwork(user, props.carduser)}
-                                className={classes.button} variant={'outlined'}>Follow</Button>
+                                className={classes.button} color="primary" variant="contained">Follow</Button>
                         </Grid>
                     </Grid>
                 </Grid>

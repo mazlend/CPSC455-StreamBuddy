@@ -61,13 +61,6 @@ function Network() {
         <section>
             <div className="movie-cards-wrapper">
                 <div>
-                    <h1>All users</h1>
-                    <div className="horizontal-line" />
-                </div>
-                <UserCards users={userList} />
-            </div>
-            <div className="movie-cards-wrapper">
-                <div>
                     <h1>Followers</h1>
                     <div className="horizontal-line" />
                     <UserCards users={followers} />
@@ -82,6 +75,13 @@ function Network() {
                 </div>
             </div>
             <br />
+            <div className="movie-cards-wrapper">
+                <div>
+                    <h1>All users</h1>
+                    <div className="horizontal-line" />
+                </div>
+                <UserCards users={userList} />
+            </div>
         </section>
     );
 }

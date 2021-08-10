@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     drawer: {
-        backgroundColor: theme.palette.common.pink,
+        backgroundColor: theme.palette.common.blue,
         marginLeft: "auto"
     },
     drawerItem: {
@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft: "50px",
         marginRight: "50px",
         textTransform: "none",
-        color: theme.palette.common.pink
+        color: theme.palette.common.blue
     }
 }))
 

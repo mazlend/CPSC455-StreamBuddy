@@ -10,7 +10,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export default createMuiTheme({
     palette: {
         common: {
-            pink: cblue,
+            blue: cblue,
             white: cwhite
         },
         primary: {
