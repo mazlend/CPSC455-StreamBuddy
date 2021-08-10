@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import UserCards from "./UserCards";
 import axios from "axios";
-import {UserContext} from "./UserContext";
+import { UserContext } from "./UserContext";
 
 function Network() {
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [userList, setUserList] = useState([]);
     const [followers, setFollowers] = useState([]);
     const [followings, setFollowing] = useState([]);
@@ -14,12 +14,12 @@ function Network() {
 
     const getUsers = () => {
         axios.get('http://localhost:5000/api/users/')
-            .then((res) =>{
-                setUserList(res.data);
-                // console.log(res.data);
+            .then((res) => {
+                let usersExceptSelf = res.data.filter((acc) => acc._id != user._id)
+                setUserList(usersExceptSelf);
             }).catch((error) => {
-            console.log(error);
-        });
+                console.log(error);
+            });
     }
 
     useEffect(() => {
@@ -37,10 +37,9 @@ function Network() {
                 }
             }).catch((err) => {
                 console.log(err);
-        })
+            })
     }
     useEffect(() => {
-        console.log("foo")
         getFollowers(user);
     }, []);
 
@@ -50,37 +49,36 @@ function Network() {
                 console.log(res.data);
                 setFollowing(res.data);
             }).catch((err) => {
-            console.log(err);
-        })
+                console.log(err);
+            })
     }
     useEffect(() => {
-        console.log("boo")
         getFollowing(user);
     }, []);
 
 
-    return(
+    return (
         <section>
             <div className="movie-cards-wrapper">
                 <div>
                     <h1>All users</h1>
-                    <div className="horizontal-line"/>
+                    <div className="horizontal-line" />
                 </div>
-                <UserCards users={userList}/>
+                <UserCards users={userList} />
             </div>
             <div className="movie-cards-wrapper">
                 <div>
                     <h1>Followers</h1>
-                    <div className="horizontal-line"/>
-                    <UserCards users={followers}/>
+                    <div className="horizontal-line" />
+                    <UserCards users={followers} />
                 </div>
             </div>
             <br />
             <div className="movie-cards-wrapper">
                 <div>
                     <h1>Following</h1>
-                    <div className="horizontal-line"/>
-                    <UserCards users={followings}/>
+                    <div className="horizontal-line" />
+                    <UserCards users={followings} />
                 </div>
             </div>
             <br />
