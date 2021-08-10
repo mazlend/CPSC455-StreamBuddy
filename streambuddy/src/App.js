@@ -8,7 +8,6 @@ import About from "./Pages/About";
 import Login from "./Pages/Login";
 import {useState} from "react";
 import {UserContext} from "./components/UserContext";
-import User from "./components/User";
 
 function App() {
     const [user, setUser] = useState(null);

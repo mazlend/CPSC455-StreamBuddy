@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
 
 
 const columns = [
