@@ -191,6 +191,7 @@ const getFollowers = async (req, res) => {
     let userId = req.params.id;
    console.log(userId);
     try {
+        console.log("abc");
         user = await User.findById(userId).populate('followers');
         console.log(user);
         console.log(user.followers);
