@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
         margin: 'auto',
-        maxWidth: '98%',
+        maxWidth: '100%',
     },
     paper2: {
         padding: 3,
@@ -161,25 +161,25 @@ export default function UserCard(props) {
                                 </div>
                             </Fade>
                         </Modal>
-                        <Grid item xs={3}>
+                        <Grid item xs>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                 <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large" />
                                 <span>{props.carduser.watched.length}</span>
                             </div>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large" />
                                 <span>{props.carduser.watchlist.length}</span>
                             </div>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                 <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="large" />
                                 <span>{props.carduser.reviews.length}</span>
                             </div>
                         </Grid>
-                        <Grid item>
+                        <Grid item >
                             <Button
                                 onClick={() => updateNetwork(user, props.carduser)}
                                 className={classes.button} color="primary" variant="contained">Follow</Button>

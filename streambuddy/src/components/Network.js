@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import UserCards from "./UserCards";
 import axios from "axios";
 import { UserContext } from "./UserContext";
+import NetworkBar from "./NetworkBar";
+
 
 function Network() {
     const { user } = useContext(UserContext);
@@ -63,6 +65,7 @@ function Network() {
                 <div>
                     <h1>Followers</h1>
                     <div className="horizontal-line" />
+                    <NetworkBar />
                     <UserCards users={followers} />
                 </div>
             </div>
@@ -71,6 +74,7 @@ function Network() {
                 <div>
                     <h1>Following</h1>
                     <div className="horizontal-line" />
+                    <NetworkBar />
                     <UserCards users={followings} />
                 </div>
             </div>
@@ -79,6 +83,7 @@ function Network() {
                 <div>
                     <h1>All users</h1>
                     <div className="horizontal-line" />
+                    <NetworkBar />
                 </div>
                 <UserCards users={userList} />
             </div>
