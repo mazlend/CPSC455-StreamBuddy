@@ -60,7 +60,7 @@ export default function MoviecardListWrapper(props) {
             <div className="movie-cards-wrapper">
                 {props.name && (
                     <div>
-                        <h1>{props.name}</h1>
+                        <h1>Watched Films</h1>
                         <div className="horizontal-line"/>
                     </div>
                 )}

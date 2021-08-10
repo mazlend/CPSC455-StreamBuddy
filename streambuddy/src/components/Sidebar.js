@@ -413,12 +413,12 @@ export default function Sidebar() {
                 <div className="content">
                     <div id="welcome">
                         <h1>Welcome to StreamBuddy</h1>
-                        <h2>Search for a movie or use the advanced filters</h2>
+                        <h2>Search for a film or use the advanced filters</h2>
                     </div>
                     <div className="search-bar">
                         <SearchBar
                             parentCallBack={handleCallback}
-                            title={"Search for Movies"}
+                            title={"Search for Films"}
                             autoCompleteData={netflixMovieList}
                             getOptionLabel={(option) => option.Title}
                             style={{ width: 300 }} />

@@ -73,7 +73,7 @@ function ProfileNavbar() {
             <AppBar position="static">
                 <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                     <Tab label="Watchlist" {...a11yProps(0)} />
-                    <Tab label="Movies I've See" {...a11yProps(1)} />
+                    <Tab label="Films I have seen" {...a11yProps(1)} />
                     <Tab label="My Reviews" {...a11yProps(2)} />
                     <Tab label="My Network" {...a11yProps(3)} />
                 </Tabs>

@@ -163,19 +163,19 @@ export default function UserCard(props) {
                         </Modal>
                         <Grid item xs>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large" />
+                                <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="medium" />
                                 <span>{props.carduser.watched.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large" />
+                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="medium" />
                                 <span>{props.carduser.watchlist.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="large" />
+                                <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="medium" />
                                 <span>{props.carduser.reviews.length}</span>
                             </div>
                         </Grid>

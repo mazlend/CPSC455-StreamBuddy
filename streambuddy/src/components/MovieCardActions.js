@@ -16,7 +16,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import RatingsAndReviewInput from "./RatingsAndReviewInput";
 import axios from "axios";
 
-const options = ['Mark As Seen', 'Add to Watchlist', 'Remove from Watched Movies', 'Remove from Watchlist', 'Rate / Review'];
+const options = ['Mark As Seen', 'Add to Watchlist', 'Remove from Watched Films', 'Remove from Watchlist', 'Rate / Review'];
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -148,7 +148,7 @@ export default function MovieCardActions(props) {
                 deleteUserWatchlist(user, props.item);
                 setSuccessAlert(true);
             }
-        } else if (options[selectedIndex] === 'Remove from Watched Movies') {
+        } else if (options[selectedIndex] === 'Remove from Watched Films') {
             if (!user.watchlist.some(e => e._id === props.item._id)) {
                 setErrorAlert1(true);
             }
