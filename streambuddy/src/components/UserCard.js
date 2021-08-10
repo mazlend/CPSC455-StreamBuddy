@@ -12,6 +12,7 @@ import { blue, green, red } from '@material-ui/core/colors';
 import { UserContext } from "./UserContext";
 import axios from "axios";
 import { Backdrop, Fade, Modal } from "@material-ui/core";
+import SingleReview from './SingleReview';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -90,6 +91,7 @@ export default function UserCard(props) {
     const [open, setOpen] = React.useState(false);
     const [clickedUserWatchlist, setClickedUserWatchlist] = React.useState([])
     const [clickedUserWatched, setClickedUserWatched] = React.useState([])
+    const [clickedUserReviews, setClickedUserReviews] = React.useState([]);
 
     const handlePopoverOpen = (event) => {
         // console.log(props.carduser._id);
@@ -109,6 +111,9 @@ export default function UserCard(props) {
                 // console.log(watched)
                 let watchList = res.data.watchlist.map((movie) => movie.Title)
                 setClickedUserWatchlist(watchList)
+                // console.log(res.data.reviews);
+                setClickedUserReviews(res.data.reviews);
+                // console.log(clickedUserReviews);
             }).catch((err) => {
                 console.log(err);
             })
@@ -146,7 +151,14 @@ export default function UserCard(props) {
                                     <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
                                         <p> <h4>Watchlist:</h4> {clickedUserWatchlist} </p> <br />
                                         <p> <h4>Watched:</h4> {clickedUserWatched}</p> <br />
-                                        <p> <h4>Reviews:</h4></p> <br />
+                                        <p> <h4>Reviews:</h4></p>
+                                        <div>
+                                            {clickedUserReviews.map((review) => (
+                                                <div>
+                                                    <SingleReview review={review}/>
+                                                </div>
+                                            ))}
+                                        </div><br />
                                     </div>
                                 </div>
                             </Fade>
