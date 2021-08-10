@@ -8,8 +8,8 @@ import {Button, Link} from "@material-ui/core";
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import RateReviewIcon from '@material-ui/icons/RateReview';
-import { blue, green, red } from '@material-ui/core/colors';
-import { UserContext } from './UserContext';
+import {blue, green, red} from '@material-ui/core/colors';
+import {UserContext} from "./UserContext";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,39 +37,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserCard(props) {
     const classes = useStyles();
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUser} = useContext(UserContext);
+    console.log(props.carduser);
 
-    const updateNetwork = (carduser)  => {
-        updateFollowing(carduser);
-        updateFollowers(carduser);
+
+    const updateNetwork = (user, carduser)  => {
+        updateFollowing(user, carduser);
+        updateFollowers(user, carduser);
     }
 
-
-    const updateFollowing = (carduser) => {
-        console.log(user.following);
-        if (!user.following.includes(carduser)) {
-            console.log(!user.following.includes(carduser));
+    const updateFollowing = (user, carduser) => {
+        if (user._id !== carduser._id && !user.following.includes(carduser._id)) {
             axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
-                user: carduser
+                 carduserId: carduser._id
             }).then((res) => {
-                setUser(res.data);
                 console.log(res.data);
+                setUser(res.data)
             }).catch((err) => {
                 console.log(err);
             })
         }
     }
 
-    const updateFollowers = (carduser) => {
-        if (!carduser.followers.includes(user)) {
+    const updateFollowers = (user, carduser) => {
+        if (user._id !== carduser._id && !carduser.followers.includes(user._id)) {
             axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
-                user: user
+                userId: user._id
             }).then((res) => {
                 console.log(res.data);
+                carduser.followers = res.data.followers;
             }).catch((err) => {
                 console.log(err);
             })
         }
+
     }
 
     return (
@@ -82,36 +83,32 @@ export default function UserCard(props) {
                     <Grid item xs={12} sm container>
                         <Grid item xs container spacing={2}>
                             <Grid item xs>
-                                <Typography gutterBottom variant="subtitle1"
-                                >
-                                    <Link onClick={() => console.log("link to user profile)")}>
-                                        {props.carduser.name}
-                                    </Link>
-
+                                <Typography gutterBottom variant="subtitle1">
+                                    {props.carduser.name}
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid item xs={3}>
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large" />
-                                <span>{props.carduser.watched.length}</span>
+                            <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                                <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large"/>
+                                <span>{ props.carduser.watched.length }</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large" />
-                                <span>{props.carduser.watchlist.length}</span>
+                            <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
+                                <span>{ props.carduser.watchlist.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large" />
-                                <span>{props.carduser.reviews.length}</span>
+                            <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
+                                <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
+                                <span>{ props.carduser.reviews.length}</span>
                             </div>
                         </Grid>
                         <Grid item>
                             <Button
-                                onClick={() => updateNetwork(props.carduser)}
+                                onClick={() => updateNetwork(user, props.carduser)}
                                 className={classes.button} variant={'outlined'}>Follow</Button>
                         </Grid>
                     </Grid>

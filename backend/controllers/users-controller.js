@@ -132,8 +132,9 @@ const updateUserReviews = async (req, res) => {
 const updateUserFollowers = async (req, res) => {
     let user;
     let userId = req.params.id;
-    let newFollower = req.body.user;
-    console.log(req.body.user);
+    console.log(req.body);
+    let newFollower = req.body.userId;
+    console.log(req.body.userId);
 
     try {
         user = await User.findById(userId);
@@ -150,8 +151,9 @@ const updateUserFollowers = async (req, res) => {
 const updateUserFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-    let newFollowing = req.body.user;
-    console.log(req.body.user);
+    // console.log(req.body);
+    let newFollowing = req.body.carduserId;
+    // console.log(newFollowing)
 
     try {
         user = await User.findById(userId);
@@ -184,6 +186,40 @@ const deleteReview = async (req, res) => {
 
 }
 
+const getFollowers = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+   console.log(userId);
+    try {
+        user = await User.findById(userId).populate('followers');
+        console.log(user);
+        console.log(user.followers);
+        console.log('followers');
+        res.status(200).send(user.followers);
+    } catch (e) {
+        res.status(404).json({
+            message: e
+        })
+    }
+}
+
+const getFollowing = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    console.log(userId);
+    try {
+        user = await User.findById(userId).populate('following');
+        console.log('following');
+        console.log(user.following);
+        console.log(user);
+        res.status(200).send(user.following);
+    } catch (e) {
+        res.status(404).json({
+            message: e
+        })
+    }
+}
+
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.createUser = createUser;
@@ -195,4 +231,8 @@ exports.updateUserFollowing = updateUserFollowing;
 exports.deleteReview = deleteReview;
 exports.deleteUserWatched = deleteUserWatched;
 exports.deleteUserWatchlist = deleteUserWatchlist;
+exports.getFollowers = getFollowers;
+exports.getFollowing = getFollowing;
+
+
 

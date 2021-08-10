@@ -16,9 +16,9 @@ function User() {
     return(
         <Container maxWidth="lg">
             <div className="userDiv">  
-                <img className="userImg" src={user.imageUrl} alt='a user' />
+                <img className="userImg" src={user.imageUrl} alt='a user'/>
                 <div className ="userDetailsDiv">
-                    <h1>{user.name}</h1>
+                    <h1>{user.name} </h1>
                     <span>{numWatchedMovies} watched movies ~ {numWatchlistMovies} watchlist movies ~ {numReviews} reviews ~ {numFollowers} followers ~ {numFollowing} following</span>
                 </div>
             </div>

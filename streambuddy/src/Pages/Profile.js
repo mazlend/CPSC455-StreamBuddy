@@ -1,8 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import ProfileNavbar from '../components/ProfileNavbar';
 import {Container} from "@material-ui/core";
-import User from "../components/User";
-import {UserContext} from "../components/UserContext";
+import User from '../components/User';
 
 
 function Profile() {
@@ -11,7 +10,7 @@ function Profile() {
         <Container maxWidth="lg">
             <div>
                 <User/>
-                <ProfileNavbar />
+                <ProfileNavbar/>
             </div>
         </Container>
     );

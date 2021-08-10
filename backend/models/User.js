@@ -11,8 +11,8 @@ const userSchema = new Schema({
     familyName: { type: String },
     watched: [{}],
     watchlist: [{}],
-    followers: [{}],
-    following: [{}],
+    followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    following: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     reviews: [{}],
 });
 
