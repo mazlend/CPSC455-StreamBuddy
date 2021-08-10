@@ -81,7 +81,6 @@ export default function UserCard(props) {
                 console.log(err);
             })
         }
-
     }
 
     const showDetails = () => {
@@ -89,15 +88,31 @@ export default function UserCard(props) {
     }
 
     const [open, setOpen] = React.useState(false);
+    const [clickedUserWatchlist, setClickedUserWatchlist] = React.useState([])
+    const [clickedUserWatched, setClickedUserWatched] = React.useState([])
 
     const handlePopoverOpen = (event) => {
+        // console.log(props.carduser._id);
         setOpen(true);
+        createClickedUserProfile(props.carduser);
     };
 
     const handlePopoverClose = () => {
         setOpen(false);
-
     };
+
+    const createClickedUserProfile = (carduser) => {
+        axios.get(`http://localhost:5000/api/users/${carduser._id}`)
+            .then((res) => {
+                let watched = res.data.watched.map((movie) => movie.Title)
+                setClickedUserWatched(watched)
+                // console.log(watched)
+                let watchList = res.data.watchlist.map((movie) => movie.Title)
+                setClickedUserWatchlist(watchList)
+            }).catch((err) => {
+                console.log(err);
+            })
+    }
 
     return (
         <div className={classes.root}>
@@ -129,7 +144,9 @@ export default function UserCard(props) {
                             <Fade in={open}>
                                 <div className={classes.paper2}>
                                     <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
-                                        <p> <h4>Title:</h4></p> <br />
+                                        <p> <h4>Watchlist:</h4> {clickedUserWatchlist} </p> <br />
+                                        <p> <h4>Watched:</h4> {clickedUserWatched}</p> <br />
+                                        <p> <h4>Reviews:</h4></p> <br />
                                     </div>
                                 </div>
                             </Fade>
