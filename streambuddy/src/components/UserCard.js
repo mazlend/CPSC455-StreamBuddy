@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
         borderColor: '#becddc',
         fontSize: '0.75rem',
     },
+    linkText: {
+        fontWeight: 'bold'
+    }
 }));
 
 export default function UserCard(props) {
@@ -129,11 +132,12 @@ export default function UserCard(props) {
                     <Grid item xs={12} sm container>
                         <Grid item xs container spacing={2}>
                             <Grid item xs>
-                                <Typography
+                                <Link
+                                    className={classes.linkText}
                                     gutterBottom variant="subtitle1"
                                     onClick={handlePopoverOpen}>
                                     {props.carduser.name}
-                                </Typography>
+                                </Link>
                             </Grid>
                         </Grid>
                         <Modal open={open}
@@ -155,7 +159,7 @@ export default function UserCard(props) {
                                         <div>
                                             {clickedUserReviews.map((review) => (
                                                 <div>
-                                                    <SingleReview review={review}/>
+                                                    <SingleReview review={review} />
                                                 </div>
                                             ))}
                                         </div><br />
