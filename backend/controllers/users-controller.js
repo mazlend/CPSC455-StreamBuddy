@@ -151,9 +151,9 @@ const updateUserFollowers = async (req, res) => {
 const updateUserFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-    console.log(req.body);
+    // console.log(req.body);
     let newFollowing = req.body.carduserId;
-    console.log(newFollowing)
+    // console.log(newFollowing)
 
     try {
         user = await User.findById(userId);
@@ -189,11 +189,12 @@ const deleteReview = async (req, res) => {
 const getFollowers = async (req, res) => {
     let user;
     let userId = req.params.id;
-    console.log(userId);
+   console.log(userId);
     try {
         user = await User.findById(userId).populate('followers');
         console.log(user);
         console.log(user.followers);
+        console.log('followers');
         res.status(200).send(user.followers);
     } catch (e) {
         res.status(404).json({

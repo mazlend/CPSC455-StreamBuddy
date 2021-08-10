@@ -9,7 +9,7 @@ function Profile() {
     return(
         <Container maxWidth="lg">
             <div>
-                {<User/>}
+                <User/>
                 <ProfileNavbar/>
             </div>
         </Container>

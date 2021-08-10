@@ -40,15 +40,6 @@ export default function UserCard(props) {
     const { user, setUser} = useContext(UserContext);
     console.log(props.carduser);
 
-    let numMoviesWatched = () => {
-        if (props.carduser.watched !== null) {
-            return props.carduser.watched;
-        } else {
-            console.log("carduser.watched is null")
-            return 0;
-        }
-    }
-
 
     const updateNetwork = (user, carduser)  => {
         updateFollowing(user, carduser);
@@ -101,19 +92,19 @@ export default function UserCard(props) {
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="large"/>
-                                <span>{ numMoviesWatched }</span>
+                                <span>{ props.carduser.watched.length }</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="large"/>
-                                <span>{ numMoviesWatched}</span>
+                                <span>{ props.carduser.watchlist.length}</span>
                             </div>
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap',}}>
                                 <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large"/>
-                                <span>{ numMoviesWatched}</span>
+                                <span>{ props.carduser.reviews.length}</span>
                             </div>
                         </Grid>
                         <Grid item>

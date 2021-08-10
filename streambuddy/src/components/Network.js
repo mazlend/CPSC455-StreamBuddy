@@ -30,7 +30,11 @@ function Network() {
         axios.get(`http://localhost:5000/api/users/${user._id}`)
             .then((res) => {
                 console.log(res.data);
-                setFollowers(res.data);
+                if (res.data) {
+                    setFollowers(res.data);
+                } else {
+                    console.log("followers is null");
+                }
             }).catch((err) => {
                 console.log(err);
         })
@@ -42,8 +46,8 @@ function Network() {
     const getFollowing = (user) => {
         axios.get(`http://localhost:5000/api/users/${user._id}`)
             .then((res) => {
-                console.log(res.data.following);
-                setFollowing(res.data.following);
+                console.log(res.data);
+                setFollowing(res.data);
             }).catch((err) => {
             console.log(err);
         })
