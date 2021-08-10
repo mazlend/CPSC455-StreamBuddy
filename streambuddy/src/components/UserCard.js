@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Avatar from "@material-ui/core/Avatar";
 import { Button, Link } from "@material-ui/core";
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -13,6 +12,7 @@ import { UserContext } from "./UserContext";
 import axios from "axios";
 import { Backdrop, Fade, Modal } from "@material-ui/core";
 import SingleReview from './SingleReview';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
     linkText: {
         fontWeight: 'bold'
-    }
+    },
 }));
 
 export default function UserCard(props) {
@@ -87,17 +87,12 @@ export default function UserCard(props) {
         }
     }
 
-    const showDetails = () => {
-        console.log("foobar")
-    }
-
     const [open, setOpen] = React.useState(false);
     const [clickedUserWatchlist, setClickedUserWatchlist] = React.useState([])
     const [clickedUserWatched, setClickedUserWatched] = React.useState([])
     const [clickedUserReviews, setClickedUserReviews] = React.useState([]);
 
-    const handlePopoverOpen = (event) => {
-        // console.log(props.carduser._id);
+    const handlePopoverOpen = () => {
         setOpen(true);
         createClickedUserProfile(props.carduser);
     };
@@ -111,20 +106,18 @@ export default function UserCard(props) {
             .then((res) => {
                 let watched = res.data.watched.map((movie) => movie.Title)
                 setClickedUserWatched(watched)
-                // console.log(watched)
                 let watchList = res.data.watchlist.map((movie) => movie.Title)
                 setClickedUserWatchlist(watchList)
-                // console.log(res.data.reviews);
                 setClickedUserReviews(res.data.reviews);
-                // console.log(clickedUserReviews);
             }).catch((err) => {
                 console.log(err);
             })
     }
 
     return (
-        <div className={classes.root}>
-            <Paper className={classes.paper}>
+        <div>
+            <div className={classes.root}>
+                <Paper className={classes.paper}>
                 <Grid container spacing={2} direction="row" alignItems="center">
                     <Grid item>
                         <Avatar className={classes.img} alt={props.carduser.name} src={props.carduser.imageUrl} />
@@ -181,7 +174,7 @@ export default function UserCard(props) {
                         </Grid>
                         <Grid item xs={3}>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <RateReviewIcon color="red" style={{ color: red[500] }} fontSize="large" />
+                                <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="large" />
                                 <span>{props.carduser.reviews.length}</span>
                             </div>
                         </Grid>
@@ -193,6 +186,7 @@ export default function UserCard(props) {
                     </Grid>
                 </Grid>
             </Paper>
+        </div>
         </div>
     );
 }
