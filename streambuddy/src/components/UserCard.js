@@ -64,6 +64,7 @@ export default function UserCard(props) {
     }
 
     const delFromNetwork = (user, carduser) => {
+        console.log("trying to delete")
         unfollowUser(user, carduser);
         removeFromFollowers(user, carduser);
     }
