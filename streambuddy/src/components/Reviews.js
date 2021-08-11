@@ -25,10 +25,8 @@ function Reviews(props) {
                 </div>
             </div>
             <div>
-                {nonNullReviews.map((review, i) => (
-                    <div>
-                        <SingleReview review={review} hasRemove={props.hasRemove} key={i} />
-                    </div>
+                {nonNullReviews.map((review) => (
+                    <SingleReview key={review.filmId} review={review} hasRemove={props.hasRemove} />
                 ))}
             </div>
         </section>

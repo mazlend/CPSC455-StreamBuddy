@@ -32,14 +32,12 @@ const useStyles = makeStyles((theme) => ({
 export default function SingleReview(props) {
   const classes = useStyles();
   const { user, setUser } = useContext(UserContext);
-  // console.log(user.reviews);
 
   const deleteReview = (review) => {
     let reviewIndex = user.reviews.indexOf(review);
     console.log(user.reviews.indexOf(review));
     axios.delete(`http://localhost:5000/api/users/${user._id}`, { data: { reviewIndex } })
       .then((res) => {
-        // console.log(res.data);
         setUser(res.data);
       })
       .catch((error) => {
@@ -83,11 +81,6 @@ export default function SingleReview(props) {
                   {props.review.review}
                 </Typography>
               </Grid>
-              {/* <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }} onClick={() => deleteReview(props.review)}>
-                  Remove
-                </Typography>
-              </Grid> */}
               {props.hasRemove ? hasRemove : doesNotHaveRemove}
             </Grid>
             <Grid item>

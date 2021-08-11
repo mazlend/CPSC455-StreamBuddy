@@ -41,7 +41,6 @@ export default function RatingsAndReviewInput(props) {
             review: reviewText    //TODO: change review to reviewText
         }
         updateUserReviews(user, review);
-        console.log(props.filmId);
     };
 
     const closePopover = () => {
@@ -71,12 +70,13 @@ export default function RatingsAndReviewInput(props) {
                     style={{width: 400}}
                 />
             </Box>
-                <box><Button variant="contained"
+                <Button variant="contained"
                         color="primary" onClick={(event) => {
                         postReview();
                         closePopover(event);
-                        }}>Post Review </Button>
-                </box>
+                        }}>
+                        Post Review 
+                </Button>
         </div>
     );
 }

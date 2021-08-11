@@ -123,7 +123,6 @@ export default function MovieCardActions(props) {
             setLoginReminderAlert(true);
             return;
         }
-        console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             if (!user.watched.some(e => e._id === props.item._id)) {
                 updateUserWatched(user, props.item);
@@ -173,7 +172,6 @@ export default function MovieCardActions(props) {
         }
         setSelectedIndex(index);
         setOpen(false);
-        console.info(`You clicked ${options[index]}`, index);
         if (index === 0) {
         } else if (index === 1) {
         } else if (index === 2) {

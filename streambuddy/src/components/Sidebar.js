@@ -309,7 +309,7 @@ export default function Sidebar() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
+                    <Typography noWrap>
                         Advanced Search
                     </Typography>
                 </Toolbar>
