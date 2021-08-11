@@ -17,6 +17,14 @@ export default function UserCards(props) {
     const styles = useStyles();
     let users = Array.from(props.users);
 
+    if (props.users.length < 1) {
+        return(
+            <div className="movie-cards">
+                <p style={{marginBottom: 40}}>Your list is empty :( <br /> Follow some users!!! </p>
+            </div>
+
+        )
+    } else 
     return (
         <ul>
             {users.map((carduser) => (
