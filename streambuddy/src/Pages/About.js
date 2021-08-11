@@ -165,7 +165,7 @@ function About() {
                     />
                     <br />
                     <Avatar className={classes.img}
-                            src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/75580408_781818785612013_7149653515860705280_n.jpg?_nc_cat=108&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=wfxTllnjBJwAX_cg_7p&_nc_ht=scontent.fyvr4-1.fna&oh=5d88e5012965bb7d4f2ffd9e5350030f&oe=6138517A'
+                            src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/174219366_10100919576193835_8718139269133135122_n.jpg?_nc_cat=100&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=mzXzUZP8GZ0AX-igh1x&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=535b50ebac805b0f61e2db028c3807ca&oe=6137A2BE'
                     />
                     <br />
                     <Avatar className={classes.img}
@@ -178,9 +178,6 @@ function About() {
                     <br />
                     <Avatar className={classes.img}
                             src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/190094901_4276706709048484_2813659746883426814_n.jpg?_nc_cat=102&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=HcFUMkVqE84AX9o8ll2&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=6214e82a89b7b3344081dd8611e01795&oe=61386324'
-                    />
-                    <Avatar className={classes.img}
-                            src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/174219366_10100919576193835_8718139269133135122_n.jpg?_nc_cat=100&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=mzXzUZP8GZ0AX-igh1x&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=535b50ebac805b0f61e2db028c3807ca&oe=6137A2BE'
                     />
                     <br />
                     <br />
