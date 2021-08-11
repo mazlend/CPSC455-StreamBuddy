@@ -30,6 +30,9 @@ const useStyles = makeStyles({
     buttons: {
         fontSize: 10,
         backgroundColor: "white"
+    },
+    cardTop: {
+        cursor: 'default'
     }
 });
 
@@ -52,7 +55,9 @@ export default function Moviecard(props) {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea
+                className={classes.cardTop}
+                disableRipple>
                 <CardMedia
                     className={classes.media}
                     image={props.item.Poster}

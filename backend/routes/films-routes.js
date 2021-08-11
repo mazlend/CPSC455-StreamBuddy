@@ -6,8 +6,9 @@ router.get('/:id', async function (req, res, next) {
 
     console.log(req.params);
     let filmName = req.params.id.replace("_", " ");
+    let newFilmName = filmName.replace(/!/g, "#")
     try {
-        let filmData = await Film.find({ Title: filmName });
+        let filmData = await Film.find({ Title: newFilmName });
         res.send(filmData);
     } catch (err) {
         res.send(err);
@@ -75,7 +76,7 @@ router.post('/:search', async function (req, res, next) {
         regexRating[0] = "0.1";
         regexRating[1] = "9.9";
     }
-    
+
     try {
         let filmDataGenre = await Film.find()
             .and([
@@ -86,7 +87,6 @@ router.post('/:search', async function (req, res, next) {
                 { Year: { $gte: regexYears[0], $lte: regexYears[1] } },
                 { imdbRating: { $gte: regexRating[0], $lte: regexRating[1] } }
             ]);
-
         res.send(filmDataGenre);
     } catch (err) {
         res.send(err);
