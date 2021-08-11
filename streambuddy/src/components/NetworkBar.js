@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: theme.palette.background.paper,
     },
+    tab: {
+        cursor: 'default'
+    }
 }));
 
 export default function NetworkBar() {
@@ -21,11 +24,11 @@ export default function NetworkBar() {
                 variant="fullWidth"
                 textColor="black"
             >
-                <Tab label="Name"  style={{ minWidth: "35%" }} />
-                <Tab label="Seen"  style={{ minWidth: "19%" }} />
-                <Tab label="Watchlist"  style={{ minWidth: "9%" }} />
-                <Tab label="Reviews"  style={{ minWidth: "15%" }} />
-                <Tab style={{ minWidth: "20%" }} />
+                <Tab className={classes.tab} label="Name" disableRipple style={{ minWidth: "35%" }} />
+                <Tab className={classes.tab} label="Seen" disableRipple style={{ minWidth: "19%" }} />
+                <Tab className={classes.tab} label="Watchlist" disableRipple style={{ minWidth: "9%" }} />
+                <Tab className={classes.tab} label="Reviews" disableRipple style={{ minWidth: "15%" }} />
+                <Tab className={classes.tab} disableRipple style={{ minWidth: "20%" }} />
             </Tabs>
         </Paper>
 

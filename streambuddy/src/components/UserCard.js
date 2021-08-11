@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.common.white,
     },
     linkText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        cursor: 'pointer'
     },
 }));
 
