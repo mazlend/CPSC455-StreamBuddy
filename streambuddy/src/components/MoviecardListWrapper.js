@@ -1,6 +1,6 @@
 import MoviecardList from "./MoviecardList";
 import MoviecardListDense from "./MoviecardListDense";
-import React, {useContext} from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';

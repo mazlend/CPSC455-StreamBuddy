@@ -18,10 +18,11 @@ router.post('/:search', async function (req, res, next) {
     console.log(req.body);
     let queryCountry = req.body.country;
     let regexCountry;
-    if (queryCountry.includes('USA')) {
-        queryCountry.push("United States");
-    }
+
     if (queryCountry) {
+        if (queryCountry.includes('USA')) {
+            queryCountry.push("United States");
+        }
         regexCountry = new RegExp(queryCountry.join('|'));
     } else {
         regexCountry = new RegExp('.*');
