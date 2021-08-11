@@ -1,11 +1,12 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
- const cblue = "#098edb";
+ const cblue = "#46c7ee";
  const cwhite = "#fff";
 
  //const cdarkblue = "#098edb";
 //const cpurple = "#4f549d";
 // const cblue = "#46c7ee";
+//const gradient = "#00ffff";
 
 export default createMuiTheme({
     palette: {
@@ -23,7 +24,6 @@ export default createMuiTheme({
     typography: {
         tab: {
             textTransform: "none",
-
             fontSize: "1rem",
         }
     },

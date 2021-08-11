@@ -183,6 +183,42 @@ const deleteReview = async (req, res) => {
             message: e
         })
     }
+}
+
+const deleteFromFollowing = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let  followingToDelete = req.body;
+    console.log(followingToDelete);
+
+    try {
+        user = await User.findById(userId);
+        user.following.splice(followingToDelete, 1);
+        await user.save();
+        console.log(user);
+    } catch (e) {
+        res.status(404).json({
+            message: e
+        })
+    }
+}
+
+const deleteFromFollowers = async (req, res) => {
+    let user;
+    let userId = req.params.id;
+    let followerToDelete = req.body.carduserId;
+    console.log(followerToDelete);
+
+    try {
+        user = await User.findById(userId);
+        user.following.splice(followerToDelete, 1);
+        await user.save();
+        console.log(user);
+    } catch (e) {
+        res.status(404).json({
+            message: e
+        })
+    }
 
 }
 
@@ -229,9 +265,11 @@ exports.updateUserWatchlist = updateUserWatchlist;
 exports.updateUserReviews = updateUserReviews;
 exports.updateUserFollowers = updateUserFollowers;
 exports.updateUserFollowing = updateUserFollowing;
-exports.deleteReview = deleteReview;
 exports.deleteUserWatched = deleteUserWatched;
 exports.deleteUserWatchlist = deleteUserWatchlist;
+exports.deleteReview = deleteReview;
+exports.deleteFromFollowing = deleteFromFollowing;
+exports.deleteFromFollowers = deleteFromFollowers;
 exports.getFollowers = getFollowers;
 exports.getFollowing = getFollowing;
 
