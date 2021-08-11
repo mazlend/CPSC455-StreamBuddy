@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -113,29 +113,10 @@ export function Navbar() {
     const [openDrawer, setOpenDrawer] = useState(false);
     const [value, setValue] = useState(0);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    }
-
-    // useEffect(() => {
-    //     if (window.location.pathname === "/" && value !== 0) {
-    //         setValue(0)
-    //     } else if (window.location.pathname === "/about" && value !== 1) {
-    //         setValue(1)
-    //     } else if (window.location.pathname === "profile" && value !== 2) {
-    //             setValue(2)
-    //     } else if (window.location.pathname === "/login" && value !== 3) {
-    //         setValue(3)
-    //     }
-    //     //this value tells the useEffect hook that if the value hasn't changed, don't run
-    //     // use effect hook code again
-    // }, [value]);
-
     const tabs = (
         <React.Fragment>
             <Tabs className={classes.tabContainer}
                   value={value}
-                  // onChange={handleChange}
                   indicatorColor="primary">
 
                 <Tab className={classes.tab} component={Link} to="/"  label="Home" />
