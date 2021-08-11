@@ -54,12 +54,39 @@ const useStyles = makeStyles((theme) => ({
 export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser } = useContext(UserContext);
-    console.log(props.carduser);
+    // console.log(props.carduser);
 
 
     const updateNetwork = (user, carduser) => {
         updateFollowing(user, carduser);
         updateFollowers(user, carduser);
+    }
+
+    const delFromNetwork = (user, carduser) => {
+        unfollowUser(user, carduser);
+        removeFromFollowers(user, carduser);
+    }
+
+    const unfollowUser = (user, carduser) => {
+        axios.delete(`http://localhost:5000/api/user/${user._id}/deleteFollower`, {
+            carduserId: carduser._id
+        }).then((res) => {
+            console.log("success follower removed from user")
+            setUser(res.data)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const removeFromFollowers = (user, carduser) => {
+        axios.delete(`http://localhost:5000/api/user/${carduser._id}/deleteFollowing`, {
+            userId: user._id
+        }).then((res) => {
+            console.log("success current user removed from other user's followers")
+            carduser.followers = res.data.followers;
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     const updateFollowing = (user, carduser) => {
@@ -106,25 +133,53 @@ export default function UserCard(props) {
         axios.get(`http://localhost:5000/api/users/${carduser._id}`)
             .then((res) => {
                 let watched = res.data.watched.map((movie) => movie.Title)
-                setClickedUserWatched(watched)
+                setClickedUserWatched(watched.join(', '))
+                // console.log(watched)
                 let watchList = res.data.watchlist.map((movie) => movie.Title)
-                setClickedUserWatchlist(watchList)
+                setClickedUserWatchlist(watchList.join(', '))
                 setClickedUserReviews(res.data.reviews);
+                // console.log(watchList)
             }).catch((err) => {
-            console.log(err);
-        })
+                console.log(err);
+            })
     }
+
+    const userHasNotFollowed = (
+        <React.Fragment>
+            <Grid item xs={2}>
+                {/* <Box m={2} pt={3}> */}
+                    <Button
+                        onClick={() => updateNetwork(user, props.carduser)}
+                        className={classes.button} color="primary" variant="contained">Follow
+                    </Button>
+                {/* </Box> */}
+            </Grid>
+        </React.Fragment>
+    )
+
+    const userHasFollowed = (
+        <React.Fragment>
+            <Grid item xs={2}>
+                <Button
+                    onClick={() => delFromNetwork(user, props.carduser)}
+                    className={classes.button} color="primary" variant="contained">Unfollow
+                </Button>
+            </Grid>
+        </React.Fragment>
+    )
+
+    const hasRemove = false;
 
     return (
         <div>
             <div className={classes.root}>
                 <Paper className={classes.paper}>
-                    <Grid container spacing={2} direction="row" alignItems="center">
+                    <Grid container spacing={3} direction="row" alignItems="center">
                         <Grid item>
                             <Avatar className={classes.img} alt={props.carduser.name} src={props.carduser.imageUrl} />
                         </Grid>
-                        <Grid item xs={12} sm container>
-                            <Grid item xs container spacing={2}>
+                        <Grid item xs={14} sm container>
+                            <Grid item xs container>
                                 <Grid item xs>
                                     <Link
                                         className={classes.linkText}
@@ -135,15 +190,15 @@ export default function UserCard(props) {
                                 </Grid>
                             </Grid>
                             <Modal open={open}
-                                   className={classes.modal}
-                                   onClose={handlePopoverClose}
-                                   closeAfterTransition
-                                   disableScrollLock
-                                   BackdropComponent={Backdrop}
-                                   BackdropProps={{
-                                       timeout: 500
-                                   }}
-                                   disableRestoreFocus>
+                                className={classes.modal}
+                                onClose={handlePopoverClose}
+                                closeAfterTransition
+                                disableScrollLock
+                                BackdropComponent={Backdrop}
+                                BackdropProps={{
+                                    timeout: 500
+                                }}
+                                disableRestoreFocus>
                                 <Fade in={open}>
                                     <div className={classes.paper2}>
                                         <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
@@ -153,7 +208,7 @@ export default function UserCard(props) {
                                             <div>
                                                 {clickedUserReviews.map((review) => (
                                                     <div>
-                                                        <SingleReview review={review} />
+                                                        <SingleReview review={review} hasRemove={hasRemove} />
                                                     </div>
                                                 ))}
                                             </div><br />
@@ -161,29 +216,25 @@ export default function UserCard(props) {
                                     </div>
                                 </Fade>
                             </Modal>
-                            <Grid item xs>
+                            <Grid item xs={2}>
                                 <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                     <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="medium" />
                                     <span>{props.carduser.watched.length}</span>
                                 </div>
                             </Grid>
-                            <Grid item xs>
+                            <Grid item xs={2}>
                                 <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                     <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="medium" />
                                     <span>{props.carduser.watchlist.length}</span>
                                 </div>
                             </Grid>
-                            <Grid item xs>
+                            <Grid item xs={2}>
                                 <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                                     <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="medium" />
                                     <span>{props.carduser.reviews.length}</span>
                                 </div>
                             </Grid>
-                            <Grid item >
-                                <Button
-                                    onClick={() => updateNetwork(user, props.carduser)}
-                                    className={classes.button} color="primary" variant="contained">Follow</Button>
-                            </Grid>
+                            {user.following.includes(props.carduser._id) ? userHasFollowed : userHasNotFollowed}
                         </Grid>
                     </Grid>
                 </Paper>

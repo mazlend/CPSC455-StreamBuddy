@@ -43,6 +43,7 @@ router.post('/:search', async function (req, res, next) {
     } else {
         regexLanguage = new RegExp('.*');
     }
+
     let queryActors = req.body.actors;
     let regexActors;
     if (queryActors) {
@@ -50,9 +51,9 @@ router.post('/:search', async function (req, res, next) {
     } else {
         regexActors = new RegExp('.*');
     }
+
     let queryYears = req.body.years;
     let regexYears = new Array(2);
-
     if (queryYears) {
         regexYears[0] = queryYears[0].toString();
         regexYears[1] = queryYears[1].toString();
@@ -60,6 +61,7 @@ router.post('/:search', async function (req, res, next) {
         regexYears[0] = "1900";
         regexYears[1] = "2022";
     }
+
     let queryRating = req.body.rating;
     let regexRating = new Array(2);
     if (queryRating) {
@@ -73,6 +75,7 @@ router.post('/:search', async function (req, res, next) {
         regexRating[0] = "0.1";
         regexRating[1] = "9.9";
     }
+    
     try {
         let filmDataGenre = await Film.find()
             .and([
