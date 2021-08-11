@@ -27,8 +27,8 @@ router.post('/:search', async function (req, res, next) {
     } else {
         regexCountry = new RegExp('.*');
     }
-    let queryGenre = req.body.genre;
 
+    let queryGenre = req.body.genre;
     let regexGenre;
     if (queryGenre) {
         regexGenre = new RegExp(queryGenre.join('|'));
