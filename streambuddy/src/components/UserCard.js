@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser } = useContext(UserContext);
-    console.log(props.carduser);
+    // console.log(props.carduser);
 
 
     const updateNetwork = (user, carduser) => {
@@ -106,10 +106,12 @@ export default function UserCard(props) {
         axios.get(`http://localhost:5000/api/users/${carduser._id}`)
             .then((res) => {
                 let watched = res.data.watched.map((movie) => movie.Title)
-                setClickedUserWatched(watched)
+                setClickedUserWatched(watched.join(', '))
+                // console.log(watched)
                 let watchList = res.data.watchlist.map((movie) => movie.Title)
-                setClickedUserWatchlist(watchList)
+                setClickedUserWatchlist(watchList.join(', '))
                 setClickedUserReviews(res.data.reviews);
+                // console.log(watchList)
             }).catch((err) => {
                 console.log(err);
             })

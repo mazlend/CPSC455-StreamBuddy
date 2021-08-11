@@ -32,14 +32,14 @@ const useStyles = makeStyles((theme) => ({
 export default function SingleReview(props) {
   const classes = useStyles();
   const {user, setUser} = useContext(UserContext);
-  console.log(user.reviews);
+  // console.log(user.reviews);
 
   const deleteReview = (review) => {
     let reviewIndex = user.reviews.indexOf(review);
     console.log(user.reviews.indexOf(review));
     axios.delete(`http://localhost:5000/api/users/${user._id}`, {data: { reviewIndex}})
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setUser(res.data);
         })
         .catch((error) => {
