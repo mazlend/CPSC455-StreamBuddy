@@ -12,7 +12,6 @@ import { UserContext } from "./UserContext";
 import axios from "axios";
 import { Backdrop, Fade, Modal } from "@material-ui/core";
 import SingleReview from './SingleReview';
-// import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -169,10 +168,6 @@ export default function UserCard(props) {
         </React.Fragment>
     )
 
-    // const hasUserFollowedCurrCardUser = {
-    //     return user.following.includes(props.carduser._id)
-    // }
-
     const hasRemove = false;
 
     return (
@@ -239,15 +234,6 @@ export default function UserCard(props) {
                                     <span>{props.carduser.reviews.length}</span>
                                 </div>
                             </Grid>
-                            {/* <Grid item >
-                                <Button
-                                    onClick={() => updateNetwork(user, props.carduser)}
-                                    className={classes.button} color="primary" variant="contained">Follow</Button>
-                            </Grid> */}
-                            {/* {console.log(user.following)}
-                            {console.log(props.carduser._id)}
-                            {console.log(user.following.includes(props.carduser._id))} */}
-                            {/* {console.log(hasUserFollowedCurrCardUser)} */}
                             {user.following.includes(props.carduser._id) ? userHasFollowed : userHasNotFollowed}
                         </Grid>
                     </Grid>

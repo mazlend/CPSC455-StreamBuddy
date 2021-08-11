@@ -88,7 +88,6 @@ export default function SingleReview(props) {
                   Remove
                 </Typography>
               </Grid> */}
-              {console.log(props.hasRemove)}
               {props.hasRemove ? hasRemove : doesNotHaveRemove}
             </Grid>
             <Grid item>

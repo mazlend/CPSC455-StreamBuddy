@@ -88,7 +88,6 @@ function ProfileNavbar() {
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <Reviews hasRemove={hasRemove}/>
-                {console.log(hasRemove)}
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Network/>
