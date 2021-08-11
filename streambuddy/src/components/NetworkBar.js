@@ -21,7 +21,7 @@ export default function NetworkBar() {
                 variant="fullWidth"
                 textColor="black"
             >
-                <Tab label="Name"   disableRipple style={{minWidth:"26%"}}/>
+                <Tab label="Name"  disableRipple   style={{minWidth:"26%"}}/>
                 <Tab label="Seen"  disableRipple style={{minWidth:"5%"}}/>
                 <Tab label="Watchlist"  disableRipple style={{minWidth:"30%"}}/>
                 <Tab label="Reviews"  disableRipple style={{minWidth:"14%"}}/>
