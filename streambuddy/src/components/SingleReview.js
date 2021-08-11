@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     maxWidth: '100%',
     maxHeight: '100%',
+    cursor: 'default'
   },
 }));
 
@@ -69,7 +70,9 @@ export default function SingleReview(props) {
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
-            <ButtonBase className={classes.image}>
+            <ButtonBase
+              className={classes.image}
+              disableRipple>
               <img className={classes.img} alt="complex" src={props.review.moviePoster} />
             </ButtonBase>
           </Grid>

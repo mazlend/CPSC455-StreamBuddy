@@ -70,7 +70,7 @@ export default function UserCard(props) {
     }
 
     const unfollowUser = (user, carduser) => {
-        axios.delete(`http://localhost:5000/api/user/${user._id}/deleteFollower`, {
+        axios.delete(`http://localhost:5000/api/user/${user._id}/deleteFromFollowing`, {
             carduserId: carduser._id
         }).then((res) => {
             console.log("success follower removed from user")
@@ -81,7 +81,7 @@ export default function UserCard(props) {
     }
 
     const removeFromFollowers = (user, carduser) => {
-        axios.delete(`http://localhost:5000/api/user/${carduser._id}/deleteFollowing`, {
+        axios.delete(`http://localhost:5000/api/user/${carduser._id}/deleteFromFollowers`, {
             userId: user._id
         }).then((res) => {
             console.log("success current user removed from other user's followers")
