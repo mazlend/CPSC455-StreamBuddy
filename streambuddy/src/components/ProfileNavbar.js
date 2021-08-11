@@ -68,6 +68,8 @@ function ProfileNavbar() {
         setValue(newValue);
     };
 
+    const hasRemove = true;
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -85,7 +87,8 @@ function ProfileNavbar() {
                 <MoviecardListWrapper id="watchedMovies" name="Watched Movies" movieList={user.watched} denseView={views.denseViewWatchedMovies} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Reviews />
+                <Reviews hasRemove={hasRemove}/>
+                {console.log(hasRemove)}
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Network/>

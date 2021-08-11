@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {UserContext} from "./UserContext";
 import SingleReview from './SingleReview';
 
-function Reviews() {
+function Reviews(props) {
     const {user} = useContext(UserContext);
 
     let userReviews = user.reviews;
@@ -30,7 +30,7 @@ function Reviews() {
             <div>
                 {nonNullReviews.map((review, i) => (
                     <div>
-                        <SingleReview review={review} key={i}/>
+                        <SingleReview review={review} hasRemove={props.hasRemove} key={i}/>
                     </div>
                 ))}
             </div>

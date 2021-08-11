@@ -173,6 +173,8 @@ export default function UserCard(props) {
     //     return user.following.includes(props.carduser._id)
     // }
 
+    const hasRemove = false;
+
     return (
         <div>
             <div className={classes.root}>
@@ -211,7 +213,7 @@ export default function UserCard(props) {
                                             <div>
                                                 {clickedUserReviews.map((review) => (
                                                     <div>
-                                                        <SingleReview review={review} />
+                                                        <SingleReview review={review} hasRemove={hasRemove} />
                                                     </div>
                                                 ))}
                                             </div><br />
