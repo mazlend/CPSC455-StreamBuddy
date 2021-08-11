@@ -1,5 +1,5 @@
-import {makeStyles} from "@material-ui/core/styles";
-import {Paper} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Paper } from "@material-ui/core";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import React from "react";
@@ -21,11 +21,11 @@ export default function NetworkBar() {
                 variant="fullWidth"
                 textColor="black"
             >
-                <Tab label="Name"   disableRipple style={{minWidth:"26%"}}/>
-                <Tab label="Seen"  disableRipple style={{minWidth:"5%"}}/>
-                <Tab label="Watchlist"  disableRipple style={{minWidth:"30%"}}/>
-                <Tab label="Reviews"  disableRipple style={{minWidth:"14%"}}/>
-                <Tab disableRipple style={{minWidth:"20%"}}/>
+                <Tab label="Name"  style={{ minWidth: "35%" }} />
+                <Tab label="Seen"  style={{ minWidth: "19%" }} />
+                <Tab label="Watchlist"  style={{ minWidth: "9%" }} />
+                <Tab label="Reviews"  style={{ minWidth: "15%" }} />
+                <Tab style={{ minWidth: "20%" }} />
             </Tabs>
         </Paper>
 
