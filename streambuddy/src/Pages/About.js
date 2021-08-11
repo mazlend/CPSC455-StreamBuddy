@@ -1,7 +1,21 @@
 import React from 'react';
-import {Container} from "@material-ui/core";
+import {Container, Paper} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > *': {
+            margin: theme.spacing(1),
+            width: theme.spacing(16),
+            height: theme.spacing(16),
+        },
+    },
+}));
 
 function About() {
+    const classes = useStyles();
 
     return(
         <Container maxWidth="lg">
@@ -11,6 +25,9 @@ function About() {
                 <h2> About StreamBuddy </h2>
             </div>
             <br />
+            <div className={classes.root}>
+                <Paper elevation={3} />
+            </div>
             <p>Say goodbye to the endless scrolling of Netflix menus!
                 With StreamBuddy, you can check if a movie that you want to watch is available on Netflix.
                 Unsure about what movie you want to watch?

@@ -34,6 +34,7 @@ function Network() {
                 console.log(res.data);
                 if (res.data) {
                     setFollowers(res.data);
+                    console.log(followers);
                 } else {
                     console.log("followers is null");
                 }

@@ -111,83 +111,83 @@ export default function UserCard(props) {
                 setClickedUserWatchlist(watchList)
                 setClickedUserReviews(res.data.reviews);
             }).catch((err) => {
-                console.log(err);
-            })
+            console.log(err);
+        })
     }
 
     return (
         <div>
             <div className={classes.root}>
                 <Paper className={classes.paper}>
-                <Grid container spacing={2} direction="row" alignItems="center">
-                    <Grid item>
-                        <Avatar className={classes.img} alt={props.carduser.name} src={props.carduser.imageUrl} />
-                    </Grid>
-                    <Grid item xs={12} sm container>
-                        <Grid item xs container spacing={2}>
+                    <Grid container spacing={2} direction="row" alignItems="center">
+                        <Grid item>
+                            <Avatar className={classes.img} alt={props.carduser.name} src={props.carduser.imageUrl} />
+                        </Grid>
+                        <Grid item xs={12} sm container>
+                            <Grid item xs container spacing={2}>
+                                <Grid item xs>
+                                    <Link
+                                        className={classes.linkText}
+                                        gutterBottom variant="subtitle1"
+                                        onClick={handlePopoverOpen}>
+                                        {props.carduser.name}
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                            <Modal open={open}
+                                   className={classes.modal}
+                                   onClose={handlePopoverClose}
+                                   closeAfterTransition
+                                   disableScrollLock
+                                   BackdropComponent={Backdrop}
+                                   BackdropProps={{
+                                       timeout: 500
+                                   }}
+                                   disableRestoreFocus>
+                                <Fade in={open}>
+                                    <div className={classes.paper2}>
+                                        <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
+                                            <p> <h4>Watchlist:</h4> {clickedUserWatchlist} </p> <br />
+                                            <p> <h4>Watched:</h4> {clickedUserWatched}</p> <br />
+                                            <p> <h4>Reviews:</h4></p>
+                                            <div>
+                                                {clickedUserReviews.map((review) => (
+                                                    <div>
+                                                        <SingleReview review={review} />
+                                                    </div>
+                                                ))}
+                                            </div><br />
+                                        </div>
+                                    </div>
+                                </Fade>
+                            </Modal>
                             <Grid item xs>
-                                <Link
-                                    className={classes.linkText}
-                                    gutterBottom variant="subtitle1"
-                                    onClick={handlePopoverOpen}>
-                                    {props.carduser.name}
-                                </Link>
+                                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                                    <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="medium" />
+                                    <span>{props.carduser.watched.length}</span>
+                                </div>
+                            </Grid>
+                            <Grid item xs>
+                                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                                    <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="medium" />
+                                    <span>{props.carduser.watchlist.length}</span>
+                                </div>
+                            </Grid>
+                            <Grid item xs>
+                                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                                    <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="medium" />
+                                    <span>{props.carduser.reviews.length}</span>
+                                </div>
+                            </Grid>
+                            <Grid item >
+                                <Button
+                                    onClick={() => updateNetwork(user, props.carduser)}
+                                    className={classes.button} color="primary" variant="contained">Follow</Button>
                             </Grid>
                         </Grid>
-                        <Modal open={open}
-                            className={classes.modal}
-                            onClose={handlePopoverClose}
-                            closeAfterTransition
-                            disableScrollLock
-                            BackdropComponent={Backdrop}
-                            BackdropProps={{
-                                timeout: 500
-                            }}
-                            disableRestoreFocus>
-                            <Fade in={open}>
-                                <div className={classes.paper2}>
-                                    <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
-                                        <p> <h4>Watchlist:</h4> {clickedUserWatchlist} </p> <br />
-                                        <p> <h4>Watched:</h4> {clickedUserWatched}</p> <br />
-                                        <p> <h4>Reviews:</h4></p>
-                                        <div>
-                                            {clickedUserReviews.map((review) => (
-                                                <div>
-                                                    <SingleReview review={review} />
-                                                </div>
-                                            ))}
-                                        </div><br />
-                                    </div>
-                                </div>
-                            </Fade>
-                        </Modal>
-                        <Grid item xs>
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <VisibilityIcon color="green" style={{ color: green[500] }} fontSize="medium" />
-                                <span>{props.carduser.watched.length}</span>
-                            </div>
-                        </Grid>
-                        <Grid item xs>
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <AddToQueueIcon color="blue" style={{ color: blue[500] }} fontSize="medium" />
-                                <span>{props.carduser.watchlist.length}</span>
-                            </div>
-                        </Grid>
-                        <Grid item xs>
-                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
-                                <RateReviewIcon color="red" style={{ color: red[800] }} fontSize="medium" />
-                                <span>{props.carduser.reviews.length}</span>
-                            </div>
-                        </Grid>
-                        <Grid item >
-                            <Button
-                                onClick={() => updateNetwork(user, props.carduser)}
-                                className={classes.button} color="primary" variant="contained">Follow</Button>
-                        </Grid>
                     </Grid>
-                </Grid>
-            </Paper>
-        </div>
+                </Paper>
+            </div>
         </div>
     );
 }

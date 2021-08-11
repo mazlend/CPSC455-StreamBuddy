@@ -26,6 +26,7 @@ export default function NetworkBar() {
                 <Tab label="Watchlist"  disableRipple style={{minWidth:"30%"}}/>
                 <Tab label="Reviews"  disableRipple style={{minWidth:"14%"}}/>
                 <Tab disableRipple style={{minWidth:"20%"}}/>
+
             </Tabs>
         </Paper>
 

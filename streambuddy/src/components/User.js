@@ -7,19 +7,13 @@ import {UserContext} from "./UserContext";
 function User() {
     const {user} = useContext(UserContext);
 
-    let numWatchedMovies = user.watched.length;
-    let numWatchlistMovies = user.watchlist.length;
-    let numReviews = user.reviews.length;
-    let numFollowers = user.followers.length;
-    let numFollowing = user.following.length;
-
     return(
         <Container maxWidth="lg">
             <div className="userDiv">  
                 <img className="userImg" src={user.imageUrl} alt='a user'/>
                 <div className ="userDetailsDiv">
                     <h1>{user.name} </h1>
-                    <span>{numWatchedMovies} watched movies ~ {numWatchlistMovies} watchlist movies ~ {numReviews} reviews ~ {numFollowers} followers ~ {numFollowing} following</span>
+                    <span> {user.watched.length} watched movies ~ {user.watchlist.length} watchlist movies ~ {user.reviews.length} reviews ~ {user.followers.length} followers ~ {user.following.length} following</span>
                 </div>
             </div>
         </Container>
