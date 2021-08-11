@@ -118,8 +118,8 @@ function About() {
                                             <Typography variant='body1' className={classes.wrapIcon} align='center'>
                                                 Say goodbye to the endless scrolling.
                                                 Unsure about what to watch? <br />
-                                                Use advanced search features to see recommendations for films available on Netflix that fit your criteria.
-                                                Search films by title, country, genre, rating, release date, and cast
+                                                Use advanced search feature to see recommendations for films available on Netflix that fit your criteria.
+                                                Search films by title, country, genre, rating, release date, and cast.
 
                                             </Typography>
                                         </Paper>
@@ -139,8 +139,8 @@ function About() {
                                             <Typography variant='h6' align='center'> FOLLOW FRIENDS </Typography>
                                             <Typography variant='body1' className={classes.wrapIcon}>
                                                 Stay posted about what your friends are watching and liked.
-                                                Read reviews are ratings by friends
-                                                Connect with cinephiles with similar interests
+                                                Read reviews and check ratings by friends.
+                                                Connect with cinephiles with similar interests.
                                             </Typography>
                                         </Paper>
                                     </Grid>
