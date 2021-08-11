@@ -55,8 +55,6 @@ const useStyles = makeStyles((theme) => ({
 export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser } = useContext(UserContext);
-    // console.log(props.carduser);
-
 
     const updateNetwork = (user, carduser) => {
         updateFollowing(user, carduser);
@@ -202,7 +200,7 @@ export default function UserCard(props) {
                                 disableRestoreFocus>
                                 <Fade in={open}>
                                     <div className={classes.paper2}>
-                                        <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
+                                        <div id="popovertext" style={{ maxWidth: 900, padding: 20, position: "absolute", top: 100, right: 0, left: 0, marginRight: "auto", marginLeft: "auto", backgroundColor: "white", zIndex: 10}}>
                                             <p> <h4>Watchlist:</h4> {clickedUserWatchlist} </p> <br />
                                             <p> <h4>Watched:</h4> {clickedUserWatched}</p> <br />
                                             <p> <h4>Reviews:</h4></p>

@@ -11,9 +11,6 @@ function Network() {
     const [followers, setFollowers] = useState([]);
     const [followings, setFollowing] = useState([]);
 
-    // console.log(followers);
-    // console.log(followings);
-
     const getUsers = () => {
         axios.get('http://localhost:5000/api/users/')
             .then((res) => {

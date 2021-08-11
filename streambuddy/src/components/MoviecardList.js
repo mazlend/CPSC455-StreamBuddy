@@ -4,8 +4,8 @@ import Moviecard from "./Moviecard";
 
 
 export default function MoviecardList(props) {
-    const initialList = props.list;
-    if ((initialList === undefined || null) || initialList.length < 1) {
+    const movielist = props.list;
+    if ((movielist === undefined || null) || movielist.length < 1) {
         return (
             <div className="movie-cards">
                 <Grid container>
@@ -23,7 +23,7 @@ export default function MoviecardList(props) {
                 <Grid container>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
-                            {initialList.map((item) => (
+                            {movielist.map((item) => (
                                 <Grid item key={item._id}>
                                     <Moviecard item={item} key={item._id} />
                                 </Grid>

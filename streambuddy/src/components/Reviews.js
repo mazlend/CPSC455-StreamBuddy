@@ -6,7 +6,6 @@ function Reviews(props) {
     const { user } = useContext(UserContext);
 
     let userReviews = user.reviews;
-    console.log("userReviews are ", user.reviews);
 
     // we have quite a few null review objects, need to delete them in the backend.
     // for now I just skip them
@@ -16,8 +15,6 @@ function Reviews(props) {
         }
         return result;
     }, []);
-
-    console.log("usable reviews are ", nonNullReviews)
 
     return (
         <section id="Reviews">
