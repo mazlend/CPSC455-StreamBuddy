@@ -61,28 +61,28 @@ export default function MoviecardListWrapper(props) {
                 {props.name && (
                     <div>
                         <h1>Watched Films</h1>
-                        <div className="horizontal-line"/>
+                        <div className="horizontal-line" />
                     </div>
                 )}
             </div>
-        <div>
-            <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography>CARD VIEW</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <MoviecardList list={props.movieList} />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography>LIST VIEW</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <MoviecardListDense name={props.name} movieList={props.movieList} />
-                </AccordionDetails>
-            </Accordion>
-        </div>
+            <div>
+                <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                    <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                        <Typography>CARD VIEW</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <MoviecardList list={props.movieList} />
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                    <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                        <Typography>LIST VIEW</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <MoviecardListDense name={props.name} movieList={props.movieList} />
+                    </AccordionDetails>
+                </Accordion>
+            </div>
         </section>
     );
 }
