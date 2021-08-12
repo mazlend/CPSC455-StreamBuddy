@@ -2,17 +2,16 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Moviecard from "./Moviecard";
 
-//TODO: debug error using in developer tools. "Each child in a list should have a unique "key" prop."
 
 export default function MoviecardList(props) {
-    const initialList = props.list;
-    if ((initialList === undefined || null) || initialList.length < 1) {
+    const movielist = props.list;
+    if ((movielist === undefined || null) || movielist.length < 1) {
         return (
             <div className="movie-cards">
                 <Grid container>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
-                            <p style={{ marginBottom: 40 }}>Your list is empty :( <br /> Add some Movies!!! </p>
+                            <p style={{ marginBottom: 40 }}> Nothing found </p>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -24,9 +23,9 @@ export default function MoviecardList(props) {
                 <Grid container>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
-                            {initialList.map((item) => (
-                                <Grid item>
-                                    <Moviecard item={item} />
+                            {movielist.map((item) => (
+                                <Grid item key={item._id}>
+                                    <Moviecard item={item} key={item._id} />
                                 </Grid>
                             ))}
                         </Grid>
