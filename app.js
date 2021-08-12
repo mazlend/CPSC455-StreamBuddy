@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 
-dotenv.config({ path: './.env'});
+dotenv.config({ path: './.env' });
 
 const filmsRoutes = require('./routes/films-routes');
 const usersRoutes = require('./routes/users-routes');
@@ -27,10 +27,12 @@ app.use('/api/users', usersRoutes);
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('streambuddy/build'));
 
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}${process.env.END_MONGODB}`,
-    { useNewUrlParser:true, useUnifiedTopology: true , useCreateIndex: true})
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => {
         console.log('DB connection successful');
         app.listen(process.env.PORT || 5000, () => {
