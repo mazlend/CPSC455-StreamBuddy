@@ -12,7 +12,7 @@ export default function MoviecardList(props) {
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
                             <p style={{ marginBottom: 40 }}> Your list is empty :(
-                                Follow some films!!! </p>
+                                add some films!!! </p>
                         </Grid>
                     </Grid>
                 </Grid>

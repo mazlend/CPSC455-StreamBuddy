@@ -110,7 +110,7 @@ function About() {
                     </Box>
                         <Grid container className={classes.gridRoot} spacing={2}>
                             <Grid item xs={12}>
-                                <Grid container justifyContent="center" alignItems='center' spacing={5} direction="row">
+                                <Grid container alignItems='center' spacing={5} direction="row">
                                     <Grid item>
                                         <Paper className={classes.paper}>
                                             <Typography variant='h6' align='center'> SEARCH, BROWSE, DISCOVER </Typography>
