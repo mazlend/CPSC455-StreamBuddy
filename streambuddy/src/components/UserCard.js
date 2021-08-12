@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 export default function UserCard(props) {
     const classes = useStyles();
     const { user, setUser } = useContext(UserContext);
-    // console.log(props.carduser);
 
 
     const updateNetwork = (user, carduser) => {
@@ -73,19 +72,16 @@ export default function UserCard(props) {
         axios.delete(`http://localhost:5000/api/users/deleteFromFollowing/${user._id}`, {
             data: {carduser}
         }).then((res) => {
-            console.log("success follower removed from user")
-            setUser(res.data)
+            setUser(res.data);
         }).catch((err) => {
             console.log(err)
         })
     }
 
     const removeFromFollowers = (user, carduser) => {
-        console.log(user)
         axios.delete(`http://localhost:5000/api/users/deleteFromFollowers/${carduser._id}`, {
             data: {user}
         }).then((res) => {
-            console.log("success current user removed from other user's followers")
             carduser.followers = res.data.followers;
         }).catch((err) => {
             console.log(err)
@@ -97,7 +93,6 @@ export default function UserCard(props) {
             axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
                 carduserId: carduser._id
             }).then((res) => {
-                console.log(res.data);
                 setUser(res.data)
             }).catch((err) => {
                 console.log(err);
@@ -110,7 +105,6 @@ export default function UserCard(props) {
             axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
                 userId: user._id
             }).then((res) => {
-                console.log(res.data);
                 carduser.followers = res.data.followers;
             }).catch((err) => {
                 console.log(err);
@@ -150,12 +144,10 @@ export default function UserCard(props) {
     const userHasNotFollowed = (
         <React.Fragment>
             <Grid item xs={2}>
-                {/* <Box m={2} pt={3}> */}
                     <Button
                         onClick={() => updateNetwork(user, props.carduser)}
                         className={classes.button} color="primary" variant="contained">Follow
                     </Button>
-                {/* </Box> */}
             </Grid>
         </React.Fragment>
     )
