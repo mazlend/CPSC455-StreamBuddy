@@ -1,6 +1,13 @@
-# CPSC455-StreamBuddy
+# CPSC 455-StreamBuddy
 
-## Project Desciption
+## Project Description
+
+***Project Summary***
+Say goodbye to the endless scrolling of Netflix menus! With StreamBuddy, you can check if a movie that you want to watch is available on Netflix.
+Unsure about what movie you want to watch?
+Use our advanced search features to see recommendations for movies (available on Netflix) that fit your criteria.
+What will you get if you login? Add movies to your watch and scene lists, rate and review movies!
+
 ***Who is it for?***  
 Anyone who likes to watch movies / TV shows using online streaming platforms.
 
@@ -32,9 +39,8 @@ We’ll initially focus on Netflix but hope to include additional streaming plat
 ***3-7 "standard" requirements (will most likely complete):***  
 1. Create a user profile and manage login credentials.
 2. User can save which movies they have already watched and would like to watch (watch list)
-3. Give a user an option in search criteria to omit previously watched movies from search results.
-4. Users can rate movies.
-5. Users can post reviews.
+3. Users can rate movies.
+4. Users can post reviews.
 
 ***2-3 stretch requirements (plan to complete at least 1!):***  
 1. Pull watch history from a user’s Netflix, Crave, etc. accounts for more detailed recommendations.
