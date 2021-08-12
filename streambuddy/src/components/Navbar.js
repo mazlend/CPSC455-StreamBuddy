@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -15,17 +15,15 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import SBSVGLogo from '../SBSVGLogo.png';
+import logo from '../logo.png';
+
+
 
 
 function ElevationScroll(props) {
     const { children } = props;
-
-    // useScrollTrigger hook is an event listener for when the user is scrolling
     const trigger = useScrollTrigger({
-        // should there be little delay when a user is scrolling? Disabled it so there is no delay
         disableHysteresis: true,
-        //0 means as soon as the user starts scrolling, event listener is triggered
         threshold: 0,
     });
 
@@ -40,21 +38,21 @@ const useStyles = makeStyles(theme => ({
     toolbarMargin: {
         ...theme.mixins.toolbar,
         marginBottom: "3rem",
-        // [theme.breakpoints.down("md")]: {
-        //     marginBottom: "2em"
-        // },
-        // [theme.breakpoints.down("xs")]: {
-        //     marginBottom: "1.25em",
-        // }
+        [theme.breakpoints.down("md")]: {
+            marginBottom: "2em"
+        },
+        [theme.breakpoints.down("xs")]: {
+            marginBottom: "1.25em",
+        }
     },
     logo: {
         height: "8em",
-        // [theme.breakpoints.down("md")]: {
-        //     height: "7em"
-        // },
-        // [theme.breakpoints.down("xs")]: {
-        //     height: "5.5em"
-        // }
+        [theme.breakpoints.down("md")]: {
+            height: "7em"
+        },
+        [theme.breakpoints.down("xs")]: {
+            height: "5.5em"
+        }
     },
     logoContainer: {
         padding: 0,
@@ -81,7 +79,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     drawer: {
-        backgroundColor: theme.palette.common.pink,
+        backgroundColor: theme.palette.common.blue,
         marginLeft: "auto"
     },
     drawerItem: {
@@ -89,19 +87,25 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.common.white,
     },
     appbar: {
-        zIndex: 50000
+        zIndex: 1302,
+        minHeight: 98
+    },
+    button: {
+        borderRadius: "50px",
+        marginLeft: "50px",
+        marginRight: "50px",
+        textTransform: "none",
+        color: theme.palette.common.blue
     }
 }))
 
 
-export function Navbar(props) {
+export function Navbar() {
     const classes = useStyles();
     const theme = useTheme();
-    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
     const matches = useMediaQuery(theme.breakpoints.down("md"));
 
     const [openDrawer, setOpenDrawer] = useState(false);
-
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
@@ -111,13 +115,13 @@ export function Navbar(props) {
     useEffect(() => {
         if (window.location.pathname === "/" && value !== 0) {
             setValue(0)
-        } else if (window.location.pathname === "/login" && value !== 1) {
+        } else if (window.location.pathname === "/about" && value !== 1) {
             setValue(1)
-        } else if (window.location.pathname === "/signup" && value !== 2) {
-            setValue(2)
+        } else if (window.location.pathname === "profile" && value !== 2) {
+                setValue(2)
+        } else if (window.location.pathname === "/login" && value !== 3) {
+            setValue(3)
         }
-        //this value tells the useEffect hook that if the value hasn't changed, don't run
-        // use effect hook code again
     }, [value]);
 
     const tabs = (
@@ -128,9 +132,18 @@ export function Navbar(props) {
                   indicatorColor="primary">
 
                 <Tab className={classes.tab} component={Link} to="/"  label="Home" />
-                <Tab className={classes.tab} component={Link} to="/login" label="Login" />
-                <Tab className={classes.tab} component={Link} to="/signup" label="Sign up" />
+                <Tab className={classes.tab} component={Link} to="/about" label="About" />
+                <Tab className={classes.tab} component={Link} to="/profile"  label="Profile" />
             </Tabs>
+            <Button
+                component={Link} to="/login"
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={() => setValue(3)}
+                >
+                Login | Register
+            </Button>
         </React.Fragment>
     )
 
@@ -138,12 +151,9 @@ export function Navbar(props) {
         <React.Fragment>
             <SwipeableDrawer
                 anchor='right'
-                disableBackdropTransition={!iOS}
-                disableDiscovery={iOS}
                 open={openDrawer}
                 onClose={() => setOpenDrawer(false)}
                 onOpen={() => setOpenDrawer(true)}
-                // to overwrite base material-ui component style.
                 classes={{paper: classes.drawer}}
             >
                 <div className={classes.toolbarMargin} />
@@ -155,11 +165,20 @@ export function Navbar(props) {
                         component={Link} to="/">
                         <ListItemText className={classes.drawerItem}>Home</ListItemText>
                     </ListItem>
-                    <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/login">
-                        <ListItemText className={classes.drawerItem}>Login</ListItemText>
+                    <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/about">
+                        <ListItemText className={classes.drawerItem}>About</ListItemText>
                     </ListItem>
-                    <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/signup">
-                        <ListItemText className={classes.drawerItem}>Sign up</ListItemText>
+                    <ListItem onClick={() => {setOpenDrawer(false)}} divider button component={Link} to="/profile">
+                        <ListItemText className={classes.drawerItem}>Profile</ListItemText>
+                    </ListItem>
+                    <ListItem
+                        onClick={() => {
+                            setOpenDrawer(false);
+                            setValue(3);
+                        }}
+                        divider button
+                        component={Link} to="/login">
+                        <ListItemText className={classes.drawerItem}>Login | Register </ListItemText>
                     </ListItem>
                 </List>
             </SwipeableDrawer>
@@ -171,7 +190,6 @@ export function Navbar(props) {
     )
 
 
-    //toolbar helps stack content horizontally
     return (
         <React.Fragment>
             <ElevationScroll>
@@ -180,12 +198,12 @@ export function Navbar(props) {
                         <Button component={ Link } to="/" onClick= {() => setValue(0)}
                                 className={classes.logoContainer} disableRipple >
                             <img
-                                src={SBSVGLogo}
+                                src={logo}
                                 alt="logo"
                                 className={classes.logo}
                             />
                         </Button>
-                        {/*if screen size is medium or small return drawer, else return tabs */}
+
                         {matches ? drawer : tabs }
 
                     </Toolbar>

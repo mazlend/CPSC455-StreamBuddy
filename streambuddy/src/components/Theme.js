@@ -1,16 +1,17 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const cpink = "#c41955";
-const cwhite = "#ffff";
+ const cblue = "#46c7ee";
+ const cwhite = "#fff";
+
 
 export default createMuiTheme({
     palette: {
         common: {
-            pink: cpink,
+            blue: cblue,
             white: cwhite
         },
         primary: {
-            main: cpink
+            main: cblue
         },
         secondary: {
             main: cwhite
@@ -19,7 +20,6 @@ export default createMuiTheme({
     typography: {
         tab: {
             textTransform: "none",
-
             fontSize: "1rem",
         }
     },
@@ -41,10 +41,9 @@ export default createMuiTheme({
         alignItems: "center",
         top: "30px",
         left: "25%",
-        background: cpink,
+        background: cblue,
         color: cwhite
     }
-
 
 
 });

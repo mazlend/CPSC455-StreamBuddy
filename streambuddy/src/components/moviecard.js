@@ -7,7 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Popover from '@material-ui/core/Popover';
+import { Backdrop, Fade, Modal } from "@material-ui/core";
+import MovieCardActions from "./MovieCardActions";
 
 const useStyles = makeStyles({
     root: {
@@ -16,88 +17,106 @@ const useStyles = makeStyles({
     media: {
         height: 345,
     },
-    popover: {
-        pointerEvents: 'none',
-    },
     paper: {
         padding: 3,
+        marginTop: "15%"
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'scroll'
+    },
+    buttons: {
+        fontSize: 10,
+        backgroundColor: "white"
+    },
+    cardTop: {
+        cursor: 'default'
+    }
 });
-
-
 
 export default function Moviecard(props) {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [open, setOpen] = React.useState(false);
 
     const handlePopoverOpen = (event) => {
-        setAnchorEl(event.currentTarget);
+        setOpen(true);
     };
 
     const handlePopoverClose = () => {
-        setAnchorEl(null);
+        setOpen(false);
+
     };
 
-    const open = Boolean(anchorEl);
+    if (props.item === null) {
+        return (<Card />);
+    }
 
-
-    // For the Popover we used parts of the demo code of the material-ui documentation: https://codesandbox.io/s/f9n6j?file=/demo.js:922-1436
     return (
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea
+                className={classes.cardTop}
+                disableRipple>
                 <CardMedia
                     className={classes.media}
-                    image={props.item.movieimage}
-                    title={props.item.moviename}
+                    image={props.item.Poster}
+                    title={props.item.Title}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.item.moviename}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Release Year: {props.item.moviereleaseyear}<br />
-                        IMDB Rating: {props.item.movierating} <br/>
-                        Genre: {props.item.moviegenre}
+                        Title: {props.item.Title}<br />
+                        Release Year: {props.item.Year}<br />
+                        IMDB Rating: {props.item.imdbRating} <br />
+                        Genre: {props.item.Genre}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <MovieCardActions item={props.item} />
+            </CardActions>
+            <CardActions>
+                <Button size="small" color="primary"
+                    type={"button"}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = 'https://www.google.com/search?q=netflix+' + props.item.Title;
+                    }}>
                     Watch on Netflix
                 </Button>
-                <Typography
-                    aria-owns={open ? 'mouse-over-popover' : undefined}
-                    aria-haspopup="true"
-                    onMouseEnter={handlePopoverOpen}
-                    onMouseLeave={handlePopoverClose}>
-                    SEE FULL DESCRIPTION
-                </Typography>
-                <Popover
-                    id="mouse-over-popover"
-                    className={classes.popover}
-                    classes={{
-                        paper: classes.paper,
-                    }}
-                    open={open}
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
+                <Button size="small" color="primary"
+                    type={"button"}
+                    onClick={handlePopoverOpen}>
+                    SEE FULL DETAILS
+                </Button>
+                <Modal open={open}
+                    className={classes.modal}
                     onClose={handlePopoverClose}
-                    disableRestoreFocus
-                >
-                    <Typography>
-                        <p> {props.item.moviename}</p>
-                        <p> Description of the movie: Some description of the movie, maybe a trailer </p>
-                        <p> Some additional info </p>
-                        <p> {props.item.moviereleaseyear}</p>
-                    </Typography>
-                </Popover>
+                    closeAfterTransition
+                    disableScrollLock
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 500
+                    }}
+                    disableRestoreFocus>
+                    <Fade in={open}>
+                        <div className={classes.paper}>
+                            <div id="popovertext" style={{ maxWidth: 900, padding: 20, backgroundColor: "white", position: "flex", zIndex: 10 }}>
+                                <p> <h4>Title:</h4>{props.item.Title}</p> <br />
+                                <p> <h4>Rated:</h4> {props.item.Rated} </p> <br />
+                                <p> <h4>Runtime:</h4> {props.item.Runtime} </p> <br />
+                                <p> <h4>Language(s):</h4> {props.item.Language} </p> <br />
+                                <p> <h4>Country Filmed In:</h4> {props.item.Country} </p> <br />
+                                <p> <h4>Director:</h4> {props.item.Director} </p> <br />
+                                <p> <h4>Actors:</h4> {props.item.Actors} </p> <br />
+                                <p> <h4>Plot Summary:</h4> {props.item.Plot} </p>
+                            </div>
+                        </div>
+                    </Fade>
+                </Modal>
             </CardActions>
         </Card>
     );
