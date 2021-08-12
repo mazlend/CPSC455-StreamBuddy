@@ -25,17 +25,17 @@ StreamBuddy allows users to search, browse, discover, track, review, and share f
 
 
 ## Description on how tech from Units 1- 5 are used in the project
-***HTML/CSS/JS***
+***HTML/CSS/JS*** \
 ***HTML***: We do not use the index.html file other than it being the ‘entry point’ (ie. the root of our DOM tree) for the code and the place where everything gets rendered onto by index.js.\
-**CSS**: We used Material-UI for components and found it ideal to use a Material-UI theme provider, theme, and use styles to manage branding colors, styling, fonts, and ensure the website looks consistent throughout.
+**CSS**: We used Material-UI for components and found it ideal to use a Material-UI theme provider, theme, and use styles to manage branding colors, styling, fonts, and ensure the website looks consistent throughout. \
 ***JavaScript***: is a scripting language that makes it easy to dynamically update content and allow for interaction. It is a popular language that allows for an efficient user experience through client-side execution, smooth interaction with the server through asynchronous calls. Since it can also be used on the server-side using Node.js (a JS runtime that allows us to use JS outside of a web browser) it was a natural choice to use it. 
 
-***React***
-React is a declarative and efficient JavaScript library that allows for the development of user interfaces. Using components makes it incredibly easy to reuse code and structure pages intuitively.
+***React*** \
+React is a declarative and efficient JavaScript library that allows for the development of user interfaces. Using components makes it incredibly easy to reuse code and structure pages intuitively. \
 
-**React Hooks**: we extensively used react hooks to manage states and render changes efficiently. We used the context hook to manage the logged-in user information across multiple components, a state hook to keep track of user interaction and state changes of various components such as the advanced film search filters, and used a use effect hook to efficiently re-render every time a state changed and information on the website needed to be updated.
+**React Hooks**: we extensively used react hooks to manage states and render changes efficiently. We used the context hook to manage the logged-in user information across multiple components, a state hook to keep track of user interaction and state changes of various components such as the advanced film search filters, and used a use effect hook to efficiently re-render every time a state changed and information on the website needed to be updated. \
 
-**Material-UI**: We used Material-UI for the rapid development of components that already come with a certain look. Being a React framework, Material-Ui lends itself well to the combination with React. Material-UI also allows for customization of components which we made use of extensively in the navigation bar and the sidebar. We also combined paper, cards, grids, and modals to create more complex components such as Movie cards with pop-ups and social network profiles. 
+**Material-UI**: We used Material-UI for the rapid development of components that already come with a certain look. Being a React framework, Material-Ui lends itself well to the combination with React. Material-UI also allows for customization of components which we made use of extensively in the navigation bar and the sidebar. We also combined paper, cards, grids, and modals to create more complex components such as Movie cards with pop-ups and social network profiles. \
 
 React and Material-Ui combined with our creativity have resulted in a visually appealing, highly efficient, and responsive user interface.
 
