@@ -211,7 +211,7 @@ export default function Sidebar() {
     const classes = useStyles();
     const theme = useTheme();
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [list, setList] = useState(featuredMovieList);
 
     const [filmName, setFilmName] = useState("");
