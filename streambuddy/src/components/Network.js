@@ -20,8 +20,8 @@ function Network() {
                 let usersExceptSelf = res.data.filter((acc) => acc._id !== user._id)
                 setUserList(usersExceptSelf);
             }).catch((error) => {
-            console.log(error);
-        });
+                console.log(error);
+            });
     }
 
     useEffect(() => {
@@ -39,8 +39,8 @@ function Network() {
                     console.log("followers is null");
                 }
             }).catch((err) => {
-            console.log(err);
-        })
+                console.log(err);
+            })
     }
     useEffect(() => {
         getFollowers(user);
@@ -52,8 +52,8 @@ function Network() {
                 console.log(res.data);
                 setFollowing(res.data);
             }).catch((err) => {
-            console.log(err);
-        })
+                console.log(err);
+            })
     }
     useEffect(() => {
         getFollowing(user);

@@ -188,14 +188,24 @@ const deleteReview = async (req, res) => {
 const deleteFromFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-    let  followingToDelete = req.body;
-    console.log(followingToDelete);
+    let followingToDelete = req.body.carduser._id;
 
     try {
         user = await User.findById(userId);
-        user.following.splice(followingToDelete, 1);
+        // console.log("wrap 1")
+        // console.log(user.following)
+        // console.log("wrap 1")
+        // console.log("wrap 2")
+        // console.log(req.body.carduser._id)
+        // console.log("wrap 2")
+        // console.log("wrap 4")
+        let index = user.following.indexOf(followingToDelete)
+        // console.log("wrap 4")
+        user.following.splice(index, 1)
+        // console.log("wrap 3")
+        // console.log(user.following)
+        // console.log("wrap 3")
         await user.save();
-        console.log(user);
     } catch (e) {
         res.status(404).json({
             message: e
@@ -205,15 +215,27 @@ const deleteFromFollowing = async (req, res) => {
 
 const deleteFromFollowers = async (req, res) => {
     let user;
-    let userId = req.params.id;
-    let followerToDelete = req.body.carduserId;
-    console.log(followerToDelete);
+    let carduserid = req.params.id;
+    let followerToDelete = req.body.user._id;
+    // console.log(carduserid)
+    // console.log(followerToDelete)
 
     try {
-        user = await User.findById(userId);
-        user.following.splice(followerToDelete, 1);
+        user = await User.findById(carduserid);
+        // console.log("wrap 1")
+        // console.log(user.followers)
+        // console.log("wrap 1")
+        // console.log("wrap 2")
+        // console.log(req.body.user._id)
+        // console.log("wrap 2")
+        let index = user.followers.indexOf(followerToDelete)
+        // console.log(index)
+        // console.log("wrap 4")
+        user.followers.splice(index, 1)
+        // console.log("wrap 3")
+        // console.log(user.followers)
+        // console.log("wrap 3")
         await user.save();
-        console.log(user);
     } catch (e) {
         res.status(404).json({
             message: e

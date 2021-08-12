@@ -1,16 +1,16 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {Button, TextField} from "@material-ui/core";
-import {UserContext} from "./UserContext";
+import { Button, TextField } from "@material-ui/core";
+import { UserContext } from "./UserContext";
 import axios from "axios";
 
 
 export default function RatingsAndReviewInput(props) {
     const [rating, setRating] = React.useState(0);
     const [reviewText, setReviewText] = React.useState(null);
-    const {user, setUser} = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
 
 
     const updateUserReviews = (user, review) => {
@@ -59,7 +59,7 @@ export default function RatingsAndReviewInput(props) {
                 />
             </Box>
             <Box component="fieldset" mb={3} borderColor="transparent">
-                <Typography component="legend" style={{marginBottom: 10}}>Write a Review!</Typography>
+                <Typography component="legend" style={{ marginBottom: 10 }}>Write a Review!</Typography>
                 <TextField
                     id="outlined-multiline-static"
                     label="Your review of this movie"
@@ -68,15 +68,15 @@ export default function RatingsAndReviewInput(props) {
                     variant="outlined"
                     value={reviewText}
                     onChange={handleChangeTextReview}
-                    style={{width: 400}}
+                    style={{ width: 400 }}
                 />
             </Box>
-                <box><Button variant="contained"
-                        color="primary" onClick={(event) => {
-                        postReview();
-                        closePopover(event);
-                        }}>Post Review </Button>
-                </box>
+            <box><Button variant="contained"
+                color="primary" onClick={(event) => {
+                    postReview();
+                    closePopover(event);
+                }}>Post Review </Button>
+            </box>
         </div>
     );
 }

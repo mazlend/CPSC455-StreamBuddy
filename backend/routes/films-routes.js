@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Film = require("../models/Film");
+let db = require('mongodb');
 
 router.get('/:id', async function (req, res, next) {
 
@@ -14,6 +15,28 @@ router.get('/:id', async function (req, res, next) {
         res.send(err);
     }
 });
+
+router.get('/foo/getLanguages', async function (req, res, next) {
+    try {
+        let languages = await Film.find({}, { Language: 1, _id: 0 }, function (err) {
+            if (err) {
+                res.send(err)
+            }
+        })
+        let languageSet = new Set();
+        for (let languageObj in languages) {
+            if (languageObj.Language !== 'N/A') {
+                console.log("N/A")
+            } else {
+                languageSet.add(languages[languageObj].Language)
+            }
+        }
+        let languageArray = Array.from(languageSet)
+        res.send(languageArray);
+    } catch (err) {
+        res.send(err);
+    }
+})
 
 router.post('/:search', async function (req, res, next) {
     console.log(req.body);

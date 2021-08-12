@@ -38,7 +38,8 @@ export default function SingleReview(props) {
   const deleteReview = (review) => {
     let reviewIndex = user.reviews.indexOf(review);
     console.log(user.reviews.indexOf(review));
-    axios.delete(`http://localhost:5000/api/users/${user._id}`, { data: { reviewIndex } })
+    axios.delete(`http://localhost:5000/api/users/${user._id}`,
+      { data: { reviewIndex } })
       .then((res) => {
         // console.log(res.data);
         setUser(res.data);
