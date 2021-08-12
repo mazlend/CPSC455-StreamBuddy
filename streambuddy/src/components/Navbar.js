@@ -22,11 +22,8 @@ import logo from '../logo.png';
 
 function ElevationScroll(props) {
     const { children } = props;
-    // useScrollTrigger hook is an event listener for when the user is scrolling
     const trigger = useScrollTrigger({
-        // should there be little delay when a user is scrolling? Disabled it so there is no delay
         disableHysteresis: true,
-        //0 means as soon as the user starts scrolling, event listener is triggered
         threshold: 0,
     });
 
@@ -35,7 +32,6 @@ function ElevationScroll(props) {
     });
 }
 
-//TODO: move as much of useStyles code to theme.js as possible
 const useStyles = makeStyles(theme => ({
 
     toolbarMargin: {
@@ -106,8 +102,6 @@ const useStyles = makeStyles(theme => ({
 export function Navbar() {
     const classes = useStyles();
     const theme = useTheme();
-    // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-    let iOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
     const matches = useMediaQuery(theme.breakpoints.down("md"));
 
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -117,25 +111,23 @@ export function Navbar() {
         setValue(newValue);
     }
 
-    // useEffect(() => {
-    //     if (window.location.pathname === "/" && value !== 0) {
-    //         setValue(0)
-    //     } else if (window.location.pathname === "/about" && value !== 1) {
-    //         setValue(1)
-    //     } else if (window.location.pathname === "profile" && value !== 2) {
-    //             setValue(2)
-    //     } else if (window.location.pathname === "/login" && value !== 3) {
-    //         setValue(3)
-    //     }
-    //     //this value tells the useEffect hook that if the value hasn't changed, don't run
-    //     // use effect hook code again
-    // }, [value]);
+    useEffect(() => {
+        if (window.location.pathname === "/" && value !== 0) {
+            setValue(0)
+        } else if (window.location.pathname === "/about" && value !== 1) {
+            setValue(1)
+        } else if (window.location.pathname === "profile" && value !== 2) {
+                setValue(2)
+        } else if (window.location.pathname === "/login" && value !== 3) {
+            setValue(3)
+        }
+    }, [value]);
 
     const tabs = (
         <React.Fragment>
             <Tabs className={classes.tabContainer}
                   value={value}
-                  // onChange={handleChange}
+                  onChange={handleChange}
                   indicatorColor="primary">
 
                 <Tab className={classes.tab} component={Link} to="/"  label="Home" />
@@ -147,7 +139,7 @@ export function Navbar() {
                 variant="contained"
                 color="secondary"
                 className={classes.button}
-                // onClick={() => setValue(3)}
+                onClick={() => setValue(3)}
                 >
                 Login | Register
             </Button>
@@ -158,12 +150,9 @@ export function Navbar() {
         <React.Fragment>
             <SwipeableDrawer
                 anchor='right'
-                disableBackdropTransition={!iOS}
-                disableDiscovery={iOS}
                 open={openDrawer}
                 onClose={() => setOpenDrawer(false)}
                 onOpen={() => setOpenDrawer(true)}
-                // to overwrite base material-ui component style.
                 classes={{paper: classes.drawer}}
             >
                 <div className={classes.toolbarMargin} />
@@ -184,7 +173,7 @@ export function Navbar() {
                     <ListItem
                         onClick={() => {
                             setOpenDrawer(false);
-                            // setValue(3);
+                            setValue(3);
                         }}
                         divider button
                         component={Link} to="/login">
@@ -199,8 +188,6 @@ export function Navbar() {
         </React.Fragment>
     )
 
-
-    //toolbar helps stack content horizontally
     return (
         <React.Fragment>
             <ElevationScroll>
@@ -214,7 +201,6 @@ export function Navbar() {
                                 className={classes.logo}
                             />
                         </Button>
-                        {/*if screen size is medium or small return drawer, else return tabs */}
                         {matches ? drawer : tabs }
 
                     </Toolbar>
@@ -223,5 +209,4 @@ export function Navbar() {
             <div className={classes.toolbarMargin} />
         </React.Fragment>
     );
-
 }
