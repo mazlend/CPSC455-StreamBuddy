@@ -24,8 +24,8 @@ app.use(express.json());
 app.use('/api/films', filmsRoutes);
 app.use('/api/users', usersRoutes);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('streambuddy/build'));
 
 
 
