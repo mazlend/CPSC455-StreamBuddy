@@ -29,20 +29,20 @@ We defined the following minimal, standard and stretch goals for our project.
 # The following technology was used
 
 ## HTML/CSS/JS
-While this course has started out with teaching the use of HTML we did not make use of it for the development of our project. We switched to React because HMTL re-renders the entire page. We did make extensive use of CSS and JavaScript though.\
-- HTML: We do not use the index.html file other than it being the ‘entry point’ (ie. the root of our DOM tree) for the code and the place where everything gets rendered onto by index.js.\
-- CSS: We used Material-UI for components and found it ideal to use a Material-UI theme provider, theme, and use styles to manage branding colors, styling, fonts, and ensure the website looks consistent throughout.\
-- JavaScript: is a scripting language that makes it easy to dynamically update content and allow for interaction. It is a popular language that allows for faster user experience through client-side execution, a smooth interaction with the server through asynchronous calls. Since it can also be used on the server side using Node.js (a JS runtime that allows us to use JS outside of a web browser) it was a natural choice to use it. 
+While this course has started out with teaching the use of HTML we did not make use of it for the development of our project. We switched to React because HMTL re-renders the entire page. We did make extensive use of CSS and JavaScript though.
+- ***HTML***: We do not use the index.html file other than it being the ‘entry point’ (ie. the root of our DOM tree) for the code and the place where everything gets rendered onto by index.js.
+- ***CSS***: We used Material-UI for components and found it ideal to use a Material-UI theme provider, theme, and use styles to manage branding colors, styling, fonts, and ensure the website looks consistent throughout.
+- ***JavaScript***: is a scripting language that makes it easy to dynamically update content and allow for interaction. It is a popular language that allows for faster user experience through client-side execution, a smooth interaction with the server through asynchronous calls. Since it can also be used on the server side using Node.js (a JS runtime that allows us to use JS outside of a web browser) it was a natural choice to use it. 
 
 ## React
 React is a declarative and efficient JavaScript-library that allows for the development of user interfaces. Using components makes it incredibly easy to reuse code and structure pages in a way that is intuitive.
-React Hooks and functional components were used to manage states and render changes efficiently. We used the context hook to manage the logged in user information across multiple components, a state hook to keep track of user interaction and state changes of various components such as the advanced film search filters, and used a use effect hook to efficiently re-render the component every time a state changed and information on the website needed to be updated.
-Material-UI: was used for the rapid development of components that already come with a certain look. Being a React framework, Material-Ui lends itself well to the combination with React. Material-UI also allows for customization of components which we made use of extensively in the navigation bar and the sidebar. We also combined paper, cards, grids, and modal to create more complex components such as the Movie cards with pop ups and user social network profiles. 
+- ***React Hooks*** and functional components were used to manage states and render changes efficiently. We used the context hook to manage the logged in user information across multiple components, a state hook to keep track of user interaction and state changes of various components such as the advanced film search filters, and used a use effect hook to efficiently re-render the component every time a state changed and information on the website needed to be updated.
+- ***Material-UI***: was used for the rapid development of components that already come with a certain look. Being a React framework, Material-Ui lends itself well to the combination with React. Material-UI also allows for customization of components which we made use of extensively in the navigation bar and the sidebar. We also combined paper, cards, grids, and modal to create more complex components such as the Movie cards with pop ups and user social network profiles. 
 React and Material-Ui combined with our creativity has resulted in a visually appealing, highly efficient, and responsive user interface.
 
 ## Node/Express
-Node.js: was very useful for developing our application and making use of the ability to run JavaScript both on the client and server side. It’s an asynchronous, event-based communication between the browser and the server, enabling us to efficiently respond to frontend user actions. We used node modules and development dependencies to build and run our application.
-Express: is a light-weight web application framework for Node.js. It allowed us to quickly implement a REST API for our server that uses routes and controllers.
+- ***Node.js***: was very useful for developing our application and making use of the ability to run JavaScript both on the client and server side. It’s an asynchronous, event-based communication between the browser and the server, enabling us to efficiently respond to frontend user actions. We used node modules and development dependencies to build and run our application.
+- ***Express***: is a light-weight web application framework for Node.js. It allowed us to quickly implement a REST API for our server that uses routes and controllers.
 
 ## MongoDB
 
