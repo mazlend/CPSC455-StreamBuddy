@@ -24,7 +24,7 @@ function Network() {
 
     useEffect(() => {
         getUsers();
-    });
+    }, []);
 
     const getFollowers = (user) => {
         axios.get(`http://localhost:5000/api/users/${user._id}/followers`)
@@ -36,7 +36,7 @@ function Network() {
     }
     useEffect(() => {
         getFollowers(user);
-    }, [user]);
+    }, []);
 
     const getFollowing = (user) => {
         axios.get(`http://localhost:5000/api/users/${user._id}/following`)
@@ -48,7 +48,7 @@ function Network() {
     }
     useEffect(() => {
         getFollowing(user);
-    }, [user]);
+    }, []);
 
 
     return (
