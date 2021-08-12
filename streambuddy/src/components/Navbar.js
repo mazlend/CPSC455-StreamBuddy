@@ -103,7 +103,6 @@ const useStyles = makeStyles(theme => ({
 export function Navbar() {
     const classes = useStyles();
     const theme = useTheme();
-    let iOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
     const matches = useMediaQuery(theme.breakpoints.down("md"));
 
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -152,8 +151,6 @@ export function Navbar() {
         <React.Fragment>
             <SwipeableDrawer
                 anchor='right'
-                disableBackdropTransition={!iOS}
-                disableDiscovery={iOS}
                 open={openDrawer}
                 onClose={() => setOpenDrawer(false)}
                 onOpen={() => setOpenDrawer(true)}
