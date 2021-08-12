@@ -112,10 +112,6 @@ export default function Moviecard(props) {
                                 <p> <h4>Country Filmed In:</h4> {props.item.Country} </p> <br />
                                 <p> <h4>Director:</h4> {props.item.Director} </p> <br />
                                 <p> <h4>Actors:</h4> {props.item.Actors} </p> <br />
-                                {/*<p> <h4>Ratings:</h4>*/}
-                                {/*    {props.item.Ratings[0].Source} {props.item.Ratings[0].Value} <br />*/}
-                                {/*    {props.item.Ratings[1].Source} {props.item.Ratings[1].Value} <br />*/}
-                                {/*    {props.item.Ratings[2].Source} {props.item.Ratings[2].Value}</p> <br />*/}
                                 <p> <h4>Plot Summary:</h4> {props.item.Plot} </p>
                             </div>
                         </div>

@@ -57,7 +57,7 @@ export default function MovieCardActions(props) {
 
 
     const updateUserWatched = (user, item) => {
-        axios.put(`http://localhost:5000/api/users/${user._id}/watched/`, {
+        axios.put(`/api/users/${user._id}/watched/`, {
             item
         }).then((res) => {
             setUser(res.data);
@@ -67,7 +67,7 @@ export default function MovieCardActions(props) {
     }
 
     const deleteUserWatched = (user, item) => {
-        axios.delete(`http://localhost:5000/api/users/${user._id}/watched/`, {
+        axios.delete(`/api/users/${user._id}/watched/`, {
             data: item
         }).then((res) => {
             setUser(res.data);
@@ -77,7 +77,7 @@ export default function MovieCardActions(props) {
     }
 
     const updateUserWatchlist = (user, item) => {
-        axios.put(`http://localhost:5000/api/users/${user._id}/watchlist/`, {
+        axios.put(`/api/users/${user._id}/watchlist/`, {
             item
         }).then((res) => {
             setUser(res.data);
@@ -87,7 +87,7 @@ export default function MovieCardActions(props) {
     }
 
     const deleteUserWatchlist = (user, item) => {
-        axios.delete(`http://localhost:5000/api/users/${user._id}/watchlist/`, {
+        axios.delete(`/api/users/${user._id}/watchlist/`, {
             data: item
         }).then((res) => {
             setUser(res.data);

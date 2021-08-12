@@ -8,8 +8,6 @@ function Reviews(props) {
     let userReviews = user.reviews;
     console.log("userReviews are ", user.reviews);
 
-    // we have quite a few null review objects, need to delete them in the backend.
-    // for now I just skip them
     let nonNullReviews = userReviews.reduce(function (result, review) {
         if (review) {
             result.push(review);

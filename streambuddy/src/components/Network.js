@@ -13,7 +13,7 @@ function Network() {
 
 
     const getUsers = () => {
-        axios.get('http://localhost:5000/api/users/')
+        axios.get('/api/users/')
             .then((res) => {
                 let usersExceptSelf = res.data.filter((acc) => acc._id !== user._id)
                 setUserList(usersExceptSelf);
@@ -27,7 +27,7 @@ function Network() {
     }, []);
 
     const getFollowers = (user) => {
-        axios.get(`http://localhost:5000/api/users/${user._id}/followers`)
+        axios.get(`/api/users/${user._id}/followers`)
             .then((res) => {
                 setFollowers(res.data);
             }).catch((err) => {
@@ -39,7 +39,7 @@ function Network() {
     }, []);
 
     const getFollowing = (user) => {
-        axios.get(`http://localhost:5000/api/users/${user._id}/following`)
+        axios.get(`/api/users/${user._id}/following`)
             .then((res) => {
                 setFollowing(res.data);
             }).catch((err) => {

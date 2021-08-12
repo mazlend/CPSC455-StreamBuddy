@@ -25,15 +25,12 @@ export default function SearchButton(props) {
         }
         let filmNameTwo;
         if (filmName.includes("#")) {
-            console.log("has #")
             filmNameTwo = filmName.replace(/#/g, "!")
         } else {
             filmNameTwo = props.filmName
         }
-        console.log("http://localhost:5000/api/films/" + filmNameTwo);
         try {
-            console.log("sending");
-            axios.get("http://localhost:5000/api/films/" + filmNameTwo)
+            axios.get("/api/films/" + filmNameTwo)
                 .then((response) => {
                     props.listCallback(response.data)
                 })

@@ -63,13 +63,12 @@ export default function UserCard(props) {
     }
 
     const delFromNetwork = (user, carduser) => {
-        console.log("trying to delete")
         unfollowUser(user, carduser);
         removeFromFollowers(user, carduser);
     }
 
     const unfollowUser = (user, carduser) => {
-        axios.delete(`http://localhost:5000/api/users/deleteFromFollowing/${user._id}`, {
+        axios.delete(`/api/users/deleteFromFollowing/${user._id}`, {
             data: {carduser}
         }).then((res) => {
             setUser(res.data);
@@ -79,7 +78,7 @@ export default function UserCard(props) {
     }
 
     const removeFromFollowers = (user, carduser) => {
-        axios.delete(`http://localhost:5000/api/users/deleteFromFollowers/${carduser._id}`, {
+        axios.delete(`/api/users/deleteFromFollowers/${carduser._id}`, {
             data: {user}
         }).then((res) => {
             carduser.followers = res.data.followers;
@@ -90,7 +89,7 @@ export default function UserCard(props) {
 
     const updateFollowing = (user, carduser) => {
         if (user._id !== carduser._id && !user.following.includes(carduser._id)) {
-            axios.put(`http://localhost:5000/api/users/${user._id}/following/`, {
+            axios.put(`/api/users/${user._id}/following/`, {
                 carduserId: carduser._id
             }).then((res) => {
                 setUser(res.data)
@@ -102,7 +101,7 @@ export default function UserCard(props) {
 
     const updateFollowers = (user, carduser) => {
         if (user._id !== carduser._id && !carduser.followers.includes(user._id)) {
-            axios.put(`http://localhost:5000/api/users/${carduser._id}/followers/`, {
+            axios.put(`/api/users/${carduser._id}/followers/`, {
                 userId: user._id
             }).then((res) => {
                 carduser.followers = res.data.followers;
@@ -127,15 +126,13 @@ export default function UserCard(props) {
     };
 
     const createClickedUserProfile = (carduser) => {
-        axios.get(`http://localhost:5000/api/users/${carduser._id}`)
+        axios.get(`/api/users/${carduser._id}`)
             .then((res) => {
                 let watched = res.data.watched.map((movie) => movie.Title)
                 setClickedUserWatched(watched.join(', '))
-                // console.log(watched)
                 let watchList = res.data.watchlist.map((movie) => movie.Title)
                 setClickedUserWatchlist(watchList.join(', '))
                 setClickedUserReviews(res.data.reviews);
-                // console.log(watchList)
             }).catch((err) => {
                 console.log(err);
             })
