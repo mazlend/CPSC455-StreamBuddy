@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: "0%",
             marginRight: "0%",
             marginTop: "0%",
-            marginBottom: "0%",
+            padding: "4%",
             width: "100%",
-            height: "auto",
+            height: 'auto',
         }
     },
     paperColor: {
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#eaeaeb'
     },
     gridRoot : {
-        flexFlow: "row"
+        flexFlow: "row",
     },
     wrapIcon: {
         verticalAlign: 'middle',
@@ -108,7 +108,6 @@ function About() {
                             WITH STREAMBUDDY
                         </Typography>
                     </Box>
-                    <Box m={3} pt={5}>
                         <Grid container className={classes.gridRoot} spacing={2}>
                             <Grid item xs={12}>
                                 <Grid container justifyContent="center" alignItems='center' spacing={5} direction="row">
@@ -147,7 +146,6 @@ function About() {
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </Box>
                 </Paper>
             </div>
             <div className={classes.root1}>
@@ -163,25 +161,42 @@ function About() {
                     <Avatar className={classes.img}
                             src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/61470978_10157244540142943_4037230418850742272_n.jpg?_nc_cat=100&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=VJdTfU_HswcAX9HNiU7&_nc_ht=scontent.fyvr4-1.fna&oh=24ae9f01bfa72ceec176f34190cd0a27&oe=613A449D'
                     />
+                    <Typography variant='body1' align='center'>
+                        Mark
+                    </Typography>
                     <br />
+
                     <Avatar className={classes.img}
                             src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/174219366_10100919576193835_8718139269133135122_n.jpg?_nc_cat=100&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=mzXzUZP8GZ0AX-igh1x&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=535b50ebac805b0f61e2db028c3807ca&oe=6137A2BE'
                     />
+                    <Typography variant='body1' align='center'>
+                        Naz
+                    </Typography>
                     <br />
+
                     <Avatar className={classes.img}
-                                src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/119092844_10164222060005165_8220633099563277558_n.jpg?_nc_cat=107&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=zGLXEVhqAp8AX_FibTa&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=8e9a5860d93f06039e5f1b034d540523&oe=613A159C'
-                        />
+                            src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/119092844_10164222060005165_8220633099563277558_n.jpg?_nc_cat=107&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=zGLXEVhqAp8AX_FibTa&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=8e9a5860d93f06039e5f1b034d540523&oe=613A159C'
+                    />
+                    <Typography variant='body1' align='center'>
+                        Saad
+                    </Typography>
                     <br />
+
                     <Avatar className={classes.img}
-                                src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/75580408_781818785612013_7149653515860705280_n.jpg?_nc_cat=108&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=wfxTllnjBJwAX_cg_7p&_nc_ht=scontent.fyvr4-1.fna&oh=5d88e5012965bb7d4f2ffd9e5350030f&oe=6138517A'
-                        />
+                            src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/75580408_781818785612013_7149653515860705280_n.jpg?_nc_cat=108&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=wfxTllnjBJwAX_cg_7p&_nc_ht=scontent.fyvr4-1.fna&oh=5d88e5012965bb7d4f2ffd9e5350030f&oe=6138517A'
+                    />
+                    <Typography variant='body1' align='center'>
+                        Flo
+                    </Typography>
                     <br />
+
                     <Avatar className={classes.img}
                             src='https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.6435-9/190094901_4276706709048484_2813659746883426814_n.jpg?_nc_cat=102&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=HcFUMkVqE84AX9o8ll2&tn=Tu1Za8C3ddDE5b6E&_nc_ht=scontent.fyvr4-1.fna&oh=6214e82a89b7b3344081dd8611e01795&oe=61386324'
                     />
-                    <br />
-                    <br />
-                    <br />
+                    <Typography variant='body1' align='center'>
+                        Jeff
+                    </Typography>
+                    <Box m={3} pt={5} />
 
                 </Paper>
             </div>

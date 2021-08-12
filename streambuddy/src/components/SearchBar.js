@@ -1,17 +1,9 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-    searchbar: {
-        ...theme.searchbar
-    }
-}));
 
-//TODO: classes is defined but never used. Use classes for styling below or get rid of useStyles
 function SearchBar(props) {
-    const classes = useStyles();
 
     function handleChange(event, newInputValue) {
         if (newInputValue !== null) {

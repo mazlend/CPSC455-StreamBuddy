@@ -23,15 +23,10 @@ import AutocompletePlusCheckbox from "./AutocompletePlusCheckbox";
 import RangeSlider from "./RangeSlider";
 
 
-
-// min and max years available from the API - we use it to init the range slider
 let yearRangeAvailable = [1930, 2022];
-//Min and max IMDB rating
 let imdbScoreAvailable = [0, 10];
 
 
-//TODO: countries below are temp countries.
-// Pull all countries data from our database and allow users to search for films based on real countries data
 let allCountries = [
     { item: 'Austria' },
     { item: 'Brazil' },
@@ -66,8 +61,7 @@ let allCountries = [
 ];
 allCountries.sort();
 
-//TODO: languages below are temp languages.
-// Pull all languages data from our database and allow users to search for films based on real languages data
+
 let allLanguages = [
     { item: 'German' },
     { item: 'English' },
@@ -94,8 +88,7 @@ let allLanguages = [
 ];
 allLanguages.sort();
 
-//TODO: genres below are temp genres.
-// Pull all genres data from our database and allow users to search for films based on real genre data
+
 let allGenre = [
     { item: 'Drama' },
     { item: 'Thriller' },
@@ -118,8 +111,7 @@ let allGenre = [
 ];
 allGenre.sort();
 
-//TODO: actors below are temp actors.
-// Pull all actors data from our database and allow users to search for films based on real actors data
+
 let allActors = [
     {item: "Leonardo DiCaprio"},
     {item: "Keanu Reeves"},
@@ -149,7 +141,7 @@ allActors.sort();
 
 const drawerWidth = 240;
 
-//TODO: move as much of useStyles code to theme.js as possible
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -188,8 +180,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         padding: theme.spacing(1.5, 3),
-        // padding: 15px 10px
-        // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
         marginTop: 98,
@@ -246,34 +236,28 @@ export default function Sidebar() {
     }
 
     function handleListCallback(filmList) {
-        console.log(filmList)
         setList(filmList);
     }
 
     function handleCountryCallback(countryName) {
         setCountryName(countryName);
-        console.log(countryName);
         searchOptions.push({Country:countryName});
-        console.log(searchOptions);
     }
 
 
     function handleLanguageCallback(language) {
         setLanguage(language);
         searchOptions.push({Language:language});
-        console.log(searchOptions);
     }
 
     function handleGenreCallback(genre) {
         setGenre(genre);
         searchOptions.push({Genre:genre});
-        console.log(searchOptions);
     }
 
     function handleActorCallback(actorName) {
         setActorName(actorName);
         searchOptions.push({Actor:actorName});
-        console.log(searchOptions);
     }
 
     function handleYearCallback(selectedYears) {
@@ -366,9 +350,7 @@ export default function Sidebar() {
                             advancedSearchCallback = {handleActorCallback}
                         />
                     </ListItem>
-
                     <Divider />
-
                     <ListItem>
                         <RangeSlider
                             textLabel={"Year of Release"}
@@ -386,7 +368,6 @@ export default function Sidebar() {
                             increments={0.1} />
                     </ListItem>
 
-
                     <Divider />
                     <ListItem>
                         <AdvanceSearchButton
@@ -401,7 +382,6 @@ export default function Sidebar() {
                     </ListItem>
 
                 </List>
-
 
             </Drawer>
             <main

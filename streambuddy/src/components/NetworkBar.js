@@ -24,11 +24,11 @@ export default function NetworkBar() {
                 variant="fullWidth"
                 textColor="black"
             >
-                <Tab className={classes.tab} label="Name" disableRipple style={{ minWidth: "35%" }} />
-                <Tab className={classes.tab} label="Seen" disableRipple style={{ minWidth: "19%" }} />
-                <Tab className={classes.tab} label="Watchlist" disableRipple style={{ minWidth: "9%" }} />
-                <Tab className={classes.tab} label="Reviews" disableRipple style={{ minWidth: "15%" }} />
-                <Tab className={classes.tab} disableRipple style={{ minWidth: "20%" }} />
+                <Tab className={classes.tab} label="Name"  style={{ minWidth: "32%" }} />
+                <Tab className={classes.tab} label="Seen"  style={{ minWidth: "18%" }} />
+                <Tab className={classes.tab} label="Watchlist"  style={{ minWidth: "8%" }} />
+                <Tab className={classes.tab} label="Reviews"  style={{ minWidth: "15%" }} />
+                <Tab className={classes.tab}  style={{ minWidth: "22%" }} />
             </Tabs>
         </Paper>
 

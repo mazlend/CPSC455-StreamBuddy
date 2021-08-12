@@ -37,7 +37,6 @@ export default function Authentication() {
                     <GoogleLogout clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                   buttonText="Logout"
                                   onLogoutSuccess={onLogoutSuccess}/>
-                    {/*<pre>{JSON.stringify(user, null, 2)}</pre>*/}
                 </div> :
             <GoogleLogin clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                          buttonText="Login"

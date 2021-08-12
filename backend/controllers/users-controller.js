@@ -65,7 +65,6 @@ const deleteUserWatched = async (req, res) => {
     let itemToDeleteFromList = req.body._id;
     try {
         user = await User.findById(userId);
-        console.log(itemToDeleteFromList)
         const movieToDeleteIndex = (element) => element._id === itemToDeleteFromList;
         user.watched.splice(user.watched.findIndex(movieToDeleteIndex), 1);
         await user.save();
@@ -100,7 +99,6 @@ const deleteUserWatchlist = async (req, res) => {
     let itemToDeleteFromList = req.body._id;
     try {
         user = await User.findById(userId);
-        console.log(itemToDeleteFromList)
         const movieToDeleteIndex = (element) => element._id === itemToDeleteFromList;
         user.watchlist.splice(user.watchlist.findIndex(movieToDeleteIndex), 1);
         await user.save();
@@ -132,9 +130,7 @@ const updateUserReviews = async (req, res) => {
 const updateUserFollowers = async (req, res) => {
     let user;
     let userId = req.params.id;
-    console.log(req.body);
     let newFollower = req.body.userId;
-    console.log(req.body.userId);
 
     try {
         user = await User.findById(userId);
@@ -151,9 +147,7 @@ const updateUserFollowers = async (req, res) => {
 const updateUserFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-    // console.log(req.body);
     let newFollowing = req.body.carduserId;
-    // console.log(newFollowing)
 
     try {
         user = await User.findById(userId);
@@ -171,12 +165,10 @@ const deleteReview = async (req, res) => {
     let user;
     let userId = req.params.id;
     let reviewToDelete = req.body.reviewIndex;
-    console.log(reviewToDelete);
     try {
         user = await User.findById(userId);
         user.reviews.splice(reviewToDelete, 1);
         await user.save();
-        console.log(user);
         res.status(200).send(user);
     } catch (e) {
         res.status(404).json({
@@ -192,19 +184,8 @@ const deleteFromFollowing = async (req, res) => {
 
     try {
         user = await User.findById(userId);
-        // console.log("wrap 1")
-        // console.log(user.following)
-        // console.log("wrap 1")
-        // console.log("wrap 2")
-        // console.log(req.body.carduser._id)
-        // console.log("wrap 2")
-        // console.log("wrap 4")
         let index = user.following.indexOf(followingToDelete)
-        // console.log("wrap 4")
         user.following.splice(index, 1)
-        // console.log("wrap 3")
-        // console.log(user.following)
-        // console.log("wrap 3")
         await user.save();
     } catch (e) {
         res.status(404).json({
@@ -217,24 +198,11 @@ const deleteFromFollowers = async (req, res) => {
     let user;
     let carduserid = req.params.id;
     let followerToDelete = req.body.user._id;
-    // console.log(carduserid)
-    // console.log(followerToDelete)
 
     try {
         user = await User.findById(carduserid);
-        // console.log("wrap 1")
-        // console.log(user.followers)
-        // console.log("wrap 1")
-        // console.log("wrap 2")
-        // console.log(req.body.user._id)
-        // console.log("wrap 2")
         let index = user.followers.indexOf(followerToDelete)
-        // console.log(index)
-        // console.log("wrap 4")
         user.followers.splice(index, 1)
-        // console.log("wrap 3")
-        // console.log(user.followers)
-        // console.log("wrap 3")
         await user.save();
     } catch (e) {
         res.status(404).json({
@@ -247,13 +215,8 @@ const deleteFromFollowers = async (req, res) => {
 const getFollowers = async (req, res) => {
     let user;
     let userId = req.params.id;
-   console.log(userId);
     try {
-        console.log("abc");
         user = await User.findById(userId).populate('followers');
-        console.log(user);
-        console.log(user.followers);
-        console.log('followers');
         res.status(200).send(user.followers);
     } catch (e) {
         res.status(404).json({
@@ -265,12 +228,8 @@ const getFollowers = async (req, res) => {
 const getFollowing = async (req, res) => {
     let user;
     let userId = req.params.id;
-    console.log(userId);
     try {
         user = await User.findById(userId).populate('following');
-        console.log('following');
-        console.log(user.following);
-        console.log(user);
         res.status(200).send(user.following);
     } catch (e) {
         res.status(404).json({

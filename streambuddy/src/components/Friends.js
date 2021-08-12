@@ -1,11 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import axios from "axios";
 import UserCard from "./UserCard";
 import Divider from "@material-ui/core/Divider";
-import {UserContext} from "./UserContext";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+
 
 const useStyles = makeStyles(() => ({
     divider: {

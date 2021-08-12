@@ -27,10 +27,10 @@ export default function AutocompletePlusCheckbox(props) {
             renderOption={(option, { selected }) => (
                 <React.Fragment>
                     <Checkbox color="primary"
-                        icon={icon}
-                        checkedIcon={checkedIcon}
-                        style={{ marginRight: 8 }}
-                        checked={selected}
+                              icon={icon}
+                              checkedIcon={checkedIcon}
+                              style={{ marginRight: 8 }}
+                              checked={selected}
                     />
                     {option.item}
                 </React.Fragment>

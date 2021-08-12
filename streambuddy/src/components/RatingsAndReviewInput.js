@@ -38,7 +38,7 @@ export default function RatingsAndReviewInput(props) {
             movieTitle: props.movieTitle,
             moviePoster: props.moviePoster,
             rating: rating,
-            review: reviewText    //TODO: change review to reviewText
+            review: reviewText
         }
         updateUserReviews(user, review);
         console.log(props.filmId);

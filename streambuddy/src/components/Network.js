@@ -11,8 +11,6 @@ function Network() {
     const [followers, setFollowers] = useState([]);
     const [followings, setFollowing] = useState([]);
 
-    // console.log(followers);
-    // console.log(followings);
 
     const getUsers = () => {
         axios.get('http://localhost:5000/api/users/')
@@ -26,30 +24,23 @@ function Network() {
 
     useEffect(() => {
         getUsers();
-    }, []);
+    });
 
     const getFollowers = (user) => {
         axios.get(`http://localhost:5000/api/users/${user._id}/followers`)
             .then((res) => {
-                console.log(res.data);
-                if (res.data) {
-                    setFollowers(res.data);
-                    console.log(followers);
-                } else {
-                    console.log("followers is null");
-                }
+                setFollowers(res.data);
             }).catch((err) => {
                 console.log(err);
             })
     }
     useEffect(() => {
         getFollowers(user);
-    }, []);
+    });
 
     const getFollowing = (user) => {
         axios.get(`http://localhost:5000/api/users/${user._id}/following`)
             .then((res) => {
-                console.log(res.data);
                 setFollowing(res.data);
             }).catch((err) => {
                 console.log(err);
@@ -57,7 +48,7 @@ function Network() {
     }
     useEffect(() => {
         getFollowing(user);
-    }, []);
+    });
 
 
     return (

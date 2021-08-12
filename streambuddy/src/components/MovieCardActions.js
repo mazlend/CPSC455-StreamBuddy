@@ -41,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-//TODO: user can move a film from watchlist to watched
-
 
 export default function MovieCardActions(props) {
     const [open, setOpen] = React.useState(false);
@@ -123,7 +121,6 @@ export default function MovieCardActions(props) {
             setLoginReminderAlert(true);
             return;
         }
-        console.info(`You clicked ${options[selectedIndex]}`);
         if (options[selectedIndex] === 'Mark As Seen') {
             if (!user.watched.some(e => e._id === props.item._id)) {
                 updateUserWatched(user, props.item);
@@ -149,10 +146,10 @@ export default function MovieCardActions(props) {
                 setSuccessAlert(true);
             }
         } else if (options[selectedIndex] === 'Remove from Watched Films') {
-            if (!user.watchlist.some(e => e._id === props.item._id)) {
+            if (!user.watched.some(e => e._id === props.item._id)) {
                 setErrorAlert1(true);
             }
-            if (user.watchlist.some(e => e._id === props.item._id)) {
+            if (user.watched.some(e => e._id === props.item._id)) {
                 deleteUserWatched(user, props.item);
                 setSuccessAlert(true);
             }
@@ -173,7 +170,6 @@ export default function MovieCardActions(props) {
         }
         setSelectedIndex(index);
         setOpen(false);
-        console.info(`You clicked ${options[index]}`, index);
         if (index === 0) {
         } else if (index === 1) {
         } else if (index === 2) {
@@ -192,27 +188,6 @@ export default function MovieCardActions(props) {
         }
         setOpen(false);
     };
-
-    // // TODO: checks whether the user has already reviewed this movie. Not yet used because it returned true for all movies -- need to fix
-    // //TODO: add an alert to inform user if they have already reviewed this film
-    // const alreadyReviewed = () => {
-    //     console.log("checking if alreadyReviewed")
-    //     if (!user || user.reviews || !Array.isArray(user.reviews) || !user.reviews.length) {
-    //         console.log("user: ", user)
-    //         console.log("user.reviews: ", user.reviews)
-    //         console.log("return false")
-    //         return false;
-    //       }
-    //     const movieAlreadyReviewed = user.reviews.filter(review => review.movieTitle === props.item.Title)
-    //     console.log("movieAlreadyReviewed is ", movieAlreadyReviewed);
-    //     if (movieAlreadyReviewed) {
-    //         console.log("this movie has already been reviewed")
-    //         return true;
-    //     } else {
-    //         console.log("this movie has not yet been removed")
-    //         return false;
-    //     }
-    // }
 
     return (
 
