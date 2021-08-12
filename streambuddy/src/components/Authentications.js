@@ -10,7 +10,7 @@ export default function Authentication() {
     const {user, setUser} = useContext(UserContext);
 
     const onSuccess = async (res) => {
-        axios.post('http://localhost:5000/api/users/', res.profileObj)
+        axios.post('/api/users/', res.profileObj)
             .then((response) => {
                 setUser(response.data);
         }).catch((err) => {
