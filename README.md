@@ -1,27 +1,29 @@
 README 
-# What StreamBuddy is about
+## What StreamBuddy is about
 
 StreamBuddy allows users to search, browse, discover, track, review, and share films that are available on Netflix. It gives users advanced search options to refine their search to find the exactly right film. We have built a social network so users can view the profiles and reviews of other users, and see who is following them.
 
 
-#Requirements
+**Requirements**
 
 We defined the following minimal, standard and stretch goals for our project.
 
-Minimal Requirements
-Search film information on a movie database (IMDb / The Movie Database / Rotten Tomatoes) via an API.  ✅
-Allow users to filter films  (filter e.g. country, language, genre, cast, year of release, rating).  ✅
-Match up filtered results to films available on Netflix.  ✅
-Responsive UI that works across all devices, content displays properly on various screen sizes.  ✅
-Standard Requirements
-Create a user profile and manage login credentials.  ✅
-Users can add watched films to their seen list. ✅
-Users can add films they would like to watch to their watchlist. ✅
-Users can rate films and post reviews. ✅
-Stretch Requirements
-Users can follow other users (similar to letterboxed) and view their seen list, watchlist, ratings, and reviews history. ✅
-Pull watch history from a user’s Netflix, Crave, etc. accounts for more detailed recommendations. ❌
-Add other streaming services and their media onto our product (e.g. Amazon Prime, Hulu, Crave, etc.)  ❌
+***Minimal Requirements***
+1. Search film information on a movie database (IMDb / The Movie Database / Rotten Tomatoes) via an API.  ✅
+2. Allow users to filter films  (filter e.g. country, language, genre, cast, year of release, rating).  ✅
+3. Match up filtered results to films available on Netflix.  ✅
+4. Responsive UI that works across all devices, content displays properly on various screen sizes.  ✅
+ 
+***Standard Requirements***
+1. Create a user profile and manage login credentials.  ✅
+2. Users can add watched films to their seen list. ✅
+3. Users can add films they would like to watch to their watchlist. ✅
+4. Users can rate films and post reviews. ✅
+
+***Stretch Requirements***
+1. Users can follow other users (similar to letterboxed) and view their seen list, watchlist, ratings, and reviews history. ✅
+2. Pull watch history from a user’s Netflix, Crave, etc. accounts for more detailed recommendations. ❌
+3. Add other streaming services and their media onto our product (e.g. Amazon Prime, Hulu, Crave, etc.)  ❌
 
 
 # The following technology was used
