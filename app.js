@@ -29,7 +29,7 @@ app.use('/api/users', usersRoutes);
 app.use(express.static('streambuddy/build'));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'streambuddy', 'build', 'index.html'));
+    res.sendFile(path.join('streambuddy', 'build', 'index.html'));
 });
 
 mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}${process.env.END_MONGODB}`,
