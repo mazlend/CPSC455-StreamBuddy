@@ -9,7 +9,7 @@
     "dev": "nodemon app.js",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "client": "concurrently \"cd streambuddy && npm install\" \"npm run build --prefix streambuddy\"",
-    "heroku-postbuild": "npm install --no-optional --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install --no-optional --prefix streambuddy && npm run build --prefix streambuddy"
   },
   "author": "",
   "license": "ISC",
