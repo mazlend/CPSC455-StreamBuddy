@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -10,20 +10,27 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function AutocompletePlusCheckbox(props) {
 
+    const handleChange = (event, newInputValue) => {
+        if (newInputValue !== null) {
+            console.log(newInputValue);
+            props.advancedSearchCallback(newInputValue);
+        }
+    };
+
     return (
         <Autocomplete
+            onChange={handleChange}
             multiple
-            id="checkboxes"
             options={props.items}
             disableCloseOnSelect
             getOptionLabel={(option) => option.item}
             renderOption={(option, { selected }) => (
                 <React.Fragment>
                     <Checkbox color="primary"
-                        icon={icon}
-                        checkedIcon={checkedIcon}
-                        style={{ marginRight: 8 }}
-                        checked={selected}
+                              icon={icon}
+                              checkedIcon={checkedIcon}
+                              style={{ marginRight: 8 }}
+                              checked={selected}
                     />
                     {option.item}
                 </React.Fragment>

@@ -26,7 +26,7 @@ function RangeSlider(props){
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        props.getSelectedYears(newValue);
+        props.getSelected(newValue);
     };
 
 
