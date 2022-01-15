@@ -85,3 +85,5 @@ Our team worked incredibly hard to put this project together even though we lack
 ***Florentina Simlinger***: Conducted research on UX design, designed the StreamBuddy logo, created frontend components including the RangeSlider, Ratings and Review Input, Reviews, Profile Navbar, and User. Substantially contributed to fix all frontend bugs and to make the user interface look great and responsive. Contributed to team organization by keeping documentation up to date and led team discussions.
 
 ***Nazish Tazeem***: Created a responsive navigation bar, a reusable autocomplete plus checkbox component for advanced search of films, user context hook, and about page. Developed all social network components (network, network bar, user cards, and user card). Implemented delete review, frontend user Axios, and the entire user backend. Contributed to fixing bugs, branding, and making the user interface visually appealing.
+
+https://netflixstreambuddy.herokuapp.com/
