@@ -3,6 +3,7 @@ README
 
 StreamBuddy allows users to search, browse, discover, track, review, and share films that are available on Netflix. It gives users advanced search options to refine their search to find the exactly right film. We have built a social network so users can view the profiles and reviews of other users, and see who is following them.
 
+Check out the site at: https://netflix-streambuddy.herokuapp.com/
 
 **Requirements**
 
