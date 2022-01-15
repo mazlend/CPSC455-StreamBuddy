@@ -1,4 +1,6 @@
 README 
+https://netflixstreambuddy.herokuapp.com
+
 ## What StreamBuddy is about
 
 StreamBuddy allows users to search, browse, discover, track, review, and share films that are available on Netflix. It gives users advanced search options to refine their search to find the exactly right film. We have built a social network so users can view the profiles and reviews of other users, and see who is following them.
@@ -86,4 +88,4 @@ Our team worked incredibly hard to put this project together even though we lack
 
 ***Nazish Tazeem***: Created a responsive navigation bar, a reusable autocomplete plus checkbox component for advanced search of films, user context hook, and about page. Developed all social network components (network, network bar, user cards, and user card). Implemented delete review, frontend user Axios, and the entire user backend. Contributed to fixing bugs, branding, and making the user interface visually appealing.
 
-https://netflixstreambuddy.herokuapp.com/
+
